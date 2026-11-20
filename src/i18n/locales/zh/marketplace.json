@@ -1,0 +1,532 @@
+{
+  "blocked": {
+    "payment": "请至少选择一种收款方式。",
+    "photo": "请至少添加一张照片。",
+    "price": "请设置价格。免费请填 0。",
+    "title": "请为物品填写标题。",
+    "verifiedLister": "只有通过验证的发布者才能发布转租：请确认学校邮箱并在设置中填写你的宿舍楼。",
+    "subleaseBuilding": "请填写你要转租的地址。",
+    "subleaseAddressUnresolved": "我们在校园附近找不到这个地址。请检查街道和门牌号后重试。",
+    "subleaseDates": "请填写起止日期。",
+    "subleaseRange": "结束日期必须晚于开始日期。",
+    "serviceCategory": "请选择需要哪种帮助。",
+    "servicePastDate": "请选择一个尚未过去的日期。",
+    "serviceNotes": "备注请再短一些。",
+    "subleaseOneActive": "你已有一条进行中的转租信息，请先下架再发布新的。",
+    "titleRequestHelp": "说明你需要什么帮助。",
+    "titleOfferHelp": "说明你可以提供什么帮助。"
+  },
+  "status": {
+    "active": "在售",
+    "sold": "已售",
+    "expired": "已过期",
+    "pending": "待定",
+    "inReview": "审核中"
+  },
+  "rating": {
+    "aria": "评分 {{value}} 星（满分 5 星）",
+    "ariaWithCount_one": "评分 {{value}} 星（满分 5 星），来自 {{count}} 条评价",
+    "ariaWithCount_other": "评分 {{value}} 星（满分 5 星），来自 {{count}} 条评价",
+    "inputLabel": "星级评分",
+    "starsCount_one": "{{count}} 星",
+    "starsCount_other": "{{count}} 星"
+  },
+  "badge": {
+    "verifiedListing": "已认证商品",
+    "verifiedStudent": "认证{{school}}学生",
+    "verifiedStudentGeneric": "认证学生"
+  },
+  "meetup": {
+    "crossSchool": {
+      "title": "该卖家来自{{school}}",
+      "body": "选一个你们都能到达的公共地点。"
+    },
+    "neutral": {
+      "openAria": "在谷歌地图中打开{{place}}",
+      "schenley-plaza": "Schenley Plaza 广场",
+      "carnegie-oakland": "卡内基图书馆（奥克兰）",
+      "phipps": "菲普斯温室"
+    }
+  },
+  "scope": {
+    "filterLabel": "显示哪些学校",
+    "group": "匹兹堡全部",
+    "cardChip": "{{school}}",
+    "cardChipAria": "发布于{{school}}"
+  },
+  "seller": {
+    "ratingsChipAria_one": "查看卖家评价，评分 {{value}} 星（满分 5 星），来自 {{count}} 条评价",
+    "ratingsChipAria_other": "查看卖家评价，评分 {{value}} 星（满分 5 星），来自 {{count}} 条评价",
+    "noRatingsYet": "暂无评价",
+    "completedJobs_one": "已完成 {{count}} 单",
+    "completedJobs_other": "已完成 {{count}} 单"
+  },
+  "ratings": {
+    "toast": {
+      "pickStars": "请先选择星级评分",
+      "updated": "评价已更新",
+      "submitted": "评价已提交",
+      "mustMessage": "你只能给曾私信过的卖家评价",
+      "removed": "评价已删除",
+      "removeError": "无法删除你的评价，请重试。"
+    },
+    "title": "卖家评价",
+    "editButton": "修改你的评价",
+    "rateButton": "给这位卖家评价",
+    "emptyWithName": "暂无评价。评价来自在 Dormcheck 上私信过 {{name}} 的学生。",
+    "experiencePrompt": "你和 {{name}} 的交易体验如何？",
+    "commentPlaceholder": "分享几句关于这次交易的话（可选）",
+    "commentAria": "书面评价",
+    "submitButton": "提交评价",
+    "removeButton": "删除评价",
+    "loading": "正在加载评价",
+    "you": "（你）",
+    "reportAria": "举报 {{name}} 的评价",
+    "reportLabel": "这条评价"
+  },
+  "safetyBanner": {
+    "text": "要当面交易吗？几条快速的安全提示。",
+    "tipsLink": "安全提示",
+    "dismiss": "关闭安全提示"
+  },
+  "edit": {
+    "toast": {
+      "profileLoadError": "无法加载你的资料",
+      "notFound": "未找到该商品"
+    },
+    "titleLabel": "标题",
+    "titlePlaceholder": "例如：迷你冰箱",
+    "descriptionLabel": "描述（可选）",
+    "descriptionPlaceholder": "成色、细节……",
+    "priceLabel": "价格（$）",
+    "fromPriceHint": "根据你标记的物品，将显示为“${{price}} 起”。",
+    "priceTip": "提示：大多数宿舍物品的成交价在 $5 到 $50 之间，定价要利于出售，而不是囤着。",
+    "tinyPriceWarning": "低于 $5？可以考虑直接送出，或与其他物品打包，定价过低的商品常常被略过。",
+    "categoryLabel": "分类",
+    "priceNegotiableLabel": "价格可议",
+    "conditionLabel": "成色",
+    "meetupLabel": "见面地点",
+    "meetupPlaceholder": "例如：Cathy 喷泉",
+    "photoRequiredHint": "至少需要一张照片，有照片的商品才是买家真正会点开的。",
+    "multiItemLabel": "这张照片里在卖多件物品吗？（可选）",
+    "updating": "更新中……"
+  },
+  "showOnListing": {
+    "title": "在商品页展示",
+    "phoneLabel": "电话号码",
+    "togglePhoneAria": "在商品页展示电话号码",
+    "toggleInstagramAria": "在商品页展示 Instagram",
+    "toggleSnapchatAria": "在商品页展示 Snapchat",
+    "snapchatPlaceholder": "用户名"
+  },
+  "paymentMethods": {
+    "label": "接受的支付方式",
+    "selectAll": "选择所有适用项。"
+  },
+  "preview": {
+    "label": "预览",
+    "itemAlt": "商品预览",
+    "itemTitleFallback": "商品标题",
+    "conditionLabel": "成色：{{value}}",
+    "meetupLabel": "见面地点：{{value}}",
+    "roommateNameFallback": "你的名字",
+    "emptyTitle": "商品预览",
+    "emptyBody": "填写表单时，您将实时看到买家看到的商品样式。",
+    "pricePlaceholder": "价格",
+    "free": "免费",
+    "listedJustNow": "刚刚发布",
+    "detailsLabel": "详情",
+    "categoryLabel": "类别：{{value}}",
+    "negotiableLabel": "价格可商议",
+    "paymentLabel": "付款方式：{{value}}",
+    "descriptionFallback": "您的描述将显示在此处。",
+    "sellerLabel": "卖家",
+    "sellerFallback": "您",
+    "sellerInfo": "卖家信息",
+    "messageButton": "发消息",
+    "subleaseTitleFallback": "楼栋",
+    "serviceTitleFallback": "这条帖子的内容",
+    "subleaseAlt": "房间预览",
+    "posterInfo": "发布者"
+  },
+  "create": {
+    "eyebrow": "市场",
+    "saveDraft": "保存草稿",
+    "draftSaved": "草稿已保存",
+    "draftRestored": "已恢复草稿 - 需重新添加照片",
+    "discardDraft": "放弃草稿"
+  },
+  "tagger": {
+    "toast": {
+      "maxItems": "每个商品最多可标记 {{max}} 件物品。",
+      "nameRequired": "请输入物品名称",
+      "priceInvalid": "请输入有效的物品价格",
+      "prohibited": "该物品无法上架。它似乎涉及{{category}}。DormCheck 上不允许发布违禁物品。"
+    },
+    "intro": "点按照片中物品所在的位置来标记它，然后给它命名并定价。买家会看到每件物品各自的价格，你也可以逐一将物品标记为已售。",
+    "tagImageAria": "在商品图片 {{number}} 上标记物品",
+    "editItemAria": "编辑物品 {{name}}",
+    "tagPhotoAria": "在照片 {{number}} 上标记物品",
+    "noPhotos": "请先在上方添加照片，然后再标记其中的物品。",
+    "form": {
+      "editTitle": "编辑物品",
+      "newTaggedTitle": "新的已标记物品",
+      "newUntaggedTitle": "新物品（未标记）",
+      "placeTagTip": "提示：点按照片为该物品放置一个标记。",
+      "nameLabel": "物品名称",
+      "namePlaceholder": "例如：台灯",
+      "saveItem": "保存物品",
+      "addItem": "添加物品"
+    },
+    "editAria": "编辑 {{name}}",
+    "removeAria": "移除 {{name}}",
+    "addWithoutTag": "添加不带标记的物品",
+    "itemCounter": "{{n}}/{{max}} 件物品"
+  },
+  "photos": {
+    "label": "照片",
+    "coverAlt": "封面照片",
+    "photoAlt": "照片 {{number}}",
+    "coverBadge": "封面",
+    "dragReorder": "拖动以重新排序",
+    "editPhoto": "编辑照片",
+    "removePhoto": "移除照片",
+    "addAria": "添加商品照片",
+    "addPhotos": "添加照片",
+    "dragDrop": "或拖放到此处",
+    "takePhoto": "拍一张照片",
+    "helpText": "最多 {{max}} 张照片。拖动可重新排序；第一张为封面。",
+    "toast": {
+      "maxPhotos": "最多允许 {{max}} 张照片",
+      "chooseError": "无法选择照片",
+      "takeError": "无法拍摄照片",
+      "cameraUnavailable": "此设备没有可用的相机",
+      "permissionDenied": "照片访问权限已关闭。请在“设置”中开启后再添加照片。"
+    }
+  },
+  "myItems": {
+    "toast": {
+      "saveBusinessError": "无法更新已收藏的商家",
+      "listingDeleted": "商品已删除",
+      "deleteError": "无法删除商品"
+    },
+    "title": "我的市场",
+    "tabs": {
+      "items": "我的物品",
+      "businesses": "我的商家",
+      "businessesShort": "商家"
+    },
+    "empty": {
+      "title": "还没有商品",
+      "subtitle": "发布一件物品，卖给其他学生。",
+      "addListing": "添加商品"
+    },
+    "editListingAria": "编辑商品",
+    "deleteListingAria": "删除商品",
+    "fromPrice": "{{price}} 起",
+    "itemsSoldCount": "已售 {{sold}}/{{total}}",
+    "inReviewHint": "我们正在审核这条商品信息，通过后即会上架。",
+    "actions": {
+      "markPending": "标记为待定",
+      "markSold": "标记为已售",
+      "backToAvailable": "恢复在售",
+      "relist": "重新上架"
+    },
+    "loadingBusinesses": "正在加载你的商家……",
+    "businessEmpty": {
+      "title": "还没有商家",
+      "subtitle": "上架你的学生商家，触达 Pitt 学生。",
+      "listButton": "上架你的商家"
+    },
+    "savedBusinesses": {
+      "title": "已收藏的商家",
+      "loading": "正在加载已收藏的商家……",
+      "empty": "还没有收藏的商家。在市场里给商家点个红心即可收藏到这里。"
+    },
+    "deleteDialog": {
+      "title": "删除商品？",
+      "description": "这将从市场移除“{{title}}”。此操作无法撤销。"
+    }
+  },
+  "verify": {
+    "toast": {
+      "submittedTitle": "认证已提交",
+      "submittedDesc": "我们会尽快审核。通过后徽章即会显示。",
+      "errorTitle": "无法提交认证"
+    },
+    "title": "认证 {{title}}",
+    "description": "已认证的商品会显示买家可以信赖的徽章。提交一份证明，管理员会进行审核。文件是私密的，仅审核团队可见。",
+    "checkingStatus": "正在检查状态……",
+    "underReview": "你的认证<b>正在审核中</b>。通过后我们会添加徽章。",
+    "approved": "该商品已认证。",
+    "rejectedWithNote": "你上一次的申请未通过：{{note}} 你可以在下方提交新的证明。",
+    "rejectedNoNote": "你上一次的申请未通过。你可以在下方提交新的证明。",
+    "methodGroupAria": "认证方式",
+    "method": {
+      "document": "上传文件",
+      "address": "确认地址"
+    },
+    "docLabel": "租约、转租协议或水电账单",
+    "docHint": "可以随意涂掉租金金额或其他隐私信息。",
+    "addressLabel": "商品地址",
+    "addressPlaceholder": "123 Atwood St, Pittsburgh, PA",
+    "attestLabel": "我确认这是该商品所在地点的真实地址，且我有权提供它。",
+    "submitButton": "提交审核"
+  },
+  "business": {
+    "card": {
+      "saveAria": "收藏",
+      "unsaveAria": "取消收藏",
+      "pendingReview": "待审核",
+      "live": "已上线",
+      "messageAria": "私信",
+      "instagramAria": "Instagram @{{handle}}"
+    },
+    "detail": {
+      "bannerAlt": "{{name}} 横幅",
+      "packagesTitle": "服务与套餐",
+      "messageButton": "私信",
+      "deleteTitle": "删除这个商家？",
+      "deleteDescription": "此操作无法撤销。"
+    },
+    "form": {
+      "toast": {
+        "bannerUploadError": "横幅图片上传失败",
+        "logoUploadError": "标志上传失败",
+        "bannerChooseError": "选择横幅图片失败",
+        "logoChooseError": "选择标志图片失败",
+        "nameRequired": "商家名称为必填项",
+        "categoryRequired": "分类为必填项",
+        "descriptionRequired": "描述为必填项",
+        "updated": "商家信息已更新"
+      },
+      "editTitle": "编辑商家信息",
+      "createTitle": "上架你的商家",
+      "editDescription": "更新你的商家信息。",
+      "createDescription": "把你的学生商家分享给校园社区。",
+      "success": {
+        "title": "你的商家信息正在审核中",
+        "subtitle": "我们会在 24 小时内让它上线。"
+      },
+      "fields": {
+        "name": "商家名称",
+        "namePlaceholder": "例如：Maya's Braids",
+        "category": "分类",
+        "categoryPlaceholder": "选择一个分类",
+        "customCategoryPlaceholder": "输入你的分类",
+        "description": "描述",
+        "descriptionPlaceholder": "告诉学生你能提供什么……",
+        "priceRange": "价格区间",
+        "priceRangePlaceholder": "例如：$20 - $50",
+        "instagram": "Instagram 账号",
+        "instagramPlaceholder": "@yourbusiness",
+        "website": "网站链接",
+        "websitePlaceholder": "yoursite.com 或 linktree",
+        "bannerColor": "横幅颜色",
+        "bannerImage": "横幅图片（可选，将替代颜色）",
+        "logo": "标志（可选）"
+      },
+      "selectColorAria": "选择 {{color}}",
+      "change": "更换",
+      "upload": "上传",
+      "removePackageAria": "移除套餐",
+      "packageNamePlaceholder": "套餐名称",
+      "packageDescPlaceholder": "包含内容",
+      "packagePricePlaceholder": "价格",
+      "addPackage": "添加套餐",
+      "submitReview": "提交审核"
+    },
+    "section": {
+      "toast": {
+        "approved": "商家已通过",
+        "approveError": "无法通过该商家",
+        "rejected": "商家已拒绝",
+        "rejectError": "无法拒绝该商家",
+        "signInSave": "请登录后再收藏",
+        "signInMessage": "请登录后再私信",
+        "messageSelf": "你不能给自己发私信",
+        "conversationError": "无法开始会话",
+        "signInList": "请登录后再上架商家",
+        "signInSaved": "请登录后查看已收藏的商家"
+      },
+      "title": "学生商家",
+      "subtitle": "支持你校园里的学生创业者",
+      "savedAria": "已收藏的商家",
+      "searchPlaceholder": "搜索……",
+      "filters": "筛选",
+      "clearAll": "清除全部",
+      "sortBy": "排序方式",
+      "sortNewest": "最新",
+      "sortAz": "A-Z",
+      "categoryAll": "全部",
+      "pendingReviewCount": "待审核（{{n}}）",
+      "approve": "通过",
+      "reject": "拒绝",
+      "loading": "正在加载商家……",
+      "emptyTitle": "还没有学生商家",
+      "emptySubtitle": "成为第一个上架的人。",
+      "noMatchTitle": "没有符合搜索的商家",
+      "noMatchSubtitle": "试试其他关键词或分类。"
+    }
+  },
+  "homeBand": {
+    "emptyTitle": "{{school}} 还没有人发布",
+    "emptyBody": "大多数商品会在搬出季出现。如果你有不打算带走的东西，可以先发布。",
+    "postListing": "发布物品"
+  },
+  "postType": {
+    "pickerLabel": "你要发布什么？",
+    "filterLabel": "帖子类型",
+    "soon": "即将推出",
+    "soonHint": "你的校园暂时无法使用。",
+    "item": {
+      "label": "出售物品",
+      "hint": "发布其他学生可以购买的物品。"
+    },
+    "sublease": {
+      "label": "转租",
+      "hint": "将你的房间或公寓转租一段时间。",
+      "heading": "发布转租"
+    },
+    "request_help": {
+      "label": "寻求帮助",
+      "hint": "请其他学生帮你完成一件事。",
+      "heading": "寻求帮助"
+    },
+    "offer_help": {
+      "label": "提供帮助",
+      "hint": "为其他学生提供几小时的帮助。",
+      "heading": "提供帮助"
+    }
+  },
+  "service": {
+    "category": "需要哪种帮助？",
+    "categoryPlaceholder": "选择任务类型",
+    "filterLabel": "按任务类型筛选",
+    "allCategories": "全部",
+    "categories": {
+      "move_help": "搬家帮忙",
+      "rides": "搭车",
+      "tech_repair": "电子设备维修",
+      "printing": "打印",
+      "photography": "摄影",
+      "tutoring": "辅导",
+      "resume_review": "简历修改",
+      "design": "设计",
+      "editing": "文字校对"
+    },
+    "scope": {
+      "local": "附近",
+      "remote": "线上",
+      "localHint": "附近能见面的同学可以看到这条信息。",
+      "remoteHint": "通过网络完成，距离不影响。"
+    },
+    "integrity": {
+      "heading": "DormCheck 上的辅导",
+      "body": "这里的辅导是指帮助对方理解他自己的作业。替对方完成作业是不允许的：不得代写或改写将以对方名义提交的作业，不得代考任何考试、测验或监考评估，也不得出售已完成的课程作业。提供上述任何一项的帖子会被删除，账号会被上报给学校。",
+      "ack": "我明白辅导是帮助别人学会，而不是替别人完成评分作业。",
+      "ackRequired": "请确认你已了解辅导规则。"
+    },
+    "date": "时间",
+    "duration": "大约需要多久",
+    "durationPlaceholder": "选择大致时长",
+    "durations": {
+      "30": "约 30 分钟",
+      "60": "约 1 小时",
+      "120": "约 2 小时",
+      "180": "约 3 小时",
+      "240": "约 4 小时",
+      "480": "大半天"
+    },
+    "location": "地点",
+    "locationPlaceholder": "宿舍大堂、Oakland、校车站",
+    "notes": "还有什么需要说明的",
+    "notesPlaceholder": "两个行李箱和一台小冰箱，三楼，没有电梯。",
+    "notesHint": "还可以输入 {{remaining}} 个字符",
+    "notesLabel": "备注",
+    "status": {
+      "open": "开放中",
+      "claimed": "已有人接",
+      "completed": "已完成"
+    },
+    "claim": "我可以帮忙",
+    "claimAria": "申请帮助这个帖子",
+    "claimed": "你正在帮忙",
+    "claimedByOther": "已经有人在帮忙了",
+    "complete": "标记为完成",
+    "completeAria": "把这个帖子标记为完成",
+    "completedToast": "已标记完成，现在可以互相评价了。",
+    "claimedToast": "你已接下这件事，发消息聊聊具体细节吧。",
+    "noMoney": "DormCheck 不处理任何款项。你们之间的约定由你们自行处理。",
+    "titlePlaceholderRequest": "例如：帮忙搬一台小冰箱",
+    "titlePlaceholderOffer": "例如：送去机场",
+    "messagePoster": "发消息"
+  },
+  "trust": {
+    "report": "举报",
+    "reportAria": "举报此帖子"
+  },
+  "sublease": {
+    "rent": "月租",
+    "address": "地址",
+    "addressPlaceholder": "例如 3400 Forbes Ave 或 Skyvue Apartments",
+    "addressSuggestions": "楼栋建议",
+    "addressNote": "这个地址会把你的房源标注在转租地图上，方便附近的同学找到它。开始输入时，我们会推荐已知的楼栋。",
+    "start": "开始日期",
+    "end": "结束日期",
+    "datesShort": "日期",
+    "utilities": "包含的水电杂费",
+    "utilitiesShort": "杂费",
+    "furnished": "带家具",
+    "parking": "停车位",
+    "genderPreference": "室友偏好",
+    "houseRules": "住房规定",
+    "houseRulesPlaceholder": "安静时段、访客、宠物……",
+    "additionalRules": "其他说明",
+    "additionalRulesPlaceholder": "转租者在联系前需要了解的其他信息。",
+    "utility": {
+      "electricity": "电",
+      "water": "水",
+      "gas": "燃气",
+      "internet": "网络",
+      "trash": "垃圾处理"
+    },
+    "gender": {
+      "any": "无偏好",
+      "female": "女生",
+      "male": "男生"
+    }
+  },
+  "subleaseMap": {
+    "loading": "正在加载转租……",
+    "sheetTitle_one": "1 条转租",
+    "sheetTitle_other": "{{count}} 条转租",
+    "perMonth": "每月",
+    "fromRent": "低至 {{rent}}",
+    "countFromRent_one": "1 条房源 · 低至 {{rent}}",
+    "countFromRent_other": "{{count}} 条房源 · 低至 {{rent}}",
+    "backToAll": "全部转租",
+    "loadError": {
+      "title": "无法加载转租",
+      "body": "加载 {{school}} 的转租时出错了。请检查网络后重试。"
+    },
+    "empty": {
+      "title": "{{school}} 暂时没有转租",
+      "body": "转租是指学生把自己的租约转给别人，可以是一个暑假、一个学期，或者剩下的租期。{{school}} 的同学发布转租后，会出现在这张地图上。",
+      "cta": "发布转租"
+    },
+    "noneInView": {
+      "title": "当前视野内没有转租",
+      "body_one": "{{school}} 有 1 个转租，只是不在地图的这个区域。",
+      "body_other": "{{school}} 有 {{count}} 个转租，只是不在地图的这个区域。",
+      "cta": "显示全部"
+    },
+    "unmapped": {
+      "title": "未在地图上",
+      "meta_one": "1 条房源",
+      "meta_other": "{{count}} 条房源",
+      "body_one": "这条转租没有地图位置：它发布于地址在提交时被地理编码之前。它在这里列出，而不是被隐藏。",
+      "body_other": "这些转租没有地图位置：它们发布于地址在提交时被地理编码之前。它们在这里列出，而不是被隐藏。"
+    }
+  }
+}

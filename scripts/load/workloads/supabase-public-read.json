@@ -1,0 +1,21 @@
+{
+  "thinkMs": 100,
+  "requests": [
+    {
+      "name": "public marketplace",
+      "method": "GET",
+      "path": "/rest/v1/marketplace_public?select=id,university_id,title,price,status,post_type,created_at&order=created_at.desc&limit=50",
+      "headers": {
+        "apikey": "${LOAD_TEST_SUPABASE_KEY}"
+      }
+    },
+    {
+      "name": "public marketplace compact page",
+      "method": "GET",
+      "path": "/rest/v1/marketplace_public?select=id,university_id,category,condition,price,status&order=created_at.desc&limit=20",
+      "headers": {
+        "apikey": "${LOAD_TEST_SUPABASE_KEY}"
+      }
+    }
+  ]
+}

@@ -1,0 +1,434 @@
+{
+  "sections": {
+    "profile": {
+      "label": "Profile"
+    },
+    "account": {
+      "label": "Account"
+    },
+    "security": {
+      "label": "Security"
+    },
+    "appearance": {
+      "label": "Appearance"
+    },
+    "notifications": {
+      "label": "Notifications"
+    },
+    "privacy": {
+      "label": "Privacy"
+    },
+    "support": {
+      "label": "Support & Legal"
+    },
+    "admin": {
+      "label": "Admin"
+    },
+    "danger": {
+      "label": "Danger Zone"
+    }
+  },
+  "search": {
+    "ariaLabel": "Search settings",
+    "placeholder": "Search settings",
+    "clear": "Clear search",
+    "empty": "No settings match “{{query}}”."
+  },
+  "profile": {
+    "header": {
+      "title": "Profile",
+      "description": "Your identity, housing, and roommate matching. This is what other students can see."
+    },
+    "name": "Name",
+    "pronouns": "Pronouns",
+    "major": "Major",
+    "housing": "Housing",
+    "gradeLevel": "Grade Level",
+    "payments": "Payments",
+    "bio": "Bio",
+    "roommateVisibility": "Show my profile to roommates",
+    "photo": "Profile photo",
+    "delete": "Delete Profile"
+  },
+  "language": {
+    "title": "Language",
+    "description": "Choose the language DormCheck is displayed in.",
+    "pickerAriaLabel": "Language"
+  },
+  "account": {
+    "verified": {
+      "title": "Verified student status",
+      "hero": "Verified {{university}} Student",
+      "via": "Verified via"
+    },
+    "studentAccount": "Student account",
+    "contactInfo": "Contact info",
+    "phone": {
+      "title": "Phone number",
+      "notAdded": "Not added",
+      "hint": "Used for account recovery. Phone verification is coming soon.",
+      "saved": "Phone number saved",
+      "saveError": "Could not save phone number"
+    },
+    "email": {
+      "title": "Email",
+      "notAvailable": "Not available",
+      "comingSoon": "Change coming soon"
+    },
+    "connected": {
+      "title": "Connected sign-in methods",
+      "removed": "Sign-in method removed",
+      "removeError": "Could not remove sign-in method",
+      "lastMethodWarning": "Add another sign-in method before removing this one",
+      "onlyMethodHint": "This is your only sign-in method, so it can't be removed. Add a password (below) or connect Google first.",
+      "linkGoogle": "Connect Google",
+      "linkGoogleError": "Could not connect Google"
+    },
+    "signOut": "Sign Out",
+    "signingOut": "Signing out...",
+    "menu": {
+      "help": "Help",
+      "back": "Back to account menu"
+    }
+  },
+  "appearance": {
+    "theme": {
+      "title": "Theme"
+    },
+    "reduceMotion": {
+      "title": "Reduce motion",
+      "description": "Minimize animations and transitions across the app. Defaults to your device setting."
+    },
+    "textSize": {
+      "title": "Text size",
+      "description": "Make text and controls larger across the app.",
+      "optionDefault": "Default",
+      "optionLarge": "Large",
+      "optionLarger": "Larger",
+      "optionLabel": "{{label}} text size"
+    }
+  },
+  "notifications": {
+    "title": "Notifications",
+    "description": "Choose what DormCheck emails and pushes to you.",
+    "email": {
+      "title": "Email notifications",
+      "description": "Master switch. Turn off to stop all notification emails, regardless of the settings below."
+    },
+    "important": {
+      "title": "Important updates"
+    },
+    "general": {
+      "title": "General updates"
+    },
+    "quietHours": {
+      "title": "Quiet hours",
+      "description": "Pause push notifications during set hours. Email is never affected.",
+      "from": "From",
+      "to": "To",
+      "setTimeHint": "Set a start and end time to activate quiet hours.",
+      "silencedMessage": "Push is silenced from {{start}} to {{end}}.",
+      "silencedOvernightMessage": "Push is silenced from {{start}} overnight to {{end}}.",
+      "timezone": "Times use your device timezone ({{tz}}).",
+      "savedDescription": "Quiet hours updated."
+    },
+    "securityAccount": {
+      "title": "Security & account",
+      "description": "Password resets and account emails are always sent."
+    },
+    "alwaysOn": "Always on",
+    "pushDeniedWarning": "Push notifications are turned off for DormCheck in iOS Settings, so the Push toggles below won't deliver anything. Enable them in Settings > DormCheck > Notifications.",
+    "channels": {
+      "email": "Email",
+      "push": "Push"
+    },
+    "channelStatus": {
+      "off": "Off"
+    },
+    "emailDisabledHint": "Turn on email notifications above to enable",
+    "preferenceSaved": "Notification preference updated.",
+    "couldNotSave": "Could not save",
+    "emailNotificationsForCategory": "Email notifications for {{category}}",
+    "pushNotificationsForCategory": "Push notifications for {{category}}",
+    "editChannels": "{{action}} {{category}} notification channels",
+    "categories": {
+      "messages": {
+        "label": "Direct messages",
+        "description": "New messages in your conversations"
+      },
+      "message_requests": {
+        "label": "Message requests",
+        "description": "New requests to connect and accepted requests"
+      },
+      "roommate_invites": {
+        "label": "Roommate invites",
+        "description": "Invitations to join a roommate group"
+      },
+      "ranking_invites": {
+        "label": "Ranking invites",
+        "description": "Invitations to collaborate on dorm rankings"
+      },
+      "housing_groups": {
+        "label": "Housing groups",
+        "description": "Activity in your housing groups"
+      },
+      "marketplace": {
+        "label": "Marketplace",
+        "description": "Inquiries about your marketplace listings"
+      },
+      "movein": {
+        "label": "Move-in",
+        "description": "Roommate confirmations, new building residents, and move-in countdown"
+      },
+      "announcements": {
+        "label": "Announcements",
+        "description": "Occasional updates from the DormCheck team"
+      }
+    }
+  },
+  "privacy": {
+    "messaging": {
+      "title": "Who can message you",
+      "description": "Controls who can start a new conversation. Existing chats are unaffected.",
+      "options": {
+        "anyone": "Anyone at your school",
+        "connections": "Only people you know"
+      },
+      "optionsDescriptions": {
+        "anyone": "Verified students at your school can send you a message request",
+        "connections": "Only people you share a group chat or an existing conversation with"
+      }
+    },
+    "searchVisibility": {
+      "title": "Show me in search",
+      "description": "Turn off to stop appearing when students search for people to message"
+    },
+    "phonePrivacy": {
+      "title": "Your phone number stays private",
+      "description": "It's only shown on a marketplace listing or roommate post when you turn on \"Show my number\" for that post. You can change that on each listing."
+    },
+    "download": {
+      "title": "Download my data",
+      "cardLabel": "Your data",
+      "description": "Get a JSON copy of your profile, listings, roommate posts, conversations, the messages you sent, and your saved dorms.",
+      "button": "Download",
+      "preparing": "Preparing...",
+      "success": {
+        "title": "Your data is downloading",
+        "description": "Look for the JSON file in your downloads."
+      },
+      "error": {
+        "title": "Could not export your data"
+      }
+    },
+    "retention": {
+      "title": "How long we keep your data",
+      "cardLabel": "Data retention",
+      "description": "Your account information is kept for as long as your account is active. If you delete your account, we remove your profile, listings, messages, and associated content from our active systems within 30 days. Some information may remain in encrypted backups for up to 90 days before it's purged. Aggregate, non-identifying analytics may be kept indefinitely."
+    },
+    "blocked": {
+      "title": "Blocked accounts"
+    },
+    "policy": {
+      "title": "Privacy Policy"
+    },
+    "saveSuccess": "Privacy preference updated.",
+    "saveError": "Could not save"
+  },
+  "security": {
+    "title": "Security",
+    "description": "Your recent sign-ins, login alerts, two-factor authentication, and active sessions.",
+    "activity": {
+      "title": "Recent security activity",
+      "loading": "Loading activity...",
+      "note": "Password changes and two-factor updates will appear here as they happen.",
+      "lastSignIn": "Last sign-in",
+      "notRecorded": "Not recorded yet",
+      "showMore": "Show {{count}} more",
+      "showLess": "Show less"
+    },
+    "loginAlerts": {
+      "title": "Login alerts",
+      "label": "New-device login alerts",
+      "description": "Get an email when a new device signs in to your account. Rolling out soon; your choice is saved now.",
+      "ariaLabel": "Email me when a new device signs in",
+      "saved": "Login-alert preference updated."
+    },
+    "twoFactor": {
+      "title": "Two-factor authentication",
+      "description": "Add a second step at sign-in with a code from an authenticator app (like Google Authenticator or 1Password). You'll also get one-time backup codes in case you lose your device.",
+      "checking": "Checking status...",
+      "enabled": "On",
+      "disable": "Turn off",
+      "setup": "Set up 2FA",
+      "enrollTitle": "Set up two-factor authentication",
+      "enrollQrDescription": "Scan the QR code with your authenticator app, then enter the 6-digit code it shows.",
+      "qrCodeAlt": "QR code for your authenticator app",
+      "manualKeyPrefix": "Can't scan? Enter this key manually:",
+      "codeLabel": "6-digit code",
+      "verify": "Verify",
+      "backupCodesTitle": "Save your backup codes",
+      "backupCodesDescription": "Each code works once if you lose your authenticator. This is the only time they're shown, so store them somewhere safe.",
+      "copyCodes": "Copy codes",
+      "copied": "Copied",
+      "disableTitle": "Turn off two-factor authentication?",
+      "disableDescription": "Enter a current code from your authenticator app to confirm. Your backup codes will also be deleted.",
+      "disableConfirm": "Turn off 2FA",
+      "enrollError": "Could not start 2FA setup",
+      "verifyError": "Verification failed",
+      "enabledToast": "Two-factor authentication is on",
+      "enabledDescription": "You'll be asked for a code at sign-in.",
+      "copyError": "Could not copy",
+      "copyManual": "Select and copy the codes manually."
+    },
+    "sessions": {
+      "title": "Active sessions",
+      "loading": "Loading sessions...",
+      "thisDevice": "This device",
+      "lastSeen": "active {{when}}",
+      "signOut": "Sign out",
+      "signOutAll": "Sign out all other sessions",
+      "revokeSuccess": "Session signed out",
+      "revokeError": "Could not sign out session",
+      "revokeOthersSuccess_one": "Signed out 1 other session",
+      "revokeOthersSuccess_other": "Signed out {{count}} other sessions",
+      "noOthers": "No other sessions",
+      "revokeOthersError": "Could not sign out sessions"
+    }
+  },
+  "headers": {
+    "account": {
+      "description": "Your verified status, contact info, sign-in methods, and session."
+    },
+    "appearance": {
+      "description": "Choose how DormCheck looks on this device."
+    },
+    "privacy": {
+      "description": "Control who can reach you and manage your privacy."
+    },
+    "support": {
+      "description": "Get help, share feedback, and read our policies."
+    },
+    "admin": {
+      "description": "Preview tools and admin-only controls."
+    },
+    "danger": {
+      "description": "Irreversible actions that affect your entire account."
+    }
+  },
+  "view": {
+    "title": "Settings",
+    "allSettings": "All settings",
+    "sectionsAriaLabel": "Settings sections",
+    "groups": {
+      "signIn": "Sign-in",
+      "messagingDiscovery": "Messaging & discovery",
+      "more": "More",
+      "help": "Help",
+      "aboutLegal": "Legal",
+      "preview": "Preview",
+      "tools": "Tools",
+      "account": "Account",
+      "preferences": "Preferences",
+      "support": "Support",
+      "admin": "Admin",
+      "dangerZone": "Danger Zone"
+    },
+    "passwordDescription": "Reset or set your sign-in password",
+    "signingOut": "Signing out...",
+    "blockedAccounts": "Blocked accounts",
+    "blockedAccountsDescription": "People you've blocked won't appear in your feeds or messages",
+    "privacyPolicy": "Privacy Policy",
+    "systemThemeDescription": "System follows your device setting.",
+    "version": "Version {{version}}",
+    "accountDialogTitle": "Account",
+    "accountDialogDescription": "Manage your account settings.",
+    "changePasswordLabel": "Change Password",
+    "changePasswordExplanation": "We'll send a password reset link to your email.",
+    "sendResetLink": "Send reset link",
+    "accountSecurityLabel": "Account Security",
+    "manualPasswordExplanation": "Set a manual password so you can sign in with email and password (e.g. if you signed up with Google).",
+    "setManualPassword": "Set Manual Password",
+    "feedbackDialogTitle": "Feedback & Support",
+    "feedbackDialogDescription": "Have a question or suggestion? Send us a message.",
+    "feedbackPlaceholder": "Share your feedback, suggestions, or report issues...",
+    "sending": "Sending...",
+    "noEmailTitle": "No email on file",
+    "noEmailDescription": "Unable to send reset link.",
+    "resetLinkError": "Could not send reset link",
+    "resetLinkErrorDescription": "Unable to send reset link. Please try again.",
+    "resetLinkSent": "Password reset link sent!",
+    "checkEmail": "Check your email.",
+    "enterPassword": "Enter a password",
+    "enterPasswordDescription": "Please enter a new password.",
+    "passwordTooShort": "Password too short",
+    "passwordTooShortDescription": "Use at least 6 characters.",
+    "setPasswordError": "Could not set password",
+    "passwordSetSuccess": "Password set successfully!",
+    "passwordSetDescription": "You can now log in using your email and this password, or continue using Google.",
+    "feedbackSendError": "Failed to send",
+    "feedbackSent": "Feedback sent!",
+    "feedbackThanks": "Thank you for reaching out."
+  },
+  "support": {
+    "safety": {
+      "title": "Safety Center",
+      "description": "Trading, touring, and payment safety plus campus contacts"
+    },
+    "feedback": {
+      "title": "Feedback",
+      "description": "Have a question or suggestion?"
+    },
+    "guidelines": {
+      "title": "Community Guidelines"
+    },
+    "terms": {
+      "title": "Terms of Service"
+    },
+    "licenses": {
+      "title": "Open-source licenses"
+    },
+    "replayTour": {
+      "title": "Replay the tour",
+      "description": "See the guided walkthrough of the app again"
+    }
+  },
+  "admin": {
+    "preview": {
+      "title": "Full app preview",
+      "description": "Show all features, admin only"
+    },
+    "setup": {
+      "title": "Enable Setup Mode",
+      "description": "Show Edit & Delete on all marketplace items"
+    },
+    "replay": {
+      "title": "Replay onboarding",
+      "description": "Re-run the intro flow to review it"
+    },
+    "panel": {
+      "title": "Admin Panel",
+      "description": "Open the admin panel"
+    }
+  },
+  "danger": {
+    "delete": {
+      "title": "Delete Account"
+    },
+    "deleteDialogTitle": "Delete account permanently",
+    "deleteCannotUndo": "This action cannot be undone.",
+    "whatWillBeDeleted": "What will be deleted",
+    "deleteItem1": "Your profile, photos, and saved items",
+    "deleteItem2": "Your marketplace listings and roommate posts",
+    "deleteItem3": "Your direct messages",
+    "deleteItem4": "Your room setup photos and likes",
+    "deleteItem5": "Your dorm rankings and checklist",
+    "whatWillBeKept": "What will be kept (anonymized)",
+    "keepItem1": "Your dorm reviews - shown as \"Former {{school}} Student\"",
+    "keepItem2": "Your dorm Q&A - shown as \"Former {{school}} Student\"",
+    "typeDeleteConfirm": "Type DELETE to confirm",
+    "deleteAccountButton": "Delete My Account",
+    "deleteError": "Could not delete account",
+    "deleteErrorDescription": "Please try again or contact support."
+  }
+}

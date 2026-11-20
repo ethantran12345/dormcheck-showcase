@@ -1,0 +1,5 @@
+-- notifications_trigger_fn_grants
+-- Applied directly to prod via MCP (no migration file was committed at the time).
+-- Recorded 2026-07-17 as an intentionally EMPTY placeholder so local migration history
+-- matches the remote versions list (Supabase Preview check). The live definition is on
+-- prod; a Supabase preview branch built from this directory will lack this one change.

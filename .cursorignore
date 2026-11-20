@@ -1,0 +1,29 @@
+# Add directories or file patterns to ignore during indexing (e.g. foo/ or *.csv)
+# Dependencies
+node_modules/
+
+# Build output
+dist/
+build/
+.vite/
+coverage/
+*.tsbuildinfo
+
+# Capacitor / iOS generated (native wrapper + copied web build, not source)
+ios/App/Pods/
+ios/App/build/
+ios/DerivedData/
+ios/App/App/public/
+
+# Supabase local scratch
+supabase/.branches/
+supabase/.temp/
+
+# Secrets (never feed to the model)
+.env
+.env.*
+*.pem
+
+# OS / logs
+.DS_Store
+*.log

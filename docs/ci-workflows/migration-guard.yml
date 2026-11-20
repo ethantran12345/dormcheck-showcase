@@ -1,0 +1,164 @@
+name: Migration / RLS Safety Guard
+
+# Runs on every PUSH to dev that touches supabase migrations/registry/tests
+# (we're trunk-based - commit straight to dev, no PRs). Two jobs:
+#   - tenant-isolation: applies all migrations to a fresh Supabase stack and runs
+#     the cross-tenant probe (scripts/test-db.sh) plus the signup ->
+#     profile-bootstrap canary (folded in from the old signup-canary.yml, 2026-08-16 - it
+#     reuses this stack instead of standing up its own every 12h); a failure = red
+#     CI on dev.
+#   - migration-guard: Claude reviews the pushed migration diff for RLS /
+#     SECURITY DEFINER / privacy regressions vs the documented baseline. On a
+#     finding it opens/refreshes a single `migration-safety` issue; clean = silent.
+# It never modifies, approves, or merges code.
+
+on:
+  push:
+    branches: [dev]
+    paths:
+      - 'supabase/migrations/**'
+      - 'supabase/registry/**'
+      - 'supabase/tests/**'
+  workflow_dispatch: {}
+
+# CONCURRENCY IS PER JOB HERE, NOT WORKFLOW-WIDE, and the split is the whole point.
+# tenant-isolation applies EVERY migration to a fresh stack: it evaluates the tip
+# commit's complete migration set, so a superseded run is fully covered by the run
+# that superseded it, and it is the expensive half (Docker + full stack).
+# migration-guard is NOT cancellable for the same reason secrets-scan.yml is not:
+# it reviews the push's before..after RANGE, so cancelling it leaves those commits
+# permanently unreviewed — the next push's range begins after them. A workflow-level
+# `concurrency` block would have silently taken that half down with it.
+
+jobs:
+  # Executing gate: apply all migrations to a fresh local stack, then run the
+  # tenant registry audit + live cross-tenant probe. This is what makes an
+  # unregistered or mis-scoped table impossible to merge.
+  tenant-isolation:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    concurrency:
+      group: ${{ github.workflow }}-tenant-isolation-${{ github.ref }}
+      cancel-in-progress: true
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          fetch-depth: 1
+
+      # node_modules is for the signup canary at the end of this job
+      # (@supabase/supabase-js + dotenv). The rest of the job needs neither.
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 22
+          cache: npm
+
+      - run: npm ci
+
+      - uses: supabase/setup-cli@v2
+        with:
+          version: latest
+
+      # Fail fast, before the stack boots: a new migration touching RLS must be
+      # pinned by a wired probe (scripts/check-rls-test-coverage.mjs). A guard
+      # without a test is one refactor from silently reopening.
+      - name: RLS test-coverage gate
+        run: node scripts/check-rls-test-coverage.mjs
+
+      - name: Start local Supabase (applies all migrations)
+        run: supabase start
+
+      - name: Run tenant DB tests
+        run: bash scripts/test-db.sh
+
+      # ── Signup canary, folded in here 2026-08-16 (see docs/DECISIONS.md) ────────
+      # This assertion used to own a whole workflow that stood up an identical stack
+      # every 12h — 38 runs/month, ~3.6 min each — purely to prove the signup ->
+      # profile-bootstrap trigger chain still fires. That chain can only break when a
+      # migration changes it, and this job already has a fresh stack with every
+      # migration applied, on exactly the pushes that could break it. So the check
+      # moved to where the evidence is and the stack is already paid for.
+      #
+      # It stays a real assertion, not a smoke test: signup_canary.mjs signs up
+      # through the PUBLIC GoTrue path with the anon key (never the service-role
+      # admin API, which would bypass the very triggers that broke on 2026-07-09) and
+      # hard-deletes its throwaway user afterwards.
+      #
+      # The same canary still runs WEEKLY as rot insurance, now the `stack-checks` job of
+      # weekly-sweep.yml (signup-canary.yml was merged into it 2026-10-29) — this
+      # step is the one that catches a regression before it can ship.
+      - name: Export local stack credentials
+        # `supabase status -o env` emits KEY="value"; $GITHUB_ENV stores the line
+        # verbatim, so strip the quotes here rather than shipping them into the
+        # canary's env (the canary strips them too — belt and braces, not a
+        # duplicate: this keeps $GITHUB_ENV clean for anything added later).
+        run: |
+          supabase status -o env \
+            --override-name api.url=VITE_SUPABASE_URL \
+            --override-name auth.anon_key=VITE_SUPABASE_ANON_KEY \
+            --override-name auth.service_role_key=SUPABASE_SERVICE_ROLE_KEY \
+            | sed -E 's/^([^=]+)="(.*)"$/\1=\2/' >> "$GITHUB_ENV"
+
+      - name: Signup -> profile-bootstrap trigger chain
+        run: npm run canary:signup
+
+      - name: Stop stack
+        if: always()
+        run: supabase stop
+
+  migration-guard:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      issues: write
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          fetch-depth: 0
+
+      # claude-code-action@v1 does not support plain `push` events ("Unsupported
+      # event type: push"), so run Claude Code headless (claude -p) instead -
+      # same review, same OAuth secret, keeps the push before/after SHAs.
+      - name: Install Claude Code
+        run: npm install -g @anthropic-ai/claude-code
+
+      - name: Run migration guard
+        env:
+          CLAUDE_CODE_OAUTH_TOKEN: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          BEFORE_SHA: ${{ github.event.before }}
+          AFTER_SHA: ${{ github.sha }}
+          RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+          PROMPT: |
+            You are reviewing the migration changes just pushed to `dev` for security regressions. Do NOT modify, approve, or push any code. Your only side effect is opening/refreshing ONE GitHub issue, and only if you find a regression.
+
+            First, determine the changed files in this push. Run:
+              RANGE="$BEFORE_SHA..$AFTER_SHA"
+              # If $BEFORE_SHA is all-zeros (branch's first push / post-force-push), fall back:
+              if ! git rev-parse --verify --quiet "$BEFORE_SHA^{commit}"; then RANGE="HEAD~1..HEAD"; fi
+              git diff --name-only "$RANGE" -- supabase/migrations supabase/registry supabase/tests
+            Read the full diff of those files (`git diff "$RANGE" -- <paths>`) and compare against docs/audits/security-posture.md (the documented intentional baseline).
+
+            Flag any of:
+            - a new table created WITHOUT `enable row level security` AND at least one policy;
+            - a new SECURITY DEFINER function or view that is anon- or authenticated-executable and is NOT one of the documented preview RPCs (get_marketplace_preview, get_reviews_summary, get_setups_preview, get_subleases_preview) or a documented internal helper;
+            - a new public storage bucket beyond the documented set;
+            - a GRANT to `anon` or `authenticated` that widens access;
+            - any view or RPC that returns user profile data WITHOUT an `is_public` (or equivalent) row filter - this is the known public_profiles gap; do not let it spread;
+            - anything touching payments that could create a path to charge a student.
+
+            If you find one or more regressions, open-or-refresh a SINGLE deduplicated issue labeled `migration-safety` (never create a second one):
+              gh label create migration-safety --color B60205 --force >/dev/null 2>&1 || true
+              EXISTING=$(gh issue list --state open --label migration-safety --json number --jq '.[0].number' 2>/dev/null || echo "")
+              BODY="Migration safety regression on push $AFTER_SHA. Findings:\n<your bulleted findings, each citing the file + the baseline rule it violates>\nRun: $RUN_URL"
+              if [ -n "$EXISTING" ]; then
+                gh issue comment "$EXISTING" --body "$BODY"
+              else
+                gh issue create --title "Migration safety regression ($AFTER_SHA)" --label migration-safety --body "$BODY"
+              fi
+
+            If clean, do NOTHING - no issue, no comment, no output side effects. Silence means the migration passed.
+        run: |
+          claude -p "$PROMPT" \
+            --allowedTools "Bash,Read,Grep,Glob" \
+            --max-turns 30

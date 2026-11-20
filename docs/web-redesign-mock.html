@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>DormCheck - Web Redesign Mock</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,400;0,600;0,700;0,800;0,900&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --brand:#03C03C;            /* malachite-600 - DormCheck primary */
+    --brand-600:#03C03C;
+    --brand-500:#0CDB4A;
+    --brand-700:#068F30;
+    --brand-50:#EEFFF2;
+    --brand-100:#D8FFE3;
+    --ink:#0F172A;              /* slate-900 headline */
+    --muted:#64748B;            /* slate-500 body */
+    --muted-2:#94A3B8;
+    --line:#E2E8F0;             /* slate-200 */
+    --bg:#F0F7F2;               /* soft mint page bg */
+    --card:#FFFFFF;
+    --radius:16px;
+    --shadow:0 1px 2px rgba(15,23,42,.04), 0 8px 24px rgba(15,23,42,.06);
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0}
+  body{font-family:'Nunito',system-ui,sans-serif;color:var(--ink);background:var(--bg);-webkit-font-smoothing:antialiased}
+  a{color:inherit;text-decoration:none}
+  .hidden{display:none !important}
+  img{max-width:100%}
+
+  /* ============ SHARED ============ */
+  .wm{display:inline-flex;align-items:center;gap:8px;font-weight:900;font-size:22px;letter-spacing:-.02em}
+  .logo{width:30px;height:30px;border-radius:9px;background:var(--brand);display:grid;place-items:center;box-shadow:0 4px 10px rgba(3,192,60,.35)}
+  .logo svg{width:19px;height:19px;color:#fff}
+  .btn{border:0;cursor:pointer;font-family:inherit;font-weight:800;border-radius:999px;padding:11px 22px;font-size:15px;transition:transform .15s ease, box-shadow .15s ease, background .15s ease}
+  .btn-primary{background:var(--brand);color:#fff;box-shadow:0 6px 16px rgba(3,192,60,.32)}
+  .btn-primary:hover{transform:translateY(-1px);box-shadow:0 10px 22px rgba(3,192,60,.4)}
+  .btn-ghost{background:transparent;color:var(--ink)}
+  .btn-ghost:hover{background:rgba(15,23,42,.05)}
+  .btn-outline{background:#fff;color:var(--ink);border:1.5px solid var(--line)}
+  .btn-outline:hover{border-color:var(--brand);color:var(--brand-700)}
+  .pill{display:inline-flex;align-items:center;gap:8px;font-weight:800;font-size:13px;color:var(--brand-700);background:var(--brand-50);border:1px solid var(--brand-100);padding:7px 14px;border-radius:999px}
+  .dot{width:8px;height:8px;border-radius:50%;background:var(--brand);display:inline-block}
+  .eyebrow{font-weight:800;font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--brand-700)}
+
+  /* ============ PUBLIC MARKETING SITE ============ */
+  .m-nav{position:sticky;top:0;z-index:40;background:rgba(240,247,242,.86);backdrop-filter:saturate(140%) blur(10px);border-bottom:1px solid var(--line)}
+  .m-nav-inner{max-width:1200px;margin:0 auto;height:70px;display:flex;align-items:center;gap:36px;padding:0 28px}
+  .m-links{display:flex;gap:30px;margin-left:8px}
+  .m-links a{font-weight:700;font-size:15px;color:#334155;display:inline-flex;align-items:center;gap:6px;padding:6px 0;border-bottom:2px solid transparent}
+  .m-links a:hover{color:var(--brand-700)}
+  .m-nav-cta{margin-left:auto;display:flex;align-items:center;gap:10px}
+  .m-nav-cta .btn{padding:10px 20px;font-size:14px}
+  @media(max-width:900px){.m-links{display:none}}
+
+  .hero{max-width:1200px;margin:0 auto;padding:72px 28px 40px;display:grid;grid-template-columns:1.05fr .95fr;gap:48px;align-items:center}
+  @media(max-width:900px){.hero{grid-template-columns:1fr;padding-top:48px}}
+  .hero h1{font-size:64px;line-height:1.02;letter-spacing:-.03em;font-weight:900;margin:20px 0 0}
+  .hero h1 .g{color:var(--brand)}
+  .hero p.sub{font-size:19px;color:var(--muted);line-height:1.5;margin:20px 0 0;max-width:520px;font-weight:600}
+  .hero-cta{display:flex;gap:12px;margin-top:30px;flex-wrap:wrap}
+  .hero-trust{margin-top:20px;display:flex;align-items:center;gap:8px;color:var(--muted);font-weight:700;font-size:14px}
+  .hero-trust svg{color:var(--brand);width:18px;height:18px}
+  .hero-trust b{color:var(--ink)}
+
+  /* device mock */
+  .device{position:relative;background:#fff;border-radius:22px;border:1px solid var(--line);box-shadow:var(--shadow);overflow:hidden}
+  .device-top{height:46px;border-bottom:1px solid var(--line);display:flex;align-items:center;gap:8px;padding:0 16px;background:#fafcfb}
+  .device-top .tdot{width:11px;height:11px;border-radius:50%;background:#E2E8F0}
+  .device-body{padding:18px}
+  .lockcard{border:1px dashed var(--brand);background:var(--brand-50);border-radius:14px;padding:26px 20px;text-align:center}
+  .lockcard svg{width:34px;height:34px;color:var(--brand-700)}
+  .lockcard h4{margin:10px 0 4px;font-size:18px;font-weight:900}
+  .lockcard p{margin:0;color:var(--muted);font-weight:600;font-size:14px}
+  .mini-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:14px}
+  .mini-card{border:1px solid var(--line);border-radius:12px;padding:12px;background:#fff}
+  .mini-card .ph{height:74px;border-radius:8px;background:linear-gradient(135deg,#EEFFF2,#D8FFE3);margin-bottom:10px;display:grid;place-items:center;color:var(--brand-700)}
+  .mini-card .ph svg{width:26px;height:26px}
+  .mini-card .l1{height:9px;width:70%;border-radius:5px;background:#E2E8F0}
+  .mini-card .l2{height:9px;width:40%;border-radius:5px;background:#EDF2F7;margin-top:7px}
+  .blurwrap{position:relative}
+  .blurwrap .blur{filter:blur(5px);opacity:.55;pointer-events:none}
+  .blurwrap .lockover{position:absolute;inset:0;display:grid;place-items:center}
+
+  .section{max-width:1200px;margin:0 auto;padding:64px 28px}
+  .sec-head{text-align:center;max-width:680px;margin:0 auto 40px}
+  .sec-head h2{font-size:40px;font-weight:900;letter-spacing:-.02em;margin:14px 0 0}
+  .sec-head p{color:var(--muted);font-size:18px;font-weight:600;margin:12px 0 0;line-height:1.5}
+
+  .feat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+  @media(max-width:900px){.feat-grid{grid-template-columns:1fr}}
+  .feat{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:26px;box-shadow:var(--shadow)}
+  .feat .ic{width:48px;height:48px;border-radius:13px;background:var(--brand-50);display:grid;place-items:center;color:var(--brand-700);margin-bottom:16px}
+  .feat .ic svg{width:24px;height:24px}
+  .feat h3{margin:0 0 8px;font-size:19px;font-weight:800}
+  .feat p{margin:0;color:var(--muted);font-weight:600;line-height:1.5;font-size:15px}
+
+  .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+  @media(max-width:900px){.steps{grid-template-columns:1fr}}
+  .step{text-align:center;padding:8px}
+  .step .num{width:44px;height:44px;border-radius:50%;background:var(--brand);color:#fff;font-weight:900;display:grid;place-items:center;margin:0 auto 16px;font-size:18px}
+  .step h4{margin:0 0 8px;font-size:18px;font-weight:800}
+  .step p{margin:0;color:var(--muted);font-weight:600;font-size:15px;line-height:1.5}
+
+  .aud{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+  @media(max-width:900px){.aud{grid-template-columns:1fr}}
+  .aud-card{border-radius:20px;padding:34px;border:1px solid var(--line);position:relative;overflow:hidden}
+  .aud-students{background:linear-gradient(160deg,#fff, #F3FBF5)}
+  .aud-partners{background:linear-gradient(160deg,#0B5C26,#068F30);color:#fff;border-color:transparent}
+  .aud-card h3{font-size:24px;font-weight:900;margin:14px 0 6px}
+  .aud-card .lead{font-weight:700;font-size:15px;margin:0 0 18px}
+  .aud-students .lead{color:var(--muted)}
+  .aud-partners .lead{color:#D8FFE3}
+  .aud-list{list-style:none;padding:0;margin:0 0 22px}
+  .aud-list li{display:flex;gap:10px;align-items:flex-start;font-weight:700;font-size:15px;padding:7px 0}
+  .aud-list svg{width:19px;height:19px;flex:none;margin-top:1px}
+  .aud-students .aud-list svg{color:var(--brand)}
+  .aud-partners .aud-list svg{color:#78FD9F}
+  .tag{display:inline-flex;align-items:center;gap:7px;font-weight:800;font-size:12px;letter-spacing:.1em;text-transform:uppercase;padding:6px 12px;border-radius:999px}
+  .aud-students .tag{background:var(--brand-50);color:var(--brand-700)}
+  .aud-partners .tag{background:rgba(255,255,255,.16);color:#fff}
+
+  .trust-strip{background:#fff;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+  .trust-inner{max-width:1200px;margin:0 auto;padding:28px;display:flex;gap:44px;align-items:center;justify-content:center;flex-wrap:wrap}
+  .trust-item{display:flex;align-items:center;gap:10px;font-weight:800;color:#334155}
+  .trust-item svg{width:22px;height:22px;color:var(--brand)}
+
+  .cta-band{max-width:1120px;margin:56px auto;padding:0 28px}
+  .cta-inner{background:linear-gradient(135deg,#03C03C,#0B5C26);border-radius:24px;padding:52px 40px;text-align:center;color:#fff;box-shadow:0 20px 50px rgba(3,192,60,.28)}
+  .cta-inner h2{font-size:36px;font-weight:900;margin:0 0 10px;letter-spacing:-.02em}
+  .cta-inner p{margin:0 0 24px;font-weight:700;color:#EEFFF2;font-size:17px}
+  .cta-inner .btn{background:#fff;color:var(--brand-700)}
+  .cta-inner .btn:hover{background:#F0FFF4}
+
+  footer.m-foot{background:#0B1220;color:#94A3B8;padding:52px 28px 34px}
+  .foot-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;gap:32px}
+  @media(max-width:900px){.foot-inner{grid-template-columns:1fr 1fr}}
+  footer.m-foot .wm{color:#fff}
+  footer.m-foot h5{color:#fff;font-size:14px;font-weight:800;margin:0 0 14px;letter-spacing:.04em}
+  footer.m-foot a{display:block;padding:5px 0;font-weight:600;font-size:14px}
+  footer.m-foot a:hover{color:#fff}
+  .foot-bottom{max-width:1200px;margin:32px auto 0;padding-top:20px;border-top:1px solid #1E293B;font-size:13px;font-weight:600;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
+
+  /* ============ SIGNED-IN WEB APP ============ */
+  .app-shell{display:grid;grid-template-columns:248px 1fr;min-height:100vh;background:#F6F9F7}
+  @media(max-width:900px){.app-shell{grid-template-columns:1fr}}
+  .side{background:#fff;border-right:1px solid var(--line);padding:20px 16px;display:flex;flex-direction:column;gap:6px;position:sticky;top:0;height:100vh}
+  @media(max-width:900px){.side{display:none}}
+  .side .wm{padding:6px 8px 18px;font-size:20px}
+  .nav-group-label{font-size:11px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--muted-2);padding:14px 10px 6px}
+  .nav-item{display:flex;align-items:center;gap:12px;padding:11px 12px;border-radius:11px;font-weight:700;font-size:15px;color:#475569;cursor:pointer}
+  .nav-item svg{width:20px;height:20px}
+  .nav-item:hover{background:#F1F5F9}
+  .nav-item.active{background:var(--brand-50);color:var(--brand-700)}
+  .nav-item.active svg{color:var(--brand)}
+  .nav-item .soon{margin-left:auto;font-size:10px;font-weight:800;color:var(--muted-2);background:#F1F5F9;padding:2px 7px;border-radius:6px;letter-spacing:.05em}
+  .side-foot{margin-top:auto;border-top:1px solid var(--line);padding-top:12px}
+  .side-user{display:flex;align-items:center;gap:10px;padding:8px 10px;border-radius:11px;cursor:pointer}
+  .side-user:hover{background:#F1F5F9}
+  .avatar{width:34px;height:34px;border-radius:50%;background:linear-gradient(135deg,#0CDB4A,#068F30);color:#fff;font-weight:800;display:grid;place-items:center;font-size:14px}
+  .side-user .who{line-height:1.2}
+  .side-user .who b{font-size:14px}
+  .side-user .who span{font-size:12px;color:var(--muted)}
+
+  .app-main{min-width:0}
+  .app-top{height:64px;background:#fff;border-bottom:1px solid var(--line);display:flex;align-items:center;gap:16px;padding:0 28px;position:sticky;top:0;z-index:10}
+  .search{flex:1;max-width:440px;display:flex;align-items:center;gap:10px;background:#F1F5F9;border-radius:11px;padding:10px 14px;color:var(--muted);font-weight:600;font-size:14px}
+  .search svg{width:18px;height:18px}
+  .app-top .spacer{margin-left:auto}
+  .icon-btn{width:40px;height:40px;border-radius:11px;display:grid;place-items:center;color:#475569;cursor:pointer}
+  .icon-btn:hover{background:#F1F5F9}
+  .icon-btn svg{width:20px;height:20px}
+
+  .app-body{padding:28px;max-width:1200px}
+  .app-body h1{font-size:28px;font-weight:900;margin:0 0 4px;letter-spacing:-.01em}
+  .app-body .subtle{color:var(--muted);font-weight:600;margin:0 0 24px}
+  .samplebar{display:flex;align-items:center;gap:8px;background:#FFF7ED;border:1px solid #FED7AA;color:#9A3412;font-weight:700;font-size:13px;border-radius:10px;padding:9px 14px;margin-bottom:22px}
+  .samplebar svg{width:16px;height:16px}
+
+  .dash{display:grid;grid-template-columns:2fr 1fr;gap:20px;align-items:start}
+  @media(max-width:900px){.dash{grid-template-columns:1fr}}
+  .col{display:flex;flex-direction:column;gap:20px}
+  .panel{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:22px;box-shadow:var(--shadow)}
+  .panel h3{margin:0 0 4px;font-size:17px;font-weight:800}
+  .panel .ph-note{color:var(--muted);font-weight:600;font-size:14px;margin:0 0 16px}
+  .row-between{display:flex;align-items:center;justify-content:space-between;gap:12px}
+
+  .countdown{display:flex;align-items:center;gap:18px;background:linear-gradient(135deg,#EEFFF2,#fff);border:1px solid var(--brand-100)}
+  .countdown .big{font-size:44px;font-weight:900;color:var(--brand-700);line-height:1}
+  .countdown .cd-ic{width:56px;height:56px;border-radius:15px;background:var(--brand);display:grid;place-items:center;color:#fff}
+  .countdown .cd-ic svg{width:28px;height:28px}
+
+  .qa-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+  .qa{display:flex;align-items:center;gap:12px;border:1px solid var(--line);border-radius:12px;padding:14px;font-weight:800;font-size:14px;cursor:pointer}
+  .qa:hover{border-color:var(--brand);background:var(--brand-50)}
+  .qa .qic{width:36px;height:36px;border-radius:10px;background:var(--brand-50);color:var(--brand-700);display:grid;place-items:center}
+  .qa .qic svg{width:18px;height:18px}
+
+  .listing-row{display:flex;align-items:center;gap:14px;padding:12px 0;border-top:1px solid var(--line)}
+  .listing-row:first-of-type{border-top:0}
+  .listing-thumb{width:52px;height:52px;border-radius:11px;background:linear-gradient(135deg,#EEFFF2,#D8FFE3);display:grid;place-items:center;color:var(--brand-700);flex:none}
+  .listing-thumb svg{width:22px;height:22px}
+  .listing-row .info{flex:1;min-width:0}
+  .listing-row .info b{font-size:15px;font-weight:800;display:block}
+  .listing-row .info span{color:var(--brand-700);font-weight:800;font-size:14px}
+  .badge{font-size:11px;font-weight:800;padding:3px 9px;border-radius:999px;background:var(--brand-50);color:var(--brand-700)}
+
+  .chatline{display:flex;align-items:center;gap:12px;padding:11px 0;border-top:1px solid var(--line)}
+  .chatline:first-of-type{border-top:0}
+  .chatline .cav{width:38px;height:38px;border-radius:11px;background:#EEF2F7;display:grid;place-items:center;color:#64748B;font-weight:800;flex:none}
+  .chatline .ci{flex:1;min-width:0}
+  .chatline .ci b{font-size:14px;font-weight:800}
+  .chatline .ci p{margin:2px 0 0;color:var(--muted);font-size:13px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .chatline .join{font-size:13px;font-weight:800;color:var(--brand-700);cursor:pointer}
+
+  .mk-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+  @media(max-width:1100px){.mk-grid{grid-template-columns:repeat(2,1fr)}}
+  .mk-card{border:1px solid var(--line);border-radius:13px;overflow:hidden;background:#fff}
+  .mk-card .mk-img{height:110px;background:linear-gradient(135deg,#EEFFF2,#D8FFE3);display:grid;place-items:center;color:var(--brand-700)}
+  .mk-card .mk-img svg{width:30px;height:30px}
+  .mk-card .mk-b{padding:12px}
+  .mk-card .mk-b b{font-size:14px;font-weight:800;display:block}
+  .mk-card .mk-b .pr{color:var(--brand-700);font-weight:900;font-size:15px;margin-top:3px}
+
+  /* ============ FLOATING VIEW TOGGLE ============ */
+  .toggle{position:fixed;bottom:22px;left:50%;transform:translateX(-50%);z-index:1000;background:#0B1220;color:#fff;border-radius:999px;padding:6px;display:flex;gap:4px;box-shadow:0 12px 40px rgba(0,0,0,.35)}
+  .toggle button{border:0;background:transparent;color:#cbd5e1;font-family:inherit;font-weight:800;font-size:13px;padding:9px 18px;border-radius:999px;cursor:pointer;display:flex;align-items:center;gap:7px}
+  .toggle button.on{background:var(--brand);color:#fff}
+  .toggle button svg{width:15px;height:15px}
+  .toggle .lbl{font-size:11px;color:#64748B;font-weight:800;letter-spacing:.08em;padding:0 10px 0 6px;display:flex;align-items:center}
+</style>
+</head>
+<body>
+
+<!-- ======================================================= -->
+<!-- =================  PUBLIC MARKETING SITE  ============== -->
+<!-- ======================================================= -->
+<div id="view-public">
+
+  <!-- NAV -->
+  <div class="m-nav">
+    <div class="m-nav-inner">
+      <div class="wm">
+        <span class="logo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l9-8 9 8"/><path d="M5 10v10h14V10"/><path d="M9 14l2 2 4-4"/></svg></span>
+        DormCheck
+      </div>
+      <nav class="m-links">
+        <a href="#">Features</a>
+        <a href="#">How It Works</a>
+        <a href="#">For Students</a>
+        <a href="#">For Universities &amp; Brands</a>
+        <a href="#">About</a>
+      </nav>
+      <div class="m-nav-cta">
+        <button class="btn btn-ghost" onclick="setView('app')">Sign In</button>
+        <button class="btn btn-primary" onclick="setView('app')">Get Started</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div>
+      <span class="pill"><span class="dot"></span> Built for Pitt students</span>
+      <h1>Your dorm,<br><span class="g">figured out.</span></h1>
+      <p class="sub">The verified student hub for move-in, essentials, and reselling what you can't take home. Everything Pitt housing leaves out, in one place.</p>
+      <div class="hero-cta">
+        <button class="btn btn-primary" onclick="setView('app')">Get started with @pitt.edu</button>
+        <button class="btn btn-outline">See how it works</button>
+      </div>
+      <div class="hero-trust">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>
+        Verified <b>@pitt.edu</b> students only - no strangers, no scammers.
+      </div>
+    </div>
+
+    <!-- device: shows a LOCKED marketplace to make the "sign in for data" point visually -->
+    <div class="device">
+      <div class="device-top"><span class="tdot"></span><span class="tdot"></span><span class="tdot"></span></div>
+      <div class="device-body">
+        <div class="blurwrap">
+          <div class="mini-grid blur">
+            <div class="mini-card"><div class="ph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7V5a4 4 0 018 0v2"/></svg></div><div class="l1"></div><div class="l2"></div></div>
+            <div class="mini-card"><div class="ph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-6 9 6v11H3z"/></svg></div><div class="l1"></div><div class="l2"></div></div>
+            <div class="mini-card"><div class="ph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="4" width="16" height="16" rx="3"/></svg></div><div class="l1"></div><div class="l2"></div></div>
+            <div class="mini-card"><div class="ph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v18M3 12h18"/></svg></div><div class="l1"></div><div class="l2"></div></div>
+          </div>
+          <div class="lockover">
+            <div class="lockcard" style="max-width:260px">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 018 0v4"/></svg>
+              <h4>Sign in to browse the market</h4>
+              <p>Student listings, contacts, and chats are visible only to verified Pitt students.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TRUST STRIP -->
+  <div class="trust-strip">
+    <div class="trust-inner">
+      <div class="trust-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg> Verified students only</div>
+      <div class="trust-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l9-8 9 8"/><path d="M5 10v10h14V10"/></svg> Works with Pitt housing</div>
+      <div class="trust-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg> Free for students</div>
+    </div>
+  </div>
+
+  <!-- FEATURES -->
+  <section class="section">
+    <div class="sec-head">
+      <span class="eyebrow">What you get</span>
+      <h2>One platform. Student essentials.</h2>
+      <p>Shop what you need, plan move-in step by step, and sell what you can't take home - all with people who actually go here.</p>
+    </div>
+    <div class="feat-grid">
+      <div class="feat">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg></div>
+        <h3>Move-in checklist</h3>
+        <p>A guided, stage-by-stage checklist from "before you arrive" to "settled in" - nothing forgotten.</p>
+      </div>
+      <div class="feat">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 01-8 0"/></svg></div>
+        <h3>Student marketplace</h3>
+        <p>Buy and sell dorm gear with verified Pitt students. No shipping strangers your fridge across town.</p>
+      </div>
+      <div class="feat">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="15" height="13" rx="2"/><path d="M16 8h4l3 3v5h-7z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg></div>
+        <h3>Shipping &amp; storage</h3>
+        <p>Sort out what to ship vs carry, and where to store things over break - the logistics nobody tells you.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section class="section" style="padding-top:0">
+    <div class="sec-head">
+      <span class="eyebrow">How it works</span>
+      <h2>Three steps to move-in ready</h2>
+    </div>
+    <div class="steps">
+      <div class="step"><div class="num">1</div><h4>Verify with @pitt.edu</h4><p>Sign in with your Pitt email. That's the whole gate - every person you see is a real student.</p></div>
+      <div class="step"><div class="num">2</div><h4>Plan &amp; shop</h4><p>Work your move-in checklist and grab essentials, matched to your building and move-in date.</p></div>
+      <div class="step"><div class="num">3</div><h4>Buy, sell, settle in</h4><p>Trade gear in the marketplace, coordinate with your building, and check things off as you go.</p></div>
+    </div>
+  </section>
+
+  <!-- AUDIENCE SPLIT -->
+  <section class="section" style="padding-top:0">
+    <div class="sec-head">
+      <span class="eyebrow">Who it's for</span>
+      <h2>Students use it free. Partners reach them where they already are.</h2>
+    </div>
+    <div class="aud">
+      <div class="aud-card aud-students">
+        <span class="tag">For students</span>
+        <h3>Always free. Always verified.</h3>
+        <p class="lead">DormCheck never charges students a cent. It's your hub, not another bill.</p>
+        <ul class="aud-list">
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg> Free move-in checklist &amp; marketplace</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg> Verified, student-only community</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg> Building &amp; floor chats</li>
+        </ul>
+        <button class="btn btn-primary" onclick="setView('app')">Get started</button>
+      </div>
+      <div class="aud-card aud-partners">
+        <span class="tag">For universities &amp; brands</span>
+        <h3>Reach verified students, not the open internet.</h3>
+        <p class="lead">DormCheck extends campus systems and connects trusted brands to students at move-in - the moment they're buying everything.</p>
+        <ul class="aud-list">
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg> Extension of existing housing systems, not a replacement</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg> Verified, first-year &amp; upperclass reach</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg> Move-in moment placement</li>
+        </ul>
+        <button class="btn" style="background:#fff;color:var(--brand-700)">Talk to us</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <div class="cta-band">
+    <div class="cta-inner">
+      <h2>Ready to figure out your dorm?</h2>
+      <p>Free for every verified Pitt student.</p>
+      <button class="btn" onclick="setView('app')">Get started with @pitt.edu</button>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="m-foot">
+    <div class="foot-inner">
+      <div>
+        <div class="wm"><span class="logo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l9-8 9 8"/><path d="M5 10v10h14V10"/><path d="M9 14l2 2 4-4"/></svg></span>DormCheck</div>
+        <p style="max-width:280px;margin-top:14px;line-height:1.6">The verified student hub for Pitt. Built by students, for students.</p>
+      </div>
+      <div><h5>Product</h5><a href="#">Features</a><a href="#">How it works</a><a href="#">Checklist</a><a href="#">Marketplace</a></div>
+      <div><h5>Company</h5><a href="#">About</a><a href="#">For universities &amp; brands</a><a href="#">Contact</a></div>
+      <div><h5>Legal</h5><a href="#">Privacy</a><a href="#">Terms</a><a href="#">Ad policy</a></div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 DormCheck</span>
+      <span>Made in Pittsburgh 💚</span>
+    </div>
+  </footer>
+</div>
+
+<!-- ======================================================= -->
+<!-- =================  SIGNED-IN WEB APP  ================== -->
+<!-- ======================================================= -->
+<div id="view-app" class="hidden">
+  <div class="app-shell">
+
+    <!-- SIDEBAR -->
+    <aside class="side">
+      <div class="wm"><span class="logo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l9-8 9 8"/><path d="M5 10v10h14V10"/><path d="M9 14l2 2 4-4"/></svg></span>DormCheck</div>
+
+      <div class="nav-group-label">Home</div>
+      <div class="nav-item active"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l9-8 9 8"/><path d="M5 10v10h14V10"/></svg> My Home</div>
+
+      <div class="nav-group-label">Get ready</div>
+      <div class="nav-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg> Checklist</div>
+      <div class="nav-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 01-8 0"/></svg> Marketplace</div>
+      <div class="nav-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="15" height="13" rx="2"/><path d="M16 8h4l3 3v5h-7z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg> Shipping &amp; storage</div>
+
+      <div class="nav-group-label">Community</div>
+      <div class="nav-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg> Messages</div>
+      <div class="nav-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l9-8 9 8"/><path d="M5 10v10h14V10"/></svg> Housing <span class="soon">SOON</span></div>
+      <div class="nav-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/></svg> Roommates <span class="soon">SOON</span></div>
+
+      <div class="side-foot">
+        <div class="nav-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l9-8 9 8"/><path d="M5 10v10h14V10"/><path d="M9 14l2 2 4-4"/></svg> Admin</div>
+        <div class="side-user">
+          <div class="avatar">ET</div>
+          <div class="who"><b>Alex Kim</b><br><span>alex.kim.demo@pitt.edu</span></div>
+        </div>
+      </div>
+    </aside>
+
+    <!-- MAIN -->
+    <div class="app-main">
+      <div class="app-top">
+        <div class="search"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4-4"/></svg> Search listings, checklist, people…</div>
+        <div class="spacer"></div>
+        <div class="icon-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg></div>
+        <div class="icon-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8a6 6 0 00-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.7 21a2 2 0 01-3.4 0"/></svg></div>
+        <div class="avatar">ET</div>
+      </div>
+
+      <div class="app-body">
+        <h1>Welcome back, Ethan</h1>
+        <p class="subtle">Amos Hall · Floor 9 · 49 days until move-in</p>
+
+        <div class="samplebar">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>
+          Mock data - this is the redesigned <b style="margin:0 4px">desktop</b> layout, not the iOS screen scaled up.
+        </div>
+
+        <div class="dash">
+          <!-- LEFT COLUMN -->
+          <div class="col">
+            <!-- countdown -->
+            <div class="panel countdown">
+              <div class="cd-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg></div>
+              <div>
+                <div class="big">49 days</div>
+                <div style="color:var(--muted);font-weight:700;margin-top:4px">until move-in · Aug 21–22 · upperclass</div>
+              </div>
+              <button class="btn btn-outline" style="margin-left:auto">View timeline</button>
+            </div>
+
+            <!-- quick actions -->
+            <div class="panel">
+              <h3>Quick actions</h3>
+              <p class="ph-note">Jump back into what you were doing.</p>
+              <div class="qa-grid">
+                <div class="qa"><span class="qic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg></span> Continue checklist</div>
+                <div class="qa"><span class="qic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg></span> Post a listing</div>
+                <div class="qa"><span class="qic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4-4"/></svg></span> Browse market</div>
+                <div class="qa"><span class="qic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg></span> Building chat</div>
+              </div>
+            </div>
+
+            <!-- marketplace preview (student data - behind login) -->
+            <div class="panel">
+              <div class="row-between"><h3>Fresh in the market</h3><a href="#" style="color:var(--brand-700);font-weight:800;font-size:14px">See all →</a></div>
+              <p class="ph-note">Verified Pitt students · near Amos Hall</p>
+              <div class="mk-grid">
+                <div class="mk-card"><div class="mk-img"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M3 9l9-6 9 6v11H3z"/><path d="M9 20v-6h6v6"/></svg></div><div class="mk-b"><b>Mini fridge</b><div class="pr">$45</div></div></div>
+                <div class="mk-card"><div class="mk-img"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M8 20h8"/></svg></div><div class="mk-b"><b>Desk chair</b><div class="pr">$30</div></div></div>
+                <div class="mk-card"><div class="mk-img"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4 19V5a2 2 0 012-2h9l5 5v11a2 2 0 01-2 2H6a2 2 0 01-2-2z"/></svg></div><div class="mk-b"><b>Psych 2E book</b><div class="pr">Free</div></div></div>
+                <div class="mk-card"><div class="mk-img"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="2" y="6" width="20" height="12" rx="2"/><path d="M6 10h.01M10 10h.01M14 10h.01"/></svg></div><div class="mk-b"><b>Keyboard</b><div class="pr">$15</div></div></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- RIGHT COLUMN -->
+          <div class="col">
+            <!-- your listings -->
+            <div class="panel">
+              <h3>Your listings</h3>
+              <p class="ph-note">3 active</p>
+              <div class="listing-row"><div class="listing-thumb"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4 19V5a2 2 0 012-2h9l5 5v11a2 2 0 01-2 2H6a2 2 0 01-2-2z"/></svg></div><div class="info"><b>Psychology 2E</b><span>Free</span></div><span class="badge">Active</span></div>
+              <div class="listing-row"><div class="listing-thumb"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="4" width="18" height="14" rx="2"/></svg></div><div class="info"><b>Desk chair</b><span>$100</span></div><span class="badge">Active</span></div>
+              <div class="listing-row"><div class="listing-thumb"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="2" y="6" width="20" height="12" rx="2"/></svg></div><div class="info"><b>Bluetooth keyboard</b><span>$15</span></div><span class="badge">Active</span></div>
+            </div>
+
+            <!-- building chats -->
+            <div class="panel">
+              <h3>Connect with Amos Hall</h3>
+              <p class="ph-note">Chat with verified students living here.</p>
+              <div class="chatline"><div class="cav"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/></svg></div><div class="ci"><b>Amos Hall</b><p>Building chat · 128 members</p></div><span class="join">Join</span></div>
+              <div class="chatline"><div class="cav"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/></svg></div><div class="ci"><b>Floor 9</b><p>Floor chat · 22 members</p></div><span class="join">Join</span></div>
+            </div>
+
+            <!-- your building -->
+            <div class="panel">
+              <h3>Your building</h3>
+              <p class="ph-note">Amos Hall · 4022 Fifth Ave</p>
+              <div style="height:120px;border-radius:12px;background:linear-gradient(135deg,#EEFFF2,#D8FFE3);display:grid;place-items:center;color:var(--brand-700);font-weight:800">
+                <svg viewBox="0 0 24 24" width="30" height="30" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 10c0 7-9 12-9 12s-9-5-9-12a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              </div>
+              <button class="btn btn-outline" style="width:100%;margin-top:14px">Open logistics</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ======================================================= -->
+<!-- ================  FLOATING VIEW TOGGLE  =============== -->
+<!-- ======================================================= -->
+<div class="toggle">
+  <span class="lbl">PREVIEW</span>
+  <button id="tog-public" class="on" onclick="setView('public')">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15 15 0 010 20M12 2a15 15 0 000 20"/></svg>
+    Public site
+  </button>
+  <button id="tog-app" onclick="setView('app')">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="18" rx="1.5"/><rect x="13" y="3" width="8" height="9" rx="1.5"/></svg>
+    Signed-in app
+  </button>
+</div>
+
+<script>
+  function setView(v){
+    document.getElementById('view-public').classList.toggle('hidden', v!=='public');
+    document.getElementById('view-app').classList.toggle('hidden', v!=='app');
+    document.getElementById('tog-public').classList.toggle('on', v==='public');
+    document.getElementById('tog-app').classList.toggle('on', v==='app');
+    window.scrollTo(0,0);
+  }
+</script>
+</body>
+</html>

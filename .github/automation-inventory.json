@@ -1,0 +1,17 @@
+{
+  "_comment": "Non-GitHub automations that automation-status.yml can't introspect (Cowork cloud routines + Mac scheduled tasks). SOURCE OF TRUTH is the Obsidian strategy vault 'Automations.md' — keep this file in sync with it (Cowork owns the vault write; a repo-side agent edits this JSON). GitHub Actions are discovered automatically and must NOT be listed here.",
+  "off_github": [
+    {
+      "name": "Supabase security advisors sweep",
+      "host": "cloud",
+      "schedule": "weekly",
+      "purpose": "Cowork cloud routine that runs Supabase get_advisors (security + performance) against prod and reports new advisories; the DB-side counterpart to the repo security-audit job (weekly-sweep.yml)."
+    },
+    {
+      "name": "Cloud Claude maintenance routines (deps/weekly-*, fix/build-*)",
+      "host": "cloud",
+      "schedule": "weekly",
+      "purpose": "Anthropic-side scheduled Claude runs that open dependency-upgrade and build-fix branches (deps/weekly-*, fix/build-*, claude/*) for review; scheduled outside this repo."
+    }
+  ]
+}

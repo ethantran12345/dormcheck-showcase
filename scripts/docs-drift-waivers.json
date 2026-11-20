@@ -1,0 +1,24 @@
+{
+  "$comment": [
+    "Named, expiring waivers for docs:check check 2 (GENERATED blocks).",
+    "",
+    "This exists for exactly one situation: a GENERATED block whose oracle lives in ANOTHER",
+    "live lane's in-flight work, so no checkout that can see the failure is able to fix it.",
+    "Regenerating from the wrong checkout would bake that lane's unshipped state into dev.",
+    "",
+    "It is deliberately NOT a general 'cross-lane' escape hatch. A self-declared exemption on",
+    "lane:ship would let any lane that finds the docs guard inconvenient switch it off. So a",
+    "waiver must name the exact file and block, name the owning lane, and carry an expiry.",
+    "Every other docs:check failure still blocks, including other GENERATED blocks.",
+    "",
+    "Rules:",
+    "  - A waiver suppresses the failure and prints a WAIVED line. It never hides it.",
+    "  - Past `expires`, the waiver stops suppressing and the gate goes red, loudly, so",
+    "    somebody looks at it. Extending an expiry is a decision someone has to make on",
+    "    purpose; it is not the default.",
+    "  - `--fix` ignores waivers entirely: if you can regenerate, regenerate.",
+    "  - DELETE the entry when the owning lane lands and regenerates the block. A waiver that",
+    "    outlives its cause is worse than no waiver."
+  ],
+  "generatedBlocks": []
+}

@@ -1,0 +1,51 @@
+# Line endings are normalised in the repository, so a Windows clone cannot silently
+# rewrite files that break when they carry CRLF.
+#
+# Why this file exists: with no .gitattributes, Windows git defaults to
+# core.autocrlf=true and checks every text file out with CRLF. `scripts/*.mjs` start with
+# a `#!/usr/bin/env node` shebang, and vitest's module runner strips a shebang only up to
+# `\n` — the stray `\r` survives and the module fails to parse:
+#
+#     FAIL src/test/i18nKeyResolution.test.ts
+#     SyntaxError: Invalid or unexpected token
+#
+# CI stayed green because the blob is LF on Linux, so this only ever broke on a fresh
+# Windows clone, where it looks like a corrupt checkout rather than a line-ending issue.
+
+# Normalise every text file in the repo to LF; git still decides what counts as text.
+* text=auto eol=lf
+
+# Files where LF is load-bearing rather than cosmetic — shebang scripts, shell scripts
+# run through bash, and the git hooks themselves.
+*.mjs      text eol=lf
+*.js       text eol=lf
+*.cjs      text eol=lf
+*.ts       text eol=lf
+*.tsx      text eol=lf
+*.sh       text eol=lf
+*.bash     text eol=lf
+.githooks/* text eol=lf
+
+# Windows batch files are stored LF like everything else but CHECKED OUT as CRLF.
+# cmd.exe's parser is not reliably LF-tolerant — a label or goto in an LF-only .bat can
+# fail depending on the Windows build — and android/gradlew.bat is the Gradle wrapper, so
+# a subtle break there surfaces as a confusing Android build failure. Storing LF keeps the
+# repository uniform; eol=crlf gives the working copy what cmd.exe expects. The tree stays
+# clean either way, because git compares the normalised (LF) form.
+*.bat      text eol=crlf
+*.cmd      text eol=crlf
+
+# Binary assets: never touch these, and never diff them as text.
+*.png      binary
+*.jpg      binary
+*.jpeg     binary
+*.gif      binary
+*.webp     binary
+*.ico      binary
+*.pdf      binary
+*.woff     binary
+*.woff2    binary
+*.ttf      binary
+*.otf      binary
+*.keystore binary
+*.jks      binary

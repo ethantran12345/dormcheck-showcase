@@ -1,0 +1,147 @@
+#!/usr/bin/env bash
+# pre-push - runs on `git push` (via core.hooksPath=.githooks).
+#
+# Step 0 (BLOCKING): `check:ios-live-reload` + `check:android-live-reload`
+#   (--head) - refuse to push a dev live-reload `server.url` left in the
+#   iOS/Android capacitor.config.json. Bypass with SKIP_LIVE_RELOAD_CHECK=1.
+# Step 0.1 (BLOCKING): `check:claude-md` - CLAUDE.md byte budget (cap defined only
+#   in scripts/check-claude-md-budget.mjs). No bypass: route content out instead.
+# Then two warn-only steps:
+#   1. `npm run audit:check` - flags audits that have drifted from the code.
+#   2. `npm run audit:sync-vault` - mirrors audit snapshots into the Obsidian
+#      vault so the local copy refreshes on every push (idempotent: the script
+#      only rewrites stale/missing files). Skipped automatically when the iCloud
+#      vault isn't present (e.g. a machine without Obsidian), so it never
+#      creates stray folders.
+#
+# The audit/vault steps never block: stale audits or a sync hiccup print a
+# warning but exit 0. Set STRICT=1 to block on a stale audit:check instead.
+# Set SKIP_VAULT_SYNC=1 to skip step 2 for a single push.
+#
+# Install: npm run hooks:install (also runs on npm install via prepare).
+
+set -uo pipefail
+
+ROOT="$(git rev-parse --show-toplevel)"
+cd "$ROOT"
+
+# Step 0: hard-block pushing a dev live-reload URL in the iOS/Android Capacitor config.
+# Unlike the audit steps below this is blocking (it's a real leak, not soft drift).
+# Bypass with SKIP_LIVE_RELOAD_CHECK=1.
+if ! node scripts/check-ios-live-reload.mjs --head; then
+  echo "Push blocked: strip the iOS dev live-reload URL before pushing." >&2
+  exit 1
+fi
+if ! node scripts/check-android-live-reload.mjs --head; then
+  echo "Push blocked: strip the Android dev live-reload URL before pushing." >&2
+  exit 1
+fi
+
+# Step 0.1 (BLOCKING): CLAUDE.md context budget. The cap lives in ONE place —
+# scripts/check-claude-md-budget.mjs. The vault lint only sees this repo when it's
+# mounted in a Cowork session, so this hook is the real gate.
+if ! node scripts/check-claude-md-budget.mjs; then
+  exit 1
+fi
+
+# Step 0.2 (BLOCKING): no open-ended npm override ranges. `npm ci` verifies the
+# committed lock; this catches a floor/comparator before it can make that lock
+# invalid later without a source change.
+if ! node scripts/check-package-overrides.mjs; then
+  exit 1
+fi
+
+# Step 0.5: tenant-isolation gate. Warn-only normally, BLOCKING when the pushed
+# range touches supabase/migrations/ or supabase/registry/ (schema changed → the
+# registry audit must pass). Needs the local Supabase stack; skipped if it's down.
+# Bypass with SKIP_DB_TESTS=1.
+if [[ "${SKIP_DB_TESTS:-}" != "1" ]]; then
+  range="$(git rev-parse @{push} 2>/dev/null || git merge-base HEAD origin/dev 2>/dev/null || echo HEAD~10)"
+  schema_changed=0
+  if git diff --name-only "$range"..HEAD 2>/dev/null | grep -qE '^supabase/(migrations|registry)/'; then
+    schema_changed=1
+  fi
+  if bash scripts/test-db.sh >/dev/null 2>&1; then
+    echo "DB tenant tests: green."
+  else
+    db_exit=$?
+    if [[ "$schema_changed" -eq 1 ]]; then
+      echo "Push blocked: schema/registry changed and 'npm run test:db' fails (or the local stack is down)." >&2
+      echo "Run: npx supabase start && npm run test:db  (bypass: SKIP_DB_TESTS=1)" >&2
+      exit "$db_exit"
+    fi
+    echo "WARNING: npm run test:db failed or local Supabase is down - not blocking (no schema change in this push)."
+  fi
+fi
+
+audit_output=""
+audit_exit=0
+audit_output="$(npm run audit:check 2>&1)" || audit_exit=$?
+
+printf '%s\n' "$audit_output"
+
+if [[ "$audit_exit" -ne 0 ]]; then
+  echo ""
+  echo "WARNING: stale audits vs code - refresh the audit, then it will sync below"
+  if [[ "${STRICT:-}" == "1" ]]; then
+    exit "$audit_exit"
+  fi
+fi
+
+# Step 1.5: warn if handoff-*.md files are sitting in the repo root. Handoffs
+# belong in docs/handoffs/ (deleted on ship); root ones are clutter. Warn-only;
+# STRICT=1 blocks. See docs/handoffs/README.md.
+root_handoffs="$(ls handoff-*.md 2>/dev/null || true)"
+if [[ -n "$root_handoffs" ]]; then
+  echo ""
+  echo "WARNING: Handoffs belong in docs/handoffs/, not the repo root - move or delete them:"
+  printf '  %s\n' $root_handoffs
+  if [[ "${STRICT:-}" == "1" ]]; then
+    exit 1
+  fi
+fi
+
+# Step 2: refresh the vault audit mirror. Non-blocking.
+VAULT_BASE="${VAULT_AUDITS:-$HOME/strategy-vault}"
+if [[ "${SKIP_VAULT_SYNC:-}" == "1" ]]; then
+  echo ""
+  echo "Vault sync skipped (SKIP_VAULT_SYNC=1)."
+elif [[ -d "$VAULT_BASE" ]]; then
+  echo ""
+  echo "Syncing audit snapshots to the Obsidian vault…"
+  if ! npm run audit:sync-vault 2>&1; then
+    echo "WARNING: vault sync failed - run 'npm run audit:sync-vault' manually. Push not blocked."
+  fi
+else
+  echo ""
+  echo "Vault not found at \"$VAULT_BASE\" - skipping audit:sync-vault on this machine."
+fi
+
+# Step 2.5 (WARN-ONLY): tell the vault this repo moved. Writes ONE json file in the vault
+# (Personal/scripts/repo-events.json) with head + branch + the commit subjects landed since
+# the last sync. The vault's Session Brief renders it and the vault post-commit hook
+# rebuilds that brief — so a 2pm push is visible to a 3pm session instead of waiting for the
+# 6am rebuild. Skips silently on a machine with no vault; never blocks.
+node scripts/vault-repo-events.mjs || echo "WARNING: repo-events failed - push not blocked."
+
+# Step 2.6 (WARN-ONLY): vault handoffs still marked "ready to run" for work the phase log
+# already calls DONE. A later session opens one, believes it, and rebuilds something that
+# already exists. The match is a heuristic (filename token vs DONE label), so it warns
+# rather than blocks; STRICT=1 makes it fatal. See scripts/check-stale-handoffs.mjs.
+if ! node scripts/check-stale-handoffs.mjs ${STRICT:+--strict}; then
+  echo "Push blocked: a handoff is still marked ready for shipped work (STRICT=1)." >&2
+  exit 1
+fi
+
+# Step 3: repo-state reporter. Surfaces stashes, >2h untracked files, dangling
+# commits, stray branches/worktrees, and the agent lock so parked or at-risk work
+# is visible on every push. WARN-ONLY (never blocks); STRICT=1 blocks when stale.
+echo ""
+echo "Repo state (npm run state):"
+state_exit=0
+node scripts/repo-state.mjs || state_exit=$?
+if [[ "$state_exit" -ne 0 && "${STRICT:-}" == "1" ]]; then
+  exit "$state_exit"
+fi
+
+exit 0

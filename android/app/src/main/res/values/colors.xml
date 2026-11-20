@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Brand malachite green (#03C03C). Tints the FCM status-bar notification
+         icon (ic_stat_dormcheck) — Android masks the icon's alpha and paints it
+         with this color. Never "teal". -->
+    <color name="dormcheck_notification">#03C03C</color>
+</resources>

@@ -1,0 +1,8 @@
+# Gateway JWT enforcement is PINNED ON, not inherited from the platform default
+# (the SEC-4 precedent set by fetch-link-preview). This function hands URLs to an
+# external provider that fetches them; if a deploy ever regressed it to
+# --no-verify-jwt it would become an anonymous, internet-reachable fetch driver.
+# The in-function jose/JWKS check stays as well — belt and braces, on purpose.
+#
+# Do NOT copy send-push's `verify_jwt = false` onto this function.
+verify_jwt = true

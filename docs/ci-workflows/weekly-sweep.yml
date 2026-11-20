@@ -1,0 +1,799 @@
+name: Weekly Sweep
+
+# Every WEEKLY check in one file, Sunday ~2am ET. Consolidated 2026-10-29
+# (docs/DECISIONS.md, which supersedes the "no detector was deleted" sentence of the
+# 2026-08-16 CI-cost entry). Nothing here is new coverage: these are the former
+# nightly-green-build / signup-canary / app-audit / dependabot-triage / security-audit
+# workflows plus edge-functions' weekly run, now jobs of one workflow. Issue labels are
+# UNCHANGED because claude.yml and .github/scripts/render-automation-status.mjs route
+# on them.
+#
+#   job                 was                          issue label
+#   green-build         nightly-green-build.yml      build-break
+#   db-order-drift      nightly-green-build.yml      test-order-drift
+#   stack-checks        signup-canary.yml            signup-canary
+#                       + app-audit.yml (3 jobs)     app-audit-break
+#   dependabot-triage   dependabot-triage.yml        dependabot-review
+#   security-audit      security-audit.yml           security-audit
+#   edge-functions      edge-functions.yml cron      build-break  (shared label)
+#
+# WHERE THE MINUTES WERE SAVED. signup-canary, app-audit's crawl and its layout pass
+# each booted their own Supabase stack (~6.5 min of setup apiece) on its own runner
+# with its own `npm ci`. They are now steps of ONE job on ONE stack: the canary asserts
+# against the freshly-migrated stack first, then each audit pass `db reset`s it
+# (scripts/e2e/run-audit.sh already does that per invocation). Jobs stay separate only
+# where the permission set or the failure meaning differs: `security-audit` needs
+# `id-token: write`, `dependabot-triage` needs `contents: write`, and `db-order-drift`
+# must file `test-order-drift`, not a generic break.
+#
+# MUST live on `main` (default branch) for the schedule to fire; manual dispatch works
+# from any ref (`gh workflow run weekly-sweep.yml --ref dev`). Dispatch is NOT a test of
+# the `permissions:` blocks: dispatch is granted contents:read implicitly, so a green
+# manual run proves nothing about them. Only a scheduled run does.
+#
+# `mode` (preserved from app-audit.yml, plus `all`): which part of the sweep a manual run
+# does. `all` = everything the Sunday cron runs. The other four select only the app-audit
+# portion and skip every other job, so "journeys before a release" does not also run the
+# security review and Dependabot triage.
+
+on:
+  schedule:
+    - cron: '0 6 * * 0'    # ~2am ET Sunday. NOTE: GitHub cron is UTC and may be delayed.
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: >-
+          What to run. all = everything the Sunday cron runs (default).
+          crawl = the 3-persona crawl + write flows only.
+          layout-weekly = 390 light/dark + 1440 light cut-off pass only.
+          layout-full = every viewport x theme x locale pass only (~40 min).
+          journeys = the no-dead-end journey sweep only (run before a release).
+        type: choice
+        options: [all, crawl, layout-weekly, layout-full, journeys]
+        default: all
+
+permissions:
+  contents: read
+
+concurrency:
+  group: weekly-sweep
+  cancel-in-progress: false
+
+jobs:
+  # ------------------------------------------------------------------ green-build
+  # test + build (the hard gate) plus a non-blocking lint pass. On a test/build failure,
+  # opens (or refreshes) a single `build-break` issue. No code changes, no PRs.
+  #
+  # This job only exists to catch rot while NOBODY is pushing, so on the SCHEDULE it
+  # skips (exit 0, logged) when ci-dev-push.yml already had a successful run on dev in
+  # the last 7 days: that run is the same test + build on a recent tree. A manual dispatch
+  # always runs. Needs `actions: read` to list those runs; scoped to this job only.
+  green-build:
+    if: ${{ (inputs.mode || 'all') == 'all' }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    permissions:
+      contents: read
+      issues: write
+      actions: read
+    steps:
+      - name: Skip if ci-dev-push.yml was green on dev in the last 7 days
+        id: recent
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          EVENT: ${{ github.event_name }}
+        run: |
+          if [ "$EVENT" != "schedule" ]; then
+            echo "Manual dispatch - always run."
+            echo "skip=false" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+          SINCE=$(date -u -d '7 days ago' +%Y-%m-%dT%H:%M:%SZ)
+          LAST=$(gh run list --repo "$GITHUB_REPOSITORY" --workflow ci-dev-push.yml --branch dev \
+            --status success --limit 1 --json createdAt --jq '.[0].createdAt // ""') || LAST=""
+          if [ -n "$LAST" ] && [[ "$LAST" > "$SINCE" ]]; then
+            echo "Skipping: ci-dev-push.yml succeeded on dev at $LAST (within 7 days, since $SINCE)."
+            echo "skip=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "No successful ci-dev-push.yml run on dev since $SINCE (last: ${LAST:-none}) - running."
+            echo "skip=false" >> "$GITHUB_OUTPUT"
+          fi
+
+      - uses: actions/checkout@v5
+        if: steps.recent.outputs.skip != 'true'
+
+      - uses: actions/setup-node@v5
+        if: steps.recent.outputs.skip != 'true'
+        with:
+          node-version: 22
+          cache: npm
+
+      - run: npm ci
+        if: steps.recent.outputs.skip != 'true'
+
+      # Non-blocking: ~222 pre-existing eslint errors would otherwise alarm weekly.
+      # Reported in the run log; does not trip the build-break issue. Re-gate (#9).
+      - name: Lint (non-blocking)
+        if: steps.recent.outputs.skip != 'true'
+        run: npm run lint
+        continue-on-error: true
+
+      - name: Test
+        if: steps.recent.outputs.skip != 'true'
+        run: npm run test
+
+      - name: Build
+        if: steps.recent.outputs.skip != 'true'
+        run: npm run build
+        env:
+          VITE_SUPABASE_URL: ${{ secrets.VITE_SUPABASE_URL }}
+          VITE_SUPABASE_ANON_KEY: ${{ secrets.VITE_SUPABASE_ANON_KEY }}
+
+      - name: Open / refresh build-break issue on failure
+        if: failure()
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh label create build-break --color B60205 --force >/dev/null 2>&1 || true
+          RUN_URL="${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+          EXISTING=$(gh issue list --state open --label build-break --json number --jq '.[0].number' 2>/dev/null || echo "")
+          if [ -n "$EXISTING" ]; then
+            gh issue comment "$EXISTING" --body "Build still failing as of $(date -u '+%Y-%m-%d %H:%M UTC'). Run: $RUN_URL"
+          else
+            gh issue create --title "Nightly build broken ($(date -u +%Y-%m-%d))" --label build-break \
+              --body "Nightly \`lint\` / \`test\` / \`build\` failed. Logs: $RUN_URL"
+          fi
+
+  # --------------------------------------------------------------- db-order-drift
+  # Weekly-only, deliberately NOT on push CI. 59daa953 made test:db order-independent
+  # and added TEST_DB_ORDER=forward|reverse|shuffle; nothing exercised the shuffle path
+  # on a schedule, so a probe could re-acquire a hidden ordering assumption and only
+  # surface it by reddening the advisor-autofix gate — which reads as "the robot broke
+  # something" rather than "a test depends on what a sibling seeded".
+  #
+  # Separate job (not a step in `green-build`) on purpose: an order-drift failure must file
+  # `test-order-drift`, not `build-break`. Different meaning, different triage. Also kept
+  # off the shared stack in `stack-checks`: it resets the DB many times under a shuffled
+  # order and must not be able to perturb the audit passes.
+  db-order-drift:
+    if: ${{ (inputs.mode || 'all') == 'all' }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 22
+          cache: npm
+
+      - run: npm ci
+
+      - uses: supabase/setup-cli@v2
+        with:
+          version: latest
+
+      # The seed is CHOSEN here, not scraped from the script's stdout, so the failure
+      # path always has it verbatim even if the run dies before printing anything.
+      # A shuffle red without its seed is worse than no shuffle at all.
+      - name: Pick shuffle seed
+        run: echo "TEST_DB_SEED=$RANDOM" >> "$GITHUB_ENV"
+
+      - name: test:db under shuffled probe order
+        run: |
+          set -euo pipefail
+          supabase start
+          supabase db reset
+          echo "seed for this run: TEST_DB_SEED=$TEST_DB_SEED"
+          npm run test:db 2>&1 | tee /tmp/test-db-shuffle.log
+        env:
+          TEST_DB_ORDER: shuffle
+
+      - name: Stop Supabase
+        if: always()
+        run: supabase stop || true
+
+      - name: Open test-order-drift issue on failure
+        if: failure()
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh label create test-order-drift --color FBCA04 \
+            --description "A DB probe has a hidden ordering assumption (test:db shuffle)" --force >/dev/null 2>&1 || true
+          RUN_URL="${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+          TAIL=$(tail -40 /tmp/test-db-shuffle.log 2>/dev/null || echo "(no output captured)")
+          BODY=$(cat <<EOF
+          \`test:db\` failed under a shuffled probe order. This is **not** a build break —
+          it means a probe in \`supabase/tests/\` depends on state a sibling probe seeded.
+          The per-commit gate still runs \`forward\` and is unaffected.
+
+          **Seed: \`$TEST_DB_SEED\`**
+
+          Reproduce locally (from a clean stack):
+
+          \`\`\`
+          supabase db reset
+          TEST_DB_ORDER=shuffle TEST_DB_SEED=$TEST_DB_SEED npm run test:db
+          \`\`\`
+
+          Note: the permutation comes from \`awk\`'s \`srand()\`, so the same seed replays
+          the same order on the same awk implementation. CI is Linux/mawk; on macOS
+          (BSD awk) the seed replays consistently with itself but not with CI's order.
+          If it will not reproduce on macOS, run it in a Linux container.
+
+          Last 40 lines:
+
+          \`\`\`
+          $TAIL
+          \`\`\`
+
+          Run: $RUN_URL
+          EOF
+          )
+          EXISTING=$(gh issue list --state open --limit 200 --label test-order-drift --json number --jq '.[0].number' 2>/dev/null || echo "")
+          if [ -n "$EXISTING" ]; then
+            gh issue comment "$EXISTING" --body "Still drifting as of $(date -u '+%Y-%m-%d %H:%M UTC'). Seed \`$TEST_DB_SEED\`. Run: $RUN_URL"
+          else
+            gh issue create --title "test:db probe order drift ($(date -u +%Y-%m-%d))" --label test-order-drift --body "$BODY"
+          fi
+
+  # ------------------------------------------------------------------ stack-checks
+  # signup-canary + app-audit (crawl, layout, journeys) on ONE local Supabase stack.
+  #
+  # Signup canary: sign up a throwaway @pitt.edu user through the real public GoTrue
+  # path against the freshly-migrated stack and assert the whole signup ->
+  # profile-bootstrap trigger chain succeeds. Catches the 2026-07-09 class of outage
+  # (protect_profile_role silently 500'd every signup). Runs against the local stack, NOT
+  # prod. The PRIMARY copy of this assertion runs in migration-guard.yml on every push
+  # touching supabase/migrations/**; this weekly run is ROT INSURANCE and must not be
+  # dropped: if the folded-in step is renamed or quietly skipped, or the canary script
+  # rots against an unpinned dependency, nothing else would notice. Do NOT instead add a
+  # migrations paths trigger here (it would boot a second stack on the ~35 pushes/month
+  # the guard already covers).
+  #
+  # App audit: the 3-persona Playwright crawl that catches crashed/broken pages, the
+  # 390/1440 layout cut-off pass, and (manual only) the full layout matrix and the
+  # no-dead-end journey sweep. Each pass `db reset`s the stack and reseeds, so the passes
+  # are independent. Each step uploads its own report (the report dir is purged at the
+  # start of the next pass).
+  stack-checks:
+    runs-on: ubuntu-latest
+    timeout-minutes: ${{ inputs.mode == 'layout-full' && 75 || 50 }}
+    permissions:
+      contents: read
+      issues: write
+    env:
+      # Surface the secret as an env var so it can be used in an `if:` expression
+      # (secrets.* is not available in step-level `if:` conditions).
+      DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
+      # Pull the local-stack images from GHCR instead of Docker Hub. The Docker Hub login
+      # below is NOT sufficient on its own: run #28 of the old app-audit (2026-08-05) shows
+      # the login succeeding and the pulls still dying on `toomanyrequests: Rate exceeded`,
+      # because the pulls happen inside `supabase start`. Every one of those infra failures
+      # opened an `app-audit-break` issue that reads like an application bug and is not one.
+      SUPABASE_INTERNAL_IMAGE_REGISTRY: ghcr.io
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v5
+        with:
+          fetch-depth: 1
+
+      - name: Set up Node
+        uses: actions/setup-node@v5
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Install Playwright browser (chromium)
+        run: npx playwright install --with-deps chromium
+
+      - name: Log in to Docker Hub (avoid anonymous pull rate limits)
+        if: ${{ env.DOCKERHUB_USERNAME != '' }}
+        uses: docker/login-action@v4
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+
+      # Excluding Studio: it is only the web dashboard, a headless run never touches it,
+      # and a plain `supabase start` that finds Studio unhealthy tears the WHOLE stack down.
+      # `npx supabase` (the pinned devDependency) matches what scripts/e2e/run-audit.sh
+      # uses, so its `status` probe sees this stack and reuses it.
+      - name: Start local Supabase (applies all migrations)
+        run: npx supabase start -x studio
+
+      # ---- signup canary
+      - id: signup_check
+        name: Signup canary
+        if: ${{ (inputs.mode || 'all') == 'all' }}
+        continue-on-error: true
+        run: |
+          set -euo pipefail
+          # Read the fresh stack's URL + keys (deterministic-but-unpinned) into THIS step's
+          # env only, mapped to the names the canary script reads. Scoped to the step (not
+          # $GITHUB_ENV) so the audit passes below keep resolving their own .env.e2e.
+          npx supabase status -o env \
+            --override-name api.url=VITE_SUPABASE_URL \
+            --override-name auth.anon_key=VITE_SUPABASE_ANON_KEY \
+            --override-name auth.service_role_key=SUPABASE_SERVICE_ROLE_KEY \
+            | sed -E 's/^([^=]+)="(.*)"$/\1=\2/' | grep -E '^(VITE_SUPABASE_URL|VITE_SUPABASE_ANON_KEY|SUPABASE_SERVICE_ROLE_KEY)=' > /tmp/stack.env
+          set -a; . /tmp/stack.env; set +a
+          npm run canary:signup
+
+      - name: Close resolved signup incident
+        if: steps.signup_check.outcome == 'success'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          EXISTING=$(gh issue list --state open --label signup-canary --json number --jq '.[0].number' 2>/dev/null || echo "")
+          if [ -n "$EXISTING" ]; then
+            gh issue comment "$EXISTING" --body "✅ A fresh signup and profile bootstrap passed again on commit ${{ github.sha }}. Closing this incident. Run: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}" || echo "::warning::Could not annotate resolved signup issue."
+            gh issue close "$EXISTING" --reason completed || echo "::warning::Could not close resolved signup issue."
+          fi
+
+      - name: Open / refresh signup-canary issue on failure
+        if: steps.signup_check.outcome == 'failure'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh label create signup-canary --color B60205 --force >/dev/null 2>&1 || true
+          RUN_URL="${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+          EXISTING=$(gh issue list --state open --label signup-canary --json number --jq '.[0].number' 2>/dev/null || echo "")
+          if [ -n "$EXISTING" ]; then
+            gh issue comment "$EXISTING" --body "Signup canary still failing as of $(date -u '+%Y-%m-%d %H:%M UTC'). A new @pitt.edu signup + profile bootstrap does NOT succeed against a fresh stack - a broken auth/profile trigger (the 2026-07-09 class). Run: $RUN_URL"
+          else
+            gh issue create --title "Signup canary broken ($(date -u +%Y-%m-%d))" --label signup-canary \
+              --body "A synthetic @pitt.edu signup failed against a fresh Supabase stack: the signup -> profile-bootstrap trigger chain (validate_pitt_email / handle_new_user / protect_profile_role) is broken, which would 500 every real new signup while existing users stay fine. Inspect the most recent supabase/migrations change. Logs: $RUN_URL"
+          fi
+
+      # ---- crawl
+      - id: crawl
+        name: Run app bug-audit crawl + write flows
+        if: ${{ (inputs.mode || 'all') == 'all' || inputs.mode == 'crawl' }}
+        continue-on-error: true
+        run: npm run audit:app
+
+      - name: Upload crawl report + screenshots
+        if: ${{ always() && steps.crawl.outcome != 'skipped' }}
+        uses: actions/upload-artifact@v6
+        with:
+          name: app-bug-audit-report
+          path: |
+            docs/audits/app-bug-audit-report/
+            playwright-report/
+          retention-days: 14
+
+      - name: Open / refresh app-audit-break issue on crawl failure
+        if: steps.crawl.outcome == 'failure'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh label create app-audit-break --color B60205 --force >/dev/null 2>&1 || true
+          RUN_URL="${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+          EXISTING=$(gh issue list --state open --label app-audit-break --json number --jq '.[0].number' 2>/dev/null || echo "")
+          if [ -n "$EXISTING" ]; then
+            gh issue comment "$EXISTING" --body "App bug-audit still failing as of $(date -u '+%Y-%m-%d %H:%M UTC'). Run: $RUN_URL"
+          else
+            gh issue create --title "Nightly app bug-audit broken ($(date -u +%Y-%m-%d))" --label app-audit-break \
+              --body "Nightly \`npm run audit:app\` (3-persona web E2E crawl) failed - a page may be crashed/broken. Report + screenshots are in the run artifacts. Logs: $RUN_URL"
+          fi
+
+      # ---- layout
+      # Weekly (and layout-weekly): user at 390 light, 390 dark, 1440 light plus the
+      # detector self-test. layout-full runs every pass (e2e/playwright.layout.config.ts).
+      - id: layout
+        name: Run layout cut-off pass (AUDIT_LAYOUT=1)
+        if: ${{ (inputs.mode || 'all') == 'all' || inputs.mode == 'layout-weekly' || inputs.mode == 'layout-full' }}
+        continue-on-error: true
+        env:
+          AUDIT_LAYOUT: '1'
+          AUDIT_LAYOUT_MATRIX: ${{ inputs.mode == 'layout-full' && 'full' || 'weekly' }}
+        run: npm run audit:app
+
+      - name: Upload layout report + screenshots
+        if: ${{ always() && steps.layout.outcome != 'skipped' }}
+        uses: actions/upload-artifact@v6
+        with:
+          name: app-bug-audit-layout-report
+          path: |
+            docs/audits/app-bug-audit-report/
+            playwright-report/
+          retention-days: 14
+
+      - name: Open / refresh app-audit-break issue on layout failure
+        if: ${{ steps.layout.outcome == 'failure' && github.event_name == 'schedule' }}
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh label create app-audit-break --color B60205 --force >/dev/null 2>&1 || true
+          RUN_URL="${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+          EXISTING=$(gh issue list --state open --label app-audit-break --json number --jq '.[0].number' 2>/dev/null || echo "")
+          if [ -n "$EXISTING" ]; then
+            gh issue comment "$EXISTING" --body "App bug-audit still failing as of $(date -u '+%Y-%m-%d %H:%M UTC'). Run: $RUN_URL"
+          else
+            gh issue create --title "Weekly layout audit broken ($(date -u +%Y-%m-%d))" --label app-audit-break \
+              --body "Weekly layout pass (\`AUDIT_LAYOUT=1\`: 390/1440, light/dark) found a P0/P1 cut-off, overflow, or contrast regression. Report + screenshots are in the run artifacts. Logs: $RUN_URL"
+          fi
+
+      # ---- journeys (manual only, before a release): the no-dead-end sweep, existing flow
+      # specs + e2e/journeys.*.spec.ts at 390 and 1440 (~25 min).
+      - id: journeys
+        name: Run no-dead-end journey sweep (AUDIT_JOURNEYS=1)
+        if: ${{ inputs.mode == 'journeys' }}
+        continue-on-error: true
+        env:
+          AUDIT_JOURNEYS: '1'
+        run: npm run audit:app
+
+      - name: Upload journeys report + screenshots
+        if: ${{ always() && steps.journeys.outcome != 'skipped' }}
+        uses: actions/upload-artifact@v6
+        with:
+          name: app-bug-audit-journeys-report
+          path: |
+            docs/audits/app-bug-audit-report/
+            playwright-report/
+          retention-days: 14
+
+      # Manual-only, so this never fires on a schedule: kept for parity with the old
+      # `journeys` job, whose issue step was gated on `schedule` and so was inert too.
+      - name: Open / refresh app-audit-break issue on journeys failure
+        if: ${{ steps.journeys.outcome == 'failure' && github.event_name == 'schedule' }}
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh label create app-audit-break --color B60205 --force >/dev/null 2>&1 || true
+          RUN_URL="${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+          EXISTING=$(gh issue list --state open --label app-audit-break --json number --jq '.[0].number' 2>/dev/null || echo "")
+          if [ -n "$EXISTING" ]; then
+            gh issue comment "$EXISTING" --body "App bug-audit still failing as of $(date -u '+%Y-%m-%d %H:%M UTC'). Run: $RUN_URL"
+          else
+            gh issue create --title "Nightly app bug-audit broken ($(date -u +%Y-%m-%d))" --label app-audit-break \
+              --body "Journey sweep failed. Report + screenshots are in the run artifacts. Logs: $RUN_URL"
+          fi
+
+      - name: Stop local Supabase
+        if: always()
+        run: npx supabase stop || true
+
+      # The audit passes and the canary are continue-on-error so one red pass cannot hide
+      # the next; the job goes red here if any of them failed.
+      - name: Fail the job if any check failed
+        if: always()
+        env:
+          STEPS_JSON: ${{ toJSON(steps) }}
+        run: |
+          FAILED=$(printf '%s' "$STEPS_JSON" | jq -r 'to_entries[] | select(.value.outcome == "failure") | .key')
+          if [ -n "$FAILED" ]; then
+            echo "::error::Failed step id(s): $(echo "$FAILED" | tr '\n' ' ')"
+            exit 1
+          fi
+          echo "All stack checks passed."
+
+  # ------------------------------------------------------------- dependabot-triage
+  # Tiered triage of open Dependabot + malware alerts (vault decision 2026-07-17: keep
+  # GitHub "Security and quality" at Excellent instead of letting alerts accumulate):
+  #   Tier 1 (auto)  -> a patched version exists, the advisory is not malware, and the patch
+  #                     lands INSIDE the already-declared semver range -- the fix is
+  #                     lockfile-only and `package.json` is never touched. `npm audit fix` on
+  #                     dev, self-gated (typecheck non-blocking, test + build blocking).
+  #   Tier 2 (gated) -> no patched version, malware-class, the fix would need a declared-range
+  #                     change in package.json, or the auto-fix failed its gates: issue
+  #                     labeled `dependabot-review`; Ethan approves with `@claude fix this`.
+  # The real safety property is RANGE CONTAINMENT, not dependency scope (widened 2026-08-05;
+  # DECISIONS 2026-08-05): enforced by the lockfile-only assertion in the Tier 1 step. A
+  # clean run (no open alerts) is silent. Operates on `dev`. GITHUB_TOKEN cannot read
+  # Dependabot alerts, so this uses the DEPENDABOT_ALERTS_TOKEN secret if present (classic
+  # PAT with `repo` scope, or fine-grained with "Dependabot alerts: read"); it falls back to
+  # GITHUB_TOKEN and logs a skip on 403.
+  dependabot-triage:
+    if: ${{ (inputs.mode || 'all') == 'all' }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    permissions:
+      contents: write
+      issues: write
+      security-events: read
+    steps:
+      - name: Checkout dev
+        uses: actions/checkout@v5
+        with:
+          ref: dev
+          fetch-depth: 1
+
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Fetch open Dependabot alerts, split into tiers
+        env:
+          GH_TOKEN: ${{ secrets.DEPENDABOT_ALERTS_TOKEN || secrets.GITHUB_TOKEN }}
+        run: |
+          set -euo pipefail
+          if ! gh api "repos/${GITHUB_REPOSITORY}/dependabot/alerts?state=open&per_page=100" --paginate > /tmp/alerts.json 2>/tmp/alerts.err; then
+            echo "::warning::Cannot read Dependabot alerts ($(head -c 200 /tmp/alerts.err)). Add a DEPENDABOT_ALERTS_TOKEN secret with Dependabot-alerts read access."
+            echo '[]' > /tmp/alerts.json
+            echo false > /tmp/alerts-available
+          else
+            echo true > /tmp/alerts-available
+          fi
+          jq '[.[] | {
+                n: .number,
+                pkg: .dependency.package.name,
+                scope: .dependency.scope,
+                sev: .security_advisory.severity,
+                ghsa: .security_advisory.ghsa_id,
+                range: .security_vulnerability.vulnerable_version_range,
+                patched: (.security_vulnerability.first_patched_version.identifier // null),
+                malware: (.security_advisory.type? // "" | test("malware"; "i"))
+              }]' /tmp/alerts.json > /tmp/open.json
+          # Tier 1 CANDIDATES: patched version exists and not malware. Whether the
+          # patch actually lands inside the declared range cannot be decided from the
+          # alert alone, so it is decided empirically in the Tier 1 step below (npm
+          # audit fix without --force is range-respecting by contract; the
+          # package.json-untouched assertion is what makes that a checked fact rather
+          # than a trusted one). Candidates that fail it are demoted there.
+          jq '[.[] | select(.patched != null and (.malware | not))]' /tmp/open.json > /tmp/tier1.json
+          jq '[.[] | select(.patched == null or .malware)]' /tmp/open.json > /tmp/tier2.json
+          echo "open=$(jq length /tmp/open.json) tier1=$(jq length /tmp/tier1.json) tier2=$(jq length /tmp/tier2.json)"
+
+      - name: Close review issues whose Dependabot alert is fixed
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -euo pipefail
+          if [ "$(cat /tmp/alerts-available)" != true ]; then
+            echo "Dependabot alerts unavailable; retaining review issues rather than guessing."
+            exit 0
+          fi
+          gh issue list --state open --limit 200 --label dependabot-review --json number,body \
+            --jq '.[] | "\(.number)\t\(.body | @base64)"' > /tmp/open-review-issues.txt
+          while IFS=$'\t' read -r NUMBER BODY64; do
+            BODY=$(printf '%s' "$BODY64" | base64 --decode)
+            GHSA=$(printf '%s' "$BODY" | sed -n 's/.*dependabot-key: \([^ >]*\).*/\1/p' | head -1)
+            [ -n "$GHSA" ] || continue
+            if ! jq -e --arg ghsa "$GHSA" '.[] | select(.ghsa == $ghsa)' /tmp/open.json >/dev/null; then
+              gh issue comment "$NUMBER" --body "✅ Dependabot no longer reports $GHSA as open. Closing this review issue." || echo "::warning::Could not annotate resolved Dependabot review issue #$NUMBER."
+              gh issue close "$NUMBER" --reason completed || echo "::warning::Could not close resolved Dependabot review issue #$NUMBER."
+            fi
+          done < /tmp/open-review-issues.txt
+
+      - name: "Tier 1: npm audit fix on dev, self-gated"
+        id: autofix
+        run: |
+          set -euo pipefail
+          if [ "$(jq length /tmp/tier1.json)" -eq 0 ]; then
+            echo "No auto-fixable dev-only alerts."
+            exit 0
+          fi
+          demote_all() {
+            echo "::warning::$1 - reverting any change and demoting all tier1 alerts to review issues."
+            git checkout -- package.json package-lock.json || true
+            jq -s '.[0] + .[1]' /tmp/tier2.json /tmp/tier1.json > /tmp/t && mv /tmp/t /tmp/tier2.json
+            echo '[]' > /tmp/tier1.json
+          }
+
+          npm ci
+          # NEVER pass --force. Plain `npm audit fix` is confined to semver-compatible
+          # fixes; --force is exactly the out-of-range escape hatch this tier excludes.
+          npm audit fix || true
+
+          if git diff --quiet package.json package-lock.json; then
+            demote_all "npm audit fix produced no change"
+            exit 0
+          fi
+
+          # THE TIER 1 BOUNDARY, enforced rather than assumed: a lockfile-only fix
+          # cannot widen what this project has already declared it accepts. If
+          # package.json moved, the fix needed a declared-range change, which is a
+          # human decision (peer edges, majors, breaking APIs) -- demote the whole
+          # batch rather than push a range change unattended.
+          if ! git diff --quiet package.json; then
+            echo "::warning::package.json changed - the fix requires a declared-range change:"
+            git --no-pager diff -- package.json | sed -n '1,60p'
+            demote_all "fix is not lockfile-only"
+            exit 0
+          fi
+
+          # Self-gate before pushing (a GITHUB_TOKEN push does not trigger CI).
+          npm run typecheck || echo "::warning::typecheck failed (non-blocking, pre-existing type debt)"
+          if ! npm run test || ! npm run build; then
+            demote_all "gates failed"
+            exit 0
+          fi
+
+          # NO SILENT PARTIAL CLAIMS: `npm audit fix` may resolve some candidates and
+          # not others. Anything still reported vulnerable is demoted, so a Tier 2
+          # issue is opened for it instead of it being quietly treated as handled.
+          npm audit --json > /tmp/audit-after.json 2>/dev/null || true
+          jq -r '(.vulnerabilities // {}) | keys[]' /tmp/audit-after.json 2>/dev/null | sort -u > /tmp/still-vuln.txt || : > /tmp/still-vuln.txt
+          if [ -s /tmp/still-vuln.txt ]; then
+            jq --rawfile s /tmp/still-vuln.txt \
+              '($s | split("\n") | map(select(length > 0))) as $v
+               | [.[] | select(.pkg as $p | $v | index($p))]' /tmp/tier1.json > /tmp/unfixed.json
+            if [ "$(jq length /tmp/unfixed.json)" -gt 0 ]; then
+              echo "::warning::Still vulnerable after audit fix, demoting to review: $(jq -r '[.[].pkg] | unique | join(", ")' /tmp/unfixed.json)"
+              jq -s '.[0] + .[1]' /tmp/tier2.json /tmp/unfixed.json > /tmp/t && mv /tmp/t /tmp/tier2.json
+              jq --rawfile s /tmp/still-vuln.txt \
+                '($s | split("\n") | map(select(length > 0))) as $v
+                 | [.[] | select(.pkg as $p | $v | index($p) | not)]' /tmp/tier1.json > /tmp/t && mv /tmp/t /tmp/tier1.json
+            fi
+          fi
+          if [ "$(jq length /tmp/tier1.json)" -eq 0 ]; then
+            echo "Nothing left auto-fixed after demotions; not pushing."
+            git checkout -- package.json package-lock.json || true
+            exit 0
+          fi
+          git config user.name "dependabot-triage[bot]"
+          git config user.email "actions@github.com"
+          PKGS=$(jq -r '[.[].pkg] | unique | join(", ")' /tmp/tier1.json)
+          git add package.json package-lock.json
+          git commit -m "fix(deps): npm audit fix for Dependabot alerts ($PKGS)" \
+            -m "Auto-bump by dependabot-triage.yml (Tier 1: patched version available, inside the declared semver range). Lockfile-only: package.json was asserted unchanged. Self-gated: test + build ran green before push."
+          git push origin dev
+        env:
+          VITE_SUPABASE_URL: ${{ secrets.VITE_SUPABASE_URL }}
+          VITE_SUPABASE_ANON_KEY: ${{ secrets.VITE_SUPABASE_ANON_KEY }}
+
+      - name: "Tier 2: open review issues on the automation board (deduped by GHSA)"
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -euo pipefail
+          COUNT=$(jq length /tmp/tier2.json)
+          if [ "$COUNT" -eq 0 ]; then
+            echo "No alerts needing review."
+            exit 0
+          fi
+          gh label create dependabot-review --color D93F0B \
+            --description "Open Dependabot/malware alert needing a decision (no patch, malware, or needs a declared-range change)" --force >/dev/null 2>&1 || true
+          gh issue list --state open --limit 200 --label dependabot-review --json body --jq '.[].body' > /tmp/open-bodies.txt || true
+          jq -c '.[]' /tmp/tier2.json | while read -r a; do
+            GHSA=$(echo "$a" | jq -r .ghsa)
+            if grep -qF "dependabot-key: $GHSA" /tmp/open-bodies.txt; then
+              echo "Skip (already open): $GHSA"; continue
+            fi
+            PKG=$(echo "$a" | jq -r .pkg); SEV=$(echo "$a" | jq -r .sev)
+            {
+              echo "<!-- dependabot-key: $GHSA -->"
+              echo "Open Dependabot alert that is not auto-fixable: no patched version, malware-class, the fix would require a **declared-range change in \`package.json\`** (not lockfile-only), or the auto-bump failed its self-gate."
+              echo
+              echo "- **Package:** $PKG ($(echo "$a" | jq -r .scope) scope)"
+              echo "- **Severity:** $SEV - **Advisory:** https://github.com/advisories/$GHSA"
+              echo "- **Vulnerable range:** $(echo "$a" | jq -r .range) - **Patched:** $(echo "$a" | jq -r '.patched // "none yet"')"
+              echo "- **Alert:** https://github.com/${GITHUB_REPOSITORY}/security/dependabot/$(echo "$a" | jq -r .n)"
+              echo
+              echo "Fix proceeds on Ethan's \`@claude fix this\` comment (bump on \`dev\`, self-gated). If accepted-by-design, dismiss the alert on GitHub with a reason and close this."
+            } > /tmp/issue-body.md
+            gh issue create --title "[dependabot] $SEV: $PKG ($GHSA)" --label dependabot-review --body-file /tmp/issue-body.md
+          done
+
+  # --------------------------------------------------------------- security-audit
+  # Weekly DELTA security review, run as a GitHub Action (NOT a Cowork cloud routine) so it
+  # always has the repo files even when Ethan's Mac is offline. DETECT + REPORT ONLY: opens
+  # or refreshes ONE deduped issue labeled `security-audit`; it NEVER edits code, commits,
+  # pushes, or merges. Its own job because `claude-code-action` needs `id-token: write` for
+  # its OIDC token exchange, which no other job here should hold.
+  # Full context: docs/CHANGELOG.md + docs/audits/security-posture.md.
+  security-audit:
+    if: ${{ (inputs.mode || 'all') == 'all' }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    permissions:
+      contents: read
+      issues: write
+      id-token: write   # required by claude-code-action for its OIDC token exchange
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v5
+        with:
+          fetch-depth: 0   # full history - the delta sweep needs `git log --since`
+
+      - name: Run Claude delta security review
+        uses: anthropics/claude-code-action@v1
+        with:
+          claude_code_oauth_token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
+          claude_args: '--allowed-tools "Bash(gh issue *),Bash(gh label *),Bash(gh api *),Bash(npm audit *),Bash(git log *),Bash(git diff *),Bash(git show *),Read,Grep,Glob"'
+          prompt: |
+            You are running the weekly DormCheck DELTA SECURITY REVIEW as a
+            GitHub Action. Find what CHANGED since the last review - this is
+            NOT a full re-audit. This is DETECT + REPORT ONLY: you must NEVER
+            edit code, create commits, push, or merge. Your only write action
+            is opening or refreshing ONE GitHub issue labeled `security-audit`.
+            Anything touching RLS semantics or `public_profiles` is report-only,
+            even if it looks mechanically auto-fixable.
+
+            ## Establish the review window
+            Determine the last review date from the `security-audit` issue's
+            last update (its most recent comment/edit timestamp):
+              `gh issue list --state open --label security-audit --json number,updatedAt --jq '.[0]'`
+            Use that timestamp as `<since>`. If no such issue exists, fall back
+            to 7 days ago. This issue's timestamp is the canonical "last review"
+            marker for the next delta.
+
+            ## 1. Diff-driven sweep (the core of this pass)
+            `git log --since=<since>` scoped to the security-sensitive surface:
+            `supabase/migrations/`, `supabase/functions/`, `api/`, and the auth
+            paths (`src/pages/auth/`, `src/hooks/useAuth*`). For each change ask:
+            - New table created without RLS enabled / without policies?
+            - A widened or new `GRANT` (esp. to `anon`/`authenticated`)?
+            - A new `SECURITY DEFINER` function callable by `authenticated`
+              (or `anon`) - is the exposure intended?
+            - A new route missing its `ProtectedRoute` wrapper?
+            - An env var newly referenced in client-reachable code that could
+              leak (`VITE_*` is bundled; `SUPABASE_SERVICE_ROLE_KEY` /
+              `RESEND_API_KEY` must NEVER appear client-side).
+            - DormCheck HARD RULE: a student is NEVER charged - flag any new
+              path that could bill/charge/collect payment from a student.
+
+            ## 2. Advisors (diff, don't re-fetch)
+            Read `docs/security/advisor-baseline.json` and the recent issues from
+            the daily advisor-check workflow (`advisor-autofix` / `advisor-review`
+            labels). Report only what is NEW vs the baseline. Do NOT re-fetch
+            advisors if the daily advisor-check already ran today - its issue
+            output IS the source of truth; just diff against it.
+
+            ## 3. Secrets
+            Run a secrets scan over the diff range (the `<since>` commit window).
+            The commit `65a5b38` / `124f87c` `.env.local.bak` leak is RESOLVED:
+            the Resend key was rotated 2026-07-11/12 (Supabase SMTP + Vercel) and
+            the ephemeral Vercel OIDC token expired; the dead value stays in shared
+            history, allowlisted in `.gitleaks.toml` (no force-push). Do NOT re-flag
+            it as an open finding - only report a NEW committed secret in the range.
+
+            ## 4. Dependencies
+            `npm audit` for open HIGH/CRITICAL advisories, plus any open
+            Dependabot alerts (`gh api repos/{owner}/{repo}/dependabot/alerts
+            --jq '.[] | select(.state=="open")'`). Report only those NOT already
+            tracked. Dependabot is the single owner of dependency PRs (limit 5,
+            security updates enabled) and dependabot-triage.yml sweeps alerts
+            weekly - do not repeat anything already covered there. The blocking
+            per-push gate is scripts/npm-audit-ratchet.sh at BASELINE=0.
+
+            ## 5. Standing items - always retest
+            - Logged-out (unauthenticated) fetch of `/marketplace`, `/checklist`,
+              and `/profile` - the 2026-07-03 auth-gating leak. If any still
+              returns protected data while logged out, it is the TOP finding.
+            - Platform drift: `send-push` edge function must have
+              `verify_jwt = false`; confirm Vercel env presence; the
+              tenant-isolation probe must be green.
+
+            ## Output
+            Write ONE report and put it on the deduped `security-audit` issue.
+            1. Ensure the label exists:
+               `gh label create security-audit --color B60205 --force`
+            2. Find the existing open issue (see §"review window" query).
+            3. Start with a VERDICT LINE, e.g.
+               `Verdict: no regressions, 2 new, 1 standing.`
+            4. Then findings ranked by exploitability x data-sensitivity. Each
+               finding: **what** / **proof** (file:line or command output) /
+               **fix** (concrete) / **auto-fixable or needs-Ethan** (tag it, so a
+               downstream fix pass can triage - but do NOT fix it here; RLS /
+               `public_profiles` items are always needs-Ethan/report-only).
+            5. Post the dated report as a comment on the existing open issue; if
+               none exists AND there are findings, `gh issue create` with the
+               `security-audit` label. If the pass is fully CLEAN with zero new
+               and zero standing findings, still post the verdict line (so the
+               issue timestamp advances the review window) - keep it to that one
+               line.
+            6. Review-date record: the issue timestamp you just advanced IS the
+               durable "last reviewed" marker. Because this workflow is
+               report-only (no commit/push), also state in the report:
+               "Bump docs/audits/security-posture.md 'Last reviewed' to <today>"
+               so the next dev->main release carries the doc bump.
+
+            Keep this to a single delta pass - no fan-out, no subagents.
+
+  # -------------------------------------------------------------- edge-functions
+  # The driven Edge Function gate's WEEKLY run, so it cannot rot silently between changes
+  # to supabase/functions/**. The gate itself lives in edge-functions.yml (paths-triggered on
+  # dev pushes) and is called here as a reusable workflow, so there is one copy of it.
+  edge-functions:
+    if: ${{ (inputs.mode || 'all') == 'all' }}
+    uses: ./.github/workflows/edge-functions.yml
+    permissions:
+      contents: read
+      issues: write

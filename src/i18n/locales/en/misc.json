@@ -1,0 +1,196 @@
+{
+  "nav": {
+    "myHome": "My Home",
+    "home": "Home",
+    "dashboard": "Dashboard",
+    "checklist": "Checklist",
+    "marketplace": "Marketplace",
+    "marketplaceShort": "Market",
+    "schedule": "Schedule",
+    "community": "Community",
+    "messages": "Messages",
+    "mySchedule": "My Schedule",
+    "addClass": "Add class",
+    "changeHome": "Change home",
+    "housing": "Housing",
+    "roommates": "Roommates",
+    "housingRoommates": "Housing & Roommates",
+    "dorms": "Dorms",
+    "studentSetups": "Student Setups",
+    "subleases": "Subleases",
+    "browseProfiles": "Browse Profiles",
+    "myRoommates": "My Roommates",
+    "findRoommates": "Find Roommates",
+    "shopEssentials": "Shop Essentials",
+    "myChecklist": "My Checklist",
+    "moveIn": "Move In",
+    "moveOut": "Move Out",
+    "logistics": "Logistics",
+    "studentMarket": "Student Market",
+    "studentBusinesses": "Student Businesses",
+    "postAnItem": "Post an Item",
+    "postYourSetup": "Post your setup",
+    "getReady": "Get Ready",
+    "setups": "Setups",
+    "shop": "Shop",
+    "moveInOut": "Move In/Out",
+    "buySell": "Buy & Sell"
+  },
+  "sections": {
+    "housing": "Housing",
+    "checklist": "Checklist",
+    "market": "Market"
+  },
+  "sidebar": {
+    "primaryNav": "Primary",
+    "brandHome": "DormCheck home",
+    "soon": "SOON",
+    "bookmarks": "Bookmarks",
+    "howToAddBookmarks": "How to add bookmarks",
+    "bookmarkHint": "Bookmark any page from its title",
+    "noBookmarks": "No bookmarks yet. Add one from any page's title.",
+    "removeBookmark": "Remove {{label}} bookmark",
+    "expandSidebar": "Expand sidebar",
+    "collapseSidebar": "Collapse sidebar",
+    "collapse": "Collapse",
+    "expandSections": "Expand {{label}} sections",
+    "collapseSections": "Collapse {{label}} sections",
+    "comingSoon": "{{label}} (coming soon)",
+    "comingSoonTooltip": "{{label}} - coming soon",
+    "unread": "{{label}} (unread)"
+  },
+  "actionMenu": {
+    "customize": "Customize",
+    "switchSection": "Switch section",
+    "goTo": "Go to {{label}}"
+  },
+  "bottomNav": {
+    "label": "Bottom navigation",
+    "myHomeDashboard": "My Home dashboard",
+    "housingAndRoommates": "Housing and roommates"
+  },
+  "topBar": {
+    "messagesUnread": "Messages (unread)",
+    "goToMessages": "Go to Messages",
+    "adminDashboard": "Admin dashboard",
+    "openAccountMenu": "Open account menu",
+    "accountMenuFor": "Account menu for {{name}}",
+    "goToNotifications": "Go to Notifications",
+    "notificationsUnread": "Notifications ({{n}} unread)"
+  },
+  "notifications": {
+    "title": "Notifications",
+    "withCount": "Notifications, {{n}} unread",
+    "tooltipWithCount": "Notifications ({{n}} unread)",
+    "markAllRead": "Mark all as read",
+    "unreadMessages_one": "You have {{count}} unread message",
+    "unreadMessages_other": "You have {{count}} unread messages",
+    "unreadFallback": "You have unread messages",
+    "openToCatch": "Open Messages to catch up",
+    "allCaughtUp": "You're all caught up",
+    "showAll": "Show all",
+    "seeAll": "See all",
+    "pageSubtitle": "Roommate requests, building updates, and more.",
+    "emptyHint": "New activity, like roommate requests and building updates, will show up here."
+  },
+  "bookmark": {
+    "add": "Add bookmark",
+    "remove": "Remove bookmark"
+  },
+  "error": {
+    "sectionTitle": "This section couldn't load",
+    "sectionBody": "Something went wrong here. You can try again - the rest of the app is unaffected."
+  },
+  "notFound": {
+    "title": "Oops! Page not found",
+    "returnHome": "Return to Home"
+  },
+  "safety": {
+    "title": "Trading safely on DormCheck",
+    "intro": "Everyone here signed in with a {{school}} email, but meeting a stranger is still meeting a stranger.",
+    "meetPublic": "Meet in a public campus spot: a lobby, the Union, a dining area. Daylight beats night.",
+    "bringFriend": "Bring a friend for high-value items.",
+    "inspect": "Inspect before you pay. Never pay in advance for something you haven't seen.",
+    "noMoney": "DormCheck never handles the money and never asks for payment info. Anyone claiming otherwise is lying to you.",
+    "keepInApp": "Keep the conversation in DormCheck messages so there's a record if something goes wrong.",
+    "report": "Something feels off? Block and report. Reports go to a human.",
+    "safetyCenter": "Visit the Safety Center for campus contacts and the full guide"
+  },
+  "search": {
+    "placeholder": "Search for anything",
+    "trigger": "Search",
+    "openSearch": "Open search",
+    "filtersLabel": "Search categories",
+    "filterAll": "All",
+    "groupPages": "Pages",
+    "groupDorms": "Dorms",
+    "groupMarketplace": "Marketplace",
+    "groupChecklist": "Checklist",
+    "noResults": "No results found",
+    "myListings": "My Listings",
+    "postItem": "Post an Item",
+    "messages": "Messages",
+    "notifications": "Notifications",
+    "safety": "Safety Center",
+    "campusMap": "Campus Map",
+    "groupActions": "Actions",
+    "searching": "Searching…",
+    "actions": {
+      "newListing": "New listing",
+      "addChecklistItem": "Add a checklist item",
+      "startMessage": "Start a message",
+      "darkMode": "Switch to dark mode",
+      "lightMode": "Switch to light mode",
+      "notificationSettings": "Notification settings",
+      "adminConsole": "Open admin console",
+      "signOut": "Sign out"
+    }
+  },
+  "legalNotice": {
+    "title": "We updated our Terms and Privacy Policy",
+    "body": "Two things changed on August 18, 2026. A sublease listing now requires an address, which we send to our mapping provider to turn into coordinates and show as a pin on the sublease map, so anyone who can see the listing can see where it is. And we no longer collect class schedules, because that feature has been retired.",
+    "readTerms": "Read the Terms",
+    "readPrivacy": "Read the Privacy Policy",
+    "acknowledge": "Got it"
+  },
+  "shortcuts": {
+    "title": "Keyboard shortcuts",
+    "description": "What your keyboard can do in DormCheck.",
+    "menuItem": "Keyboard shortcuts",
+    "groups": {
+      "general": "Anywhere",
+      "search": "In search",
+      "messages": "In messages",
+      "adminReports": "Admin reports"
+    },
+    "openPalette": "Open search and actions",
+    "focusSearch": "Search this page, or open search",
+    "showShortcuts": "Show this list",
+    "paletteMove": "Move between results",
+    "paletteRun": "Open or run the selected result",
+    "paletteClose": "Close search",
+    "messagesMove": "Move between conversations",
+    "messagesEnds": "Jump to the first or last conversation",
+    "reportsNext": "Next report",
+    "reportsPrev": "Previous report",
+    "reportsApprove": "Approve the selected report",
+    "reportsHide": "Hide the reported content",
+    "keys": {
+      "command": "Command",
+      "ctrl": "Ctrl",
+      "shift": "Shift",
+      "enter": "Enter",
+      "up": "Up arrow",
+      "down": "Down arrow",
+      "esc": "Esc",
+      "home": "Home",
+      "end": "End"
+    },
+    "footer": {
+      "move": "Move",
+      "run": "Open",
+      "close": "Close",
+      "all": "Shortcuts"
+    }
+  }
+}

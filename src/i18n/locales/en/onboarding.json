@@ -1,0 +1,230 @@
+{
+  "intro": {
+    "stepIndicator": "Step {{current}} of 6",
+    "skipForNow": "Skip for now · you can change this later",
+    "step1": {
+      "title": "Welcome to DormCheck <wave>👋</wave>",
+      "titleWithName": "Welcome to DormCheck, {{name}} <wave>👋</wave>",
+      "subtitle": "Your all-in-one app for {{school}} housing, move-in, and campus life. Let's tailor it to you. what brings you here?"
+    },
+    "userIntent": {
+      "incomingFreshman": {
+        "title": "Incoming Freshman",
+        "desc": "I'm new to campus and figuring out housing"
+      },
+      "currentStudent": {
+        "title": "Current Student",
+        "desc": "I'm looking for new housing or a roommate"
+      },
+      "buySell": {
+        "title": "Buy & Sell",
+        "desc": "I want to buy or sell dorm stuff"
+      },
+      "exploring": {
+        "title": "Just Exploring",
+        "desc": "I want to see what DormCheck offers"
+      }
+    },
+    "need": {
+      "exploring": {
+        "title": "Exploring dorms",
+        "desc": "Browse real room photos and reviews"
+      },
+      "roommate": {
+        "title": "Finding a roommate",
+        "desc": "Match with compatible students"
+      },
+      "checklist": {
+        "title": "Move-in checklist",
+        "desc": "Plan what to bring and coordinate with roommates"
+      },
+      "marketplace": {
+        "title": "Student marketplace",
+        "desc": "Buy and sell dorm essentials"
+      }
+    },
+    "actionLink": {
+      "browseHousing": {
+        "title": "Browse Housing",
+        "desc": "Explore dorms, photos, and reviews"
+      },
+      "findRoommates": {
+        "title": "Find Roommates",
+        "desc": "See compatible student profiles"
+      },
+      "startChecklist": {
+        "title": "Start Your Checklist",
+        "desc": "Plan what to bring for move-in"
+      },
+      "browseMarketplace": {
+        "title": "Browse Marketplace",
+        "desc": "Buy and sell with other students"
+      }
+    },
+    "step2": {
+      "title": "Tell us about yourself",
+      "subtitle": "A few quick details so we can personalize your DormCheck.",
+      "fullNameLabel": "Full name",
+      "fullNamePlaceholder": "Your name",
+      "majorLabel": "Major / Program",
+      "majorPlaceholder": "e.g. Finance, Computer Science...",
+      "schoolLabel": "School / College",
+      "schoolPlaceholder": "e.g. CBA, Dietrich, Swanson...",
+      "gradeLevelLabel": "Grade Level",
+      "gradeLevelPlaceholder": "Select grade level",
+      "gradeLevel": {
+        "freshman": "Freshman",
+        "sophomore": "Sophomore",
+        "junior": "Junior",
+        "senior": "Senior",
+        "graduate": "Graduate"
+      },
+      "graduationYearLabel": "Graduation Year",
+      "graduationYearPlaceholder": "2028",
+      "errorFillAllFields": "Please fill in all required fields.",
+      "errorUnableToSave": "Unable to save. Please try again."
+    },
+    "step3": {
+      "headingFreshman": "Do you have your housing assignment yet?",
+      "headingCurrentStudent": "Where are you living?",
+      "headingDefault": "What's your housing situation?",
+      "subtitle": "This helps us point you to the right rooms, chats, and people.",
+      "cardA": {
+        "titleFreshman": "I have my assignment",
+        "subFreshman": "Building and room details",
+        "titleDefault": "I know where I'm living",
+        "subDefault": "I can add my building now"
+      },
+      "cardB": {
+        "titleFreshman": "Not yet",
+        "subFreshman": "I'm still waiting or deciding",
+        "titleDefault": "I'm still looking",
+        "subDefault": "Skip location for now"
+      },
+      "buildingLabel": "Building",
+      "buildingPlaceholder": "Select your building...",
+      "loadingBuildings": "Loading buildings…",
+      "offCampus": "Off-campus / not listed",
+      "offCampusPlaceholder": "Enter your building or address",
+      "floorLabel": "Floor",
+      "floorPlaceholder": "e.g. 3",
+      "roomLabel": "Room",
+      "roomPlaceholder": "e.g. 412",
+      "moveInDateLabel": "Move-in date",
+      "optional": "(optional)",
+      "errorChooseOption": "Please choose an option.",
+      "errorSelectBuilding": "Please select your building.",
+      "errorEnterBuildingOrAddress": "Please enter your building or address.",
+      "errorUnableToSave": "Unable to save. Please try again."
+    },
+    "step4": {
+      "title": "What would you like help with?",
+      "subtitle": "Pick all that apply. we'll put these front and center for you.",
+      "errorUnableToSave": "Unable to save. Please try again."
+    },
+    "step5": {
+      "title": "Quick roommate preferences",
+      "subtitle": "Four quick taps so we can surface your best matches.",
+      "sleepScheduleLabel": "Sleep schedule",
+      "sleepSchedule": {
+        "earlyBird": "Early bird",
+        "nightOwl": "Night owl",
+        "flexible": "Flexible"
+      },
+      "cleanlinessLabel": "Cleanliness",
+      "cleanliness": {
+        "veryTidy": "Very tidy",
+        "moderate": "Moderate",
+        "relaxed": "Relaxed"
+      },
+      "socialLevelLabel": "Social level",
+      "socialLevel": {
+        "homebody": "Homebody",
+        "balanced": "Balanced",
+        "verySocial": "Very social"
+      },
+      "studyStyleLabel": "Study style",
+      "studyStyle": {
+        "library": "Library",
+        "inMyRoom": "In my room",
+        "anywhere": "Anywhere"
+      },
+      "showProfileAriaLabel": "Show my profile to potential roommates",
+      "showProfileLabel": "Show my profile to potential roommates",
+      "showProfileHint": "You can change this anytime in settings.",
+      "errorAnswerAllQuestions": "Please answer all preference questions.",
+      "errorUnableToSave": "Unable to save. Please try again."
+    },
+    "step6": {
+      "title": "You're all set!",
+      "titleWithName": "You're all set, {{name}}!",
+      "subtitle": "Here's everything waiting for you in DormCheck.",
+      "yourSetupLabel": "Your setup",
+      "goalLabel": "Goal",
+      "housingLabel": "Housing",
+      "interestsLabel": "Interests",
+      "defaultIntentLabel": "Exploring",
+      "stillDeciding": "Still deciding",
+      "exploringEverything": "Exploring everything",
+      "jumpInLabel": "Jump in",
+      "forYouBadge": "For you",
+      "enterDormCheck": "Enter DormCheck"
+    }
+  },
+  "waitlist": {
+    "doneTitle": "You're on the list",
+    "doneDescription": "We'll email you the moment DormCheck reaches your school.",
+    "headingResolved": "Looks like you're at {{schoolName}}",
+    "headingGeneric": "DormCheck isn't live at your school yet",
+    "description": "We're live at {{schools}}, and expanding campus by campus. Leave your email and we'll tell you when it's your turn.",
+    "schoolsSeparator": ", ",
+    "schoolsFinalSeparator": " and ",
+    "emailLabel": "Email",
+    "schoolLabel": "Which school? <optional>(optional)</optional>",
+    "schoolPlaceholder": "e.g. Carnegie Mellon University",
+    "eyebrow": "Waitlist",
+    "coldStartHeading": "Bring DormCheck to your campus.",
+    "alreadyLiveDescription": "Good news: DormCheck is already live at your school. No waitlist needed, just sign in with your school email.",
+    "signInLink": "Sign in to DormCheck",
+    "coldStartDescription": "Enter your school email to see where your campus ranks on the waitlist, and how to move it up. We only use it to find your school; you are not signing up for anything yet.",
+    "peekButton": "See where my campus ranks",
+    "schoolNameOptionalLabel": "School name (optional)",
+    "joiningButton": "Joining...",
+    "rankEyebrow": "Waitlist status",
+    "checkingHeading": "Checking {{schoolName}}...",
+    "rankHeading": "{{schoolName}} is <highlight>#{{rank}}</highlight> on the waitlist.",
+    "signedUpLine_one": "1 student has signed up so far. Here is how to move {{schoolName}} up the list:",
+    "signedUpLine_other": "{{count}} students have signed up so far. Here is how to move {{schoolName}} up the list:",
+    "noOneJoinedDescription": "No one from {{schoolName}} is on the waitlist yet. Join now and get your campus on the board.",
+    "failedHeading": "Help bring DormCheck to {{schoolName}}.",
+    "firstHeading": "Be the first at {{schoolName}}.",
+    "failedLoadingDescription": "We could not load the live standings right now. You can still join, share the link, and loop in your school below.",
+    "leaderboardAriaLabel": "Waitlist leaderboard",
+    "leaderboardYouRow": "{{schoolName}} (you)",
+    "signedUpCount": "{{num}} signed up",
+    "notOnBoardYet": "not on the board yet",
+    "notOnListYetPrompt": "Not on the list yet? Add your school email:",
+    "joinedToast": "You're on the list.",
+    "alreadyOnListToast": "You were already on the list.",
+    "linkCopiedToast": "Link copied.",
+    "copyFailedToast": "Copy failed. Select the link and copy it manually.",
+    "adminNameEmailRequiredToast": "Please add the contact's name and email.",
+    "stepPrefix": "Step {{step}}",
+    "step1Title": "Get your friends to join",
+    "step1Description": "The more students at {{schoolName}} who sign up, the sooner we launch there. Send this link to your group chats:",
+    "shareLinksrOnly": "Share link for {{schoolName}}",
+    "copiedButton": "Copied",
+    "copyLinkButton": "Copy link",
+    "step2Title": "Get your housing office or university admin on board",
+    "step2Description": "When your housing office or university admin backs DormCheck, {{schoolName}} jumps the line and the partnership conversation starts directly. Add a contact and we will draft the email for you. It opens in your mail app, from you, with the DormCheck team cc'd.",
+    "adminNameLabel": "Contact name",
+    "adminNamePlaceholder": "e.g. Jane Doe",
+    "adminRoleLabel": "Role <optional>(optional)</optional>",
+    "adminRolePlaceholder": "e.g. Director of Housing",
+    "adminEmailLabel": "Contact email",
+    "adminEmailPlaceholder": "e.g. housing@school.edu",
+    "sendEmailButton": "Send pre-written email",
+    "preparingEmailButton": "Preparing email...",
+    "emailDraftHelperText": "Opens your mail app with an editable draft. DormCheck is cc'd so the team can follow up on the partnership."
+  }
+}

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<!-- Keychain Sharing: the extension reads the host's Supabase session from
+	     the SHARED keychain group so the /imessage WebView boots signed-in and
+	     can show the user's own groups / saved dorms (see
+	     MessagesViewController.readSharedSupabaseSession). A keychain query
+	     spans ALL of a target's access groups, so listing the host app id here
+	     lets the extension find the item the host wrote to its default group.
+	     This group MUST stay identical across App / AppRelease /
+	     MessagesExtension entitlements. -->
+	<key>keychain-access-groups</key>
+	<array>
+		<string>$(AppIdentifierPrefix)com.dormcheck.ios</string>
+	</array>
+</dict>
+</plist>

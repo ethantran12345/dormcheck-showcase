@@ -1,0 +1,42 @@
+-- Revoke EXECUTE on the three SECURITY DEFINER TRIGGER functions created by
+-- 20260913000000_reaudit_dismissal_survivors.sql, which omitted it.
+--
+-- FOUND BY THE PROCEDURE, NOT BY READING: `get_advisors(security)` was re-run against prod
+-- immediately after applying 20260913000000 (the backend rule's "after each prod step" step)
+-- and returned six new WARNs — all three functions, under both
+-- `anon_security_definer_function_executable` and
+-- `authenticated_security_definer_function_executable`. Nothing else in that apply regressed.
+--
+-- WHY A NEW FILE AND NOT AN EDIT TO 20260913000000: that migration is already applied to
+-- prod. Editing an applied migration in place is gated on an environment inventory, and even
+-- with one it leaves prod and the file describing prod out of step for anyone reading the
+-- history. Expand-only keeps `supabase db reset` and prod converging on the same end state by
+-- replay, which is the property that matters.
+--
+-- THIS IS THE SAME OMISSION THE REPO ALREADY GUARDS AGAINST, TWICE:
+--   * 20260910000000 line 70 revokes EXECUTE on its own trigger function
+--     (`sync_listing_post_type`) in the migration that creates it — the correct pattern,
+--     which is why that function was NOT among the six advisor findings.
+--   * 20260912000000 exists solely to revoke inert SECURITY DEFINER grants, keeping the four
+--     with real callers. These three are precisely that shape and were missed.
+--
+-- INERT, AND REVOKED ANYWAY — the 20260912 principle. Postgres refuses a direct call to a
+-- function returning `trigger` ("trigger functions can only be called as triggers"), so no
+-- caller can reach these through PostgREST and there is no behaviour to change. The grant is
+-- simply attack surface that should never have existed. Trigger execution is unaffected: a
+-- trigger fires as the table owner and does not consult EXECUTE on its function.
+--
+-- Deliberately NOT touched: claim_service_post, complete_service_post and
+-- has_completed_service_between keep `GRANT EXECUTE ... TO authenticated`. They have real
+-- callers (the service-post claim/complete flow and the seller-rating eligibility gate), and
+-- their advisor WARNs are the expected, accepted kind — an RPC that authenticated users are
+-- meant to call. Revoking those would break the feature, which is the failure mode a blanket
+-- sweep of this advisor rule would produce.
+--
+-- Applied to prod 2026-08-06 as `revoke_execute_reaudit_trigger_functions`; verified after
+-- with has_function_privilege: all four trigger functions anon=false/authenticated=false,
+-- all three RPCs anon=false/authenticated=true.
+
+REVOKE EXECUTE ON FUNCTION public.protect_ranking_collaboration_identity() FROM PUBLIC, anon, authenticated;
+REVOKE EXECUTE ON FUNCTION public.protect_group_membership_identity() FROM PUBLIC, anon, authenticated;
+REVOKE EXECUTE ON FUNCTION public.protect_listing_moderation_state() FROM PUBLIC, anon, authenticated;

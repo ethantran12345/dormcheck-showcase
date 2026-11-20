@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Hand-maintained. Public, crawlable URLs only.
+
+  What is deliberately NOT here:
+    · Auth-gated app routes (/my-home, /checklist, /housing, /roommates, /messages,
+      /map, /settings, ...). They resolve to a sign-in redirect for a crawler.
+    · Sign-in surfaces (/auth, /select-school) and /admin.
+    · Redirect-only paths (/features -> /for-students, /how-it-works -> /#how,
+      /guide -> /checklist, and /dorms -> /campus, which is a 308 in vercel.json
+      since the stub page was deleted 2026-08-16). A sitemap should list
+      destinations, not hops — and /campus is auth-gated, so it is not a
+      destination this file can list either.
+    · Data-driven dorm and listing detail pages. There are none that are public
+      today: /housing/:slug and /campus/:dormSlug are auth-gated, and marketplace
+      listings open as a ?listing=<id> modal on /marketplace rather than as their
+      own URL. If those ever go public they need a GENERATED sitemap, not this file.
+
+  lastmod is the last commit date of the page component behind each URL. Update it
+  when you change the page, or drop the element instead of leaving it wrong.
+
+  Route source of truth: src/routes/MarketingRoutes.tsx, src/routes/LegalRoutes.tsx,
+  src/routes/AppRoutes.tsx, src/routes/guestPaths.ts.
+-->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://dormcheck.com/</loc>
+    <lastmod>2026-07-21</lastmod>
+  </url>
+  <url>
+    <loc>https://dormcheck.com/for-students</loc>
+    <lastmod>2026-07-28</lastmod>
+  </url>
+  <url>
+    <loc>https://dormcheck.com/for-universities</loc>
+    <lastmod>2026-08-02</lastmod>
+  </url>
+  <url>
+    <loc>https://dormcheck.com/partners</loc>
+    <lastmod>2026-07-28</lastmod>
+  </url>
+  <url>
+    <loc>https://dormcheck.com/about</loc>
+    <lastmod>2026-08-05</lastmod>
+  </url>
+  <url>
+    <loc>https://dormcheck.com/ads</loc>
+    <lastmod>2026-07-29</lastmod>
+  </url>
+  <url>
+    <loc>https://dormcheck.com/contact</loc>
+    <lastmod>2026-07-28</lastmod>
+  </url>
+  <url>
+    <loc>https://dormcheck.com/feedback</loc>
+    <lastmod>2026-07-29</lastmod>
+  </url>
+  <url>
+    <loc>https://dormcheck.com/waitlist</loc>
+    <lastmod>2026-07-21</lastmod>
+  </url>
+  <url>
+    <loc>https://dormcheck.com/marketplace</loc>
+    <lastmod>2026-07-29</lastmod>
+  </url>
+  <url>
+    <loc>https://dormcheck.com/privacy</loc>
+    <lastmod>2026-07-29</lastmod>
+  </url>
+  <url>
+    <loc>https://dormcheck.com/terms</loc>
+    <lastmod>2026-08-01</lastmod>
+  </url>
+  <url>
+    <loc>https://dormcheck.com/moderation</loc>
+    <lastmod>2026-08-01</lastmod>
+  </url>
+  <url>
+    <loc>https://dormcheck.com/licenses</loc>
+    <lastmod>2026-07-29</lastmod>
+  </url>
+  <url>
+    <loc>https://dormcheck.com/delete-account</loc>
+    <lastmod>2026-07-29</lastmod>
+  </url>
+</urlset>

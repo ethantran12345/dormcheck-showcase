@@ -1,0 +1,1052 @@
+/* Self-hosted (CSP style-src is 'self' — no fonts.googleapis.com/fonts.gstatic.com).
+   Each family is a variable font; one file covers its whole weight range per subset.
+   Weights/styles mirror what the app actually uses (see tailwind.config.ts font-sans/display/serif/wordmark). */
+@font-face {
+  font-family: 'Nunito';
+  font-style: normal;
+  font-weight: 400 900;
+  font-display: swap;
+  src: url('/fonts/nunito-latin.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: 'Nunito';
+  font-style: normal;
+  font-weight: 400 900;
+  font-display: swap;
+  src: url('/fonts/nunito-latin-ext.woff2') format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+@font-face {
+  font-family: 'Fraunces';
+  font-style: normal;
+  font-weight: 400 600;
+  font-display: swap;
+  src: url('/fonts/fraunces-latin.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: 'Fraunces';
+  font-style: normal;
+  font-weight: 400 600;
+  font-display: swap;
+  src: url('/fonts/fraunces-latin-ext.woff2') format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: 'Fraunces';
+  font-style: italic;
+  font-weight: 400 500;
+  font-display: swap;
+  src: url('/fonts/fraunces-italic-latin.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: 'Fraunces';
+  font-style: italic;
+  font-weight: 400 500;
+  font-display: swap;
+  src: url('/fonts/fraunces-italic-latin-ext.woff2') format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+@font-face {
+  font-family: 'Jost';
+  font-style: normal;
+  font-weight: 400 700;
+  font-display: swap;
+  src: url('/fonts/jost-latin.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: 'Jost';
+  font-style: normal;
+  font-weight: 400 700;
+  font-display: swap;
+  src: url('/fonts/jost-latin-ext.woff2') format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+@font-face {
+  font-family: 'Sora';
+  font-style: normal;
+  font-weight: 500 800;
+  font-display: swap;
+  src: url('/fonts/sora-latin.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: 'Sora';
+  font-style: normal;
+  font-weight: 500 800;
+  font-display: swap;
+  src: url('/fonts/sora-latin-ext.woff2') format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+  /* Hide scrollbars but keep touch/drag scroll (category pills, horizontal chips) */
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Marketing canvas: set on <html> while a marketing page is mounted (see
+     useMarketingCanvas in components/marketing/landing/atmosphere.tsx). The
+     overscroll / rubber-band area is painted from the ROOT element, not from
+     the page div that carries `bg-tint-50`, so without this, scrolling past
+     the top of the landing page reveals the app's white. */
+  .marketing-canvas {
+    @apply bg-tint-50;
+  }
+}
+
+/* ---------------------------------------------------------------------------
+   TWEAKABLE TOKEN INDIRECTION (2026-07-31)
+
+   These custom properties were promoted out of build-time constants so a value
+   can be changed at RUNTIME without rebuilding: the dev-only Tweaks panel
+   (src/dev/tweaks/, DEV-only, absent from production) writes them on :root and
+   the whole app re-renders through the same token layer it already used. There
+   is no parallel styling path — every one of these is consumed by
+   tailwind.config.ts or by the marketing token module, not by bespoke CSS.
+
+   Every default below is EXACTLY the value it replaced, so shipping this
+   indirection changes nothing on its own. Sources:
+     --font-heading      tailwind.config.ts fontFamily.serif (Fraunces stack)
+     --type-*            src/components/marketing/landing/tokens.ts TYPE
+     --radius-*          src/design/tokens.json radius.{control,card,editorial}
+     --dur-* / --ease    landing/tokens.ts DUR + EASE_CSS
+     --reveal-distance   Reveal.tsx's translate-y-6 (1.5rem)
+     --density           NEW: a root font-size multiplier (see below)
+   --------------------------------------------------------------------------- */
+:root {
+  /* Heading family. Drives Tailwind's `font-serif`, which is what every
+     marketing headline uses — the surface where the four families compete. */
+  --font-heading: Fraunces;
+
+  /* Type scale. The clamps are the originals; the multiplier is the knob. */
+  --type-scale: 1;
+  --type-display: calc(clamp(44px, 6vw, 80px) * var(--type-scale));
+  --type-h2: calc(clamp(34px, 4.4vw, 52px) * var(--type-scale));
+  --type-h3: calc(clamp(26px, 3.2vw, 36px) * var(--type-scale));
+  --type-statement: calc(clamp(48px, 8vw, 104px) * var(--type-scale));
+
+  /* Semantic radius tiers. Deliberately in px, NOT rem, so the density knob
+     below cannot silently round every corner as a side effect. */
+  --radius-scale: 1;
+  --radius-control: calc(12px * var(--radius-scale));
+  --radius-card: calc(16px * var(--radius-scale));
+  --radius-editorial: calc(24px * var(--radius-scale));
+
+  /* Motion. Consumed as CSS strings by Reveal + any CSS transition. The
+     reduced-motion rules below still carry `!important`, so these can be
+     turned up freely and a Reduce Motion user is unaffected. */
+  --dur-fast: 0.35s;
+  --dur-base: 0.7s;
+  --dur-slow: 1s;
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+  --reveal-distance: 1.5rem;
+
+  /* Density. Tailwind's spacing scale compiles to literal rem values, so there
+     is no per-utility hook to intercept — the only honest lever is the root
+     font size every one of those rems resolves against. */
+  --density: 1;
+}
+
+html {
+  font-size: calc(100% * var(--density));
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+/* WCAG 2.3.3: neutralize CSS animations/transitions for Reduce Motion users.
+   Two triggers, so the in-app Accessibility toggle can override the OS both ways
+   (see src/lib/accessibility.ts / AccessibilityContext):
+     - OS `prefers-reduced-motion: reduce`, UNLESS the user explicitly opted out
+       (`html.motion-safe-override`);
+     - explicit in-app opt-in (`html.reduce-motion`), regardless of the OS.
+   framer-motion is covered separately by <MotionConfig> in App.tsx (A11yMotionConfig).
+
+   Scope: DECORATIVE motion only. Animations are killed outright, and transitions are
+   narrowed to the non-vestibular properties (opacity/color/fill/stroke/shadow) at a
+   normal duration — so movement, growth, and travel stop dead while state-change
+   FEEDBACK survives: a checkbox tick, a progress fill's color, a focus ring, a
+   disabled fade. A blanket `transition-duration: 0.01ms` erased that confirmation
+   too, which is a comprehension loss, not a motion fix. */
+@media (prefers-reduced-motion: reduce) {
+  html:not(.motion-safe-override) *,
+  html:not(.motion-safe-override) *::before,
+  html:not(.motion-safe-override) *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-property: opacity, color, background-color, border-color, fill, stroke,
+      box-shadow, outline-color !important;
+    transition-duration: 150ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+html.reduce-motion *,
+html.reduce-motion *::before,
+html.reduce-motion *::after {
+  animation-duration: 0.01ms !important;
+  animation-iteration-count: 1 !important;
+  transition-property: opacity, color, background-color, border-color, fill, stroke,
+    box-shadow, outline-color !important;
+  transition-duration: 150ms !important;
+  scroll-behavior: auto !important;
+}
+
+/* View Transitions (src/lib/viewTransition.ts). Two moments only:
+   - a top-level route change crossfades the page. The default root crossfade
+     blends with plus-lighter, so chrome that did not change (sidebar, bottom nav)
+     stays pixel-still and only the content visibly swaps. Half of --dur-fast,
+     because the browser holds input for the length of the transition and the
+     route entrance is deliberately short (ROUTE_ENTRANCE_SECONDS, src/lib/motion.ts);
+   - a listing card's photo travels into the detail view's hero and back, at
+     --dur-fast, the old framer zoom's speed.
+   Both ride --ease. Reduced motion skips the transition in JS; the rules below
+   make sure a stray one can never animate either. */
+:root[data-view-transition="route"]::view-transition-old(root),
+:root[data-view-transition="route"]::view-transition-new(root) {
+  animation-duration: calc(var(--dur-fast) / 2);
+  animation-timing-function: var(--ease);
+}
+:root[data-view-transition^="listing"]::view-transition-group(*),
+:root[data-view-transition^="listing"]::view-transition-old(root),
+:root[data-view-transition^="listing"]::view-transition-new(root) {
+  animation-duration: var(--dur-fast);
+  animation-timing-function: var(--ease);
+}
+/* Card (square, cover) and hero (taller, cover) differ in shape: crop, never squash. */
+::view-transition-old(dc-listing-photo),
+::view-transition-new(dc-listing-photo) {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  overflow: clip;
+}
+@media (prefers-reduced-motion: reduce) {
+  html:not(.motion-safe-override)::view-transition-group(*),
+  html:not(.motion-safe-override)::view-transition-old(*),
+  html:not(.motion-safe-override)::view-transition-new(*) {
+    animation: none !important;
+  }
+}
+html.reduce-motion::view-transition-group(*),
+html.reduce-motion::view-transition-old(*),
+html.reduce-motion::view-transition-new(*) {
+  animation: none !important;
+}
+
+/* Radix scroll-lock: beat react-remove-scroll-bar margin compensation without disabling overflow:hidden */
+html body[data-scroll-locked] {
+  margin-right: 0 !important;
+}
+
+@media (pointer: fine) {
+  html {
+    scrollbar-gutter: stable;
+  }
+}
+
+@layer base {
+  :root {
+    /* DormCheck brand (dormcheck.brand) - #03C03C */
+    --dormcheck-brand: 139 97% 38%;
+    /* #0CDB4A = malachite-500 - pairs with tailwind dormcheck.brand-light.
+       Was #34A853, which is Google brand green to the byte and is also rendered
+       verbatim by Auth.tsx's Sign-in-with-Google mark: two brands, same pixels,
+       same screen. Now derived one step up our own ramp from #03C03C. */
+    --dormcheck-brand-light: 139 90% 45%;
+    --dormcheck-brand-dark: 139 90% 28%;
+    --dormcheck-slate: 200 38% 27%;
+    --dormcheck-slate-light: 200 30% 40%;
+    
+    /* Light Theme - Adaptive Variables */
+    /* Pure white page canvas (native app + web); cards read as elevated via
+       their shadow/border rather than a background color contrast. */
+    --background: 0 0% 100%;
+    --foreground: 222 84% 3%;
+    --card: 0 0% 100%;
+    --card-foreground: 222 84% 3%;
+    /* stone ramp (between stone-50 and stone-100). Warm re-anchor 2026-07-27
+       (was 210 22% 97%, cool). Same value/defect as --accent below — a hover
+       fill has to sit warm inside a warm --border. Lightness unchanged at 97%. */
+    --card-hover: 40 12% 97%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 222 84% 3%;
+
+    /* WCAG AA (2026-07): primary interactive = malachite-800 (#0B702B, 6.3:1 w/ white text).
+       Brand #03C03C stays in --dormcheck-brand / malachite-600 for accents, icons, active states. */
+    --primary: 139 82% 24%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 200 38% 27%;
+    --secondary-foreground: 0 0% 100%;
+
+    /* stone-100 (#f6f5f4). Warm re-anchor 2026-07-27 (was 210 16% 96%, cool
+       blue-gray). The 7.1 pass warmed the hairlines (--border/--input) and the
+       muted TEXT, but left the FILL tokens cool, so a muted chip sat cool inside
+       a warm border. Lightness is UNCHANGED at 96% — a pure hue rotation, which
+       cannot move any contrast ratio (this is what kept 7.1 axe-clean). */
+    --muted: 40 12% 96%;
+    /* stone-500 (#756c61). Warm re-anchor 2026-07-27 (was 210 12% 40%, cool
+       blue-gray at 4.7:1). The stone ramp's 500 is DELIBERATELY darker than
+       stock Tailwind stone-500 precisely so it clears AA on the green-tinted
+       --page: 5.15:1 on white, 4.85:1 on --page. Warming this token RAISES
+       its contrast; see tokens.json stone-500 and do not lighten it. */
+    --muted-foreground: 34 9% 42%;
+
+    /* Dashboard canvas: a barely-green near-white so white cards float on a
+       brand-tinted surface (My Home "campus-warm" identity, 2026-07-16). */
+    --page: 140 27% 97%;
+
+    /* stone ramp (between stone-50 and stone-100). Warm re-anchor 2026-07-27
+       (was 210 22% 97%, cool). Companion to --muted above; lightness unchanged
+       at 97%, hue 40 to match --border/--input rather than stone's brown-lean. */
+    --accent: 40 12% 97%;
+    --accent-foreground: 222 84% 3%;
+
+    /* red-700-class: 6.3:1 with white text, 5.9:1 as text on the tinted background (was 0 84% 60%, 3.8:1). */
+    --destructive: 0 74% 42%;
+    --destructive-foreground: 0 0% 100%;
+
+    /* stone-200 (#e8e6e3). Warm re-anchor 2026-07-27 (was 214 16% 90%, hue 214
+       = cool blue). Phase 1's codemod swept Tailwind utility CLASSES but never
+       these custom-property DEFINITIONS, so every hairline in the app stayed
+       slate on a warm-stone system — the same miss Defect A recorded for the
+       shadows. Lightness is UNCHANGED at 90%, so this is a pure hue rotation
+       and cannot move any contrast ratio. Hue is 40, not the ~26 of the shadow
+       tokens, because tokens.json nudges the light end of the ramp off stone's
+       brown-lean to a true warm gray — 26 at 90% lightness reads beige. */
+    --border: 40 10% 90%;
+    --input: 40 10% 90%;
+    /* malachite-700: focus indicators need 3:1 against white (1.4.11); #03C03C is 2.4:1. */
+    --ring: 138 92% 29%;
+
+    --radius: 1rem;
+
+    /* Custom Gradients - brand: warm near-black → forest → logo green (#03C03C).
+       Anchor was Tailwind slate-900 (#0f172a) - the cool navy people point at as
+       "AI-generated". Now stone-950 (warm near-black) via token ref, no raw hex.
+       Inherited by .dark (not redefined there). */
+    --gradient-brand-anchor: 24 14% 4%; /* stone-950 */
+    --gradient-brand: linear-gradient(to right, hsl(var(--gradient-brand-anchor)) 0%, hsl(var(--dormcheck-brand-dark)) 50%, hsl(var(--dormcheck-brand)) 100%);
+    --gradient-brand-cta: linear-gradient(to right, hsl(var(--gradient-brand-anchor)), hsl(var(--dormcheck-brand)));
+    /* stop 2 warm re-anchored 2026-07-27 (was hsl(200 14% 98%), cool); lightness unchanged. */
+    --gradient-card: linear-gradient(180deg, hsl(0 0% 100%) 0%, hsl(40 12% 98%) 100%);
+    --gradient-glow: radial-gradient(ellipse at center, hsl(139 97% 38% / 0.1) 0%, transparent 70%);
+    
+    /* Shadows - Light Mode.
+       Phase 1.8 (2026-07-20): re-anchored on the WARM stone ramp. The three
+       neutral shadows previously used a cool Tailwind-slate hue (~215) — the exact
+       cool neutral this redesign removed from text/borders — so every card cast a
+       blue-gray shadow onto the green-tinted --page. Phase 1's codemod swept slate
+       *classes* but not colour living in CSS custom-property *definitions*; this
+       fixes that. The colour lives once in --shadow-color (the gradient-brand-anchor
+       pattern) so the tokens carry NO raw hsl triple; hue 26 ≈ stone-700, lightness
+       tuned to preserve the original shadow weight. --shadow-brand is malachite and
+       is deliberately left alone. Dark-mode shadows (below) are already neutral
+       hsl(0 0% 0%) and are NOT touched. */
+    --shadow-color: 26 12% 24%; /* warm stone shadow anchor (~stone-700, hue 26); replaces the cool slate hue (~215) */
+    --shadow-card: 0 1px 3px 0 hsl(var(--shadow-color) / 0.06), 0 6px 16px -4px hsl(var(--shadow-color) / 0.10);
+    --shadow-brand: 0 4px 14px -3px hsl(139 97% 38% / 0.25);
+    --shadow-elevated: 0 4px 12px -2px hsl(var(--shadow-color) / 0.10), 0 18px 36px -10px hsl(var(--shadow-color) / 0.16);
+    --shadow-soft: 0 2px 10px -2px hsl(var(--shadow-color) / 0.10);
+
+    --sidebar-background: 0 0% 100%;
+    /* stone-700 hue/sat with lightness nudged 24% -> 22%. This is sidebar NAV
+       TEXT and it sat cool (was 210 29% 24%) on the sidebar chrome that 7.1b
+       warmed (--sidebar-accent, --sidebar-border) - warm-a-subset is worse than
+       warm-none. Unlike the low-sat FILL sweeps, rotating hue at 29% sat MOVES
+       relative luminance, so the lightness drop is contrast work, not taste:
+       AA vs white 11.12 -> 11.54, vs --sidebar-accent 10.22 -> 10.61 (both up). */
+    --sidebar-foreground: 30 11% 22%;
+    --sidebar-primary: 139 82% 24%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    /* stone-100, same warm re-anchor as --accent (was 200 14% 96%, hue 200).
+       Separate token, same straggler pattern as --sidebar-border in 7.1.
+       Lightness unchanged at 96%. */
+    --sidebar-accent: 40 12% 96%;
+    /* Same value + same reason as --sidebar-foreground: this is the nav text of
+       the ACTIVE item, rendered directly on --sidebar-accent (40 12% 96%). */
+    --sidebar-accent-foreground: 30 11% 22%;
+    /* stone ramp, same warm re-anchor as --border (was 200 13% 91%, hue 200).
+       Found by hue-scanning the rendered DOM after the --border swap: this is a
+       SEPARATE token, so the desktop sidebar's divider stayed cool while every
+       other hairline went warm. Lightness unchanged at 91%. */
+    --sidebar-border: 40 10% 91%;
+    --sidebar-ring: 138 92% 29%;
+  }
+
+  /* Web (desktop + mobile web) light-mode canvas is plain white.
+     Platform class is set once in main.tsx (platform-web / platform-native). */
+  html.platform-web:not(.dark) {
+    --background: 0 0% 100%;
+  }
+
+  /* Native shell (iOS + Android apps): a subtle warm off-white canvas so the
+     pure-white cards (--card) visibly float instead of blending into a white
+     page. Kept faint (97% L, low saturation) so it reads as "clean," not gray.
+     Warm re-anchor 2026-07-27 (was 214 20% 97%, hue 214 = cool blue): this is
+     the single largest fill in the iOS app, and it stayed cool through the 7.1
+     hairline pass — every warm card border sat on a cool canvas. Lightness
+     unchanged at 97%. Web stays pure white above; dark mode + native-auth-canvas
+     unaffected. */
+  html.platform-native:not(.dark) {
+    --background: 40 12% 97%;
+  }
+
+  /* Native shell: suppress the iOS long-press link callout/preview on in-app
+     links (e.g. BottomNav tabs). Pairs with ios.allowsLinkPreview: false in
+     capacitor.config.ts. Native-only - web keeps normal link behavior. */
+  html.platform-native a {
+    -webkit-touch-callout: none;
+  }
+
+  /* Native auth screen: pure-white canvas so the iOS overscroll rubber-band
+     never reveals the green-tinted app background, and no bounce so the page
+     stays fixed. Toggled by Auth.tsx while mounted (native only); the keyboard
+     inset shift (--keyboard-height padding) is unaffected. */
+  /* Selector carries .platform-native so it out-specifies the native off-white
+     canvas rule above (equal specificity, later in source → wins) and the auth
+     screen stays pure white. */
+  html.platform-native.native-auth-canvas {
+    --background: 0 0% 100%;
+  }
+  html.native-auth-canvas,
+  html.native-auth-canvas body {
+    overscroll-behavior: none;
+  }
+
+  .dark {
+    /* Brand tokens unchanged in dark mode */
+    --dormcheck-brand: 139 97% 38%;
+    --dormcheck-brand-light: 139 90% 45%;
+    --dormcheck-brand-dark: 139 90% 28%;
+    --dormcheck-slate: 200 38% 27%;
+    --dormcheck-slate-light: 200 30% 40%;
+
+    /* Near-neutral dark (Phase 1.6, 2026-07-20 — REVERSES the 2026-07-20 "warm
+       dark" experiment). Rule: WARM in light, NEAR-NEUTRAL (faintly cool, hue
+       ~222) in dark. A hue-30 neutral at ~12% saturation is invisible at 97%
+       lightness (light mode is fine) but reads as unmistakable BROWN/sepia at
+       7-16% lightness — so dark got a brown cast. Light and dark do NOT need a
+       shared hue; the brand green + structure carry identity. Saturation is cut
+       hard and hue shifted slightly cool; lightness steps are unchanged so
+       contrast/AA is preserved. Foregrounds go near-white (were cream, hue 40,
+       which read brown-on-brown). --background must match THEME_COLOR_DARK in
+       src/lib/theme.ts. */
+    /* SURFACE LADDER (Phase 1.7, 2026-07-22 — fixes the "flat dark" complaint).
+       Four VISIBLY distinct lightness steps so depth reads without relying on
+       borders alone. The prior palette collapsed at the top: --popover was
+       IDENTICAL to --card (both 11%), so overlays/menus never separated from the
+       cards they float over. Steps now: page 4% < background 7% < card 12% <
+       popover 16%. Hue held at 222 (faintly cool), saturation low — near-neutral,
+       NEVER the brown/sepia cast of the reverted "warm dark" experiment.
+       --background stays 7% so it matches THEME_COLOR_DARK (#101114) in
+       src/lib/theme.ts unchanged. */
+    --background: 222 12% 7%;
+    --foreground: 220 10% 97%;
+    --card: 222 12% 12%;
+    --card-foreground: 220 10% 97%;
+    --card-hover: 222 11% 15%;
+
+    /* Elevated above --card now (was equal at 11%) so popovers/menus/dialogs
+       read as floating. Highest neutral surface in the ladder. */
+    --popover: 222 12% 16%;
+    --popover-foreground: 220 10% 97%;
+
+    /* Phase 1.6 split: light --primary stays malachite-800 (:root, unchanged);
+       in dark it brightens to the brand malachite-600 (#03C03C) so a primary
+       button reads as a bright accent, not a dark-green blob, and `text-primary`
+       clears AA on the dark canvas. A bright green fill needs DARK text: white on
+       #03C03C is ~2.4:1 (fail), near-black is ~7.3:1 (pass) — so the foreground
+       goes near-black here (was white). */
+    --primary: 139 97% 38%;
+    --primary-foreground: 222 20% 9%;
+
+    --secondary: 222 10% 18%;
+    --secondary-foreground: 220 10% 97%;
+
+    --muted: 222 10% 15%;
+    --muted-foreground: 220 8% 72%;
+
+    /* Dashboard canvas — DEEPEST rung of the ladder (below --background) so the
+       app-shell background reads as lifted above the page and cards float higher
+       still. Faintly cool, never warm. */
+    --page: 222 14% 4%;
+
+    --accent: 222 10% 18%;
+    --accent-foreground: 220 10% 97%;
+
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 220 10% 97%;
+
+    /* Border brightened (was 9% 20%) for a hairline that actually reads against
+       the lifted card/popover surfaces. Ring goes bright malachite so keyboard
+       focus is unmistakable on the dark canvas (was a dim 29% green). */
+    --border: 222 10% 22%;
+    --input: 222 10% 21%;
+    --ring: 139 90% 45%;
+
+    /* Same token-referenced brand gradient as light (anchor inherited from :root). */
+    --gradient-brand: linear-gradient(to right, hsl(var(--gradient-brand-anchor)) 0%, hsl(var(--dormcheck-brand-dark)) 50%, hsl(var(--dormcheck-brand)) 100%);
+    --gradient-brand-cta: linear-gradient(to right, hsl(var(--gradient-brand-anchor)), hsl(var(--dormcheck-brand)));
+    --gradient-card: linear-gradient(180deg, hsl(222 12% 12%) 0%, hsl(222 11% 14%) 100%);
+    --gradient-glow: radial-gradient(ellipse at center, hsl(139 97% 38% / 0.12) 0%, transparent 70%);
+
+    --shadow-card: 0 1px 3px 0 hsl(0 0% 0% / 0.4), 0 6px 16px -4px hsl(0 0% 0% / 0.45);
+    --shadow-brand: 0 4px 14px -3px hsl(139 97% 38% / 0.35);
+    --shadow-elevated: 0 10px 25px -5px hsl(0 0% 0% / 0.5), 0 8px 10px -6px hsl(0 0% 0% / 0.4);
+    --shadow-soft: 0 2px 8px -2px hsl(0 0% 0% / 0.45);
+
+    --sidebar-background: 222 12% 8%;
+    --sidebar-foreground: 220 10% 97%;
+    --sidebar-primary: 139 82% 24%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 222 10% 15%;
+    --sidebar-accent-foreground: 220 10% 97%;
+    --sidebar-border: 222 9% 18%;
+    --sidebar-ring: 138 92% 29%;
+  }
+
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    @apply bg-background;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: 'Nunito', system-ui, sans-serif;
+  }
+
+  /* Hide the Mapbox logo on the small dorm preview map (attribution is already off). */
+  .dorm-mini-map .mapboxgl-ctrl-logo,
+  .dorm-mini-map .mapboxgl-ctrl-attrib {
+    display: none !important;
+  }
+
+  /* Safe-area top lives on the app ROOT, not the body. Radix/vaul scroll-lock the
+     body when a drawer/sheet opens (overflow:hidden / position:fixed), and having
+     the safe-area padding on that locked element shifts the whole page up by ~one
+     safe-area as it opens. #root is a child of body, so the lock can't disturb it
+ - same visual result, no jump. */
+  #root {
+    padding-top: env(safe-area-inset-top);
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Nunito', system-ui, sans-serif;
+    font-weight: 700;
+    /* Display type is set slightly tight (−0.02em) so Nunito's rounded letters read as a
+       deliberate unit; body text is left at normal tracking (never negative) for legibility. */
+    letter-spacing: -0.02em;
+    @apply text-foreground;
+  }
+
+  /*
+   * TYPOGRAPHIC RHYTHM — Identity P6. This is the ONE global lever for line-length
+   * variation, and it is deliberately the *only* thing P6 changes at the root.
+   *
+   * NOT IN SCOPE, ever: the four families (Fraunces / Jost / Nunito / Sora) and the
+   * weight scale. They are the strongest part of the system; re-opening them is an
+   * explicit spec non-goal. P6 is measure, leading and spacing only.
+   *
+   * WHY text-wrap. Before this, every heading broke wherever the box happened to end,
+   * so a two-line title routinely read as a full line plus one orphaned word - the
+   * flattest possible rhythm, and the thing that makes a screen look auto-laid-out.
+   * `balance` redistributes a heading's words across the SAME number of lines (the UA
+   * caps it around 4-6 lines, so it never touches long-form body copy), and `pretty`
+   * only pulls back paragraph orphans. Neither changes the box height, so this is a
+   * pure typographic win with no layout risk - which is why it can live in base.
+   *
+   * Progressive enhancement: unsupported engines simply keep today's greedy wrapping.
+   * Line-height stays with the Tailwind `text-*`/`leading-*` utilities at the call
+   * site (utilities outrank this layer) - we do NOT set a competing heading leading
+   * scale here, because a base rule that silently loses to every `text-xl` would be a
+   * rule nobody can reason about.
+   */
+  h1, h2, h3, h4, h5, h6 {
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+}
+
+@layer components {
+  /* Glass Card */
+  .glass-card {
+    @apply bg-card rounded-2xl border border-border;
+    box-shadow: var(--shadow-soft);
+  }
+
+  /* Match Badge - Glassmorphism for inside images */
+  .match-badge {
+    @apply bg-dormcheck-slate/10 text-dormcheck-slate border border-dormcheck-slate/20;
+  }
+
+  .match-badge-glass {
+    @apply bg-black/40 backdrop-blur-sm text-white border-0;
+  }
+
+  /* Brand Glow */
+  .brand-glow {
+    box-shadow: var(--shadow-brand);
+  }
+
+  /*
+   * Liquid-Glass nav chrome material — CLEAR glass, not frosted. The glass read comes from
+   * the specular rim + sheen on the element's classes, not from blur: only a hair of blur
+   * remains for legibility, and the milky tint is low at rest. Owns backdrop-filter +
+   * background so it can react to scroll via runtime CSS custom properties (set inline when
+   * "engaged"); with clear glass, engaging means MORE TINT (opacity), never more blur.
+   * Border, shadow, radius stay on the element's classes.
+   */
+  .glass-chrome {
+    background-color: hsl(var(--background) / var(--glass-opacity, 0.35));
+    backdrop-filter: blur(var(--glass-blur, 5px)) saturate(var(--glass-saturate, 1.4));
+    -webkit-backdrop-filter: blur(var(--glass-blur, 5px)) saturate(var(--glass-saturate, 1.4));
+    transition:
+      background-color 200ms cubic-bezier(0.32, 0.72, 0, 1),
+      backdrop-filter 200ms cubic-bezier(0.32, 0.72, 0, 1),
+      -webkit-backdrop-filter 200ms cubic-bezier(0.32, 0.72, 0, 1);
+  }
+
+  /*
+   * Accessibility parity (Apple requires this of Liquid Glass adopters). Media Queries L5,
+   * Safari/iOS 17.4+ - a progressive enhancement: older iOS never matches and keeps glass.
+   * Reads straight from the OS via WebKit; NOT gated on Capacitor (web users get it too).
+   */
+  @media (prefers-reduced-transparency: reduce) {
+    .glass-chrome {
+      backdrop-filter: none !important;
+      -webkit-backdrop-filter: none !important;
+      background-color: hsl(var(--background)) !important;
+      border-color: hsl(var(--border)) !important;
+      box-shadow: none !important;
+    }
+  }
+
+  /* Wordmark standard changed 2026-07-12: Sora - a squarish, structured face, decoupled from
+     the display/heading token (Jost read too round/body-like on the mark; Jost itself replaced
+     the never-shipped Windows-only Ebrima standard). Sora is SIL Open Font License, loaded via
+     the Google Fonts @import, so it renders on every device. Rendered at font-bold (700) for
+     wordmark presence (800 also imported if the mark needs more weight). Solid slate, no gradient. */
+  .brand-wordmark {
+    @apply font-wordmark font-bold tracking-[-0.01em] text-stone-900;
+  }
+  .dark .brand-wordmark {
+    @apply text-foreground;
+  }
+
+  .text-gradient-brand {
+    @apply brand-wordmark;
+  }
+
+  /* (Hero-only .aurora glow retired 2026-07-12: the page-spanning AuroraField
+     in src/components/marketing/landing/atmosphere.tsx replaced it.) */
+
+  /* Bottom nav: solid fixed bar, mobile only - high z-index so content clips beneath it */
+  .bottom-nav-container {
+    @apply fixed bottom-0 left-0 right-0 w-full bg-background border-t border-border z-[9999] md:hidden;
+    padding-bottom: max(1rem, env(safe-area-inset-bottom));
+  }
+
+  /* Spacer to reserve height above fixed bottom nav for strict mobile layouts */
+  .bottom-nav-spacer {
+    height: calc(44px + 12px + max(1rem, env(safe-area-inset-bottom)));
+  }
+
+  /* Bottom Navigation - full-width bar */
+  .bottom-nav {
+    @apply w-full flex justify-around items-center;
+  }
+
+  /* Navigation Items */
+  .nav-item {
+    @apply flex flex-col items-center gap-0.5 py-2 px-2 sm:px-3 transition-all duration-300;
+  }
+
+  .nav-item.active {
+    @apply text-primary;
+  }
+
+  /* Ensure the Roommates page content doesn't overlap the nav island */
+  .roommates-container {
+    z-index: 1;
+    padding-bottom: 8rem; /* pb-32: safety zone above floating bottom nav (~88px island + buffer) */
+  }
+
+  /* Badge Styles - Light Theme */
+  .badge-available {
+    @apply bg-malachite-600/10 text-malachite-600 border border-malachite-600/20;
+  }
+
+  .badge-suite {
+    @apply bg-primary/10 text-primary border border-primary/20;
+  }
+
+  .badge-highrise {
+    @apply bg-dormcheck-slate/20 text-amber-700 border border-dormcheck-slate/30;
+  }
+
+  /* Background Atmosphere */
+  .bg-atmosphere {
+    position: relative;
+  }
+  
+  .bg-atmosphere::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 500px;
+    background: radial-gradient(ellipse 80% 50% at 50% -20%, hsl(139 97% 38% / 0.04), transparent),
+                radial-gradient(ellipse 60% 40% at 80% 10%, hsl(200 38% 27% / 0.06), transparent);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* Snooze Bar */
+  .snooze-bar {
+    @apply h-3 rounded-full overflow-hidden bg-secondary;
+  }
+
+  /* The fill is laid out at FULL width and revealed with scaleX, rather than
+     animated from width 0 -> N%. Animating width runs layout on every frame;
+     a transform is composited and never touches layout.
+
+     `transform-origin: left` is what makes it grow from the left edge instead
+     of the centre — without it the swap is visibly wrong.
+
+     The gradient renders identically either way, which is the part worth
+     writing down: under `width: 30%` the two colour stops already spanned only
+     that 30%, so `scaleX(0.3)` on a full-width box compresses the same ramp by
+     the same amount. No background-size compensation is needed here.
+
+     The rounded cap needs no special handling either: the parent `.snooze-bar`
+     is `overflow-hidden` with a pill radius, so it clips the fill. */
+  .snooze-bar::after {
+    content: '';
+    display: block;
+    height: 100%;
+    width: 100%;
+    background: linear-gradient(90deg, hsl(var(--dormcheck-brand)), hsl(var(--dormcheck-slate)));
+    border-radius: 9999px;
+    transform-origin: left center;
+    transform: scaleX(var(--progress-scale, 0));
+    transition: transform 0.5s ease;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .snooze-bar::after {
+      transition: none;
+    }
+  }
+
+  /* Section Gray Background */
+  .section-gray {
+    @apply bg-stone-50;
+  }
+  .dark .section-gray {
+    @apply bg-muted;
+  }
+
+  /* Favorite heart - vibrant pink (#FF6B6B) when saved/active */
+  .heart-favorite {
+    color: #FF6B6B !important;
+    fill: #FF6B6B !important;
+  }
+}
+
+@layer utilities {
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Thin scrollbar for listings panel (50/50 split) */
+  .scrollbar-thin {
+    scrollbar-width: thin;
+    scrollbar-color: rgb(226 232 240) transparent;
+  }
+  .scrollbar-thin::-webkit-scrollbar {
+    width: 6px;
+  }
+  .scrollbar-thin::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  .scrollbar-thin::-webkit-scrollbar-thumb {
+    background-color: rgb(226 232 240);
+    border-radius: 3px;
+  }
+  .dark .scrollbar-thin {
+    scrollbar-color: rgb(51 65 85) transparent;
+  }
+  .dark .scrollbar-thin::-webkit-scrollbar-thumb {
+    background-color: rgb(51 65 85);
+  }
+
+  @keyframes fade-in {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  @keyframes scale-in {
+    from { 
+      opacity: 0; 
+      transform: scale(0.95);
+    }
+    to { 
+      opacity: 1; 
+      transform: scale(1);
+    }
+  }
+
+  .animate-fade-in {
+    animation: fade-in 0.3s ease-out;
+  }
+
+  .animate-scale-in {
+    animation: scale-in 0.3s ease-out both;
+  }
+}
+
+/* Sonner toast: bottom-center with mb-28 on mobile (Floating Nav Island); top-right on desktop */
+/* top offset clears fixed navbar (h-12 = 3rem) so banner is not clipped */
+@media (min-width: 768px) {
+  [data-sonner-toaster] {
+    top: 4rem !important; /* 3rem navbar + 1rem gap */
+    bottom: auto !important;
+    left: auto !important;
+    right: 1rem !important;
+    transform: none !important;
+  }
+}
+
+/* Mapbox popup: transparent container so custom card (map-popup-wrap) shows correctly */
+.mapboxgl-popup-content {
+  padding: 0 !important;
+  border-radius: 12px !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+.mapboxgl-popup-tip {
+  border-top-color: hsl(var(--popover)) !important;
+}
+
+/* Custom map popup content (JS-created or setHTML) */
+.map-popup-wrap {
+  background: hsl(var(--popover));
+  color: hsl(var(--popover-foreground));
+  border: 1px solid hsl(var(--border));
+  box-shadow: var(--shadow-elevated);
+}
+
+.map-popup-body {
+  padding: 10px 12px;
+}
+
+.map-popup-title,
+.map-popup-title-link {
+  font-weight: 700;
+  font-size: 14px;
+  margin-bottom: 4px;
+  color: hsl(var(--popover-foreground));
+}
+
+.map-popup-title-link {
+  text-decoration: none;
+  display: block;
+}
+
+.map-popup-title-lg {
+  font-weight: 700;
+  font-size: 15px;
+  margin-bottom: 4px;
+  color: hsl(var(--popover-foreground));
+}
+
+.map-popup-subtext {
+  font-size: 12px;
+  color: hsl(var(--muted-foreground));
+  margin-top: 2px;
+}
+
+.map-popup-muted-label {
+  font-size: 11px;
+  color: hsl(var(--muted-foreground));
+  margin-bottom: 4px;
+}
+
+.map-popup-muted-pill {
+  font-size: 10px;
+  color: hsl(var(--muted-foreground));
+  padding: 4px 8px;
+  border-radius: 6px;
+  background: hsl(var(--muted));
+  display: block;
+  text-align: center;
+}
+
+.map-popup-btn-wrap {
+  margin-top: 10px;
+}
+
+.map-popup-action-btn {
+  display: block;
+  width: 100%;
+  text-align: center;
+  padding: 8px 12px;
+  background: hsl(var(--primary));
+  color: hsl(var(--primary-foreground));
+  font-size: 12px;
+  font-weight: 600;
+  border-radius: 8px;
+  border: none;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.map-popup-close-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 28px;
+  height: 28px;
+  min-width: 28px;
+  min-height: 28px;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  border: 1px solid hsl(var(--border));
+  background: hsl(var(--muted));
+  box-shadow: var(--shadow-soft);
+  cursor: pointer;
+  color: hsl(var(--muted-foreground));
+  transition: background-color 0.15s ease, color 0.15s ease;
+}
+
+.map-popup-close-btn:hover {
+  background: hsl(var(--accent));
+  color: hsl(var(--foreground));
+}
+
+.mapboxgl-popup-content:has(.map-popup-wrap) .mapboxgl-popup-close-button {
+  color: hsl(var(--muted-foreground)) !important;
+  font-size: 20px !important;
+}
+
+.mapboxgl-popup-content:has(.map-popup-wrap) .mapboxgl-popup-close-button:hover {
+  color: hsl(var(--popover-foreground)) !important;
+  background: transparent !important;
+}
+
+/* Sublease map price pill markers (Mapbox HTML markers) */
+.sublease-map-marker-pill {
+  cursor: pointer;
+  user-select: none;
+  white-space: nowrap;
+  padding: 4px 8px;
+  border-radius: 9999px;
+  font-size: 12px;
+  line-height: 1;
+  font-weight: 600;
+  font-family: inherit;
+  transition: transform 0.15s ease-out, background-color 0.15s ease, color 0.15s ease, box-shadow 0.15s ease;
+  background: hsl(var(--card));
+  color: hsl(var(--foreground));
+  border: 1px solid hsl(var(--border));
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.22);
+  transform: scale(1);
+  z-index: 0;
+}
+
+.sublease-map-marker-pill--focused {
+  background: #03c03c;
+  color: #ffffff;
+  border: 1px solid #03c03c;
+  box-shadow: 0 2px 8px rgba(3, 192, 60, 0.45);
+  transform: scale(1.08);
+  z-index: 1;
+}
+
+.sublease-map-marker-badge {
+  position: absolute;
+  top: -4px;
+  right: -4px;
+  min-width: 16px;
+  height: 16px;
+  padding: 0 4px;
+  border-radius: 9999px;
+  font-size: 10px;
+  font-weight: 700;
+  line-height: 16px;
+  text-align: center;
+  pointer-events: none;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
+  background: hsl(var(--muted-foreground));
+  color: hsl(var(--background));
+  border: 1px solid hsl(var(--card));
+}
+
+.sublease-map-marker-badge--focused {
+  background: hsl(var(--card));
+  color: #03c03c;
+  border: 1px solid #03c03c;
+}
+
+/* Name pill shown above a highlighted housing pin (card hover / marker tap) so
+   the list card and its map pin are unmistakably the same dorm. */
+.dorm-marker-namepill {
+  position: absolute;
+  left: 50%;
+  bottom: 100%;
+  transform: translate(-50%, -6px);
+  max-width: 180px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  padding: 3px 9px;
+  border-radius: 9999px;
+  font-family: inherit;
+  font-size: 12px;
+  line-height: 1.2;
+  font-weight: 600;
+  pointer-events: none;
+  background: hsl(var(--card));
+  color: hsl(var(--foreground));
+  border: 1px solid hsl(var(--border));
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.18);
+  z-index: 5;
+}

@@ -1,0 +1,7 @@
+# Pre-mutation backups of an Edge Function's index.ts, written by mutate.mjs /
+# mutate-send-push.mjs and removed by their `restore`. Both runners restore from an
+# EXIT trap, so one of these on disk means a run was hard-killed — recover with
+# `node scripts/edge-probe/mutate*.mjs restore`, never by deleting it. Ignored so a
+# lane's `git add -A` cannot commit one, which would ship a deliberately broken
+# function.
+*.premutation

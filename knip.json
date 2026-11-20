@@ -1,0 +1,19 @@
+{
+  "$schema": "https://unpkg.com/knip@5/schema.json",
+  "entry": [
+    "src/main.tsx",
+    "api/**/*.ts",
+    "e2e/**/*.ts",
+    "supabase/functions/**/*.ts",
+    "scripts/**/*.{mjs,js,ts}",
+    "vite.config.ts",
+    "playwright.config.*"
+  ],
+  "project": ["src/**", "api/**", "e2e/**"],
+  "ignore": [
+    "src/components/ui/*.figma.tsx",
+    ".design-sync/**",
+    "ds-bundle/**",
+    "src/integrations/supabase/types.ts"
+  ]
+}

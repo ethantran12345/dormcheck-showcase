@@ -1,0 +1,3 @@
+# Auth hook endpoint: Supabase Auth signs requests with the standardwebhooks
+# secret (verified in index.ts), not a JWT.
+verify_jwt = false

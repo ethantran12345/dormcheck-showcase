@@ -1,0 +1,2 @@
+# JWT is verified inside the function (jose + JWKS, ES256). Disable gateway pre-verify.
+verify_jwt = false

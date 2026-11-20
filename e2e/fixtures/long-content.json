@@ -1,0 +1,7 @@
+{
+  "_comment": "Long-content fixture for the layout crawl (AUDIT_LAYOUT=1). Labelled as fixtures on purpose: no real-looking students, listings or reviews. Lengths are asserted by scripts/e2e/seed-content.mjs.",
+  "buildingName": "Layout Fixture Residence Hall North Wing",
+  "listingTitle": "Layout fixture listing: adjustable desk lamp with warm or cool light modes, a USB charging port and a weighted desk base",
+  "sellerName": "E2E Layout Fixture Seller With An Unusually Long Display Name",
+  "checklistItem": "Layout fixture: over-the-door shoe organizer with twenty-four clear pockets for the closet door"
+}

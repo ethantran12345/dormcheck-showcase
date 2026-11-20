@@ -1,0 +1,230 @@
+{
+  "intro": {
+    "stepIndicator": "第 {{current}} 步，共 6 步",
+    "skipForNow": "暂时跳过 · 以后可以随时更改",
+    "step1": {
+      "title": "欢迎来到 DormCheck <wave>👋</wave>",
+      "titleWithName": "欢迎来到 DormCheck，{{name}} <wave>👋</wave>",
+      "subtitle": "您在 {{school}} 的一站式住房、入住及校园生活应用。让我们为您定制体验，您今天想要做什么？"
+    },
+    "userIntent": {
+      "incomingFreshman": {
+        "title": "即将入学新生",
+        "desc": "我是新生，正在了解住房情况"
+      },
+      "currentStudent": {
+        "title": "在读学生",
+        "desc": "我在寻找新的住房或室友"
+      },
+      "buySell": {
+        "title": "买卖物品",
+        "desc": "我想买卖宿舍用品"
+      },
+      "exploring": {
+        "title": "探索应用",
+        "desc": "我想了解 DormCheck 的功能"
+      }
+    },
+    "need": {
+      "exploring": {
+        "title": "浏览宿舍",
+        "desc": "查看真实房间照片和评价"
+      },
+      "roommate": {
+        "title": "寻找室友",
+        "desc": "与兼容的学生配对"
+      },
+      "checklist": {
+        "title": "入住清单",
+        "desc": "规划准备内容并与室友协调"
+      },
+      "marketplace": {
+        "title": "学生市集",
+        "desc": "买卖宿舍必需品"
+      }
+    },
+    "actionLink": {
+      "browseHousing": {
+        "title": "浏览住房",
+        "desc": "探索宿舍、照片和评价"
+      },
+      "findRoommates": {
+        "title": "寻找室友",
+        "desc": "查看兼容学生的档案"
+      },
+      "startChecklist": {
+        "title": "开始清单",
+        "desc": "规划入住准备事项"
+      },
+      "browseMarketplace": {
+        "title": "浏览市集",
+        "desc": "与其他学生买卖物品"
+      }
+    },
+    "step2": {
+      "title": "告诉我们关于您的信息",
+      "subtitle": "简单几步，帮助我们为您定制 DormCheck。",
+      "fullNameLabel": "全名",
+      "fullNamePlaceholder": "您的名字",
+      "majorLabel": "专业 / 项目",
+      "majorPlaceholder": "例：金融、计算机科学…",
+      "schoolLabel": "学校 / 学院",
+      "schoolPlaceholder": "例：CBA、Dietrich、Swanson…",
+      "gradeLevelLabel": "年级",
+      "gradeLevelPlaceholder": "选择年级",
+      "gradeLevel": {
+        "freshman": "大一",
+        "sophomore": "大二",
+        "junior": "大三",
+        "senior": "大四",
+        "graduate": "研究生"
+      },
+      "graduationYearLabel": "毕业年份",
+      "graduationYearPlaceholder": "2028",
+      "errorFillAllFields": "请填写所有必填字段。",
+      "errorUnableToSave": "无法保存。请重试。"
+    },
+    "step3": {
+      "headingFreshman": "您已经有宿舍分配了吗？",
+      "headingCurrentStudent": "您目前住在哪里？",
+      "headingDefault": "您的住房情况如何？",
+      "subtitle": "这帮助我们为您推荐合适的房间、聊天室和室友。",
+      "cardA": {
+        "titleFreshman": "我已有分配",
+        "subFreshman": "楼宇和房间详情",
+        "titleDefault": "我知道我的住处",
+        "subDefault": "我现在可以添加我的楼宇"
+      },
+      "cardB": {
+        "titleFreshman": "还没有",
+        "subFreshman": "我还在等待或决定中",
+        "titleDefault": "我还在找",
+        "subDefault": "先跳过地点"
+      },
+      "buildingLabel": "楼宇",
+      "buildingPlaceholder": "选择您的楼宇…",
+      "loadingBuildings": "正在加载楼宇…",
+      "offCampus": "校外 / 未列出",
+      "offCampusPlaceholder": "输入您的楼宇或地址",
+      "floorLabel": "楼层",
+      "floorPlaceholder": "例：3",
+      "roomLabel": "房间",
+      "roomPlaceholder": "例：412",
+      "moveInDateLabel": "入住日期",
+      "optional": "（可选）",
+      "errorChooseOption": "请选择一个选项。",
+      "errorSelectBuilding": "请选择您的楼宇。",
+      "errorEnterBuildingOrAddress": "请输入您的楼宇或地址。",
+      "errorUnableToSave": "无法保存。请重试。"
+    },
+    "step4": {
+      "title": "您需要什么帮助？",
+      "subtitle": "选择所有适用的选项，我们会为您优先显示。",
+      "errorUnableToSave": "无法保存。请重试。"
+    },
+    "step5": {
+      "title": "快速室友偏好设置",
+      "subtitle": "四个快速选择，帮助我们为您找到最佳匹配。",
+      "sleepScheduleLabel": "作息时间",
+      "sleepSchedule": {
+        "earlyBird": "早起的人",
+        "nightOwl": "夜猫子",
+        "flexible": "灵活适应"
+      },
+      "cleanlinessLabel": "卫生习惯",
+      "cleanliness": {
+        "veryTidy": "很整洁",
+        "moderate": "中等",
+        "relaxed": "随意"
+      },
+      "socialLevelLabel": "社交程度",
+      "socialLevel": {
+        "homebody": "宅家型",
+        "balanced": "平衡型",
+        "verySocial": "社交达人"
+      },
+      "studyStyleLabel": "学习方式",
+      "studyStyle": {
+        "library": "图书馆",
+        "inMyRoom": "宿舍",
+        "anywhere": "任何地方"
+      },
+      "showProfileAriaLabel": "向潜在室友显示我的档案",
+      "showProfileLabel": "向潜在室友显示我的档案",
+      "showProfileHint": "您可以随时在设置中更改此选项。",
+      "errorAnswerAllQuestions": "请回答所有偏好问题。",
+      "errorUnableToSave": "无法保存。请重试。"
+    },
+    "step6": {
+      "title": "一切就绪！",
+      "titleWithName": "一切就绪，{{name}}！",
+      "subtitle": "DormCheck 中等待您的所有功能。",
+      "yourSetupLabel": "您的设置",
+      "goalLabel": "目标",
+      "housingLabel": "住房",
+      "interestsLabel": "兴趣",
+      "defaultIntentLabel": "探索应用",
+      "stillDeciding": "还在决定中",
+      "exploringEverything": "探索所有功能",
+      "jumpInLabel": "开始使用",
+      "forYouBadge": "为您推荐",
+      "enterDormCheck": "进入 DormCheck"
+    }
+  },
+  "waitlist": {
+    "doneTitle": "您已在名单上",
+    "doneDescription": "DormCheck 抵达您的学校时,我们会立即向您发送电子邮件。",
+    "headingResolved": "看起来您在 {{schoolName}}",
+    "headingGeneric": "DormCheck 还未在您的学校上线",
+    "description": "我们已在{{schools}}上线,并正在逐步扩展到其他校园。留下您的电子邮件,我们会告诉您何时轮到您。",
+    "schoolsSeparator": "、",
+    "schoolsFinalSeparator": "和",
+    "emailLabel": "电子邮件",
+    "schoolLabel": "您在哪所学校? <optional>(可选)</optional>",
+    "schoolPlaceholder": "例如 Carnegie Mellon University",
+    "eyebrow": "候选名单",
+    "coldStartHeading": "将 DormCheck 带到您的校园。",
+    "alreadyLiveDescription": "好消息:DormCheck 已在您的学校上线。无需加入候选名单,只需使用您的学校电子邮件登录即可。",
+    "signInLink": "登录 DormCheck",
+    "coldStartDescription": "输入您的学校电子邮件地址,查看您的校园在候选名单上的排名,以及如何提升排名。我们仅使用它来查找您的学校;您现在还没有注册任何内容。",
+    "peekButton": "查看我的校园排名",
+    "schoolNameOptionalLabel": "学校名称(可选)",
+    "joiningButton": "正在加入...",
+    "rankEyebrow": "候选名单状态",
+    "checkingHeading": "正在检查 {{schoolName}}...",
+    "rankHeading": "{{schoolName}} 在候选名单上排名 <highlight>#{{rank}}</highlight>。",
+    "signedUpLine_one": "1 名学生已注册。以下是如何提升 {{schoolName}} 排名的方法:",
+    "signedUpLine_other": "{{count}} 名学生已注册。以下是如何提升 {{schoolName}} 排名的方法:",
+    "noOneJoinedDescription": "来自 {{schoolName}} 的学生还没有在候选名单上。现在加入,将您的校园纳入排行榜。",
+    "failedHeading": "帮助将 DormCheck 带到 {{schoolName}}。",
+    "firstHeading": "成为 {{schoolName}} 的第一个用户。",
+    "failedLoadingDescription": "我们现在无法加载实时排名。您仍然可以加入、分享链接,并在下面告知您的学校。",
+    "leaderboardAriaLabel": "候选名单排行榜",
+    "leaderboardYouRow": "{{schoolName}}(您)",
+    "signedUpCount": "{{num}} 人已注册",
+    "notOnBoardYet": "还未纳入排行榜",
+    "notOnListYetPrompt": "还未在名单上?添加您的学校电子邮件地址:",
+    "joinedToast": "您已在名单上。",
+    "alreadyOnListToast": "您已经在名单上。",
+    "linkCopiedToast": "链接已复制。",
+    "copyFailedToast": "复制失败。请选择链接并手动复制。",
+    "adminNameEmailRequiredToast": "请添加联系人的姓名和电子邮件。",
+    "stepPrefix": "第 {{step}} 步",
+    "step1Title": "邀请您的朋友加入",
+    "step1Description": "来自 {{schoolName}} 的学生越多注册,我们在那里推出的时间就越早。将此链接发送给您的群组聊天:",
+    "shareLinksrOnly": "{{schoolName}} 的分享链接",
+    "copiedButton": "已复制",
+    "copyLinkButton": "复制链接",
+    "step2Title": "让您的宿舍办公室或大学管理部门参与",
+    "step2Description": "当您的宿舍办公室或大学管理部门支持 DormCheck 时,{{schoolName}} 将排在前面,合作伙伴关系对话也将直接开始。添加联系人,我们将为您起草电子邮件。它会在您的邮件应用中打开,由您发送,并抄送 DormCheck 团队。",
+    "adminNameLabel": "联系人姓名",
+    "adminNamePlaceholder": "例如 Jane Doe",
+    "adminRoleLabel": "职位 <optional>(可选)</optional>",
+    "adminRolePlaceholder": "例如 Housing Director",
+    "adminEmailLabel": "联系人电子邮件",
+    "adminEmailPlaceholder": "例如 housing@school.edu",
+    "sendEmailButton": "发送预写电子邮件",
+    "preparingEmailButton": "正在准备电子邮件...",
+    "emailDraftHelperText": "在您的邮件应用中打开可编辑的草稿。DormCheck 被抄送,以便团队可以跟进合作伙伴关系。"
+  }
+}

@@ -1,0 +1,434 @@
+{
+  "sections": {
+    "profile": {
+      "label": "个人资料"
+    },
+    "account": {
+      "label": "账户"
+    },
+    "security": {
+      "label": "安全"
+    },
+    "appearance": {
+      "label": "外观"
+    },
+    "notifications": {
+      "label": "通知"
+    },
+    "privacy": {
+      "label": "隐私"
+    },
+    "support": {
+      "label": "支持与法律"
+    },
+    "admin": {
+      "label": "管理员"
+    },
+    "danger": {
+      "label": "危险区域"
+    }
+  },
+  "search": {
+    "ariaLabel": "搜索设置",
+    "placeholder": "搜索设置",
+    "clear": "清除搜索",
+    "empty": "没有与“{{query}}”匹配的设置。"
+  },
+  "profile": {
+    "header": {
+      "title": "个人资料",
+      "description": "你的身份、住宿和室友匹配信息。这是其他学生能看到的内容。"
+    },
+    "name": "姓名",
+    "pronouns": "代词",
+    "major": "专业",
+    "housing": "住宿",
+    "gradeLevel": "年级",
+    "payments": "支付方式",
+    "bio": "个人简介",
+    "roommateVisibility": "向室友展示我的个人资料",
+    "photo": "头像",
+    "delete": "删除个人资料"
+  },
+  "language": {
+    "title": "语言",
+    "description": "选择 DormCheck 的显示语言。",
+    "pickerAriaLabel": "语言"
+  },
+  "account": {
+    "verified": {
+      "title": "已验证学生身份",
+      "hero": "已验证的{{university}}学生",
+      "via": "通过以下方式验证"
+    },
+    "studentAccount": "学生账户",
+    "contactInfo": "联系信息",
+    "phone": {
+      "title": "电话号码",
+      "notAdded": "未添加",
+      "hint": "用于账户恢复。电话验证即将推出。",
+      "saved": "电话号码已保存",
+      "saveError": "无法保存电话号码"
+    },
+    "email": {
+      "title": "电子邮件",
+      "notAvailable": "不可用",
+      "comingSoon": "更改即将推出"
+    },
+    "connected": {
+      "title": "已连接的登录方式",
+      "removed": "登录方式已移除",
+      "removeError": "无法移除登录方式",
+      "lastMethodWarning": "在移除此登录方式前，请先添加其他登录方式",
+      "onlyMethodHint": "这是您唯一的登录方式，因此无法移除。请先添加密码（下方）或连接Google账户。",
+      "linkGoogle": "连接Google",
+      "linkGoogleError": "无法连接Google"
+    },
+    "signOut": "退出登录",
+    "signingOut": "正在退出登录...",
+    "menu": {
+      "help": "帮助",
+      "back": "返回账户菜单"
+    }
+  },
+  "appearance": {
+    "theme": {
+      "title": "主题"
+    },
+    "reduceMotion": {
+      "title": "减弱动态效果",
+      "description": "最小化整个应用中的动画和过渡效果。默认遵循设备设置。"
+    },
+    "textSize": {
+      "title": "文字大小",
+      "description": "在整个应用中增大文字和控件的大小。",
+      "optionDefault": "默认",
+      "optionLarge": "大",
+      "optionLarger": "更大",
+      "optionLabel": "{{label}} 文字大小"
+    }
+  },
+  "notifications": {
+    "title": "通知",
+    "description": "选择 DormCheck 发送给您的电子邮件和推送通知。",
+    "email": {
+      "title": "电子邮件通知",
+      "description": "主开关。关闭此选项可停止所有通知电子邮件，无论下面的设置如何。"
+    },
+    "important": {
+      "title": "重要更新"
+    },
+    "general": {
+      "title": "常规更新"
+    },
+    "quietHours": {
+      "title": "静音时段",
+      "description": "在设定的时间内暂停推送通知。电子邮件不受影响。",
+      "from": "开始时间",
+      "to": "结束时间",
+      "setTimeHint": "设置开始和结束时间以启用静音时段。",
+      "silencedMessage": "推送通知从 {{start}} 至 {{end}} 被静音。",
+      "silencedOvernightMessage": "推送通知从 {{start}} 到次日 {{end}} 被静音。",
+      "timezone": "时间使用您的设备时区 ({{tz}})。",
+      "savedDescription": "静音时段已更新。"
+    },
+    "securityAccount": {
+      "title": "安全和账户",
+      "description": "密码重置和账户电子邮件将始终被发送。"
+    },
+    "alwaysOn": "始终开启",
+    "pushDeniedWarning": "DormCheck 的推送通知在 iOS 设置中已关闭，因此下面的推送开关将无法发送任何通知。请在 设置 > DormCheck > 通知 中启用它们。",
+    "channels": {
+      "email": "电子邮件",
+      "push": "推送"
+    },
+    "channelStatus": {
+      "off": "关闭"
+    },
+    "emailDisabledHint": "打开上面的电子邮件通知以启用",
+    "preferenceSaved": "通知偏好已更新。",
+    "couldNotSave": "无法保存",
+    "emailNotificationsForCategory": "{{category}} 的电子邮件通知",
+    "pushNotificationsForCategory": "{{category}} 的推送通知",
+    "editChannels": "{{action}} {{category}} 的通知渠道",
+    "categories": {
+      "messages": {
+        "label": "直接消息",
+        "description": "您对话中的新消息"
+      },
+      "message_requests": {
+        "label": "消息请求",
+        "description": "新的连接请求和已接受的请求"
+      },
+      "roommate_invites": {
+        "label": "室友邀请",
+        "description": "加入室友群组的邀请"
+      },
+      "ranking_invites": {
+        "label": "排名邀请",
+        "description": "协作对宿舍进行排名的邀请"
+      },
+      "housing_groups": {
+        "label": "住房群组",
+        "description": "您的住房群组中的活动"
+      },
+      "marketplace": {
+        "label": "市场",
+        "description": "对您的市场列表的询问"
+      },
+      "movein": {
+        "label": "入住",
+        "description": "室友确认、新建筑居民和入住倒计时"
+      },
+      "announcements": {
+        "label": "公告",
+        "description": "来自 DormCheck 团队的偶发更新"
+      }
+    }
+  },
+  "privacy": {
+    "messaging": {
+      "title": "谁可以给你发信息",
+      "description": "控制谁可以开始新对话。现有聊天不受影响。",
+      "options": {
+        "anyone": "你学校的任何人",
+        "connections": "只有你认识的人"
+      },
+      "optionsDescriptions": {
+        "anyone": "你学校的认证学生可以向你发送消息请求",
+        "connections": "只有与你共享过群聊或现有对话的人"
+      }
+    },
+    "searchVisibility": {
+      "title": "在搜索中显示我",
+      "description": "关闭此选项可在学生搜索消息对象时停止显示"
+    },
+    "phonePrivacy": {
+      "title": "你的电话号码保持私密",
+      "description": "只有在市集列表或室友发布中打开该发布的\"显示我的号码\"时，才会显示你的号码。你可以在每个列表上更改此设置。"
+    },
+    "download": {
+      "title": "下载我的数据",
+      "cardLabel": "你的数据",
+      "description": "获得你的个人资料、列表、室友发布、对话、你发送的消息和收藏宿舍的JSON副本。",
+      "button": "下载",
+      "preparing": "准备中...",
+      "success": {
+        "title": "你的数据正在下载",
+        "description": "在你的下载文件夹中查看JSON文件。"
+      },
+      "error": {
+        "title": "无法导出你的数据"
+      }
+    },
+    "retention": {
+      "title": "我们保留你的数据多长时间",
+      "cardLabel": "数据保留",
+      "description": "只要你的账户处于活跃状态，我们就会保留你的账户信息。如果你删除账户，我们会在30天内从活跃系统中删除你的个人资料、列表、消息和相关内容。某些信息可能会在加密备份中保留最多90天，然后被清除。汇总的非识别分析数据可能会无限期保留。"
+    },
+    "blocked": {
+      "title": "已屏蔽的账户"
+    },
+    "policy": {
+      "title": "隐私政策"
+    },
+    "saveSuccess": "隐私偏好已更新。",
+    "saveError": "无法保存"
+  },
+  "security": {
+    "title": "安全",
+    "description": "您最近的登录记录、登录提醒、双重验证和活跃会话。",
+    "activity": {
+      "title": "最近安全活动",
+      "loading": "加载活动中...",
+      "note": "密码更改和双重验证更新将在发生时显示在此处。",
+      "lastSignIn": "最后一次登录",
+      "notRecorded": "尚未记录",
+      "showMore": "显示另外 {{count}} 条",
+      "showLess": "收起"
+    },
+    "loginAlerts": {
+      "title": "登录提醒",
+      "label": "新设备登录提醒",
+      "description": "当新设备登录您的账户时收到电子邮件。即将推出；您的选择已保存。",
+      "ariaLabel": "当新设备登录时发送电子邮件给我",
+      "saved": "登录提醒偏好设置已更新。"
+    },
+    "twoFactor": {
+      "title": "双重验证",
+      "description": "在登录时通过验证器应用（如 Google Authenticator 或 1Password）中的代码添加第二步验证。您还将获得一次性备用代码，以防您丢失设备。",
+      "checking": "检查状态中...",
+      "enabled": "已启用",
+      "disable": "关闭",
+      "setup": "设置双重验证",
+      "enrollTitle": "设置双重验证",
+      "enrollQrDescription": "用您的验证器应用扫描二维码，然后输入它显示的 6 位代码。",
+      "qrCodeAlt": "您的验证器应用的二维码",
+      "manualKeyPrefix": "无法扫描？手动输入此密钥：",
+      "codeLabel": "6 位代码",
+      "verify": "验证",
+      "backupCodesTitle": "保存您的备用代码",
+      "backupCodesDescription": "如果您丢失验证器，每个代码只能使用一次。这是唯一显示的时间，请将其存储在安全的地方。",
+      "copyCodes": "复制代码",
+      "copied": "已复制",
+      "disableTitle": "关闭双重验证？",
+      "disableDescription": "输入您验证器应用中的当前代码以确认。您的备用代码也将被删除。",
+      "disableConfirm": "关闭双重验证",
+      "enrollError": "无法启动双重验证设置",
+      "verifyError": "验证失败",
+      "enabledToast": "双重验证已启用",
+      "enabledDescription": "您将在登录时被要求输入代码。",
+      "copyError": "无法复制",
+      "copyManual": "手动选择并复制代码。"
+    },
+    "sessions": {
+      "title": "活跃会话",
+      "loading": "加载会话中...",
+      "thisDevice": "此设备",
+      "lastSeen": "活跃 {{when}}",
+      "signOut": "退出登录",
+      "signOutAll": "退出登录所有其他会话",
+      "revokeSuccess": "会话已退出登录",
+      "revokeError": "无法退出登录会话",
+      "revokeOthersSuccess_one": "已退出登录 1 个其他会话",
+      "revokeOthersSuccess_other": "已退出登录 {{count}} 个其他会话",
+      "noOthers": "没有其他会话",
+      "revokeOthersError": "无法退出登录会话"
+    }
+  },
+  "headers": {
+    "account": {
+      "description": "您的认证状态、联系方式、登录方式和会话。"
+    },
+    "appearance": {
+      "description": "选择 DormCheck 在此设备上的外观。"
+    },
+    "privacy": {
+      "description": "控制谁可以联系您并管理您的隐私。"
+    },
+    "support": {
+      "description": "获取帮助、分享反馈并阅读我们的政策。"
+    },
+    "admin": {
+      "description": "预览工具和管理员专用控件。"
+    },
+    "danger": {
+      "description": "影响整个账户的不可逆操作。"
+    }
+  },
+  "view": {
+    "title": "设置",
+    "allSettings": "所有设置",
+    "sectionsAriaLabel": "设置部分",
+    "groups": {
+      "signIn": "登录",
+      "messagingDiscovery": "消息和发现",
+      "more": "更多",
+      "help": "帮助",
+      "aboutLegal": "法律",
+      "preview": "预览",
+      "tools": "工具",
+      "account": "账户",
+      "preferences": "偏好设置",
+      "support": "支持",
+      "admin": "管理员",
+      "dangerZone": "危险区域"
+    },
+    "passwordDescription": "重置或设置您的登录密码",
+    "signingOut": "正在退出登录...",
+    "blockedAccounts": "已屏蔽的账户",
+    "blockedAccountsDescription": "您屏蔽的人不会在您的信息流或消息中显示",
+    "privacyPolicy": "隐私政策",
+    "systemThemeDescription": "系统跟随您的设备设置。",
+    "version": "版本 {{version}}",
+    "accountDialogTitle": "账户",
+    "accountDialogDescription": "管理您的账户设置。",
+    "changePasswordLabel": "更改密码",
+    "changePasswordExplanation": "我们会向您的电子邮件发送密码重置链接。",
+    "sendResetLink": "发送重置链接",
+    "accountSecurityLabel": "账户安全",
+    "manualPasswordExplanation": "设置手动密码以便您可以使用电子邮件和密码登录(例如,如果您使用 Google 注册)。",
+    "setManualPassword": "设置手动密码",
+    "feedbackDialogTitle": "反馈和支持",
+    "feedbackDialogDescription": "有问题或建议?发送消息给我们。",
+    "feedbackPlaceholder": "分享您的反馈、建议或报告问题...",
+    "sending": "正在发送...",
+    "noEmailTitle": "没有邮箱地址",
+    "noEmailDescription": "无法发送重置链接。",
+    "resetLinkError": "无法发送重置链接",
+    "resetLinkErrorDescription": "无法发送重置链接。请重试。",
+    "resetLinkSent": "密码重置链接已发送!",
+    "checkEmail": "检查您的电子邮件。",
+    "enterPassword": "输入密码",
+    "enterPasswordDescription": "请输入新密码。",
+    "passwordTooShort": "密码过短",
+    "passwordTooShortDescription": "至少使用 6 个字符。",
+    "setPasswordError": "无法设置密码",
+    "passwordSetSuccess": "密码设置成功!",
+    "passwordSetDescription": "您现在可以使用电子邮件和此密码登录,或继续使用 Google。",
+    "feedbackSendError": "发送失败",
+    "feedbackSent": "反馈已发送!",
+    "feedbackThanks": "感谢您的反馈。"
+  },
+  "support": {
+    "safety": {
+      "title": "安全中心",
+      "description": "交易、参观和支付安全以及校园联系方式"
+    },
+    "feedback": {
+      "title": "反馈",
+      "description": "有问题或建议?"
+    },
+    "guidelines": {
+      "title": "社区准则"
+    },
+    "terms": {
+      "title": "服务条款"
+    },
+    "licenses": {
+      "title": "开源许可证"
+    },
+    "replayTour": {
+      "title": "重新观看引导",
+      "description": "再次观看应用的引导演示"
+    }
+  },
+  "admin": {
+    "preview": {
+      "title": "完整应用预览",
+      "description": "显示所有功能,仅限管理员"
+    },
+    "setup": {
+      "title": "启用设置模式",
+      "description": "在所有市场项目上显示编辑和删除"
+    },
+    "replay": {
+      "title": "重放入门",
+      "description": "重新运行介绍流程以查看它"
+    },
+    "panel": {
+      "title": "管理面板",
+      "description": "打开管理面板"
+    }
+  },
+  "danger": {
+    "delete": {
+      "title": "删除账户"
+    },
+    "deleteDialogTitle": "永久删除账户",
+    "deleteCannotUndo": "此操作无法撤销。",
+    "whatWillBeDeleted": "将被删除的内容",
+    "deleteItem1": "您的个人资料、照片和保存的项目",
+    "deleteItem2": "您的市场清单和室友帖子",
+    "deleteItem3": "您的私聊消息",
+    "deleteItem4": "您的房间设置照片和点赞",
+    "deleteItem5": "您的宿舍排名和检查清单",
+    "whatWillBeKept": "将被保留的内容(匿名)",
+    "keepItem1": "您的宿舍评论 - 显示为\"前 {{school}} 学生\"",
+    "keepItem2": "您的宿舍问答 - 显示为\"前 {{school}} 学生\"",
+    "typeDeleteConfirm": "输入 DELETE 以确认",
+    "deleteAccountButton": "删除我的账户",
+    "deleteError": "无法删除账户",
+    "deleteErrorDescription": "请重试或联系支持。"
+  }
+}

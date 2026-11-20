@@ -1,0 +1,49 @@
+name: Crash-class typecheck gate (main)
+
+# BLOCKING crash-class typecheck gate on every push to main (the release branch).
+# main has no other push-triggered CI (dev is gated by ci-dev-push.yml; main is
+# otherwise covered only by the scheduled prod-watch + weekly-sweep), so this
+# is main's guard against a crash-class regression reaching prod at release time.
+#
+# It runs ONLY the scoped crash gate (TS2304/TS2552 — names that don't exist at
+# runtime and white-screen the page; see scripts/typecheck-crash-gate.sh). The full
+# typecheck ratchet (scripts/typecheck-ratchet.sh, baseline 1) is blocking in
+# ci-dev-push.yml, not here — main pushes are release-only merges from an already-
+# green dev, so re-running the full ratchet here would be redundant. Keep this
+# dedicated + lightweight: a standalone npm ci here is cheap. On dev the same crash
+# gate runs inside ci-dev-push.yml, reusing that job's install.
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch: {}
+
+permissions:
+  contents: read
+
+# The gate evaluates the tip commit, so a run the next push superseded tells you
+# nothing the newer run will not. Cancelling it loses no coverage. (Deliberately
+# NOT applied to secrets-scan.yml, which is range-scoped — see the note there.)
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  crash-gate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 22
+          cache: npm
+
+      - run: npm ci
+
+      - name: Package override policy (blocking)
+        run: npm run check:package-overrides
+
+      - name: Crash-class typecheck gate (blocking)
+        run: npm run typecheck:crash

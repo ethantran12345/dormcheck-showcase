@@ -1,0 +1,2 @@
+# Auth: service_role Bearer checked in function body. Disable gateway JWT pre-verify.
+verify_jwt = false

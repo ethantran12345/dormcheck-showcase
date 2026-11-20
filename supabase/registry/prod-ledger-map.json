@@ -1,0 +1,55 @@
+{
+  "_comment": "Asserted name<->stamp map between repo migration files and the rows prod’s supabase_migrations.schema_migrations holds for them. MCP apply_migration stamps the ledger with the APPLY-TIME version and the descriptive name, so a file’s own version never appears in prod. Written only by `npm run ledger:record -- <file> <prodVersion>`, which refuses a mapping the live ledger does not confirm. Read by scripts/lib/migrations.mjs (db:preflight) and scripts/migration-gate.mjs: a mapped file counts as applied only while prod still holds that version. Never hand-edit. Evidence for each row lives in the transcript it names.",
+  "project_ref": "abcdefghijklmnopqrst",
+  "map": {
+    "20260820030000_drop_university_resources.sql": {
+      "prodVersion": "20260907011320",
+      "prodName": "drop_university_resources",
+      "recordedOn": "2026-09-07",
+      "recordedBy": "Claude Code with Ethan Tran (prod apply 2026-09-07)",
+      "evidence": "docs/audits/prod-apply-2026-09-07.md"
+    },
+    "20261005000000_admin_policies_drop_is_admin_predicate.sql": {
+      "prodVersion": "20260907010606",
+      "prodName": "admin_policies_drop_is_admin_predicate",
+      "recordedOn": "2026-09-07",
+      "recordedBy": "Claude Code with Ethan Tran (prod apply 2026-09-07)",
+      "evidence": "docs/audits/prod-apply-2026-09-07.md"
+    },
+    "20261006000000_role_change_flag_reset.sql": {
+      "prodVersion": "20260907011057",
+      "prodName": "role_change_flag_reset",
+      "recordedOn": "2026-09-07",
+      "recordedBy": "Claude Code with Ethan Tran (prod apply 2026-09-07)",
+      "evidence": "docs/audits/prod-apply-2026-09-07.md"
+    },
+    "20261007000000_account_deletion_fk_on_delete.sql": {
+      "prodVersion": "20260907011422",
+      "prodName": "account_deletion_fk_on_delete",
+      "recordedOn": "2026-09-07",
+      "recordedBy": "Claude Code with Ethan Tran (prod apply 2026-09-07)",
+      "evidence": "docs/audits/prod-apply-2026-09-07.md"
+    },
+    "20261008000000_images_quarantine_bucket.sql": {
+      "prodVersion": "20260907011913",
+      "prodName": "images_quarantine_bucket",
+      "recordedOn": "2026-09-07",
+      "recordedBy": "etran",
+      "evidence": null
+    },
+    "20261011000000_marketplace_rescreen_on_edit.sql": {
+      "prodVersion": "20261011185520",
+      "prodName": "marketplace_rescreen_on_edit",
+      "recordedOn": "2026-10-12",
+      "recordedBy": "Claude Code (release-prep 2026-10-11)",
+      "evidence": null
+    },
+    "20261011010000_storage_owner_select_for_cleanup.sql": {
+      "prodVersion": "20261012005627",
+      "prodName": "storage_owner_select_for_cleanup",
+      "recordedOn": "2026-10-12",
+      "recordedBy": "Claude Code (release-prep 2026-10-11)",
+      "evidence": null
+    }
+  }
+}

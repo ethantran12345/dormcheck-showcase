@@ -1,0 +1,59 @@
+{
+  "detector": {
+    "ignoreRules": [],
+    "ignoreFiles": [],
+    "ignoreValues": [
+      {
+        "rule": "overused-font",
+        "value": "fraunces",
+        "createdAt": "2026-08-03T02:42:25.905Z",
+        "reason": "Documented brand serif, marketing headlines only. See CLAUDE.md."
+      },
+      {
+        "rule": "broken-image",
+        "value": "*",
+        "files": [
+          "src/components/ui/thumb-image.tsx"
+        ],
+        "createdAt": "2026-08-03T03:15:52.486Z",
+        "reason": "Wrapper component receives src as a prop; the detector matches the <img> mentioned in its JSDoc, not real markup. Upstream: https://github.com/pbakaus/impeccable/issues/486"
+      },
+      {
+        "rule": "broken-image",
+        "value": "*",
+        "files": [
+          "src/components/ui/blur-up-image.tsx"
+        ],
+        "createdAt": "2026-08-03T03:15:52.533Z",
+        "reason": "Wrapper component receives src as a prop; the detector matches the <img> mentioned in its JSDoc, not real markup. Upstream: https://github.com/pbakaus/impeccable/issues/486"
+      },
+      {
+        "rule": "broken-image",
+        "value": "*",
+        "files": [
+          "src/components/ImageGalleryCarousel.tsx"
+        ],
+        "createdAt": "2026-08-03T03:15:52.579Z",
+        "reason": "Wrapper component receives src as a prop; the detector matches the <img> mentioned in its JSDoc, not real markup. Upstream: https://github.com/pbakaus/impeccable/issues/486"
+      },
+      {
+        "rule": "broken-image",
+        "value": "*",
+        "files": [
+          "src/components/roommate/RoommateCard.tsx"
+        ],
+        "createdAt": "2026-08-03T03:15:52.624Z",
+        "reason": "Wrapper component receives src as a prop; the detector matches the <img> mentioned in its JSDoc, not real markup. Upstream: https://github.com/pbakaus/impeccable/issues/486"
+      },
+      {
+        "rule": "broken-image",
+        "value": "*",
+        "files": [
+          "src/lib/imageTransform.ts"
+        ],
+        "createdAt": "2026-08-03T03:15:56.393Z",
+        "reason": "Pure URL-building module with no JSX; the detector matches the <img> mentioned in its module doc comment. Upstream: https://github.com/pbakaus/impeccable/issues/486"
+      }
+    ]
+  }
+}

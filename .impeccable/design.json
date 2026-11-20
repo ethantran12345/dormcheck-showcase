@@ -1,0 +1,242 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-08-04T04:12:10Z",
+  "title": "Design System: Dormcheck",
+  "extensions": {
+    "colorMeta": {
+      "malachite": {
+        "role": "primary",
+        "displayName": "Malachite",
+        "canonical": "hsl(139 97% 38%)",
+        "tonalRamp": ["#003412", "#0B5C26", "#0B702B", "#068F30", "#03C03C", "#0CDB4A", "#36F26E", "#B3FFC8"]
+      },
+      "malachite-deep": {
+        "role": "primary",
+        "displayName": "Deep Malachite",
+        "canonical": "hsl(139 82% 24%)",
+        "tonalRamp": ["#003412", "#0B5C26", "#0B702B", "#068F30", "#03C03C", "#0CDB4A", "#36F26E", "#B3FFC8"]
+      },
+      "malachite-dark": {
+        "role": "primary",
+        "displayName": "Dark Malachite",
+        "canonical": "hsl(139 90% 28%)",
+        "tonalRamp": ["#003412", "#0B5C26", "#0B702B", "#068F30", "#03C03C", "#0CDB4A", "#36F26E", "#B3FFC8"]
+      },
+      "malachite-light": {
+        "role": "primary",
+        "displayName": "Light Malachite",
+        "canonical": "hsl(139 89% 45%)",
+        "tonalRamp": ["#003412", "#0B5C26", "#0B702B", "#068F30", "#03C03C", "#0CDB4A", "#36F26E", "#B3FFC8"]
+      },
+      "slate-brand": {
+        "role": "secondary",
+        "displayName": "Brand Slate",
+        "canonical": "hsl(200 38% 27%)",
+        "tonalRamp": ["#0E1B21", "#162C36", "#1F3F4C", "#2B4E5F", "#477085", "#6E95A8", "#A3C0CE", "#D5E4EB"]
+      },
+      "stone-50": {
+        "role": "neutral",
+        "displayName": "Paper Stone",
+        "canonical": "hsl(30 20% 98%)",
+        "tonalRamp": ["#0c0a09", "#1d1916", "#2a2622", "#443d36", "#575047", "#756c61", "#a7a095", "#fbfaf9"]
+      },
+      "stone-200": {
+        "role": "neutral",
+        "displayName": "Hairline Stone",
+        "canonical": "hsl(30 10% 90%)",
+        "tonalRamp": ["#0c0a09", "#1d1916", "#2a2622", "#443d36", "#575047", "#756c61", "#a7a095", "#fbfaf9"]
+      },
+      "stone-400": {
+        "role": "neutral",
+        "displayName": "Placeholder Stone",
+        "canonical": "hsl(36 11% 62%)",
+        "tonalRamp": ["#0c0a09", "#1d1916", "#2a2622", "#443d36", "#575047", "#756c61", "#a7a095", "#fbfaf9"]
+      },
+      "stone-500": {
+        "role": "neutral",
+        "displayName": "Muted Stone",
+        "canonical": "hsl(34 9% 42%)",
+        "tonalRamp": ["#0c0a09", "#1d1916", "#2a2622", "#443d36", "#575047", "#756c61", "#a7a095", "#fbfaf9"]
+      },
+      "stone-600": {
+        "role": "neutral",
+        "displayName": "Body Stone",
+        "canonical": "hsl(32 12% 31%)",
+        "tonalRamp": ["#0c0a09", "#1d1916", "#2a2622", "#443d36", "#575047", "#756c61", "#a7a095", "#fbfaf9"]
+      },
+      "stone-900": {
+        "role": "neutral",
+        "displayName": "Ink Stone",
+        "canonical": "hsl(26 13% 10%)",
+        "tonalRamp": ["#0c0a09", "#1d1916", "#2a2622", "#443d36", "#575047", "#756c61", "#a7a095", "#fbfaf9"]
+      },
+      "stone-950": {
+        "role": "neutral",
+        "displayName": "Anchor Stone",
+        "canonical": "hsl(24 12% 5%)",
+        "tonalRamp": ["#0c0a09", "#1d1916", "#2a2622", "#443d36", "#575047", "#756c61", "#a7a095", "#fbfaf9"]
+      },
+      "surface": {
+        "role": "neutral",
+        "displayName": "Card White",
+        "canonical": "#FFFFFF",
+        "tonalRamp": ["#0c0a09", "#1d1916", "#2a2622", "#443d36", "#575047", "#756c61", "#e8e6e3", "#FFFFFF"]
+      },
+      "page": {
+        "role": "neutral",
+        "displayName": "Page Tint",
+        "canonical": "hsl(140 27% 97%)",
+        "tonalRamp": ["#0B1D12", "#12301E", "#1D4D31", "#2E6E4A", "#63A281", "#A6CFB8", "#DCF0E5", "#F5FBF7"]
+      },
+      "destructive": {
+        "role": "tertiary",
+        "displayName": "Alarm Red",
+        "canonical": "hsl(0 74% 42%)",
+        "tonalRamp": ["#2B0606", "#4A0B0B", "#7A1212", "#BA1C1C", "#D93A3A", "#E97070", "#F3A9A9", "#FBDDDD"]
+      },
+      "heart": {
+        "role": "tertiary",
+        "displayName": "Heart Coral",
+        "canonical": "hsl(0 100% 71%)",
+        "tonalRamp": ["#3B0F0F", "#5E1A1A", "#8E2C2C", "#C24545", "#FF6B6B", "#FF9494", "#FFBDBD", "#FFE5E5"]
+      },
+      "star": {
+        "role": "tertiary",
+        "displayName": "Star Amber",
+        "canonical": "hsl(26 90% 37%)",
+        "tonalRamp": ["#2A1203", "#4A1F05", "#7A3307", "#B45309", "#D97B1F", "#E9A55C", "#F3CB9C", "#FBEBD8"]
+      }
+    },
+    "typographyMeta": {
+      "display": { "displayName": "Display", "purpose": "Marketing hero headlines. Jost." },
+      "editorial": { "displayName": "Editorial", "purpose": "One Fraunces statement headline per landing surface. Never in product UI." },
+      "headline": { "displayName": "Headline", "purpose": "Card titles and section headers. Jost." },
+      "body": { "displayName": "Body", "purpose": "Running copy, list items, message bodies. Nunito. Cap prose at 65-75ch." },
+      "label": { "displayName": "Label", "purpose": "Buttons, chips, form labels, metadata. Nunito 500." },
+      "wordmark": { "displayName": "Wordmark", "purpose": "The Dormcheck logotype only. Sora. Never body or UI." }
+    },
+    "shadows": [
+      { "name": "raised", "value": "0 1px 3px 0 hsl(26 12% 24% / 0.06), 0 6px 16px -4px hsl(26 12% 24% / 0.10)", "purpose": "The resting card. Default and most common elevation." },
+      { "name": "overlay", "value": "0 4px 12px -2px hsl(26 12% 24% / 0.10), 0 18px 36px -10px hsl(26 12% 24% / 0.16)", "purpose": "Anything floating over content: dialogs, popovers, sheets, floating menus." },
+      { "name": "brand", "value": "0 4px 14px -3px hsl(139 97% 38% / 0.25)", "purpose": "Green-tinted glow reserved for the primary call to action. At most one per view." }
+    ],
+    "motion": [
+      { "name": "ease-ios", "value": "cubic-bezier(0.32, 0.72, 0, 1)", "purpose": "Default easing for state transitions across every surface. Gives web the same weight as the native shell." },
+      { "name": "ease-reveal", "value": "cubic-bezier(0.22, 1, 0.36, 1)", "purpose": "Scroll-reveal and entrance easing on marketing surfaces." },
+      { "name": "dur-fast", "value": "0.35s", "purpose": "Micro-interactions and state changes." },
+      { "name": "dur-base", "value": "0.7s", "purpose": "Section reveals." },
+      { "name": "press-scale", "value": "scale(0.98)", "purpose": "Active-state compression on buttons. Suppressed under prefers-reduced-motion." }
+    ],
+    "breakpoints": [
+      { "name": "md", "value": "768px" },
+      { "name": "lg", "value": "1024px" },
+      { "name": "2xl-container", "value": "1400px" }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "The one real action on a view. Deep Malachite so white text clears AA.",
+      "html": "<button class=\"ds-btn-primary\">Add to checklist</button>",
+      "css": ".ds-btn-primary { display: inline-flex; align-items: center; justify-content: center; gap: 8px; height: 40px; padding: 8px 16px; background: #0B702B; color: #fff; font-family: Nunito, system-ui, sans-serif; font-size: 14px; font-weight: 500; border: none; border-radius: 12px; cursor: pointer; transition: background-color 0.2s cubic-bezier(0.32,0.72,0,1), transform 0.2s cubic-bezier(0.32,0.72,0,1); } .ds-btn-primary:hover { background: #078830; } .ds-btn-primary:focus-visible { outline: none; box-shadow: 0 0 0 2px #fff, 0 0 0 4px #03C03C; } .ds-btn-primary:active { transform: scale(0.98); }"
+    },
+    {
+      "name": "Secondary Button",
+      "kind": "button",
+      "refersTo": "button-secondary",
+      "description": "A second real action that should not spend green.",
+      "html": "<button class=\"ds-btn-secondary\">Save for later</button>",
+      "css": ".ds-btn-secondary { display: inline-flex; align-items: center; justify-content: center; gap: 8px; height: 40px; padding: 8px 16px; background: #2B4E5F; color: #fff; font-family: Nunito, system-ui, sans-serif; font-size: 14px; font-weight: 500; border: none; border-radius: 12px; cursor: pointer; transition: background-color 0.2s cubic-bezier(0.32,0.72,0,1), transform 0.2s cubic-bezier(0.32,0.72,0,1); } .ds-btn-secondary:hover { background: #477085; } .ds-btn-secondary:focus-visible { outline: none; box-shadow: 0 0 0 2px #fff, 0 0 0 4px #03C03C; } .ds-btn-secondary:active { transform: scale(0.98); }"
+    },
+    {
+      "name": "Outline Button",
+      "kind": "button",
+      "refersTo": "button-outline",
+      "description": "Low-commitment action. White surface, warm hairline.",
+      "html": "<button class=\"ds-btn-outline\">Cancel</button>",
+      "css": ".ds-btn-outline { display: inline-flex; align-items: center; justify-content: center; gap: 8px; height: 40px; padding: 8px 16px; background: #fff; color: #1d1916; font-family: Nunito, system-ui, sans-serif; font-size: 14px; font-weight: 500; border: 1px solid #e8e6e3; border-radius: 12px; cursor: pointer; transition: background-color 0.2s cubic-bezier(0.32,0.72,0,1), transform 0.2s cubic-bezier(0.32,0.72,0,1); } .ds-btn-outline:hover { background: #f6f5f4; } .ds-btn-outline:focus-visible { outline: none; box-shadow: 0 0 0 2px #fff, 0 0 0 4px #03C03C; } .ds-btn-outline:active { transform: scale(0.98); }"
+    },
+    {
+      "name": "Ghost Icon Button",
+      "kind": "button",
+      "refersTo": "button-ghost",
+      "description": "No chrome at rest. The default for icon-only controls, which always carry an accessible name.",
+      "html": "<button class=\"ds-btn-ghost\" aria-label=\"Save dorm\"><svg width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z\"/></svg></button>",
+      "css": ".ds-btn-ghost { display: inline-flex; align-items: center; justify-content: center; width: 40px; height: 40px; background: transparent; color: #575047; border: none; border-radius: 12px; cursor: pointer; transition: background-color 0.2s cubic-bezier(0.32,0.72,0,1), color 0.2s; } .ds-btn-ghost:hover { background: #f6f5f4; color: #1d1916; } .ds-btn-ghost:focus-visible { outline: none; box-shadow: 0 0 0 2px #fff, 0 0 0 4px #03C03C; } .ds-btn-ghost:active { transform: scale(0.98); }"
+    },
+    {
+      "name": "Card",
+      "kind": "card",
+      "refersTo": "card",
+      "description": "The default container. True white on the tinted page, card-tier corner, resting elevation.",
+      "html": "<div class=\"ds-card\"><h3 class=\"ds-card-title\">Litchfield Tower A</h3><p class=\"ds-card-body\">Traditional double, shared bath, 4 minute walk to Cathedral.</p></div>",
+      "css": ".ds-card { background: #fff; color: #1d1916; border: 1px solid #e8e6e3; border-radius: 16px; padding: 24px; box-shadow: 0 1px 3px 0 hsl(26 12% 24% / 0.06), 0 6px 16px -4px hsl(26 12% 24% / 0.10); transition: background-color 0.2s cubic-bezier(0.32,0.72,0,1); } .ds-card:hover { background: #fbfaf9; } .ds-card-title { margin: 0 0 6px; font-family: Jost, Nunito, system-ui, sans-serif; font-size: 24px; font-weight: 600; line-height: 1; letter-spacing: -0.01em; } .ds-card-body { margin: 0; font-family: Nunito, system-ui, sans-serif; font-size: 14px; line-height: 1.5; color: #756c61; }"
+    },
+    {
+      "name": "Text Input",
+      "kind": "input",
+      "refersTo": "input",
+      "description": "The malachite focus ring is the only place full-chroma brand green touches a form.",
+      "html": "<input class=\"ds-input\" type=\"text\" placeholder=\"Search listings\" />",
+      "css": ".ds-input { width: 100%; height: 40px; padding: 8px 12px; background: #fff; color: #1d1916; font-family: Nunito, system-ui, sans-serif; font-size: 16px; line-height: 1.5; border: 1px solid #e8e6e3; border-radius: 12px; transition: border-color 0.2s, box-shadow 0.2s; } .ds-input::placeholder { color: #a7a095; } .ds-input:focus-visible { outline: none; border-color: transparent; box-shadow: 0 0 0 2px #fff, 0 0 0 4px #03C03C; }"
+    },
+    {
+      "name": "Filter Chip",
+      "kind": "chip",
+      "refersTo": "chip",
+      "description": "Pill corner, paper-stone fill. Selection is the only chip state that earns green.",
+      "html": "<span class=\"ds-chip\">Under $800</span><span class=\"ds-chip ds-chip-selected\">Pet friendly</span>",
+      "css": ".ds-chip { display: inline-flex; align-items: center; padding: 4px 12px; margin-right: 8px; background: #fbfaf9; color: #575047; font-family: Nunito, system-ui, sans-serif; font-size: 14px; font-weight: 500; border: none; border-radius: 9999px; cursor: pointer; transition: background-color 0.2s cubic-bezier(0.32,0.72,0,1); } .ds-chip:hover { background: #f6f5f4; } .ds-chip-selected { background: #0B702B; color: #fff; } .ds-chip-selected:hover { background: #078830; }"
+    },
+    {
+      "name": "Bottom Navigation",
+      "kind": "nav",
+      "refersTo": "nav",
+      "description": "The mobile and iOS shell. The active item is the one green moment.",
+      "html": "<nav class=\"ds-nav\"><a class=\"ds-nav-item ds-nav-active\" href=\"#\"><svg width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z\"/></svg><span>Home</span></a><a class=\"ds-nav-item\" href=\"#\"><svg width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><circle cx=\"11\" cy=\"11\" r=\"8\"/><path d=\"m21 21-4.3-4.3\"/></svg><span>Explore</span></a><a class=\"ds-nav-item\" href=\"#\"><svg width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z\"/></svg><span>Messages</span></a></nav>",
+      "css": ".ds-nav { display: flex; align-items: stretch; justify-content: space-around; background: #fff; border-top: 1px solid #e8e6e3; padding: 6px 0 10px; } .ds-nav-item { display: flex; flex-direction: column; align-items: center; gap: 3px; flex: 1; padding: 6px 0; color: #756c61; font-family: Nunito, system-ui, sans-serif; font-size: 12px; font-weight: 500; text-decoration: none; transition: color 0.2s cubic-bezier(0.32,0.72,0,1); } .ds-nav-item:hover { color: #1d1916; } .ds-nav-active { color: #03C03C; } .ds-nav-item:focus-visible { outline: none; box-shadow: 0 0 0 2px #03C03C; border-radius: 12px; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Quiet Dorm Room",
+    "overview": "Dormcheck looks like a room a student has actually settled into: warm, uncluttered, and comfortable to sit inside for a while. The neutrals are stone, not slate. The shadows are warm, not blue. Corners are generous but never novelty-round. Nothing competes for attention until something is genuinely worth acting on, and then a single malachite green says so.\n\nThe system is deliberately subtractive. An earlier generation of this UI used brand green for headers, icons, badges, borders, and buttons at once, which flattened the hierarchy into noise. The current world holds roughly three green moments per screen: the primary action, the active navigation state, and one accent. Everything else is carried by warm neutral surfaces and type weight. Restraint here is the brand expression, not the absence of one.\n\nDensity is phone-first. Unprefixed sizing is the mobile and iOS baseline; desktop is a layered case added with md:/lg:, never a re-tune of the base. Confirmed anti-references: cool slate grays, pure-blue shadow tones, the generic pulsing-skeleton shimmer, and any second green.",
+    "keyCharacteristics": [
+      "Warm stone neutrals against true-white cards",
+      "One accent green, spent sparingly and always on something actionable",
+      "Four semantic corner tiers chosen by what an element is, not how big it is",
+      "Exactly three elevation steps",
+      "Nunito for reading, Jost for headings, Fraunces reserved for marketing headlines",
+      "iOS-weighted motion easing across every surface"
+    ],
+    "rules": [
+      { "name": "The Three Greens Rule", "body": "A screen gets about three green moments: the primary action, the active nav state, and one accent. If you are adding a fourth, something else must give one up.", "section": "colors" },
+      { "name": "The AA Fill Rule", "body": "Solid green fills on light backgrounds use Deep Malachite (#0B702B), never the brand tone. #03C03C is for accents, marks, and focus rings, where it never has to carry text.", "section": "colors" },
+      { "name": "The Warm Neutral Rule", "body": "Every gray in this system is warm stone. Cool slate grays and blue shadow hues are an anti-reference, not a fallback.", "section": "colors" },
+      { "name": "The Four Families Rule", "body": "There are exactly four type families: Nunito, Jost, Fraunces, Sora. Fraunces is marketing-only and Sora is wordmark-only, which means product UI has two.", "section": "typography" },
+      { "name": "The No Em Dash Rule", "body": "User-facing copy uses no em dashes. Rewrite the sentence instead.", "section": "typography" },
+      { "name": "The 12px Floor", "body": "text-xs (12px) is the smallest size in the system. Anything below it (text-[11px], text-[10px], text-[8px]) is off the ramp and below the legibility floor on a phone, which is the baseline surface. This rule was added 2026-08-02 after an audit found 170 sub-12px literals across 82 files; that debt is real and is being paid down surface by surface, so the rule governs new code and any file being touched for another reason. Arbitrary sizes at or above 12px (text-[13px], text-[15px]) are a separate, milder drift: they are legible but unsystematic, and the marketing surfaces intentionally run their own composed scale.", "section": "typography" },
+      { "name": "The Three-Step Rule", "body": "Elevation has exactly three answers: shadow-raised for a resting card, shadow-overlay for something floating over content, shadow-brand for the green CTA. There is no fourth.", "section": "elevation" }
+    ],
+    "dos": [
+      "Do pick a corner from the four semantic tiers by what the element is: control (12px) for pressables and fields, card (16px) for containers, editorial (24px) for page-scale surfaces, pill for badges and avatars.",
+      "Do use Deep Malachite (#0B702B) for any solid green fill on a light background, per The AA Fill Rule.",
+      "Do keep to about three green moments per screen, per The Three Greens Rule.",
+      "Do reach for shadow-raised, shadow-overlay, or shadow-brand and nothing between them.",
+      "Do write unprefixed Tailwind for the phone and iOS baseline, then add md:/lg: for desktop.",
+      "Do give every icon-only control an accessible name; jsx-a11y and axe are blocking gates.",
+      "Do use semantic color tokens (bg-background, text-foreground, bg-card, text-muted-foreground) so dark mode works without extra work."
+    ],
+    "donts": [
+      "Don't hard-code a green hex. Use the nearest malachite-* step. There is exactly one brand green (#03C03C) and it is never described as teal.",
+      "Don't introduce a cool slate gray or a blue-hued shadow. Every neutral is warm stone.",
+      "Don't put Placeholder Stone (#a7a095) on anything meaningful; it fails AA at 2.6:1.",
+      "Don't change an unprefixed class to fix a desktop layout. That breaks mobile web and the iOS app to fix one surface.",
+      "Don't restate a radius inside a size variant. Size must not re-decide shape.",
+      "Don't use Fraunces outside marketing headlines or Sora outside the wordmark.",
+      "Don't use em dashes in user-facing copy.",
+      "Don't design a student-facing price, paywall, subscription, or upsell. Monetization does not touch the student."
+    ]
+  }
+}

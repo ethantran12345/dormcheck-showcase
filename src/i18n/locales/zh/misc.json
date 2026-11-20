@@ -1,0 +1,196 @@
+{
+  "nav": {
+    "myHome": "我的主页",
+    "home": "首页",
+    "dashboard": "仪表板",
+    "checklist": "清单",
+    "marketplace": "市场",
+    "marketplaceShort": "市场",
+    "schedule": "课程表",
+    "community": "社区",
+    "messages": "消息",
+    "mySchedule": "我的课程表",
+    "addClass": "添加课程",
+    "changeHome": "更改住处",
+    "housing": "住宿",
+    "roommates": "室友",
+    "housingRoommates": "住宿与室友",
+    "dorms": "宿舍",
+    "studentSetups": "学生布置",
+    "subleases": "转租",
+    "browseProfiles": "浏览资料",
+    "myRoommates": "我的室友",
+    "findRoommates": "寻找室友",
+    "shopEssentials": "选购必需品",
+    "myChecklist": "我的清单",
+    "moveIn": "入住",
+    "moveOut": "搬离",
+    "logistics": "物流",
+    "studentMarket": "学生市场",
+    "studentBusinesses": "学生商家",
+    "postAnItem": "发布物品",
+    "postYourSetup": "发布你的布置",
+    "getReady": "开学准备",
+    "setups": "宿舍布置",
+    "shop": "购物",
+    "moveInOut": "入住/搬离",
+    "buySell": "买卖"
+  },
+  "sections": {
+    "housing": "住房",
+    "checklist": "清单",
+    "market": "市场"
+  },
+  "sidebar": {
+    "primaryNav": "主导航",
+    "brandHome": "DormCheck 首页",
+    "soon": "即将",
+    "bookmarks": "书签",
+    "howToAddBookmarks": "如何添加书签",
+    "bookmarkHint": "从任意页面标题添加书签",
+    "noBookmarks": "还没有书签。从任意页面的标题添加一个。",
+    "removeBookmark": "移除{{label}}书签",
+    "expandSidebar": "展开侧边栏",
+    "collapseSidebar": "收起侧边栏",
+    "collapse": "收起",
+    "expandSections": "展开{{label}}分区",
+    "collapseSections": "收起{{label}}分区",
+    "comingSoon": "{{label}}（即将推出）",
+    "comingSoonTooltip": "{{label}}即将推出",
+    "unread": "{{label}}（未读）"
+  },
+  "actionMenu": {
+    "customize": "自定义",
+    "switchSection": "切换分区",
+    "goTo": "前往{{label}}"
+  },
+  "bottomNav": {
+    "label": "底部导航",
+    "myHomeDashboard": "我的主页",
+    "housingAndRoommates": "住宿与室友"
+  },
+  "topBar": {
+    "messagesUnread": "消息（未读）",
+    "goToMessages": "前往消息",
+    "adminDashboard": "管理后台",
+    "openAccountMenu": "打开账户菜单",
+    "accountMenuFor": "{{name}}的账户菜单",
+    "goToNotifications": "前往通知",
+    "notificationsUnread": "通知（{{n}} 条未读）"
+  },
+  "notifications": {
+    "title": "通知",
+    "withCount": "通知，{{n}} 条未读",
+    "tooltipWithCount": "通知（{{n}} 条未读）",
+    "markAllRead": "全部标为已读",
+    "unreadMessages_one": "你有 {{count}} 条未读消息",
+    "unreadMessages_other": "你有 {{count}} 条未读消息",
+    "unreadFallback": "你有未读消息",
+    "openToCatch": "打开消息查看",
+    "allCaughtUp": "你已看完全部内容",
+    "showAll": "查看全部",
+    "seeAll": "查看全部",
+    "pageSubtitle": "室友请求、楼栋动态等。",
+    "emptyHint": "新动态（如室友请求和楼栋更新）会显示在这里。"
+  },
+  "bookmark": {
+    "add": "添加书签",
+    "remove": "移除书签"
+  },
+  "error": {
+    "sectionTitle": "此部分无法加载",
+    "sectionBody": "这里出了点问题。你可以重试，应用的其余部分不受影响。"
+  },
+  "notFound": {
+    "title": "哎呀！页面未找到",
+    "returnHome": "返回首页"
+  },
+  "safety": {
+    "title": "在 DormCheck 上安全交易",
+    "intro": "这里的每个人都用 {{school}} 邮箱登录，但与陌生人见面终究是与陌生人见面。",
+    "meetPublic": "在校园公共场所见面：大厅、学生活动中心或餐饮区。白天比夜晚更安全。",
+    "bringFriend": "贵重物品交易时带上一位朋友。",
+    "inspect": "付款前先检查。绝不为没见过的东西提前付款。",
+    "noMoney": "DormCheck 从不经手资金，也从不索取支付信息。任何声称需要的人都是在骗你。",
+    "keepInApp": "把对话保留在 DormCheck 消息中，万一出问题也有记录。",
+    "report": "感觉不对劲？拉黑并举报。举报会由真人处理。",
+    "safetyCenter": "访问安全中心，获取校园联系方式和完整指南"
+  },
+  "search": {
+    "placeholder": "搜索任何内容",
+    "trigger": "搜索",
+    "openSearch": "打开搜索",
+    "filtersLabel": "搜索类别",
+    "filterAll": "全部",
+    "groupPages": "页面",
+    "groupDorms": "宿舍",
+    "groupMarketplace": "集市",
+    "groupChecklist": "清单",
+    "noResults": "未找到结果",
+    "myListings": "我的商品",
+    "postItem": "发布商品",
+    "messages": "消息",
+    "notifications": "通知",
+    "safety": "安全中心",
+    "campusMap": "校园地图",
+    "groupActions": "操作",
+    "searching": "正在搜索…",
+    "actions": {
+      "newListing": "发布新商品",
+      "addChecklistItem": "添加清单项目",
+      "startMessage": "发起新消息",
+      "darkMode": "切换到深色模式",
+      "lightMode": "切换到浅色模式",
+      "notificationSettings": "通知设置",
+      "adminConsole": "打开管理后台",
+      "signOut": "退出登录"
+    }
+  },
+  "legalNotice": {
+    "title": "我们更新了服务条款和隐私政策",
+    "body": "2026 年 8 月 18 日有两项变更。发布转租信息现在需要填写地址，我们会将该地址发送给地图服务商，转换为坐标后在转租地图上显示为一个图钉，因此任何能看到该条信息的人都能看到它的位置。另外，我们不再收集课程表，因为该功能已经下线。",
+    "readTerms": "阅读服务条款",
+    "readPrivacy": "阅读隐私政策",
+    "acknowledge": "知道了"
+  },
+  "shortcuts": {
+    "title": "键盘快捷键",
+    "description": "在 DormCheck 中可以使用的键盘操作。",
+    "menuItem": "键盘快捷键",
+    "groups": {
+      "general": "任意页面",
+      "search": "搜索中",
+      "messages": "消息中",
+      "adminReports": "管理员举报"
+    },
+    "openPalette": "打开搜索和操作",
+    "focusSearch": "搜索当前页面，或打开搜索",
+    "showShortcuts": "显示此列表",
+    "paletteMove": "在结果之间移动",
+    "paletteRun": "打开或执行所选结果",
+    "paletteClose": "关闭搜索",
+    "messagesMove": "在对话之间移动",
+    "messagesEnds": "跳到第一个或最后一个对话",
+    "reportsNext": "下一条举报",
+    "reportsPrev": "上一条举报",
+    "reportsApprove": "批准所选举报",
+    "reportsHide": "隐藏被举报的内容",
+    "keys": {
+      "command": "Command",
+      "ctrl": "Ctrl",
+      "shift": "Shift",
+      "enter": "Enter",
+      "up": "上箭头",
+      "down": "下箭头",
+      "esc": "Esc",
+      "home": "Home",
+      "end": "End"
+    },
+    "footer": {
+      "move": "移动",
+      "run": "打开",
+      "close": "关闭",
+      "all": "快捷键"
+    }
+  }
+}

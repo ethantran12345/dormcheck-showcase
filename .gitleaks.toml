@@ -1,0 +1,19 @@
+# gitleaks configuration for the DormCheck showcase.
+# The allowlist covers only values that are public by design.
+
+[extend]
+useDefault = true
+
+[allowlist]
+description = "Public-by-design values only. Real secrets still fail."
+regexTarget = "match"
+regexes = [
+  # Mapbox public (pk.) tokens.
+  '''pk\.eyJ[\w-]+\.[\w-]+''',
+  # A deliberately wrong bearer used by scripts/test-edge-push.sh to prove a 401.
+  '''not-the-shared-token''',
+]
+paths = [
+  # Committed E2E template: holds only the well-known Supabase local demo keys.
+  '''\.env\.e2e\.example''',
+]

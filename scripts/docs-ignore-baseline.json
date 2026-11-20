@@ -1,0 +1,210 @@
+{
+  "_note": "Grandfathered docs-drift-ignore comments that predate the mandatory-reason rule (see checkIgnoreReasons() in scripts/check-docs-drift.mjs). Debt is 138/138 as of 2026-07-28 (IGNORE_DEBT_CEILING). Shrink by adding a real reason IN THE DOC \u2014 separator is whitespace-delimited ` \u2014 `, ` \u2013 `, ` -- ` or ` - ` (`<!-- docs-drift-ignore: name - reason -->`) \u2014 or by deleting the dead reference; never by editing this file. This file is DEBT, not a whitelist to grow.",
+  ".claude/rules/auth-gating.md": [
+    "validate_pitt_email, check_pitt_email_on_signup"
+  ],
+  ".claude/rules/supabase-backend.md": [
+    "drop_university_resources",
+    "list_branches"
+  ],
+  "docs/ARCHITECTURE.md": [
+    "master_housing_map, collaboration_details, validate_pitt_email, delete_user_data, favorite_listings, saved_roommates, saved_roommate_posts"
+  ],
+  "docs/audits/_coverage.md": [
+    "collaboration_details",
+    "campus_map_courses",
+    "master_housing_map",
+    "get_dorm_review_stats",
+    "campus_map_courses",
+    "workflow_dispatch",
+    "favorite_listings",
+    "saved_roommate_posts",
+    "saved_roommates",
+    "dining_upvotes",
+    "dining_spots",
+    "dining_reviews",
+    "master_housing_map",
+    "get_dorm_review_stats"
+  ],
+  "docs/audits/admin-moderation.md": [
+    "gen_random_uuid, useModerationActions"
+  ],
+  "docs/audits/analytics.md": [
+    "gen_random_uuid, analytics_events_event_name_len_chk",
+    "review_submitted, student_reviews",
+    "roommate_swipes"
+  ],
+  "docs/audits/app-bug-audit.md": [
+    "workflow_dispatch"
+  ],
+  "docs/audits/auth-and-access.md": [
+    "validate_pitt_email",
+    "is_pitt_user",
+    "validate_pitt_email",
+    "bootstrap_superadmin",
+    "validate_pitt_email",
+    "validate_pitt_email"
+  ],
+  "docs/audits/campus-map.md": [
+    "campus_map_courses",
+    "student_reviews, get_reviews_summary",
+    "src/components/HowItWorks.tsx",
+    "student_reviews",
+    "get_reviews_summary",
+    "master_housing_map",
+    "student_reviews"
+  ],
+  "docs/audits/checklist.md": [
+    "checklistBalances, checklistHelpers, useChecklistPayments, ChecklistPage, MoveInWeekTabPanel"
+  ],
+  "docs/audits/class-schedule.md": [
+    "section_meetings"
+  ],
+  "docs/audits/dorm-detail-portal.md": [
+    "src/data/pittResources.ts, ResourcesPage.tsx, PittResourcesTab, src/pages/app/guides/PittGuidePage.tsx, src/test/pittGuides.test.ts, src/test/pittResources.test.ts",
+    "src/data/pittGuides.ts, src/test/pittResources.test.ts",
+    "get_subleases_preview",
+    "src/components/dorm-portal/FutureResidentsTab.tsx",
+    "src/components/dorm-portal/WriteReviewModal.tsx",
+    "src/components/dorm-portal/SetupTikTokTourEmbed.tsx",
+    "student_reviews, rating_community, rating_student_life, rating_location, is_anonymous",
+    "get_subleases_preview",
+    "get_subleases_preview",
+    "get_subleases_preview"
+  ],
+  "docs/audits/dorm-rankings-collaboration.md": [
+    "sync_group_status",
+    "src/components/roommate/CollaborateDashboard.tsx",
+    "collaboration_details",
+    "trg_sync_group_rankings_on_member_accept"
+  ],
+  "docs/audits/edge-functions.md": [
+    "student_reviews"
+  ],
+  "docs/audits/feature-flags-phase-1.md": [
+    "master_housing_map",
+    "get_subleases_preview",
+    "get_subleases_preview"
+  ],
+  "docs/audits/housing-explore.md": [
+    "student_reviews, get_reviews_summary",
+    "get_subleases_preview",
+    "student_reviews",
+    "rating_community, rating_student_life, rating_location",
+    "master_housing_map",
+    "get_reviews_summary",
+    "subleases_view_changes"
+  ],
+  "docs/audits/marketplace.md": [
+    "src/components/subleases/SubleasesView.tsx, src/components/marketplace/SubleaseMapPanel.tsx, src/components/explore/SubleasePreviewCarousel.tsx",
+    "favorite_listings",
+    "src/components/marketplace/SortableListingThumbnail.tsx",
+    "subleases",
+    "favorite_listings dropped 20260613260000",
+    "favorite_listings",
+    "get_subleases_preview",
+    "marketplace_listings_changes",
+    "subleases_view_changes"
+  ],
+  "docs/audits/messaging.md": [
+    "grant_ra, revoke_ra"
+  ],
+  "docs/audits/my-home.md": [
+    "src/components/home/ResourcesWidget.tsx",
+    "src/components/dorm-portal/DormStudentQASection.tsx"
+  ],
+  "docs/audits/notifications.md": [
+    "notifications_trigger_fn_grants, joiner_ids"
+  ],
+  "docs/audits/orphan-unwired.md": [
+    "src/pages/app/CampusMapPage.tsx",
+    "campus_map_courses",
+    "campus_map_courses",
+    "src/pages/app/OffCampus.tsx",
+    "src/components/dorm-portal/DormStudentQASection.tsx",
+    "src/components/dorm-portal/DiningRankings.tsx",
+    "dining_spots",
+    "dining_reviews",
+    "dining_upvotes",
+    "off_campus_dining_spots",
+    "off_campus_dining_reviews",
+    "src/components/roommate/CollaborateDashboard.tsx",
+    "src/components/roommate/CollaborateInviteModal.tsx",
+    "favorite_listings",
+    "delete_user_data",
+    "saved_roommate_posts",
+    "saved_roommates",
+    "dining_upvotes",
+    "dining_spots",
+    "dining_reviews",
+    "off_campus_dining_spots",
+    "off_campus_dining_reviews",
+    "campus_map_courses",
+    "get_subleases_preview",
+    "master_housing_map",
+    "get_dorm_review_stats",
+    "student_reviews",
+    "get_reviews_summary",
+    "favorite_listings",
+    "saved_roommate_posts",
+    "saved_roommates",
+    "dining_upvotes",
+    "dining_spots",
+    "dining_reviews",
+    "campus_map_courses",
+    "master_housing_map",
+    "get_dorm_review_stats"
+  ],
+  "docs/audits/profiles.md": [
+    "profiles_roommate_columns",
+    "delete_user_data",
+    "profiles_private",
+    "ProfileView",
+    "src/components/ProfileView.tsx",
+    "favorite_listings",
+    "saved_roommates",
+    "student_reviews",
+    "roommate_swipes",
+    "swiper_id"
+  ],
+  "docs/audits/push-notifications.md": [
+    "roommate_confirm, building_digest, joiner_ids"
+  ],
+  "docs/audits/realtime.md": [
+    "marketplace_listings_changes, subleases_view_changes",
+    "supabase/supabase-js"
+  ],
+  "docs/audits/repo-root-config.md": [
+    "vite_react_shadcn_ts, workflow_dispatch, supabase/supabase-js"
+  ],
+  "docs/audits/roommates.md": [
+    "roommate_swipes, saved_roommate_posts, saved_roommates, gen_random_uuid"
+  ],
+  "docs/audits/storage-buckets.md": [
+    "allowed_mime_types, file_size_limit"
+  ],
+  "docs/audits/tenant-isolation-rollback.md": [
+    "apply_class_a_tenant_isolation, preview_rpc_tenant_scoping"
+  ],
+  "docs/email-notifications.md": [
+    "api/notify-group-invite"
+  ],
+  "docs/figma-code-connect-reconciliation.md": [
+    "src/components/ui/chip.tsx, src/components/ui/search-input.tsx, src/components/ui/segmented-control.tsx"
+  ],
+  "docs/i18n-translation-program.md": [
+    "src/i18n/locales/zh/resources.json, src/data/pittGuides.ts, src/data/pittResources.ts"
+  ],
+  "docs/multi-university.md": [
+    "validate_pitt_email, is_pitt_user"
+  ],
+  "docs/schema-map.md": [
+    "pitt_housing, cmu_courses, pitt_, validate_pitt_email"
+  ],
+  "docs/security-todo.md": [
+    "is_pitt_user"
+  ],
+  "docs/security/ci-gate-matrix.md": [
+    "pull_request, community_phase1, index_advisor_fk_gaps, remote_schema, issue_comment, workflow_dispatch"
+  ]
+}

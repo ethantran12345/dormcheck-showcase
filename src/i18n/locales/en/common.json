@@ -1,0 +1,159 @@
+{
+  "actions": {
+    "actions": "Actions",
+    "add": "Add",
+    "back": "Back",
+    "backToSignIn": "Back to sign in",
+    "cancel": "Cancel",
+    "clearAll": "Clear all",
+    "clearAllFilters": "Clear all filters",
+    "clearSearch": "Clear search",
+    "close": "Close",
+    "confirm": "Confirm",
+    "continue": "Continue",
+    "delete": "Delete",
+    "dismiss": "Dismiss",
+    "done": "Done",
+    "edit": "Edit",
+    "filters": "Filters",
+    "joinWaitlist": "Join the waitlist",
+    "learnMore": "Learn more",
+    "loading": "Loading...",
+    "logOut": "Log Out",
+    "open": "Open",
+    "password": "Password",
+    "preview": "Preview",
+    "remove": "Remove",
+    "removeFromSaved": "Remove from saved",
+    "retry": "Retry",
+    "save": "Save",
+    "saveChanges": "Save changes",
+    "saving": "Saving...",
+    "seeLess": "See less",
+    "seeMore": "See more",
+    "share": "Share",
+    "signIn": "Sign In",
+    "signOut": "Sign Out",
+    "submit": "Submit",
+    "tryAgain": "Try again"
+  },
+  "auth": {
+    "signInPrompt": "Please sign in to continue.",
+    "signInRequiredTitle": "Sign in to continue",
+    "signInRequiredBody": "Browsing is open to everyone. You need a free student account to {{action}}.",
+    "signInRequiredFallbackAction": "do that",
+    "keepBrowsing": "Keep browsing"
+  },
+  "fields": {
+    "email": "Email Address"
+  },
+  "form": {
+    "emailInvalid": "That doesn't look like an email address.",
+    "emailRequired": "Enter your email.",
+    "messageRequired": "Write your message first.",
+    "nameRequired": "Enter your name.",
+    "optional": "optional"
+  },
+  "labels": {
+    "admin": "Admin",
+    "home": "Home",
+    "messages": "Messages",
+    "myProfile": "My Profile",
+    "notifications": "Notifications",
+    "profile": "Profile",
+    "settings": "Settings",
+    "viewAccount": "View account",
+    "filters": "Filters",
+    "post": "Post"
+  },
+  "menu": {
+    "moreOptions": "More options"
+  },
+  "placeholders": {
+    "newPassword": "New password"
+  },
+  "profileFields": {
+    "editHousing": "Edit housing",
+    "sections": {
+      "basicsTitle": "Basics",
+      "basicsDescription": "The essentials to get you on the app.",
+      "roommateTitle": "Roommate matching",
+      "roommateDescription": "Only fill this out if you're looking for a roommate.",
+      "contactTitle": "Contact & payments",
+      "contactDescription": "How people reach you and pay you back."
+    },
+    "aboutYouTitle": "About you",
+    "nameRequired": "Add your name to save your profile.",
+    "identityRequired": "Add at least one of major, school, or housing.",
+    "floorDisplay": "Floor {{floor}}",
+    "gradeLevelLabel": "Grade level",
+    "gradeLevelPlaceholder": "Select your grade level",
+    "graduationYearLabel": "Graduation year",
+    "graduationYearPlaceholder": "e.g. 2028",
+    "housingLabel": "Housing",
+    "housingNotSet": "No housing set",
+    "housingOffCampus": "Off campus",
+    "housingOnCampus": "On campus",
+    "majorLabel": "Major",
+    "majorPlaceholder": "e.g. Computer Science",
+    "nameLabel": "Name",
+    "namePlaceholder": "Your name",
+    "paymentsHelper": "Add payment handles so roommates and buyers can pay you back easily.",
+    "paymentsLabel": "Payments",
+    "profileRemoved": "Roommate profile removed",
+    "pronounsLabel": "Pronouns",
+    "pronounsPlaceholder": "e.g. she/her",
+    "roomDisplay": "Room {{room}}",
+    "schoolLabel": "School",
+    "schoolPlaceholder": "Your school or college",
+    "semester": {
+      "fall": "Fall",
+      "spring": "Spring"
+    },
+    "setHousing": "Set housing",
+    "venmoLabel": "Venmo",
+    "venmoPlaceholder": "@your-venmo",
+    "zelleLabel": "Zelle",
+    "zellePlaceholder": "Email or phone for Zelle",
+    "grade": {
+      "freshman": "Freshman",
+      "sophomore": "Sophomore",
+      "junior": "Junior",
+      "senior": "Senior",
+      "graduate": "Graduate"
+    }
+  },
+  "search": {
+    "placeholder": "Search"
+  },
+  "state": {
+    "clipboardEmpty": "Clipboard is empty",
+    "clipboardFailed": "Couldn't read clipboard",
+    "comingSoon": "Coming soon",
+    "loading": "Loading...",
+    "loadingMarketplace": "Loading marketplace...",
+    "no": "No",
+    "nothingSaved": "Nothing saved yet",
+    "optional": "(optional)",
+    "posting": "Posting...",
+    "saved": "Saved",
+    "saving": "Saving...",
+    "yes": "Yes",
+    "nothingSavedHint": "Tap the heart on a listing to keep it here."
+  },
+  "toast": {
+    "couldNotSave": "Couldn't save. Please try again.",
+    "genericError": "Something went wrong. Please try again.",
+    "saved": "Saved",
+    "saveError": "Couldn't save. Please try again.",
+    "tryAgain": "Please try again.",
+    "heicUnsupported": "This photo is in HEIC format and this browser can't convert it. Try a JPEG or PNG, or upload it from Safari or the DormCheck app."
+  },
+  "loadFailed": {
+    "title": "We couldn't reach DormCheck",
+    "body": "Check your connection, then try again.",
+    "retry": "Try again",
+    "checklistHub": "We couldn't load your lists.",
+    "checklistGroups": "We couldn't load your group lists."
+  }
+}

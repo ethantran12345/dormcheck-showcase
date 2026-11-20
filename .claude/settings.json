@@ -1,0 +1,66 @@
+{
+  "$schema": "https://json.schemastore.org/claude-code-settings.json",
+  "permissions": {
+    "allow": [
+      "Bash(docker info)",
+      "mcp__claude-in-chrome__read_page",
+      "mcp__claude-in-chrome__read_console_messages",
+      "mcp__claude-in-chrome__get_page_text",
+      "mcp__claude-in-chrome__read_network_requests",
+      "mcp__claude-in-chrome__find",
+      "mcp__playwright__browser_navigate",
+      "mcp__playwright__browser_snapshot",
+      "mcp__playwright__browser_take_screenshot",
+      "mcp__playwright__browser_console_messages",
+      "mcp__playwright__browser_network_requests",
+      "mcp__playwright__browser_resize",
+      "mcp__claude_ai_Supabase__list_projects",
+      "mcp__claude_ai_Supabase__get_advisors",
+      "mcp__claude_ai_Supabase__list_migrations",
+      "mcp__claude_ai_Supabase__generate_typescript_types",
+      "mcp__claude_ai_Vercel__list_deployments",
+      "mcp__claude_ai_Vercel__get_deployment",
+      "mcp__claude_ai_Vercel__list_teams",
+      "mcp__claude_ai_Vercel__list_projects"
+    ],
+    "deny": [
+      "Read(src/integrations/supabase/types.ts)",
+      "Read(src/components/roommates/FindingRoommates.tsx)",
+      "Read(node_modules/**)",
+      "Read(dist/**)",
+      "Read(**/*.lock)",
+      "Read(**/package-lock.json)"
+    ]
+  },
+  "autoMode": {
+    "allow": [
+      "$defaults",
+      "Staging or committing dependency manifests: `git add` / `git commit` naming package.json and/or package-lock.json. Dependency bumps are a normal reviewed workflow in this repo (npm-audit-ratchet.sh is a blocking production-scope CI gate, so advisory fixes must be committable), and the .githooks pre-commit chain still runs on every such commit. Does NOT cover hand-editing lockfiles or running package installs."
+    ]
+  },
+  "hooks": {
+    "SessionStart": [
+      {
+        "hooks": [
+          { "type": "command", "command": "DC_SESSION_HOOK=1 npm run session:begin" }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "hooks": [
+          { "type": "command", "command": "node \"$CLAUDE_PROJECT_DIR/scripts/wip.mjs\" --hook --throttle=10" }
+        ]
+      }
+    ],
+    "SessionEnd": [
+      {
+        "hooks": [
+          { "type": "command", "command": "node \"$CLAUDE_PROJECT_DIR/scripts/wip.mjs\" --hook" },
+          { "type": "command", "command": "npm run wrap" },
+          { "type": "command", "command": "node \"$CLAUDE_PROJECT_DIR/scripts/agent-lock.mjs\" unregister" }
+        ]
+      }
+    ]
+  }
+}

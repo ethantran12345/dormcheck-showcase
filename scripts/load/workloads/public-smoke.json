@@ -1,0 +1,9 @@
+{
+  "thinkMs": 100,
+  "requests": [
+    { "name": "landing", "method": "GET", "path": "/" },
+    { "name": "auth", "method": "GET", "path": "/auth" },
+    { "name": "public-marketplace", "method": "GET", "path": "/marketplace" },
+    { "name": "privacy", "method": "GET", "path": "/privacy" }
+  ]
+}

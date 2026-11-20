@@ -1,0 +1,159 @@
+{
+  "actions": {
+    "actions": "操作",
+    "add": "添加",
+    "back": "返回",
+    "backToSignIn": "返回登录",
+    "cancel": "取消",
+    "clearAll": "全部清除",
+    "clearAllFilters": "清除所有筛选",
+    "clearSearch": "清除搜索",
+    "close": "关闭",
+    "confirm": "确认",
+    "continue": "继续",
+    "delete": "删除",
+    "dismiss": "关闭",
+    "done": "完成",
+    "edit": "编辑",
+    "filters": "筛选",
+    "joinWaitlist": "加入等候名单",
+    "learnMore": "了解更多",
+    "loading": "加载中…",
+    "logOut": "退出登录",
+    "open": "打开",
+    "password": "密码",
+    "preview": "预览",
+    "remove": "移除",
+    "removeFromSaved": "取消收藏",
+    "retry": "重试",
+    "save": "保存",
+    "saveChanges": "保存更改",
+    "saving": "保存中…",
+    "seeLess": "收起",
+    "seeMore": "查看更多",
+    "share": "分享",
+    "signIn": "登录",
+    "signOut": "退出登录",
+    "submit": "提交",
+    "tryAgain": "重试"
+  },
+  "auth": {
+    "signInPrompt": "请先登录以继续。",
+    "signInRequiredTitle": "登录后继续",
+    "signInRequiredBody": "浏览对所有人开放。{{action}}需要一个免费的学生账户。",
+    "signInRequiredFallbackAction": "执行该操作",
+    "keepBrowsing": "继续浏览"
+  },
+  "fields": {
+    "email": "电子邮件地址"
+  },
+  "form": {
+    "emailInvalid": "这不像是一个邮箱地址。",
+    "emailRequired": "请输入邮箱。",
+    "messageRequired": "请先填写留言内容。",
+    "nameRequired": "请输入姓名。",
+    "optional": "选填"
+  },
+  "labels": {
+    "admin": "管理",
+    "home": "首页",
+    "messages": "消息",
+    "myProfile": "我的资料",
+    "notifications": "通知",
+    "profile": "个人资料",
+    "settings": "设置",
+    "viewAccount": "查看账户",
+    "filters": "筛选",
+    "post": "发布"
+  },
+  "menu": {
+    "moreOptions": "更多选项"
+  },
+  "placeholders": {
+    "newPassword": "新密码"
+  },
+  "profileFields": {
+    "editHousing": "编辑住宿",
+    "sections": {
+      "basicsTitle": "基本信息",
+      "basicsDescription": "开始使用应用所需的基本信息。",
+      "roommateTitle": "室友匹配",
+      "roommateDescription": "只有在寻找室友时才需要填写。",
+      "contactTitle": "联系方式与付款",
+      "contactDescription": "别人如何联系你以及向你付款。"
+    },
+    "aboutYouTitle": "关于你",
+    "nameRequired": "请填写你的姓名以保存个人资料。",
+    "identityRequired": "请至少填写专业、学院或住宿中的一项。",
+    "floorDisplay": "{{floor}} 楼",
+    "gradeLevelLabel": "年级",
+    "gradeLevelPlaceholder": "选择你的年级",
+    "graduationYearLabel": "毕业年份",
+    "graduationYearPlaceholder": "例如 2028",
+    "housingLabel": "住宿",
+    "housingNotSet": "尚未设置住宿",
+    "housingOffCampus": "校外",
+    "housingOnCampus": "校内",
+    "majorLabel": "专业",
+    "majorPlaceholder": "例如 计算机科学",
+    "nameLabel": "姓名",
+    "namePlaceholder": "你的姓名",
+    "paymentsHelper": "添加收款方式，方便室友和买家向你付款。",
+    "paymentsLabel": "收款方式",
+    "profileRemoved": "已删除室友资料",
+    "pronounsLabel": "代词",
+    "pronounsPlaceholder": "例如 she/her",
+    "roomDisplay": "{{room}} 室",
+    "schoolLabel": "学院",
+    "schoolPlaceholder": "你所在的学院",
+    "semester": {
+      "fall": "秋季",
+      "spring": "春季"
+    },
+    "setHousing": "设置住宿",
+    "venmoLabel": "Venmo",
+    "venmoPlaceholder": "@你的-venmo",
+    "zelleLabel": "Zelle",
+    "zellePlaceholder": "用于 Zelle 的邮箱或电话",
+    "grade": {
+      "freshman": "大一",
+      "sophomore": "大二",
+      "junior": "大三",
+      "senior": "大四",
+      "graduate": "研究生"
+    }
+  },
+  "search": {
+    "placeholder": "搜索"
+  },
+  "state": {
+    "clipboardEmpty": "剪贴板为空",
+    "clipboardFailed": "无法读取剪贴板",
+    "comingSoon": "即将推出",
+    "loading": "加载中…",
+    "loadingMarketplace": "正在加载二手市场...",
+    "no": "否",
+    "nothingSaved": "还没有收藏",
+    "optional": "（选填）",
+    "posting": "发布中...",
+    "saved": "已保存",
+    "saving": "保存中...",
+    "yes": "是",
+    "nothingSavedHint": "点商品上的爱心，就会保存在这里。"
+  },
+  "toast": {
+    "couldNotSave": "无法保存，请重试。",
+    "genericError": "出了点问题，请重试。",
+    "saved": "已保存",
+    "saveError": "无法保存，请重试。",
+    "tryAgain": "请重试。",
+    "heicUnsupported": "这张照片是 HEIC 格式，当前浏览器无法转换。请改用 JPEG 或 PNG，或在 Safari 或 DormCheck 应用中上传。"
+  },
+  "loadFailed": {
+    "title": "无法连接到 DormCheck",
+    "body": "请检查网络连接，然后重试。",
+    "retry": "重试",
+    "checklistHub": "无法加载你的清单。",
+    "checklistGroups": "无法加载你的小组清单。"
+  }
+}

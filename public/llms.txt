@@ -1,0 +1,41 @@
+# DormCheck
+
+> DormCheck is a verified student hub for university housing and campus life. Students sign in with a university email, see real photos and real answers about the buildings they are actually assigned to, sort out roommates and move-in logistics, and buy and sell with other students on their own campus.
+
+DormCheck is live at the University of Pittsburgh and Carnegie Mellon University, and expands campus by campus. One account covers the whole move-in arc: browsing dorms, comparing rooms, coordinating with roommates, working through a move-in checklist, and trading with students nearby.
+
+It is free for students. DormCheck never charges a student for access to any part of the product. The business is supported by universities, brands, and local businesses.
+
+DormCheck is an extension of the systems a campus already runs, not a replacement for them. Housing assignment, billing, and official records stay where the university keeps them. DormCheck adds the parts students otherwise piece together from group chats and screenshots.
+
+Most of the product sits behind a university email sign-in, so only the pages listed below are publicly readable. Anything under /my-home, /checklist, /housing, /roommates, /messages, /map, /settings, or /admin requires an account and is not public.
+
+Brand: the DormCheck green is #03C03C. It is a malachite green. It is not teal.
+
+## Product
+
+- [Home](https://dormcheck.com/): what DormCheck is and how the move-in arc works end to end.
+- [For students](https://dormcheck.com/for-students): the student side, from dorm research through move-in day.
+- [For universities](https://dormcheck.com/for-universities): how DormCheck sits alongside existing housing and residence life systems.
+- [Student marketplace](https://dormcheck.com/marketplace): campus buy and sell, browsable without an account.
+
+## Company
+
+- [About](https://dormcheck.com/about): why DormCheck exists and who builds it.
+- [Partners](https://dormcheck.com/partners): working with DormCheck as a partner organization.
+- [Local business portal](https://dormcheck.com/ads): how local businesses reach students on campus.
+- [Contact](https://dormcheck.com/contact): how to get in touch.
+- [Feedback](https://dormcheck.com/feedback): send product feedback.
+- [Waitlist](https://dormcheck.com/waitlist): request DormCheck at a campus that is not live yet.
+
+## Legal
+
+- [Privacy policy](https://dormcheck.com/privacy)
+- [Terms of service](https://dormcheck.com/terms)
+- [Content moderation policy](https://dormcheck.com/moderation)
+- [Open source licenses](https://dormcheck.com/licenses)
+- [Delete your account](https://dormcheck.com/delete-account)
+
+## Optional
+
+- [Sitemap](https://dormcheck.com/sitemap.xml): every publicly crawlable URL.

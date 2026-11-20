@@ -1,0 +1,953 @@
+university_slug,residence_hall,accomodation,rate_per_term,rent_period,terms,meal_plan_options,housing_type,address,mailing_address,mailing_services,capacity,floors,who_lives_here,community_type,details,inroom_amenities,building_amenities,wifi_and_cable,heat_and_air_conditioning,window_coverings,laundry,important_dates,resident_director,latitude,longitude,image_url,floorplan,building_llc,move_in_parking_lot,move_in_time_window,move_in_entrance,move_in_cart_location,move_in_notes,move_in_date,source_page,data_provenance,needs_enrichment
+cmu,Boss House,Semi-Suite - Double,"6,458.00",semester,"Two-term Housing Commitment (Fall 2026, Spring 2027)",TRUE,On-Campus Housing,"5126 Margaret Morrison St, Pittsburgh, PA 15213","Student Name
+SMC (mailbox) #
+Carnegie Mellon University
+5032 Forbes Avenue
+Pittsburgh, PA 15289",Cohon University Center Postal Services (assigned SMC mailbox),Houses 60 first-year students,,First Year Students,Co-ed by floor; part of a first-year house community,"Boss House is one of the oldest residence halls on campus and houses first-year students in semi-suite configurations that share a bathroom between two rooms. It is paired with neighboring McGill House and shares a large outdoor courtyard, a first-floor community lounge, and recreation and study spaces. Air conditioning is provided by window units.","Extra-long twin bed
+Desk and chair
+Dresser
+Closet or wardrobe
+Window covering
+Semi-private (shared-suite) bathroom
+Air conditioning (window unit)","First-floor community lounge (Building)
+Recreation and television areas (Building)
+Study lounges (On-floor)
+Shared kitchen (Building)
+Laundry facilities (Building)
+Large outdoor courtyard shared with McGill (Building)",TRUE,TRUE,TRUE,TRUE,,,40.441615,-79.939345,https://www.cmu.edu/housing/our-communities/photo-grid-images/mascots/boss-house__900x600-min.jpg,https://www.cmu.edu/housing/our-communities/residences/floor-plans/boss-house/boss_semi-suite-single_floor-plan.pdf,First-year house community (Boss House),,,,,,,https://www.cmu.edu/housing/our-communities/residences/boss.html,Rates/room-types/beds: CMU official 2026-2027 Housing Rates PDF. Building details/amenities/floors/images/community: CMU official residence detail pages (fetched 2026-07-10). Some qualitative color cross-checked against student CMU dorms guide (unofficial).,move-in logistics; House Fellow name
+cmu,McGill House,Semi-Suite - Double,"6,458.00",semester,"Two-term Housing Commitment (Fall 2026, Spring 2027)",TRUE,On-Campus Housing,"5128 Margaret Morrison St, Pittsburgh, PA 15213","Student Name
+SMC (mailbox) #
+Carnegie Mellon University
+5032 Forbes Avenue
+Pittsburgh, PA 15289",Cohon University Center Postal Services (assigned SMC mailbox),Houses 70 first-year students,,First Year Students,Co-ed by floor; part of a first-year house community,"McGill House is a first-year residential community on The Hill offering semi-suite singles and doubles with a bathroom shared between paired rooms. Paired with Boss House, it shares recreation and television areas, study lounges, a shared kitchen, and a large outdoor courtyard. Air conditioning is provided by window units.","Extra-long twin bed
+Desk and chair
+Dresser
+Closet or wardrobe
+Window covering
+Semi-private (shared-suite) bathroom
+Air conditioning (window unit)","First-floor community lounge (Building)
+Recreation and TV areas (Building)
+Study lounges (On-floor)
+Shared kitchen (Building)
+Laundry facilities (Building)
+Large outdoor courtyard shared with Boss (Building)",TRUE,TRUE,TRUE,TRUE,,,40.44173,-79.939065,https://www.cmu.edu/housing/about-us/news/news-images/mcgill-house_900x600-min.jpg,https://www.cmu.edu/housing/our-communities/residences/floor-plans/mcgill-house/mcgill-semi-suite-single-example.pdf,First-year house community (McGill House),,,,,,,https://www.cmu.edu/housing/our-communities/residences/mcgill.html,Rates/room-types/beds: CMU official 2026-2027 Housing Rates PDF. Building details/amenities/floors/images/community: CMU official residence detail pages (fetched 2026-07-10). Some qualitative color cross-checked against student CMU dorms guide (unofficial).,move-in logistics; House Fellow name
+cmu,McGill House,Semi-Suite - Single,"7,497.00",semester,"Two-term Housing Commitment (Fall 2026, Spring 2027)",TRUE,On-Campus Housing,"5128 Margaret Morrison St, Pittsburgh, PA 15213","Student Name
+SMC (mailbox) #
+Carnegie Mellon University
+5032 Forbes Avenue
+Pittsburgh, PA 15289",Cohon University Center Postal Services (assigned SMC mailbox),Houses 70 first-year students,,First Year Students,Co-ed by floor; part of a first-year house community,"McGill House is a first-year residential community on The Hill offering semi-suite singles and doubles with a bathroom shared between paired rooms. Paired with Boss House, it shares recreation and television areas, study lounges, a shared kitchen, and a large outdoor courtyard. Air conditioning is provided by window units.","Extra-long twin bed
+Desk and chair
+Dresser
+Closet or wardrobe
+Window covering
+Semi-private (shared-suite) bathroom
+Air conditioning (window unit)","First-floor community lounge (Building)
+Recreation and TV areas (Building)
+Study lounges (On-floor)
+Shared kitchen (Building)
+Laundry facilities (Building)
+Large outdoor courtyard shared with Boss (Building)",TRUE,TRUE,TRUE,TRUE,,,40.44173,-79.939065,https://www.cmu.edu/housing/about-us/news/news-images/mcgill-house_900x600-min.jpg,https://www.cmu.edu/housing/our-communities/residences/floor-plans/mcgill-house/mcgill-semi-suite-single-example.pdf,First-year house community (McGill House),,,,,,,https://www.cmu.edu/housing/our-communities/residences/mcgill.html,Rates/room-types/beds: CMU official 2026-2027 Housing Rates PDF. Building details/amenities/floors/images/community: CMU official residence detail pages (fetched 2026-07-10). Some qualitative color cross-checked against student CMU dorms guide (unofficial).,move-in logistics; House Fellow name
+cmu,Donner House,Traditional - Double,"5,850.00",semester,"Two-term Housing Commitment (Fall 2026, Spring 2027)",TRUE,On-Campus Housing,"5115 Margaret Morrison St, Pittsburgh, PA 15213","Student Name
+SMC (mailbox) #
+Carnegie Mellon University
+5032 Forbes Avenue
+Pittsburgh, PA 15289",Cohon University Center Postal Services (assigned SMC mailbox),Houses approximately 240 first-year students,4,First Year Students,Single-gender bathrooms by wing; co-ed community,"Donner House is one of the larger first-year communities on campus, housing around 240 students across four floors with a large community lounge on the first floor. Traditional single, double, and triple rooms sit close to campus, the athletic fields, and Resnik and Margaret Morrison dining. There is no central air conditioning (window units are provided only for approved medical accommodations).","Extra-long twin bed (lofted options in triples)
+Desk and chair
+Dresser
+Closet
+Window covering","Large first-floor community lounge (Building)
+TV lounge (On-floor)
+Study lounge (On-floor)
+Recreational area (Building)
+Shared kitchen (Building)
+Laundry facilities (Building)",TRUE,FALSE,TRUE,TRUE,,,40.44193,-79.940258,https://www.cmu.edu/housing/about-us/news/news-images/donner-house900x600-min.jpg,https://www.cmu.edu/housing/our-communities/residences/floor-plans/donner-house/donner_traditional-single_floor-plan.pdf,First-year house community (Donner House),,,,,,,https://www.cmu.edu/housing/our-communities/residences/donner.html,Rates/room-types/beds: CMU official 2026-2027 Housing Rates PDF. Building details/amenities/floors/images/community: CMU official residence detail pages (fetched 2026-07-10). Some qualitative color cross-checked against student CMU dorms guide (unofficial).,move-in logistics; House Fellow name
+cmu,Donner House,Traditional - Single,"6,834.00",semester,"Two-term Housing Commitment (Fall 2026, Spring 2027)",TRUE,On-Campus Housing,"5115 Margaret Morrison St, Pittsburgh, PA 15213","Student Name
+SMC (mailbox) #
+Carnegie Mellon University
+5032 Forbes Avenue
+Pittsburgh, PA 15289",Cohon University Center Postal Services (assigned SMC mailbox),Houses approximately 240 first-year students,4,First Year Students,Single-gender bathrooms by wing; co-ed community,"Donner House is one of the larger first-year communities on campus, housing around 240 students across four floors with a large community lounge on the first floor. Traditional single, double, and triple rooms sit close to campus, the athletic fields, and Resnik and Margaret Morrison dining. There is no central air conditioning (window units are provided only for approved medical accommodations).","Extra-long twin bed (lofted options in triples)
+Desk and chair
+Dresser
+Closet
+Window covering","Large first-floor community lounge (Building)
+TV lounge (On-floor)
+Study lounge (On-floor)
+Recreational area (Building)
+Shared kitchen (Building)
+Laundry facilities (Building)",TRUE,FALSE,TRUE,TRUE,,,40.44193,-79.940258,https://www.cmu.edu/housing/about-us/news/news-images/donner-house900x600-min.jpg,https://www.cmu.edu/housing/our-communities/residences/floor-plans/donner-house/donner_traditional-single_floor-plan.pdf,First-year house community (Donner House),,,,,,,https://www.cmu.edu/housing/our-communities/residences/donner.html,Rates/room-types/beds: CMU official 2026-2027 Housing Rates PDF. Building details/amenities/floors/images/community: CMU official residence detail pages (fetched 2026-07-10). Some qualitative color cross-checked against student CMU dorms guide (unofficial).,move-in logistics; House Fellow name
+cmu,Donner House,Traditional - Triple,"5,241.00",semester,"Two-term Housing Commitment (Fall 2026, Spring 2027)",TRUE,On-Campus Housing,"5115 Margaret Morrison St, Pittsburgh, PA 15213","Student Name
+SMC (mailbox) #
+Carnegie Mellon University
+5032 Forbes Avenue
+Pittsburgh, PA 15289",Cohon University Center Postal Services (assigned SMC mailbox),Houses approximately 240 first-year students,4,First Year Students,Single-gender bathrooms by wing; co-ed community,"Donner House is one of the larger first-year communities on campus, housing around 240 students across four floors with a large community lounge on the first floor. Traditional single, double, and triple rooms sit close to campus, the athletic fields, and Resnik and Margaret Morrison dining. There is no central air conditioning (window units are provided only for approved medical accommodations).","Extra-long twin bed (lofted options in triples)
+Desk and chair
+Dresser
+Closet
+Window covering","Large first-floor community lounge (Building)
+TV lounge (On-floor)
+Study lounge (On-floor)
+Recreational area (Building)
+Shared kitchen (Building)
+Laundry facilities (Building)",TRUE,FALSE,TRUE,TRUE,,,40.44193,-79.940258,https://www.cmu.edu/housing/about-us/news/news-images/donner-house900x600-min.jpg,https://www.cmu.edu/housing/our-communities/residences/floor-plans/donner-house/donner_traditional-single_floor-plan.pdf,First-year house community (Donner House),,,,,,,https://www.cmu.edu/housing/our-communities/residences/donner.html,Rates/room-types/beds: CMU official 2026-2027 Housing Rates PDF. Building details/amenities/floors/images/community: CMU official residence detail pages (fetched 2026-07-10). Some qualitative color cross-checked against student CMU dorms guide (unofficial).,move-in logistics; House Fellow name
+cmu,Donner House,Double-as-Triple (3 people),"4,721.00",semester,"Two-term Housing Commitment (Fall 2026, Spring 2027)",TRUE,On-Campus Housing,"5115 Margaret Morrison St, Pittsburgh, PA 15213","Student Name
+SMC (mailbox) #
+Carnegie Mellon University
+5032 Forbes Avenue
+Pittsburgh, PA 15289",Cohon University Center Postal Services (assigned SMC mailbox),Houses approximately 240 first-year students,4,First Year Students,Single-gender bathrooms by wing; co-ed community,"Donner House is one of the larger first-year communities on campus, housing around 240 students across four floors with a large community lounge on the first floor. Traditional single, double, and triple rooms sit close to campus, the athletic fields, and Resnik and Margaret Morrison dining. There is no central air conditioning (window units are provided only for approved medical accommodations).","Extra-long twin bed (lofted options in triples)
+Desk and chair
+Dresser
+Closet
+Window covering","Large first-floor community lounge (Building)
+TV lounge (On-floor)
+Study lounge (On-floor)
+Recreational area (Building)
+Shared kitchen (Building)
+Laundry facilities (Building)",TRUE,FALSE,TRUE,TRUE,,,40.44193,-79.940258,https://www.cmu.edu/housing/about-us/news/news-images/donner-house900x600-min.jpg,https://www.cmu.edu/housing/our-communities/residences/floor-plans/donner-house/donner_traditional-single_floor-plan.pdf,First-year house community (Donner House),,,,,,,https://www.cmu.edu/housing/our-communities/residences/donner.html,Rates/room-types/beds: CMU official 2026-2027 Housing Rates PDF. Building details/amenities/floors/images/community: CMU official residence detail pages (fetched 2026-07-10). Some qualitative color cross-checked against student CMU dorms guide (unofficial).,move-in logistics; House Fellow name
+cmu,Morewood E-Tower,Traditional - Double,"5,850.00",semester,"Two-term Housing Commitment (Fall 2026, Spring 2027)",TRUE,On-Campus Housing,"1060 Morewood Avenue, Pittsburgh, PA 15213","Student Name
+SMC (mailbox) #
+Carnegie Mellon University
+5032 Forbes Avenue
+Pittsburgh, PA 15289",Cohon University Center Postal Services (assigned SMC mailbox),Houses 209 first-year students,,First Year Students,"Co-ed by floor; connected, first-year community","Morewood E-Tower houses 209 first-year residents in traditional triples, doubles, and singles and connects to Morewood Gardens by a breezeway. It is a close-knit first-year community known for faculty engagement programming and family-style meals, sitting directly above the Stack'd Underground dining spot. There is no air conditioning.","Extra-long twin bed
+Desk and chair
+Dresser
+Closet
+Window covering","Lounges (On-floor)
+Laundry facilities (Building)
+Breezeway to Morewood Gardens (Building)",TRUE,FALSE,TRUE,TRUE,,,40.445592,-79.943083,https://www.cmu.edu/housing/our-communities/photo-grid-images/mascots/etower900x600.jpg,,E-Tower first-year community,,,,,,,https://www.cmu.edu/housing/our-communities/residences/etower.html,Rates/room-types/beds: CMU official 2026-2027 Housing Rates PDF. Building details/amenities/floors/images/community: CMU official residence detail pages (fetched 2026-07-10). Some qualitative color cross-checked against student CMU dorms guide (unofficial).,move-in logistics; House Fellow name
+cmu,Hamerschlag House,Traditional - Double,"5,850.00",semester,"Two-term Housing Commitment (Fall 2026, Spring 2027)",TRUE,On-Campus Housing,"5030 Margaret Morrison St, Pittsburgh, PA 15213","Student Name
+SMC (mailbox) #
+Carnegie Mellon University
+5032 Forbes Avenue
+Pittsburgh, PA 15289",Cohon University Center Postal Services (assigned SMC mailbox),Houses 157 first-year students,,First Year Students,Single-gender bathrooms by wing; co-ed community,"Hamerschlag House, known as 'Schlag,' is a traditional first-year residence hall in the Margaret Morrison neighborhood offering single and double rooms. A 2025 renovation added central air conditioning and refreshed study rooms, and community spaces include the 'Schlounge' and the elevated 'Schroof' patio. It is close to Resnik dining.","Extra-long twin bed
+Desk and chair
+Dresser
+Closet
+Window covering
+Central air conditioning","'Schlounge' TV lounge (Building)
+Study rooms on each wing (On-floor)
+Shared kitchen (Building)
+Ping-pong and community TVs (Building)
+'Schroof' elevated patio (Building)
+Vending machines (Building)
+Laundry facilities (Building)",TRUE,TRUE,TRUE,TRUE,,,40.441858,-79.941965,https://www.cmu.edu/housing/images/hero-images/hamerschlag2025-600x900.png,https://www.cmu.edu/housing/our-communities/residences/floor-plans/hamerschlag-house/hamerschlag_traditional-single_floor-plan.pdf,First-year house community (Hamerschlag House),,,,,,,https://www.cmu.edu/housing/our-communities/residences/hamerschlag.html,Rates/room-types/beds: CMU official 2026-2027 Housing Rates PDF. Building details/amenities/floors/images/community: CMU official residence detail pages (fetched 2026-07-10). Some qualitative color cross-checked against student CMU dorms guide (unofficial).,move-in logistics; House Fellow name
+cmu,Hamerschlag House,Traditional - Single,"6,834.00",semester,"Two-term Housing Commitment (Fall 2026, Spring 2027)",TRUE,On-Campus Housing,"5030 Margaret Morrison St, Pittsburgh, PA 15213","Student Name
+SMC (mailbox) #
+Carnegie Mellon University
+5032 Forbes Avenue
+Pittsburgh, PA 15289",Cohon University Center Postal Services (assigned SMC mailbox),Houses 157 first-year students,,First Year Students,Single-gender bathrooms by wing; co-ed community,"Hamerschlag House, known as 'Schlag,' is a traditional first-year residence hall in the Margaret Morrison neighborhood offering single and double rooms. A 2025 renovation added central air conditioning and refreshed study rooms, and community spaces include the 'Schlounge' and the elevated 'Schroof' patio. It is close to Resnik dining.","Extra-long twin bed
+Desk and chair
+Dresser
+Closet
+Window covering
+Central air conditioning","'Schlounge' TV lounge (Building)
+Study rooms on each wing (On-floor)
+Shared kitchen (Building)
+Ping-pong and community TVs (Building)
+'Schroof' elevated patio (Building)
+Vending machines (Building)
+Laundry facilities (Building)",TRUE,TRUE,TRUE,TRUE,,,40.441858,-79.941965,https://www.cmu.edu/housing/images/hero-images/hamerschlag2025-600x900.png,https://www.cmu.edu/housing/our-communities/residences/floor-plans/hamerschlag-house/hamerschlag_traditional-single_floor-plan.pdf,First-year house community (Hamerschlag House),,,,,,,https://www.cmu.edu/housing/our-communities/residences/hamerschlag.html,Rates/room-types/beds: CMU official 2026-2027 Housing Rates PDF. Building details/amenities/floors/images/community: CMU official residence detail pages (fetched 2026-07-10). Some qualitative color cross-checked against student CMU dorms guide (unofficial).,move-in logistics; House Fellow name
+cmu,Henderson House,Semi-Suite - Double,"6,458.00",semester,"Two-term Housing Commitment (Fall 2026, Spring 2027)",TRUE,On-Campus Housing,"5124 Margaret Morrison St, Pittsburgh, PA 15213","Student Name
+SMC (mailbox) #
+Carnegie Mellon University
+5032 Forbes Avenue
+Pittsburgh, PA 15289",Cohon University Center Postal Services (assigned SMC mailbox),Houses 58 first-year students,,First Year Students,Co-ed; part of the WHeSco community,"Henderson House accommodates first-year students in semi-suite rooms and is part of the WHeSco community (Welch, Henderson, Scobell), an intimate cluster of under 90 residents. A LEED-certified green building, it has central in-unit air conditioning and amenities including a wellness room and a recreation room with a pool table. Dining is available nearby in Resnik.","Extra-long twin bed
+Desk and chair
+Dresser
+Closet
+Window covering
+Central air conditioning","Wellness room (Building)
+Recreation room with pool table (Building)
+TV lounges (On-floor)
+Study lounges (On-floor)
+Ground-floor lounges (Building)
+Shared kitchen (Building)
+Laundry facilities (Building)",TRUE,TRUE,TRUE,TRUE,,,40.441647,-79.939959,https://www.cmu.edu/housing/our-communities/housing-images-tours/Henderson/Henderson double view toward closet and bathroom-min.JPG,https://www.cmu.edu/housing/our-communities/residences/floor-plans/henderson-house/henderson_semi-suite-single_floor-plan.pdf,"WHeSco community (Welch, Henderson, Scobell)",,,,,,,https://www.cmu.edu/housing/our-communities/residences/henderson.html,Rates/room-types/beds: CMU official 2026-2027 Housing Rates PDF. Building details/amenities/floors/images/community: CMU official residence detail pages (fetched 2026-07-10). Some qualitative color cross-checked against student CMU dorms guide (unofficial).,move-in logistics; House Fellow name
+cmu,Henderson House,Semi-Suite - Single,"7,497.00",semester,"Two-term Housing Commitment (Fall 2026, Spring 2027)",TRUE,On-Campus Housing,"5124 Margaret Morrison St, Pittsburgh, PA 15213","Student Name
+SMC (mailbox) #
+Carnegie Mellon University
+5032 Forbes Avenue
+Pittsburgh, PA 15289",Cohon University Center Postal Services (assigned SMC mailbox),Houses 58 first-year students,,First Year Students,Co-ed; part of the WHeSco community,"Henderson House accommodates first-year students in semi-suite rooms and is part of the WHeSco community (Welch, Henderson, Scobell), an intimate cluster of under 90 residents. A LEED-certified green building, it has central in-unit air conditioning and amenities including a wellness room and a recreation room with a pool table. Dining is available nearby in Resnik.","Extra-long twin bed
+Desk and chair
+Dresser
+Closet
+Window covering
+Central air conditioning","Wellness room (Building)
+Recreation room with pool table (Building)
+TV lounges (On-floor)
+Study lounges (On-floor)
+Ground-floor lounges (Building)
+Shared kitchen (Building)
+Laundry facilities (Building)",TRUE,TRUE,TRUE,TRUE,,,40.441647,-79.939959,https://www.cmu.edu/housing/our-communities/housing-images-tours/Henderson/Henderson double view toward closet and bathroom-min.JPG,https://www.cmu.edu/housing/our-communities/residences/floor-plans/henderson-house/henderson_semi-suite-single_floor-plan.pdf,"WHeSco community (Welch, Henderson, Scobell)",,,,,,,https://www.cmu.edu/housing/our-communities/residences/henderson.html,Rates/room-types/beds: CMU official 2026-2027 Housing Rates PDF. Building details/amenities/floors/images/community: CMU official residence detail pages (fetched 2026-07-10). Some qualitative color cross-checked against student CMU dorms guide (unofficial).,move-in logistics; House Fellow name
+cmu,Morewood Gardens,Semi-Suite - Double,"6,458.00",semester,"Two-term Housing Commitment (Fall 2026, Spring 2027)",TRUE,On-Campus Housing,"1060 Morewood Avenue, Pittsburgh, PA 15213","Student Name
+SMC (mailbox) #
+Carnegie Mellon University
+5032 Forbes Avenue
+Pittsburgh, PA 15289",Cohon University Center Postal Services (assigned SMC mailbox),Houses more than 450 students of all academic years,7,First Year & Upperclass Students,Co-ed by floor; gender-inclusive options,"Morewood Gardens is the largest residence hall on campus, home to more than 450 residents of all academic years across seven floors. It offers semi-suite rooms with renovated bathrooms, central in-unit air conditioning, and a deep amenity set including a makerspace, fitness room, piano practice rooms, and common-area kitchens. Stack'd Underground dining sits directly below.","Extra-long twin bed
+Desk and chair
+Dresser
+Closet
+Hardwood floors
+Window covering
+Central air conditioning","Makerspace (Building)
+Fitness room (Building)
+Piano practice rooms (Building)
+Computer cluster (Building)
+TV and recreation room (Building)
+Common-area kitchens (On-floor)
+Lounges (On-floor)
+Laundry facilities (Building)",TRUE,TRUE,TRUE,TRUE,,,40.445592,-79.943083,https://www.cmu.edu/housing/about-us/news/news-images/morewood-gardens900x600-min.jpg,https://www.cmu.edu/housing/our-communities/residences/floor-plans/morewood-gardens/morewood-gardens_semi-suite-single_floor-plan.pdf,,,,,,,,https://www.cmu.edu/housing/our-communities/residences/morewood-gardens.html,Rates/room-types/beds: CMU official 2026-2027 Housing Rates PDF. Building details/amenities/floors/images/community: CMU official residence detail pages (fetched 2026-07-10). Some qualitative color cross-checked against student CMU dorms guide (unofficial).,move-in logistics; House Fellow name
+cmu,Morewood Gardens,Semi-Suite - Single,"7,497.00",semester,"Two-term Housing Commitment (Fall 2026, Spring 2027)",TRUE,On-Campus Housing,"1060 Morewood Avenue, Pittsburgh, PA 15213","Student Name
+SMC (mailbox) #
+Carnegie Mellon University
+5032 Forbes Avenue
+Pittsburgh, PA 15289",Cohon University Center Postal Services (assigned SMC mailbox),Houses more than 450 students of all academic years,7,First Year & Upperclass Students,Co-ed by floor; gender-inclusive options,"Morewood Gardens is the largest residence hall on campus, home to more than 450 residents of all academic years across seven floors. It offers semi-suite rooms with renovated bathrooms, central in-unit air conditioning, and a deep amenity set including a makerspace, fitness room, piano practice rooms, and common-area kitchens. Stack'd Underground dining sits directly below.","Extra-long twin bed
+Desk and chair
+Dresser
+Closet
+Hardwood floors
+Window covering
+Central air conditioning","Makerspace (Building)
+Fitness room (Building)
+Piano practice rooms (Building)
+Computer cluster (Building)
+TV and recreation room (Building)
+Common-area kitchens (On-floor)
+Lounges (On-floor)
+Laundry facilities (Building)",TRUE,TRUE,TRUE,TRUE,,,40.445592,-79.943083,https://www.cmu.edu/housing/about-us/news/news-images/morewood-gardens900x600-min.jpg,https://www.cmu.edu/housing/our-communities/residences/floor-plans/morewood-gardens/morewood-gardens_semi-suite-single_floor-plan.pdf,,,,,,,,https://www.cmu.edu/housing/our-communities/residences/morewood-gardens.html,Rates/room-types/beds: CMU official 2026-2027 Housing Rates PDF. Building details/amenities/floors/images/community: CMU official residence detail pages (fetched 2026-07-10). Some qualitative color cross-checked against student CMU dorms guide (unofficial).,move-in logistics; House Fellow name
+cmu,Morewood Gardens,Semi-Suite - Triple,"5,850.00",semester,"Two-term Housing Commitment (Fall 2026, Spring 2027)",TRUE,On-Campus Housing,"1060 Morewood Avenue, Pittsburgh, PA 15213","Student Name
+SMC (mailbox) #
+Carnegie Mellon University
+5032 Forbes Avenue
+Pittsburgh, PA 15289",Cohon University Center Postal Services (assigned SMC mailbox),Houses more than 450 students of all academic years,7,First Year & Upperclass Students,Co-ed by floor; gender-inclusive options,"Morewood Gardens is the largest residence hall on campus, home to more than 450 residents of all academic years across seven floors. It offers semi-suite rooms with renovated bathrooms, central in-unit air conditioning, and a deep amenity set including a makerspace, fitness room, piano practice rooms, and common-area kitchens. Stack'd Underground dining sits directly below.","Extra-long twin bed
+Desk and chair
+Dresser
+Closet
+Hardwood floors
+Window covering
+Central air conditioning","Makerspace (Building)
+Fitness room (Building)
+Piano practice rooms (Building)
+Computer cluster (Building)
+TV and recreation room (Building)
+Common-area kitchens (On-floor)
+Lounges (On-floor)
+Laundry facilities (Building)",TRUE,TRUE,TRUE,TRUE,,,40.445592,-79.943083,https://www.cmu.edu/housing/about-us/news/news-images/morewood-gardens900x600-min.jpg,https://www.cmu.edu/housing/our-communities/residences/floor-plans/morewood-gardens/morewood-gardens_semi-suite-single_floor-plan.pdf,,,,,,,,https://www.cmu.edu/housing/our-communities/residences/morewood-gardens.html,Rates/room-types/beds: CMU official 2026-2027 Housing Rates PDF. Building details/amenities/floors/images/community: CMU official residence detail pages (fetched 2026-07-10). Some qualitative color cross-checked against student CMU dorms guide (unofficial).,move-in logistics; House Fellow name
+cmu,Mudge House,Semi-Suite - Double,"6,458.00",semester,"Two-term Housing Commitment (Fall 2026, Spring 2027)",TRUE,On-Campus Housing,"1000 Morewood Avenue, Pittsburgh, PA 15213","Student Name
+SMC (mailbox) #
+Carnegie Mellon University
+5032 Forbes Avenue
+Pittsburgh, PA 15289",Cohon University Center Postal Services (assigned SMC mailbox),Houses 310 first-year students,4,First Year Students,Co-ed by floor; gender-inclusive options,"Mudge House, a former mansion donated to Carnegie Mellon, houses 310 first-year residents across three towers with room types ranging from singles to quads and semi-suites with private bathrooms. The historic A-tower is complemented by two suite-style towers, and shared spaces include a common kitchen, television room, an outdoor courtyard, and a koi pond. There is no air conditioning.","Extra-long twin bed
+Desk and chair
+Dresser and drawers
+Closet
+Window covering
+Private bathroom (semi-suite rooms)","Television room (Building)
+Study areas (On-floor)
+Common lounge areas (On-floor)
+Common kitchen (Building)
+Outdoor courtyard with koi pond (Building)
+Laundry facilities (Building)",TRUE,FALSE,TRUE,TRUE,,,40.446894,-79.942632,https://www.cmu.edu/housing/our-communities/photo-grid-images/mascots/mudge-house_900x600-min.jpg,https://www.cmu.edu/housing/our-communities/residences/floor-plans/mudge-house/mudge_traditional-single_floor-plan.pdf,First-year house community (Mudge House),,,,,,,https://www.cmu.edu/housing/our-communities/residences/mudge.html,Rates/room-types/beds: CMU official 2026-2027 Housing Rates PDF. Building details/amenities/floors/images/community: CMU official residence detail pages (fetched 2026-07-10). Some qualitative color cross-checked against student CMU dorms guide (unofficial).,move-in logistics; House Fellow name
+cmu,Mudge House,Semi-Suite - Single,"7,497.00",semester,"Two-term Housing Commitment (Fall 2026, Spring 2027)",TRUE,On-Campus Housing,"1000 Morewood Avenue, Pittsburgh, PA 15213","Student Name
+SMC (mailbox) #
+Carnegie Mellon University
+5032 Forbes Avenue
+Pittsburgh, PA 15289",Cohon University Center Postal Services (assigned SMC mailbox),Houses 310 first-year students,4,First Year Students,Co-ed by floor; gender-inclusive options,"Mudge House, a former mansion donated to Carnegie Mellon, houses 310 first-year residents across three towers with room types ranging from singles to quads and semi-suites with private bathrooms. The historic A-tower is complemented by two suite-style towers, and shared spaces include a common kitchen, television room, an outdoor courtyard, and a koi pond. There is no air conditioning.","Extra-long twin bed
+Desk and chair
+Dresser and drawers
+Closet
+Window covering
+Private bathroom (semi-suite rooms)","Television room (Building)
+Study areas (On-floor)
+Common lounge areas (On-floor)
+Common kitchen (Building)
+Outdoor courtyard with koi pond (Building)
+Laundry facilities (Building)",TRUE,FALSE,TRUE,TRUE,,,40.446894,-79.942632,https://www.cmu.edu/housing/our-communities/photo-grid-images/mascots/mudge-house_900x600-min.jpg,https://www.cmu.edu/housing/our-communities/residences/floor-plans/mudge-house/mudge_traditional-single_floor-plan.pdf,First-year house community (Mudge House),,,,,,,https://www.cmu.edu/housing/our-communities/residences/mudge.html,Rates/room-types/beds: CMU official 2026-2027 Housing Rates PDF. Building details/amenities/floors/images/community: CMU official residence detail pages (fetched 2026-07-10). Some qualitative color cross-checked against student CMU dorms guide (unofficial).,move-in logistics; House Fellow name
+cmu,Mudge House,Semi-Suite - Quad,"5,850.00",semester,"Two-term Housing Commitment (Fall 2026, Spring 2027)",TRUE,On-Campus Housing,"1000 Morewood Avenue, Pittsburgh, PA 15213","Student Name
+SMC (mailbox) #
+Carnegie Mellon University
+5032 Forbes Avenue
+Pittsburgh, PA 15289",Cohon University Center Postal Services (assigned SMC mailbox),Houses 310 first-year students,4,First Year Students,Co-ed by floor; gender-inclusive options,"Mudge House, a former mansion donated to Carnegie Mellon, houses 310 first-year residents across three towers with room types ranging from singles to quads and semi-suites with private bathrooms. The historic A-tower is complemented by two suite-style towers, and shared spaces include a common kitchen, television room, an outdoor courtyard, and a koi pond. There is no air conditioning.","Extra-long twin bed
+Desk and chair
+Dresser and drawers
+Closet
+Window covering
+Private bathroom (semi-suite rooms)","Television room (Building)
+Study areas (On-floor)
+Common lounge areas (On-floor)
+Common kitchen (Building)
+Outdoor courtyard with koi pond (Building)
+Laundry facilities (Building)",TRUE,FALSE,TRUE,TRUE,,,40.446894,-79.942632,https://www.cmu.edu/housing/our-communities/photo-grid-images/mascots/mudge-house_900x600-min.jpg,https://www.cmu.edu/housing/our-communities/residences/floor-plans/mudge-house/mudge_traditional-single_floor-plan.pdf,First-year house community (Mudge House),,,,,,,https://www.cmu.edu/housing/our-communities/residences/mudge.html,Rates/room-types/beds: CMU official 2026-2027 Housing Rates PDF. Building details/amenities/floors/images/community: CMU official residence detail pages (fetched 2026-07-10). Some qualitative color cross-checked against student CMU dorms guide (unofficial).,move-in logistics; House Fellow name
+cmu,Mudge House,Traditional - Double,"5,850.00",semester,"Two-term Housing Commitment (Fall 2026, Spring 2027)",TRUE,On-Campus Housing,"1000 Morewood Avenue, Pittsburgh, PA 15213","Student Name
+SMC (mailbox) #
+Carnegie Mellon University
+5032 Forbes Avenue
+Pittsburgh, PA 15289",Cohon University Center Postal Services (assigned SMC mailbox),Houses 310 first-year students,4,First Year Students,Co-ed by floor; gender-inclusive options,"Mudge House, a former mansion donated to Carnegie Mellon, houses 310 first-year residents across three towers with room types ranging from singles to quads and semi-suites with private bathrooms. The historic A-tower is complemented by two suite-style towers, and shared spaces include a common kitchen, television room, an outdoor courtyard, and a koi pond. There is no air conditioning.","Extra-long twin bed
+Desk and chair
+Dresser and drawers
+Closet
+Window covering
+Private bathroom (semi-suite rooms)","Television room (Building)
+Study areas (On-floor)
+Common lounge areas (On-floor)
+Common kitchen (Building)
+Outdoor courtyard with koi pond (Building)
+Laundry facilities (Building)",TRUE,FALSE,TRUE,TRUE,,,40.446894,-79.942632,https://www.cmu.edu/housing/our-communities/photo-grid-images/mascots/mudge-house_900x600-min.jpg,https://www.cmu.edu/housing/our-communities/residences/floor-plans/mudge-house/mudge_traditional-single_floor-plan.pdf,First-year house community (Mudge House),,,,,,,https://www.cmu.edu/housing/our-communities/residences/mudge.html,Rates/room-types/beds: CMU official 2026-2027 Housing Rates PDF. Building details/amenities/floors/images/community: CMU official residence detail pages (fetched 2026-07-10). Some qualitative color cross-checked against student CMU dorms guide (unofficial).,move-in logistics; House Fellow name
+cmu,Mudge House,Traditional - Single,"6,834.00",semester,"Two-term Housing Commitment (Fall 2026, Spring 2027)",TRUE,On-Campus Housing,"1000 Morewood Avenue, Pittsburgh, PA 15213","Student Name
+SMC (mailbox) #
+Carnegie Mellon University
+5032 Forbes Avenue
+Pittsburgh, PA 15289",Cohon University Center Postal Services (assigned SMC mailbox),Houses 310 first-year students,4,First Year Students,Co-ed by floor; gender-inclusive options,"Mudge House, a former mansion donated to Carnegie Mellon, houses 310 first-year residents across three towers with room types ranging from singles to quads and semi-suites with private bathrooms. The historic A-tower is complemented by two suite-style towers, and shared spaces include a common kitchen, television room, an outdoor courtyard, and a koi pond. There is no air conditioning.","Extra-long twin bed
+Desk and chair
+Dresser and drawers
+Closet
+Window covering
+Private bathroom (semi-suite rooms)","Television room (Building)
+Study areas (On-floor)
+Common lounge areas (On-floor)
+Common kitchen (Building)
+Outdoor courtyard with koi pond (Building)
+Laundry facilities (Building)",TRUE,FALSE,TRUE,TRUE,,,40.446894,-79.942632,https://www.cmu.edu/housing/our-communities/photo-grid-images/mascots/mudge-house_900x600-min.jpg,https://www.cmu.edu/housing/our-communities/residences/floor-plans/mudge-house/mudge_traditional-single_floor-plan.pdf,First-year house community (Mudge House),,,,,,,https://www.cmu.edu/housing/our-communities/residences/mudge.html,Rates/room-types/beds: CMU official 2026-2027 Housing Rates PDF. Building details/amenities/floors/images/community: CMU official residence detail pages (fetched 2026-07-10). Some qualitative color cross-checked against student CMU dorms guide (unofficial).,move-in logistics; House Fellow name
+cmu,Mudge House,Traditional - Triple,"5,241.00",semester,"Two-term Housing Commitment (Fall 2026, Spring 2027)",TRUE,On-Campus Housing,"1000 Morewood Avenue, Pittsburgh, PA 15213","Student Name
+SMC (mailbox) #
+Carnegie Mellon University
+5032 Forbes Avenue
+Pittsburgh, PA 15289",Cohon University Center Postal Services (assigned SMC mailbox),Houses 310 first-year students,4,First Year Students,Co-ed by floor; gender-inclusive options,"Mudge House, a former mansion donated to Carnegie Mellon, houses 310 first-year residents across three towers with room types ranging from singles to quads and semi-suites with private bathrooms. The historic A-tower is complemented by two suite-style towers, and shared spaces include a common kitchen, television room, an outdoor courtyard, and a koi pond. There is no air conditioning.","Extra-long twin bed
+Desk and chair
+Dresser and drawers
+Closet
+Window covering
+Private bathroom (semi-suite rooms)","Television room (Building)
+Study areas (On-floor)
+Common lounge areas (On-floor)
+Common kitchen (Building)
+Outdoor courtyard with koi pond (Building)
+Laundry facilities (Building)",TRUE,FALSE,TRUE,TRUE,,,40.446894,-79.942632,https://www.cmu.edu/housing/our-communities/photo-grid-images/mascots/mudge-house_900x600-min.jpg,https://www.cmu.edu/housing/our-communities/residences/floor-plans/mudge-house/mudge_traditional-single_floor-plan.pdf,First-year house community (Mudge House),,,,,,,https://www.cmu.edu/housing/our-communities/residences/mudge.html,Rates/room-types/beds: CMU official 2026-2027 Housing Rates PDF. Building details/amenities/floors/images/community: CMU official residence detail pages (fetched 2026-07-10). Some qualitative color cross-checked against student CMU dorms guide (unofficial).,move-in logistics; House Fellow name
+cmu,Scobell House,Traditional - Double,"5,850.00",semester,"Two-term Housing Commitment (Fall 2026, Spring 2027)",TRUE,On-Campus Housing,"5120 Margaret Morrison St, Pittsburgh, PA 15213","Student Name
+SMC (mailbox) #
+Carnegie Mellon University
+5032 Forbes Avenue
+Pittsburgh, PA 15289",Cohon University Center Postal Services (assigned SMC mailbox),Houses 88 first-year students,4,First Year Students,All-women; part of the WHeSco community,"Scobell House is a first-year, all-women residence on The Hill within the WHeSco community (Welch, Henderson, Scobell). Traditional single and double rooms span four floors, with central air conditioning and shared lounges, kitchen, laundry, and recreation space. Resnik dining is close by.","Extra-long twin bed
+Desk and chair
+Dresser
+Closet
+Window covering
+Central air conditioning","TV lounge (Building)
+Ground-floor lounges (Building)
+Shared kitchen (Building)
+Recreation area (Building)
+Laundry facilities (Building)",TRUE,TRUE,TRUE,TRUE,,,40.44137,-79.93961,https://www.cmu.edu/housing/about-us/news/news-images/scobell-house_900x600-min.jpg,https://www.cmu.edu/housing/our-communities/residences/floor-plans/scobell-house/scobell_traditional-double_floor-plan.pdf,"WHeSco community (Welch, Henderson, Scobell)",,,,,,,https://www.cmu.edu/housing/our-communities/residences/scobell.html,Rates/room-types/beds: CMU official 2026-2027 Housing Rates PDF. Building details/amenities/floors/images/community: CMU official residence detail pages (fetched 2026-07-10). Some qualitative color cross-checked against student CMU dorms guide (unofficial).,move-in logistics; House Fellow name
+cmu,Scobell House,Traditional - Single,"6,834.00",semester,"Two-term Housing Commitment (Fall 2026, Spring 2027)",TRUE,On-Campus Housing,"5120 Margaret Morrison St, Pittsburgh, PA 15213","Student Name
+SMC (mailbox) #
+Carnegie Mellon University
+5032 Forbes Avenue
+Pittsburgh, PA 15289",Cohon University Center Postal Services (assigned SMC mailbox),Houses 88 first-year students,4,First Year Students,All-women; part of the WHeSco community,"Scobell House is a first-year, all-women residence on The Hill within the WHeSco community (Welch, Henderson, Scobell). Traditional single and double rooms span four floors, with central air conditioning and shared lounges, kitchen, laundry, and recreation space. Resnik dining is close by.","Extra-long twin bed
+Desk and chair
+Dresser
+Closet
+Window covering
+Central air conditioning","TV lounge (Building)
+Ground-floor lounges (Building)
+Shared kitchen (Building)
+Recreation area (Building)
+Laundry facilities (Building)",TRUE,TRUE,TRUE,TRUE,,,40.44137,-79.93961,https://www.cmu.edu/housing/about-us/news/news-images/scobell-house_900x600-min.jpg,https://www.cmu.edu/housing/our-communities/residences/floor-plans/scobell-house/scobell_traditional-double_floor-plan.pdf,"WHeSco community (Welch, Henderson, Scobell)",,,,,,,https://www.cmu.edu/housing/our-communities/residences/scobell.html,Rates/room-types/beds: CMU official 2026-2027 Housing Rates PDF. Building details/amenities/floors/images/community: CMU official residence detail pages (fetched 2026-07-10). Some qualitative color cross-checked against student CMU dorms guide (unofficial).,move-in logistics; House Fellow name
+cmu,Stever House,Traditional - Double,"5,849.00",semester,"Two-term Housing Commitment (Fall 2026, Spring 2027)",TRUE,On-Campus Housing,"1030 Morewood Ave, Pittsburgh, PA 15213","Student Name
+SMC (mailbox) #
+Carnegie Mellon University
+5032 Forbes Avenue
+Pittsburgh, PA 15289",Cohon University Center Postal Services (assigned SMC mailbox),Houses 254 first-year students,5,First Year Students,Co-ed by wing; communal bathrooms per wing,"Stever House offers more common lounge space than any other residence on campus and houses 254 first-year students in traditional double rooms. It was the first campus building designated green (LEED Silver, 2003) and features individually controlled year-round heating and cooling. Amenities include reading and study rooms, recreation areas, a kitchen, and a dining room.","Extra-long twin bed
+Desk and chair
+Small dresser
+Closet
+Window covering
+Individually controlled year-round heating and cooling","Reading and study rooms (On-floor)
+Recreation areas (Building)
+Kitchen (Building)
+Dining room (Building)
+Vending machines (Building)
+Laundry facilities (Building)",TRUE,TRUE,TRUE,TRUE,,,40.446265,-79.942664,https://www.cmu.edu/housing/our-communities/photo-grid-images/mascots/stever-house_900x600.jpg,https://www.cmu.edu/housing/our-communities/residences/floor-plans/stever-house/stever_traditional-double_floor-plan.pdf,First-year house community (Stever House),,,,,,,https://www.cmu.edu/housing/our-communities/residences/stever.html,Rates/room-types/beds: CMU official 2026-2027 Housing Rates PDF. Building details/amenities/floors/images/community: CMU official residence detail pages (fetched 2026-07-10). Some qualitative color cross-checked against student CMU dorms guide (unofficial).,move-in logistics; House Fellow name
+cmu,Welch House,Semi-Suite - Double,"6,458.00",semester,"Two-term Housing Commitment (Fall 2026, Spring 2027)",TRUE,On-Campus Housing,"5122 Margaret Morrison St, Pittsburgh, PA 15213","Student Name
+SMC (mailbox) #
+Carnegie Mellon University
+5032 Forbes Avenue
+Pittsburgh, PA 15289",Cohon University Center Postal Services (assigned SMC mailbox),Houses 56 first-year students,3,First Year Students,Gender inclusive; first floor hosts the Queer Community,"Welch House accommodates 56 first-year residents in semi-suite singles and doubles across three floors and is part of the WHeSco community. Its first floor hosts the gender-inclusive Queer Community specialized housing, and the building offers central air conditioning with shared lounges, a kitchen, and recreation space. Resnik dining is nearby.","Extra-long twin bed
+Desk and chair
+Dresser
+Closet
+Window covering
+Central air conditioning","TV room (Building)
+Study lounge (On-floor)
+Recreation room (Building)
+Community lounges (On-floor)
+Kitchen (Building)
+Laundry facilities (Building)",TRUE,TRUE,TRUE,TRUE,,,40.441587,-79.9401,https://www.cmu.edu/housing/about-us/news/news-images/welch900x600-min.jpg,https://www.cmu.edu/housing/our-communities/residences/floor-plans/welch-house/welch-first-floor.pdf,WHeSco community; Queer Community (first floor),,,,,,,https://www.cmu.edu/housing/our-communities/residences/welch.html,Rates/room-types/beds: CMU official 2026-2027 Housing Rates PDF. Building details/amenities/floors/images/community: CMU official residence detail pages (fetched 2026-07-10). Some qualitative color cross-checked against student CMU dorms guide (unofficial).,move-in logistics; House Fellow name
+cmu,Welch House,Semi-Suite - Single,"7,497.00",semester,"Two-term Housing Commitment (Fall 2026, Spring 2027)",TRUE,On-Campus Housing,"5122 Margaret Morrison St, Pittsburgh, PA 15213","Student Name
+SMC (mailbox) #
+Carnegie Mellon University
+5032 Forbes Avenue
+Pittsburgh, PA 15289",Cohon University Center Postal Services (assigned SMC mailbox),Houses 56 first-year students,3,First Year Students,Gender inclusive; first floor hosts the Queer Community,"Welch House accommodates 56 first-year residents in semi-suite singles and doubles across three floors and is part of the WHeSco community. Its first floor hosts the gender-inclusive Queer Community specialized housing, and the building offers central air conditioning with shared lounges, a kitchen, and recreation space. Resnik dining is nearby.","Extra-long twin bed
+Desk and chair
+Dresser
+Closet
+Window covering
+Central air conditioning","TV room (Building)
+Study lounge (On-floor)
+Recreation room (Building)
+Community lounges (On-floor)
+Kitchen (Building)
+Laundry facilities (Building)",TRUE,TRUE,TRUE,TRUE,,,40.441587,-79.9401,https://www.cmu.edu/housing/about-us/news/news-images/welch900x600-min.jpg,https://www.cmu.edu/housing/our-communities/residences/floor-plans/welch-house/welch-first-floor.pdf,WHeSco community; Queer Community (first floor),,,,,,,https://www.cmu.edu/housing/our-communities/residences/welch.html,Rates/room-types/beds: CMU official 2026-2027 Housing Rates PDF. Building details/amenities/floors/images/community: CMU official residence detail pages (fetched 2026-07-10). Some qualitative color cross-checked against student CMU dorms guide (unofficial).,move-in logistics; House Fellow name
+cmu,Maggie Mo First-Year Houses,Semi-Suite - Double,"6,458.00",semester,"Two-term Housing Commitment (Fall 2026, Spring 2027)",TRUE,On-Campus Housing,"5140 Margaret Morrison St, Pittsburgh, PA 15213","Student Name
+SMC (mailbox) #
+Carnegie Mellon University
+5032 Forbes Avenue
+Pittsburgh, PA 15289",Cohon University Center Postal Services (assigned SMC mailbox),Houses first-year students in small house units (14-22 per house),3,First Year Students,Co-ed by house; small first-year houses,"The Maggie Mo First-Year Houses are small houses in the Margaret Morrison Street neighborhood, each home to roughly 14-22 first-year residents with a dedicated RA. Rooms are large doubles or triples with semi-private bathrooms, and each house has its own first-floor community space and kitchen opening onto an outdoor plaza. Reduced-rate Double-as-Triple rooms are available, and residents share the adjacent Neighborhood Commons in Hamerschlag.","Extra-long twin bed (large doubles/triples)
+Desk and chair
+Dresser
+Closet
+Window covering
+Semi-private bathroom
+Air conditioning (window unit)","Per-house first-floor community space and kitchen (Building)
+TV lounge (Building)
+Laundry facilities (Building)
+Outdoor plaza access (Building)
+Neighborhood Commons in Hamerschlag (Building)",TRUE,TRUE,TRUE,TRUE,,,40.442,-79.93878,,https://www.cmu.edu/housing/our-communities/residences/floor-plans/greeks/mma_101-105_entry_level.pdf,First-year house community (Maggie Mo),,,,,,,https://www.cmu.edu/housing/our-communities/residences/mma.html,Rates/room-types/beds: CMU official 2026-2027 Housing Rates PDF. Building details/amenities/floors/images/community: CMU official residence detail pages (fetched 2026-07-10). Some qualitative color cross-checked against student CMU dorms guide (unofficial).,move-in logistics; House Fellow name
+cmu,Maggie Mo First-Year Houses,Double-as-Triple (3 people),"4,721.00",semester,"Two-term Housing Commitment (Fall 2026, Spring 2027)",TRUE,On-Campus Housing,"5140 Margaret Morrison St, Pittsburgh, PA 15213","Student Name
+SMC (mailbox) #
+Carnegie Mellon University
+5032 Forbes Avenue
+Pittsburgh, PA 15289",Cohon University Center Postal Services (assigned SMC mailbox),Houses first-year students in small house units (14-22 per house),3,First Year Students,Co-ed by house; small first-year houses,"The Maggie Mo First-Year Houses are small houses in the Margaret Morrison Street neighborhood, each home to roughly 14-22 first-year residents with a dedicated RA. Rooms are large doubles or triples with semi-private bathrooms, and each house has its own first-floor community space and kitchen opening onto an outdoor plaza. Reduced-rate Double-as-Triple rooms are available, and residents share the adjacent Neighborhood Commons in Hamerschlag.","Extra-long twin bed (large doubles/triples)
+Desk and chair
+Dresser
+Closet
+Window covering
+Semi-private bathroom
+Air conditioning (window unit)","Per-house first-floor community space and kitchen (Building)
+TV lounge (Building)
+Laundry facilities (Building)
+Outdoor plaza access (Building)
+Neighborhood Commons in Hamerschlag (Building)",TRUE,TRUE,TRUE,TRUE,,,40.442,-79.93878,,https://www.cmu.edu/housing/our-communities/residences/floor-plans/greeks/mma_101-105_entry_level.pdf,First-year house community (Maggie Mo),,,,,,,https://www.cmu.edu/housing/our-communities/residences/mma.html,Rates/room-types/beds: CMU official 2026-2027 Housing Rates PDF. Building details/amenities/floors/images/community: CMU official residence detail pages (fetched 2026-07-10). Some qualitative color cross-checked against student CMU dorms guide (unofficial).,move-in logistics; House Fellow name
+cmu,Margaret Morrison Apartments,Apartment - Double,"7,469.00",semester,"Two-term Housing Commitment (Fall 2026, Spring 2027)",FALSE,"Leased Apartments, Apartment Style Housing","5140 Margaret Morrison St, Pittsburgh, PA 15213","Student Name
+SMC (mailbox) #
+Carnegie Mellon University
+5032 Forbes Avenue
+Pittsburgh, PA 15289",Cohon University Center Postal Services (assigned SMC mailbox),Houses 80 upperclass students,,Upperclass Students,Co-ed; apartment complex for juniors and seniors,"Margaret Morrison Apartments sit in the Intersection area and house 80 upperclass residents (primarily juniors and seniors) in apartment doubles with four occupants per unit. Bedrooms have window-unit air conditioning, and the community offers laundry facilities and a common-area lounge. It is distinct from the first-year Maggie Mo houses that share the Margaret Morrison name.","Extra-long twin bed
+Desk and chair
+Dresser
+Closet
+Window covering
+Air conditioning (window unit)","Common-area lounge (Building)
+Laundry facilities (Building)",TRUE,TRUE,TRUE,TRUE,,,40.442,-79.93878,https://www.cmu.edu/housing/our-communities/housing-images-tours/MargMorrison/Margaret Morrison Apartments double with view toward closet and dressers-min.JPG,https://www.cmu.edu/housing/our-communities/housing-images-tours/Floor Plans/Floor Plans/Margaret Morrison_Two Bedroom_Floor Plan.pdf,,,,,,,,https://www.cmu.edu/housing/our-communities/residences/margaret-morrison.html,Rates/room-types/beds: CMU official 2026-2027 Housing Rates PDF. Building details/amenities/floors/images/community: CMU official residence detail pages (fetched 2026-07-10). Some qualitative color cross-checked against student CMU dorms guide (unofficial).,move-in logistics; House Fellow name
+cmu,Residence on Fifth,Apartment - Triple,"6,993.00",semester,"Two-term Housing Commitment (Fall 2026, Spring 2027)",FALSE,"Leased Apartments, Apartment Style Housing","4700 Fifth Avenue, Pittsburgh, PA 15213","Student Name
+SMC (mailbox) #
+Carnegie Mellon University
+5032 Forbes Avenue
+Pittsburgh, PA 15289",Cohon University Center Postal Services (assigned SMC mailbox),Houses 150 first-year students,,First Year Students,Co-ed; apartment-style first-year community,"Residence on Fifth is an apartment-style first-year community housing 150 students in apartment triples plus a limited number of studio doubles, with private kitchens and bathrooms in each unit. Central air conditioning, a renovated movie room, a fitness room, a computer cluster, and the CMU Pantry round out the amenities. Its mascot is the flamingo.","Extra-long twin bed (bunked and unbunked)
+Desk and chair
+Dresser
+Closet
+Private kitchen with induction stove
+Private bathroom
+Central air conditioning","Renovated movie room (Building)
+Fitness room (Building)
+Computer cluster (Building)
+Common lounges and study nooks (On-floor)
+CMU Pantry (Building)
+Laundry facilities (Building)
+Wireless internet (Building)",TRUE,TRUE,TRUE,TRUE,,,40.446816,-79.946807,https://www.cmu.edu/housing/about-us/news/news-images/residence-on-fifth900x600-min.jpg,https://www.cmu.edu/housing/our-communities/housing-images-tours/Floor Plans/Floor Plans/Residence on Fifth_Typical Apartment_Floor Plan.pdf,First-year apartment-style community,,,,,,,https://www.cmu.edu/housing/our-communities/residences/res-on-fifth.html,Rates/room-types/beds: CMU official 2026-2027 Housing Rates PDF. Building details/amenities/floors/images/community: CMU official residence detail pages (fetched 2026-07-10). Some qualitative color cross-checked against student CMU dorms guide (unofficial).,move-in logistics; House Fellow name
+cmu,Residence on Fifth,Studio Apartment - Double,"6,811.00",semester,"Two-term Housing Commitment (Fall 2026, Spring 2027)",FALSE,"Leased Apartments, Apartment Style Housing","4700 Fifth Avenue, Pittsburgh, PA 15213","Student Name
+SMC (mailbox) #
+Carnegie Mellon University
+5032 Forbes Avenue
+Pittsburgh, PA 15289",Cohon University Center Postal Services (assigned SMC mailbox),Houses 150 first-year students,,First Year Students,Co-ed; apartment-style first-year community,"Residence on Fifth is an apartment-style first-year community housing 150 students in apartment triples plus a limited number of studio doubles, with private kitchens and bathrooms in each unit. Central air conditioning, a renovated movie room, a fitness room, a computer cluster, and the CMU Pantry round out the amenities. Its mascot is the flamingo.","Extra-long twin bed (bunked and unbunked)
+Desk and chair
+Dresser
+Closet
+Private kitchen with induction stove
+Private bathroom
+Central air conditioning","Renovated movie room (Building)
+Fitness room (Building)
+Computer cluster (Building)
+Common lounges and study nooks (On-floor)
+CMU Pantry (Building)
+Laundry facilities (Building)
+Wireless internet (Building)",TRUE,TRUE,TRUE,TRUE,,,40.446816,-79.946807,https://www.cmu.edu/housing/about-us/news/news-images/residence-on-fifth900x600-min.jpg,https://www.cmu.edu/housing/our-communities/housing-images-tours/Floor Plans/Floor Plans/Residence on Fifth_Typical Apartment_Floor Plan.pdf,First-year apartment-style community,,,,,,,https://www.cmu.edu/housing/our-communities/residences/res-on-fifth.html,Rates/room-types/beds: CMU official 2026-2027 Housing Rates PDF. Building details/amenities/floors/images/community: CMU official residence detail pages (fetched 2026-07-10). Some qualitative color cross-checked against student CMU dorms guide (unofficial).,move-in logistics; House Fellow name
+cmu,Residence on Fifth,Studio Apartment - Triple,"6,811.00",semester,"Two-term Housing Commitment (Fall 2026, Spring 2027)",FALSE,"Leased Apartments, Apartment Style Housing","4700 Fifth Avenue, Pittsburgh, PA 15213","Student Name
+SMC (mailbox) #
+Carnegie Mellon University
+5032 Forbes Avenue
+Pittsburgh, PA 15289",Cohon University Center Postal Services (assigned SMC mailbox),Houses 150 first-year students,,First Year Students,Co-ed; apartment-style first-year community,"Residence on Fifth is an apartment-style first-year community housing 150 students in apartment triples plus a limited number of studio doubles, with private kitchens and bathrooms in each unit. Central air conditioning, a renovated movie room, a fitness room, a computer cluster, and the CMU Pantry round out the amenities. Its mascot is the flamingo.","Extra-long twin bed (bunked and unbunked)
+Desk and chair
+Dresser
+Closet
+Private kitchen with induction stove
+Private bathroom
+Central air conditioning","Renovated movie room (Building)
+Fitness room (Building)
+Computer cluster (Building)
+Common lounges and study nooks (On-floor)
+CMU Pantry (Building)
+Laundry facilities (Building)
+Wireless internet (Building)",TRUE,TRUE,TRUE,TRUE,,,40.446816,-79.946807,https://www.cmu.edu/housing/about-us/news/news-images/residence-on-fifth900x600-min.jpg,https://www.cmu.edu/housing/our-communities/housing-images-tours/Floor Plans/Floor Plans/Residence on Fifth_Typical Apartment_Floor Plan.pdf,First-year apartment-style community,,,,,,,https://www.cmu.edu/housing/our-communities/residences/res-on-fifth.html,Rates/room-types/beds: CMU official 2026-2027 Housing Rates PDF. Building details/amenities/floors/images/community: CMU official residence detail pages (fetched 2026-07-10). Some qualitative color cross-checked against student CMU dorms guide (unofficial).,move-in logistics; House Fellow name
+cmu,Clyde House,Studio Apartment - Double,"6,811.00",semester,"Two-term Housing Commitment (Fall 2026, Spring 2027)",FALSE,"Leased Apartments, Apartment Style Housing","4659 Fifth Ave, Pittsburgh, PA 15213","Student Name
+SMC (mailbox) #
+Carnegie Mellon University
+5032 Forbes Avenue
+Pittsburgh, PA 15289",Cohon University Center Postal Services (assigned SMC mailbox),Houses 24 first-year students,4,First Year Students,Co-ed; apartment-style first-year house,"Clyde House is a historic apartment-style first-year house in the Fifth Avenue neighborhood housing 24 residents in studio doubles and triples, each with its own kitchenette. Character details include a grand staircase, stained-glass windows, and multiple fireplaces, alongside a community kitchen, parlor, study room, and backyard. Air conditioning is provided by window units.","Extra-long twin bed
+Desk and chair
+Dresser
+Closet
+Kitchenette with sink, fridge, and cabinet
+Window covering
+Air conditioning (window unit)","Parlor common area (Building)
+Community-style kitchen with island (Building)
+Study room (On-floor)
+TV room (Building)
+Lounges on multiple floors (On-floor)
+Backyard (Building)
+Laundry facilities (Building)",TRUE,TRUE,TRUE,TRUE,,,40.447075,-79.947499,https://www.cmu.edu/housing/our-communities/housing-images-tours/Clyde/Clyde%20House%20living%20room%20and%20grand%20staircase-min.jpg,https://www.cmu.edu/housing/our-communities/residences/floor-plans/clyde-house/clyde_firstfloor.pdf,First-year apartment-style house,,,,,,,https://www.cmu.edu/housing/our-communities/residences/clyde.html,Rates/room-types/beds: CMU official 2026-2027 Housing Rates PDF. Building details/amenities/floors/images/community: CMU official residence detail pages (fetched 2026-07-10). Some qualitative color cross-checked against student CMU dorms guide (unofficial).,move-in logistics; House Fellow name
+cmu,Clyde House,Studio Apartment - Triple,"6,811.00",semester,"Two-term Housing Commitment (Fall 2026, Spring 2027)",FALSE,"Leased Apartments, Apartment Style Housing","4659 Fifth Ave, Pittsburgh, PA 15213","Student Name
+SMC (mailbox) #
+Carnegie Mellon University
+5032 Forbes Avenue
+Pittsburgh, PA 15289",Cohon University Center Postal Services (assigned SMC mailbox),Houses 24 first-year students,4,First Year Students,Co-ed; apartment-style first-year house,"Clyde House is a historic apartment-style first-year house in the Fifth Avenue neighborhood housing 24 residents in studio doubles and triples, each with its own kitchenette. Character details include a grand staircase, stained-glass windows, and multiple fireplaces, alongside a community kitchen, parlor, study room, and backyard. Air conditioning is provided by window units.","Extra-long twin bed
+Desk and chair
+Dresser
+Closet
+Kitchenette with sink, fridge, and cabinet
+Window covering
+Air conditioning (window unit)","Parlor common area (Building)
+Community-style kitchen with island (Building)
+Study room (On-floor)
+TV room (Building)
+Lounges on multiple floors (On-floor)
+Backyard (Building)
+Laundry facilities (Building)",TRUE,TRUE,TRUE,TRUE,,,40.447075,-79.947499,https://www.cmu.edu/housing/our-communities/housing-images-tours/Clyde/Clyde%20House%20living%20room%20and%20grand%20staircase-min.jpg,https://www.cmu.edu/housing/our-communities/residences/floor-plans/clyde-house/clyde_firstfloor.pdf,First-year apartment-style house,,,,,,,https://www.cmu.edu/housing/our-communities/residences/clyde.html,Rates/room-types/beds: CMU official 2026-2027 Housing Rates PDF. Building details/amenities/floors/images/community: CMU official residence detail pages (fetched 2026-07-10). Some qualitative color cross-checked against student CMU dorms guide (unofficial).,move-in logistics; House Fellow name
+cmu,Fifth & Clyde Residence Hall,Semi-Suite - Double,"6,458.00",semester,"Two-term Housing Commitment (Fall 2026, Spring 2027)",TRUE,On-Campus Housing,"4738 Fifth Ave, Pittsburgh, PA 15213","Student Name
+SMC (mailbox) #
+Carnegie Mellon University
+5032 Forbes Avenue
+Pittsburgh, PA 15289",Cohon University Center Postal Services (assigned SMC mailbox),Houses 264 upperclass students,6,Upperclass Students,Co-ed; upperclass residence hall,"Fifth & Clyde is a 98,000-square-foot upperclass residence hall providing 264 beds in semi-suite and suite configurations. A 5,000-square-foot commons offers a community kitchen and hearth, study nooks and rooms, a jam room and music practice room, and a wellness/dance room, with a bronze 'Inverted Dancer' sculpture in the courtyard. All rooms have central air conditioning.","Extra-long twin bed
+Desk and chair
+Dresser
+Closet
+Window covering
+Central air conditioning","Community kitchen and hearth (Building)
+Floor and kitchen lounges (On-floor)
+Study nooks and rooms (On-floor)
+Jam room and music practice room (Building)
+Wellness/dance room (Building)
+Multipurpose room (Building)
+Outdoor courtyard (Building)
+Laundry facilities (Building)",TRUE,TRUE,TRUE,TRUE,,,40.447076,-79.947207,https://www.cmu.edu/housing/images/hero-images/spice_rack_overview_900x600px-min.jpg,https://www.cmu.edu/housing/our-communities/residences/floor-plans/fifth-clyde/fifth-clyde-floor-1.pdf,Fifth Avenue Neighborhood Commons (music),,,,,,,https://www.cmu.edu/housing/our-communities/residences/fifth-clyde/index.html,Rates/room-types/beds: CMU official 2026-2027 Housing Rates PDF. Building details/amenities/floors/images/community: CMU official residence detail pages (fetched 2026-07-10). Some qualitative color cross-checked against student CMU dorms guide (unofficial).,move-in logistics; House Fellow name
+cmu,Fifth & Clyde Residence Hall,Semi-Suite - Single,"7,497.00",semester,"Two-term Housing Commitment (Fall 2026, Spring 2027)",TRUE,On-Campus Housing,"4738 Fifth Ave, Pittsburgh, PA 15213","Student Name
+SMC (mailbox) #
+Carnegie Mellon University
+5032 Forbes Avenue
+Pittsburgh, PA 15289",Cohon University Center Postal Services (assigned SMC mailbox),Houses 264 upperclass students,6,Upperclass Students,Co-ed; upperclass residence hall,"Fifth & Clyde is a 98,000-square-foot upperclass residence hall providing 264 beds in semi-suite and suite configurations. A 5,000-square-foot commons offers a community kitchen and hearth, study nooks and rooms, a jam room and music practice room, and a wellness/dance room, with a bronze 'Inverted Dancer' sculpture in the courtyard. All rooms have central air conditioning.","Extra-long twin bed
+Desk and chair
+Dresser
+Closet
+Window covering
+Central air conditioning","Community kitchen and hearth (Building)
+Floor and kitchen lounges (On-floor)
+Study nooks and rooms (On-floor)
+Jam room and music practice room (Building)
+Wellness/dance room (Building)
+Multipurpose room (Building)
+Outdoor courtyard (Building)
+Laundry facilities (Building)",TRUE,TRUE,TRUE,TRUE,,,40.447076,-79.947207,https://www.cmu.edu/housing/images/hero-images/spice_rack_overview_900x600px-min.jpg,https://www.cmu.edu/housing/our-communities/residences/floor-plans/fifth-clyde/fifth-clyde-floor-1.pdf,Fifth Avenue Neighborhood Commons (music),,,,,,,https://www.cmu.edu/housing/our-communities/residences/fifth-clyde/index.html,Rates/room-types/beds: CMU official 2026-2027 Housing Rates PDF. Building details/amenities/floors/images/community: CMU official residence detail pages (fetched 2026-07-10). Some qualitative color cross-checked against student CMU dorms guide (unofficial).,move-in logistics; House Fellow name
+cmu,Fifth & Clyde Residence Hall,Suite - Double,"6,853.00",semester,"Two-term Housing Commitment (Fall 2026, Spring 2027)",TRUE,On-Campus Housing,"4738 Fifth Ave, Pittsburgh, PA 15213","Student Name
+SMC (mailbox) #
+Carnegie Mellon University
+5032 Forbes Avenue
+Pittsburgh, PA 15289",Cohon University Center Postal Services (assigned SMC mailbox),Houses 264 upperclass students,6,Upperclass Students,Co-ed; upperclass residence hall,"Fifth & Clyde is a 98,000-square-foot upperclass residence hall providing 264 beds in semi-suite and suite configurations. A 5,000-square-foot commons offers a community kitchen and hearth, study nooks and rooms, a jam room and music practice room, and a wellness/dance room, with a bronze 'Inverted Dancer' sculpture in the courtyard. All rooms have central air conditioning.","Extra-long twin bed
+Desk and chair
+Dresser
+Closet
+Window covering
+Central air conditioning","Community kitchen and hearth (Building)
+Floor and kitchen lounges (On-floor)
+Study nooks and rooms (On-floor)
+Jam room and music practice room (Building)
+Wellness/dance room (Building)
+Multipurpose room (Building)
+Outdoor courtyard (Building)
+Laundry facilities (Building)",TRUE,TRUE,TRUE,TRUE,,,40.447076,-79.947207,https://www.cmu.edu/housing/images/hero-images/spice_rack_overview_900x600px-min.jpg,https://www.cmu.edu/housing/our-communities/residences/floor-plans/fifth-clyde/fifth-clyde-floor-1.pdf,Fifth Avenue Neighborhood Commons (music),,,,,,,https://www.cmu.edu/housing/our-communities/residences/fifth-clyde/index.html,Rates/room-types/beds: CMU official 2026-2027 Housing Rates PDF. Building details/amenities/floors/images/community: CMU official residence detail pages (fetched 2026-07-10). Some qualitative color cross-checked against student CMU dorms guide (unofficial).,move-in logistics; House Fellow name
+cmu,Fifth & Clyde Residence Hall,Suite - Single,"7,726.00",semester,"Two-term Housing Commitment (Fall 2026, Spring 2027)",TRUE,On-Campus Housing,"4738 Fifth Ave, Pittsburgh, PA 15213","Student Name
+SMC (mailbox) #
+Carnegie Mellon University
+5032 Forbes Avenue
+Pittsburgh, PA 15289",Cohon University Center Postal Services (assigned SMC mailbox),Houses 264 upperclass students,6,Upperclass Students,Co-ed; upperclass residence hall,"Fifth & Clyde is a 98,000-square-foot upperclass residence hall providing 264 beds in semi-suite and suite configurations. A 5,000-square-foot commons offers a community kitchen and hearth, study nooks and rooms, a jam room and music practice room, and a wellness/dance room, with a bronze 'Inverted Dancer' sculpture in the courtyard. All rooms have central air conditioning.","Extra-long twin bed
+Desk and chair
+Dresser
+Closet
+Window covering
+Central air conditioning","Community kitchen and hearth (Building)
+Floor and kitchen lounges (On-floor)
+Study nooks and rooms (On-floor)
+Jam room and music practice room (Building)
+Wellness/dance room (Building)
+Multipurpose room (Building)
+Outdoor courtyard (Building)
+Laundry facilities (Building)",TRUE,TRUE,TRUE,TRUE,,,40.447076,-79.947207,https://www.cmu.edu/housing/images/hero-images/spice_rack_overview_900x600px-min.jpg,https://www.cmu.edu/housing/our-communities/residences/floor-plans/fifth-clyde/fifth-clyde-floor-1.pdf,Fifth Avenue Neighborhood Commons (music),,,,,,,https://www.cmu.edu/housing/our-communities/residences/fifth-clyde/index.html,Rates/room-types/beds: CMU official 2026-2027 Housing Rates PDF. Building details/amenities/floors/images/community: CMU official residence detail pages (fetched 2026-07-10). Some qualitative color cross-checked against student CMU dorms guide (unofficial).,move-in logistics; House Fellow name
+cmu,West Wing,Semi-Suite - Double,"6,458.00",semester,"Two-term Housing Commitment (Fall 2026, Spring 2027)",TRUE,On-Campus Housing,"5125 Margaret Morrison St, Pittsburgh, PA 15213","Student Name
+SMC (mailbox) #
+Carnegie Mellon University
+5032 Forbes Avenue
+Pittsburgh, PA 15289",Cohon University Center Postal Services (assigned SMC mailbox),Houses 146 upperclass students,5,Upperclass Students,Co-ed; upperclass residence,"West Wing houses 146 upperclass residents in semi-suite and suite units of three to five occupants, in a central campus location beside athletic facilities and campus centers. Rooms are spacious with in-room microfridges and central air conditioning. Common areas include a large TV lounge and recreation room shared with Resnik.","Extra-long twin bed
+Microfridge
+Desk and chair
+Dresser
+Closet
+Window covering
+Central air conditioning","Lounge on each floor (On-floor)
+Large TV lounge shared with Resnik (Building)
+Recreation room (Building)
+Community kitchens (On-floor)
+Laundry facilities (Building)",TRUE,TRUE,TRUE,TRUE,,,40.44256,-79.940179,https://www.cmu.edu/housing/our-communities/photo-grid-images/mascots/west-wing_900x600px-min.png,https://www.cmu.edu/housing/our-communities/residences/floor-plans/west-wing/west-wing_semi-suite-single_floor-plan.pdf,,,,,,,,https://www.cmu.edu/housing/our-communities/residences/west-wing.html,Rates/room-types/beds: CMU official 2026-2027 Housing Rates PDF. Building details/amenities/floors/images/community: CMU official residence detail pages (fetched 2026-07-10). Some qualitative color cross-checked against student CMU dorms guide (unofficial).,move-in logistics; House Fellow name
+cmu,West Wing,Semi-Suite - Single,"7,497.00",semester,"Two-term Housing Commitment (Fall 2026, Spring 2027)",TRUE,On-Campus Housing,"5125 Margaret Morrison St, Pittsburgh, PA 15213","Student Name
+SMC (mailbox) #
+Carnegie Mellon University
+5032 Forbes Avenue
+Pittsburgh, PA 15289",Cohon University Center Postal Services (assigned SMC mailbox),Houses 146 upperclass students,5,Upperclass Students,Co-ed; upperclass residence,"West Wing houses 146 upperclass residents in semi-suite and suite units of three to five occupants, in a central campus location beside athletic facilities and campus centers. Rooms are spacious with in-room microfridges and central air conditioning. Common areas include a large TV lounge and recreation room shared with Resnik.","Extra-long twin bed
+Microfridge
+Desk and chair
+Dresser
+Closet
+Window covering
+Central air conditioning","Lounge on each floor (On-floor)
+Large TV lounge shared with Resnik (Building)
+Recreation room (Building)
+Community kitchens (On-floor)
+Laundry facilities (Building)",TRUE,TRUE,TRUE,TRUE,,,40.44256,-79.940179,https://www.cmu.edu/housing/our-communities/photo-grid-images/mascots/west-wing_900x600px-min.png,https://www.cmu.edu/housing/our-communities/residences/floor-plans/west-wing/west-wing_semi-suite-single_floor-plan.pdf,,,,,,,,https://www.cmu.edu/housing/our-communities/residences/west-wing.html,Rates/room-types/beds: CMU official 2026-2027 Housing Rates PDF. Building details/amenities/floors/images/community: CMU official residence detail pages (fetched 2026-07-10). Some qualitative color cross-checked against student CMU dorms guide (unofficial).,move-in logistics; House Fellow name
+cmu,West Wing,Suite - Double,"6,853.00",semester,"Two-term Housing Commitment (Fall 2026, Spring 2027)",TRUE,On-Campus Housing,"5125 Margaret Morrison St, Pittsburgh, PA 15213","Student Name
+SMC (mailbox) #
+Carnegie Mellon University
+5032 Forbes Avenue
+Pittsburgh, PA 15289",Cohon University Center Postal Services (assigned SMC mailbox),Houses 146 upperclass students,5,Upperclass Students,Co-ed; upperclass residence,"West Wing houses 146 upperclass residents in semi-suite and suite units of three to five occupants, in a central campus location beside athletic facilities and campus centers. Rooms are spacious with in-room microfridges and central air conditioning. Common areas include a large TV lounge and recreation room shared with Resnik.","Extra-long twin bed
+Microfridge
+Desk and chair
+Dresser
+Closet
+Window covering
+Central air conditioning","Lounge on each floor (On-floor)
+Large TV lounge shared with Resnik (Building)
+Recreation room (Building)
+Community kitchens (On-floor)
+Laundry facilities (Building)",TRUE,TRUE,TRUE,TRUE,,,40.44256,-79.940179,https://www.cmu.edu/housing/our-communities/photo-grid-images/mascots/west-wing_900x600px-min.png,https://www.cmu.edu/housing/our-communities/residences/floor-plans/west-wing/west-wing_semi-suite-single_floor-plan.pdf,,,,,,,,https://www.cmu.edu/housing/our-communities/residences/west-wing.html,Rates/room-types/beds: CMU official 2026-2027 Housing Rates PDF. Building details/amenities/floors/images/community: CMU official residence detail pages (fetched 2026-07-10). Some qualitative color cross-checked against student CMU dorms guide (unofficial).,move-in logistics; House Fellow name
+cmu,West Wing,Suite - Single,"7,726.00",semester,"Two-term Housing Commitment (Fall 2026, Spring 2027)",TRUE,On-Campus Housing,"5125 Margaret Morrison St, Pittsburgh, PA 15213","Student Name
+SMC (mailbox) #
+Carnegie Mellon University
+5032 Forbes Avenue
+Pittsburgh, PA 15289",Cohon University Center Postal Services (assigned SMC mailbox),Houses 146 upperclass students,5,Upperclass Students,Co-ed; upperclass residence,"West Wing houses 146 upperclass residents in semi-suite and suite units of three to five occupants, in a central campus location beside athletic facilities and campus centers. Rooms are spacious with in-room microfridges and central air conditioning. Common areas include a large TV lounge and recreation room shared with Resnik.","Extra-long twin bed
+Microfridge
+Desk and chair
+Dresser
+Closet
+Window covering
+Central air conditioning","Lounge on each floor (On-floor)
+Large TV lounge shared with Resnik (Building)
+Recreation room (Building)
+Community kitchens (On-floor)
+Laundry facilities (Building)",TRUE,TRUE,TRUE,TRUE,,,40.44256,-79.940179,https://www.cmu.edu/housing/our-communities/photo-grid-images/mascots/west-wing_900x600px-min.png,https://www.cmu.edu/housing/our-communities/residences/floor-plans/west-wing/west-wing_semi-suite-single_floor-plan.pdf,,,,,,,,https://www.cmu.edu/housing/our-communities/residences/west-wing.html,Rates/room-types/beds: CMU official 2026-2027 Housing Rates PDF. Building details/amenities/floors/images/community: CMU official residence detail pages (fetched 2026-07-10). Some qualitative color cross-checked against student CMU dorms guide (unofficial).,move-in logistics; House Fellow name
+cmu,Resnik House,Semi-Suite - Double,"6,458.00",semester,"Two-term Housing Commitment (Fall 2026, Spring 2027)",TRUE,On-Campus Housing,"5125 Margaret Morrison St, Pittsburgh, PA 15213","Student Name
+SMC (mailbox) #
+Carnegie Mellon University
+5032 Forbes Avenue
+Pittsburgh, PA 15289",Cohon University Center Postal Services (assigned SMC mailbox),Houses 150 upperclass students,5,Upperclass Students,Co-ed; upperclass residence,"Resnik House holds 150 upperclass residents in three-, four-, and five-occupant units in the center of campus, and is a hub for engaged student leaders. It shares a large TV lounge, recreation room, and computer cluster with the neighboring West Wing, and multiple dining venues sit within the building. All units have central air conditioning.","Extra-long twin bed
+Microfridge
+Desk and chair
+Dresser
+Closet
+Window covering
+Central air conditioning","Lounge on each floor (On-floor)
+Large TV lounge shared with West Wing (Building)
+Recreation room shared with West Wing (Building)
+Community kitchens (On-floor)
+Computer cluster (Building)
+Laundry facilities (Building)
+On-site dining venues (Building)",TRUE,TRUE,TRUE,TRUE,,,40.44256,-79.940179,https://www.cmu.edu/housing/our-communities/housing-images-tours/Resnik/Resnik prime double with view toward closets and dressers-min.JPG,https://www.cmu.edu/housing/our-communities/residences/floor-plans/resnik-house/,,,,,,,,https://www.cmu.edu/housing/our-communities/residences/resnik.html,Rates/room-types/beds: CMU official 2026-2027 Housing Rates PDF. Building details/amenities/floors/images/community: CMU official residence detail pages (fetched 2026-07-10). Some qualitative color cross-checked against student CMU dorms guide (unofficial).,move-in logistics; House Fellow name
+cmu,Resnik House,Suite - Double,"6,853.00",semester,"Two-term Housing Commitment (Fall 2026, Spring 2027)",TRUE,On-Campus Housing,"5125 Margaret Morrison St, Pittsburgh, PA 15213","Student Name
+SMC (mailbox) #
+Carnegie Mellon University
+5032 Forbes Avenue
+Pittsburgh, PA 15289",Cohon University Center Postal Services (assigned SMC mailbox),Houses 150 upperclass students,5,Upperclass Students,Co-ed; upperclass residence,"Resnik House holds 150 upperclass residents in three-, four-, and five-occupant units in the center of campus, and is a hub for engaged student leaders. It shares a large TV lounge, recreation room, and computer cluster with the neighboring West Wing, and multiple dining venues sit within the building. All units have central air conditioning.","Extra-long twin bed
+Microfridge
+Desk and chair
+Dresser
+Closet
+Window covering
+Central air conditioning","Lounge on each floor (On-floor)
+Large TV lounge shared with West Wing (Building)
+Recreation room shared with West Wing (Building)
+Community kitchens (On-floor)
+Computer cluster (Building)
+Laundry facilities (Building)
+On-site dining venues (Building)",TRUE,TRUE,TRUE,TRUE,,,40.44256,-79.940179,https://www.cmu.edu/housing/our-communities/housing-images-tours/Resnik/Resnik prime double with view toward closets and dressers-min.JPG,https://www.cmu.edu/housing/our-communities/residences/floor-plans/resnik-house/,,,,,,,,https://www.cmu.edu/housing/our-communities/residences/resnik.html,Rates/room-types/beds: CMU official 2026-2027 Housing Rates PDF. Building details/amenities/floors/images/community: CMU official residence detail pages (fetched 2026-07-10). Some qualitative color cross-checked against student CMU dorms guide (unofficial).,move-in logistics; House Fellow name
+cmu,Resnik House,Suite - Single,"7,726.00",semester,"Two-term Housing Commitment (Fall 2026, Spring 2027)",TRUE,On-Campus Housing,"5125 Margaret Morrison St, Pittsburgh, PA 15213","Student Name
+SMC (mailbox) #
+Carnegie Mellon University
+5032 Forbes Avenue
+Pittsburgh, PA 15289",Cohon University Center Postal Services (assigned SMC mailbox),Houses 150 upperclass students,5,Upperclass Students,Co-ed; upperclass residence,"Resnik House holds 150 upperclass residents in three-, four-, and five-occupant units in the center of campus, and is a hub for engaged student leaders. It shares a large TV lounge, recreation room, and computer cluster with the neighboring West Wing, and multiple dining venues sit within the building. All units have central air conditioning.","Extra-long twin bed
+Microfridge
+Desk and chair
+Dresser
+Closet
+Window covering
+Central air conditioning","Lounge on each floor (On-floor)
+Large TV lounge shared with West Wing (Building)
+Recreation room shared with West Wing (Building)
+Community kitchens (On-floor)
+Computer cluster (Building)
+Laundry facilities (Building)
+On-site dining venues (Building)",TRUE,TRUE,TRUE,TRUE,,,40.44256,-79.940179,https://www.cmu.edu/housing/our-communities/housing-images-tours/Resnik/Resnik prime double with view toward closets and dressers-min.JPG,https://www.cmu.edu/housing/our-communities/residences/floor-plans/resnik-house/,,,,,,,,https://www.cmu.edu/housing/our-communities/residences/resnik.html,Rates/room-types/beds: CMU official 2026-2027 Housing Rates PDF. Building details/amenities/floors/images/community: CMU official residence detail pages (fetched 2026-07-10). Some qualitative color cross-checked against student CMU dorms guide (unofficial).,move-in logistics; House Fellow name
+cmu,Fairfax Apartments,Apartment - Double,"7,469.00",semester,"Two-term Housing Commitment (Fall 2026, Spring 2027)",FALSE,"Leased Apartments, Apartment Style Housing","4615 Fifth Avenue, Pittsburgh, PA 15213","Student Name
+SMC (mailbox) #
+Carnegie Mellon University
+5032 Forbes Avenue
+Pittsburgh, PA 15289",Cohon University Center Postal Services (assigned SMC mailbox),Houses 535 upperclass students,9,Upperclass Students,Co-ed; upperclass apartments in Oakland,"Fairfax is an upperclass apartment community in Oakland comprising a nine-floor main building plus the Fairfax Annex, housing 535 residents in studio, one-bedroom, and two-bedroom apartments. Studios and one-bedrooms house two occupants; two-bedrooms house three. All units have central air conditioning, and the building offers a fitness room and multiple large community spaces.","Extra-long twin bed
+Desk and chair
+Dresser
+Closet
+Window covering
+Central air conditioning","Fitness room (Building)
+Multiple large community spaces (Building)
+Laundry facilities (Building)",TRUE,TRUE,TRUE,TRUE,,,40.447254,-79.948128,https://www.cmu.edu/housing/images/grid-images/fairfax-one-br-sample-layout-cropped.jpg,https://www.cmu.edu/housing/our-communities/residences/floor-plans/fairfax-apartments/faf-1br-sample-layout.pdf,,,,,,,,https://www.cmu.edu/housing/our-communities/residences/fairfax.html,Rates/room-types/beds: CMU official 2026-2027 Housing Rates PDF. Building details/amenities/floors/images/community: CMU official residence detail pages (fetched 2026-07-10). Some qualitative color cross-checked against student CMU dorms guide (unofficial).,move-in logistics; House Fellow name
+cmu,Fairfax Apartments,Apartment - Single,"7,871.00",semester,"Two-term Housing Commitment (Fall 2026, Spring 2027)",FALSE,"Leased Apartments, Apartment Style Housing","4615 Fifth Avenue, Pittsburgh, PA 15213","Student Name
+SMC (mailbox) #
+Carnegie Mellon University
+5032 Forbes Avenue
+Pittsburgh, PA 15289",Cohon University Center Postal Services (assigned SMC mailbox),Houses 535 upperclass students,9,Upperclass Students,Co-ed; upperclass apartments in Oakland,"Fairfax is an upperclass apartment community in Oakland comprising a nine-floor main building plus the Fairfax Annex, housing 535 residents in studio, one-bedroom, and two-bedroom apartments. Studios and one-bedrooms house two occupants; two-bedrooms house three. All units have central air conditioning, and the building offers a fitness room and multiple large community spaces.","Extra-long twin bed
+Desk and chair
+Dresser
+Closet
+Window covering
+Central air conditioning","Fitness room (Building)
+Multiple large community spaces (Building)
+Laundry facilities (Building)",TRUE,TRUE,TRUE,TRUE,,,40.447254,-79.948128,https://www.cmu.edu/housing/images/grid-images/fairfax-one-br-sample-layout-cropped.jpg,https://www.cmu.edu/housing/our-communities/residences/floor-plans/fairfax-apartments/faf-1br-sample-layout.pdf,,,,,,,,https://www.cmu.edu/housing/our-communities/residences/fairfax.html,Rates/room-types/beds: CMU official 2026-2027 Housing Rates PDF. Building details/amenities/floors/images/community: CMU official residence detail pages (fetched 2026-07-10). Some qualitative color cross-checked against student CMU dorms guide (unofficial).,move-in logistics; House Fellow name
+cmu,Fairfax Apartments,Studio Apartment - Double,"6,811.00",semester,"Two-term Housing Commitment (Fall 2026, Spring 2027)",FALSE,"Leased Apartments, Apartment Style Housing","4615 Fifth Avenue, Pittsburgh, PA 15213","Student Name
+SMC (mailbox) #
+Carnegie Mellon University
+5032 Forbes Avenue
+Pittsburgh, PA 15289",Cohon University Center Postal Services (assigned SMC mailbox),Houses 535 upperclass students,9,Upperclass Students,Co-ed; upperclass apartments in Oakland,"Fairfax is an upperclass apartment community in Oakland comprising a nine-floor main building plus the Fairfax Annex, housing 535 residents in studio, one-bedroom, and two-bedroom apartments. Studios and one-bedrooms house two occupants; two-bedrooms house three. All units have central air conditioning, and the building offers a fitness room and multiple large community spaces.","Extra-long twin bed
+Desk and chair
+Dresser
+Closet
+Window covering
+Central air conditioning","Fitness room (Building)
+Multiple large community spaces (Building)
+Laundry facilities (Building)",TRUE,TRUE,TRUE,TRUE,,,40.447254,-79.948128,https://www.cmu.edu/housing/images/grid-images/fairfax-one-br-sample-layout-cropped.jpg,https://www.cmu.edu/housing/our-communities/residences/floor-plans/fairfax-apartments/faf-1br-sample-layout.pdf,,,,,,,,https://www.cmu.edu/housing/our-communities/residences/fairfax.html,Rates/room-types/beds: CMU official 2026-2027 Housing Rates PDF. Building details/amenities/floors/images/community: CMU official residence detail pages (fetched 2026-07-10). Some qualitative color cross-checked against student CMU dorms guide (unofficial).,move-in logistics; House Fellow name
+cmu,Fifth Neville Apartments,Apartment - Double,"7,469.00",semester,"Two-term Housing Commitment (Fall 2026, Spring 2027)",FALSE,"Leased Apartments, Apartment Style Housing","4705 Fifth Avenue, Pittsburgh, PA 15213","Student Name
+SMC (mailbox) #
+Carnegie Mellon University
+5032 Forbes Avenue
+Pittsburgh, PA 15289",Cohon University Center Postal Services (assigned SMC mailbox),Houses 163 upperclass students,7,Upperclass Students,Co-ed; upperclass apartments,"Fifth Neville houses 163 upperclass residents across studios and one- and two-bedroom units of two to three occupants, in Oakland at Fifth and Neville. All units have central in-unit air conditioning, and amenities include a study lounge, a large community room, and internet and cable. Clark Winter's restored sculpture 'The Love of Two Oranges' stands at the front of the building.","Extra-long twin bed with storage
+Desk and chair
+Dresser
+Side table
+Closet
+Window covering
+Central air conditioning","Study lounge (On-floor)
+Large community room (Building)
+Internet and cable (Building)
+Vending machine (Building)
+Laundry facilities (Building)",TRUE,TRUE,TRUE,TRUE,,,40.447518,-79.94662,https://www.cmu.edu/housing/images/hero-images/cheeto900x600.jpg,https://www.cmu.edu/housing/our-communities/residences/floor-plans/fifth-neville/,,,,,,,,https://www.cmu.edu/housing/our-communities/residences/fifth-neville.html,Rates/room-types/beds: CMU official 2026-2027 Housing Rates PDF. Building details/amenities/floors/images/community: CMU official residence detail pages (fetched 2026-07-10). Some qualitative color cross-checked against student CMU dorms guide (unofficial).,move-in logistics; House Fellow name
+cmu,Fifth Neville Apartments,Apartment - Single,"7,871.00",semester,"Two-term Housing Commitment (Fall 2026, Spring 2027)",FALSE,"Leased Apartments, Apartment Style Housing","4705 Fifth Avenue, Pittsburgh, PA 15213","Student Name
+SMC (mailbox) #
+Carnegie Mellon University
+5032 Forbes Avenue
+Pittsburgh, PA 15289",Cohon University Center Postal Services (assigned SMC mailbox),Houses 163 upperclass students,7,Upperclass Students,Co-ed; upperclass apartments,"Fifth Neville houses 163 upperclass residents across studios and one- and two-bedroom units of two to three occupants, in Oakland at Fifth and Neville. All units have central in-unit air conditioning, and amenities include a study lounge, a large community room, and internet and cable. Clark Winter's restored sculpture 'The Love of Two Oranges' stands at the front of the building.","Extra-long twin bed with storage
+Desk and chair
+Dresser
+Side table
+Closet
+Window covering
+Central air conditioning","Study lounge (On-floor)
+Large community room (Building)
+Internet and cable (Building)
+Vending machine (Building)
+Laundry facilities (Building)",TRUE,TRUE,TRUE,TRUE,,,40.447518,-79.94662,https://www.cmu.edu/housing/images/hero-images/cheeto900x600.jpg,https://www.cmu.edu/housing/our-communities/residences/floor-plans/fifth-neville/,,,,,,,,https://www.cmu.edu/housing/our-communities/residences/fifth-neville.html,Rates/room-types/beds: CMU official 2026-2027 Housing Rates PDF. Building details/amenities/floors/images/community: CMU official residence detail pages (fetched 2026-07-10). Some qualitative color cross-checked against student CMU dorms guide (unofficial).,move-in logistics; House Fellow name
+cmu,Fifth Neville Apartments,Studio Apartment - Double,"6,811.00",semester,"Two-term Housing Commitment (Fall 2026, Spring 2027)",FALSE,"Leased Apartments, Apartment Style Housing","4705 Fifth Avenue, Pittsburgh, PA 15213","Student Name
+SMC (mailbox) #
+Carnegie Mellon University
+5032 Forbes Avenue
+Pittsburgh, PA 15289",Cohon University Center Postal Services (assigned SMC mailbox),Houses 163 upperclass students,7,Upperclass Students,Co-ed; upperclass apartments,"Fifth Neville houses 163 upperclass residents across studios and one- and two-bedroom units of two to three occupants, in Oakland at Fifth and Neville. All units have central in-unit air conditioning, and amenities include a study lounge, a large community room, and internet and cable. Clark Winter's restored sculpture 'The Love of Two Oranges' stands at the front of the building.","Extra-long twin bed with storage
+Desk and chair
+Dresser
+Side table
+Closet
+Window covering
+Central air conditioning","Study lounge (On-floor)
+Large community room (Building)
+Internet and cable (Building)
+Vending machine (Building)
+Laundry facilities (Building)",TRUE,TRUE,TRUE,TRUE,,,40.447518,-79.94662,https://www.cmu.edu/housing/images/hero-images/cheeto900x600.jpg,https://www.cmu.edu/housing/our-communities/residences/floor-plans/fifth-neville/,,,,,,,,https://www.cmu.edu/housing/our-communities/residences/fifth-neville.html,Rates/room-types/beds: CMU official 2026-2027 Housing Rates PDF. Building details/amenities/floors/images/community: CMU official residence detail pages (fetched 2026-07-10). Some qualitative color cross-checked against student CMU dorms guide (unofficial).,move-in logistics; House Fellow name
+cmu,Forbes Beeler Apartments,Apartment - Double,"7,469.00",semester,"Two-term Housing Commitment (Fall 2026, Spring 2027)",FALSE,"Leased Apartments, Apartment Style Housing","Forbes Avenue and Beeler Street, Pittsburgh, PA 15213","Student Name
+SMC (mailbox) #
+Carnegie Mellon University
+5032 Forbes Avenue
+Pittsburgh, PA 15289",Cohon University Center Postal Services (assigned SMC mailbox),Houses 266 upperclass students,4,Upperclass Students,Co-ed; upperclass apartments,"Forbes Beeler opened in Fall 2023 as a 113,000-square-foot, four-story upperclass apartment community housing 266 residents across 37 units of four to eight occupants. Built to LEED Gold standards, it has the highest ratio of single bedrooms in university housing (56% of beds) and central in-unit air conditioning. Amenities include Scotty's Market, a game room, a digital gaming room, study spaces, and an outdoor patio.","Extra-long twin bed
+Desk and chair
+Dresser
+Closet
+Window covering
+Central air conditioning","Scotty's Market (Building)
+Common lounge space on each floor (On-floor)
+Four study spaces per floor (On-floor)
+Game room with pool and ping pong (Building)
+Digital gaming room (Building)
+Rejuvenation room (Building)
+Outdoor patio with WiFi (Building)
+Laundry facilities (Building)",TRUE,TRUE,TRUE,TRUE,,,40.443921,-79.938786,https://www.cmu.edu/housing/images/hero-images/fb900x600.png,https://www.cmu.edu/housing/our-communities/residences/floor-plans/forbes-beeler/forbes-beeler-floor-1.pdf,,,,,,,,https://www.cmu.edu/housing/our-communities/residences/forbes-beeler.html,Rates/room-types/beds: CMU official 2026-2027 Housing Rates PDF. Building details/amenities/floors/images/community: CMU official residence detail pages (fetched 2026-07-10). Some qualitative color cross-checked against student CMU dorms guide (unofficial).,move-in logistics; House Fellow name
+cmu,Forbes Beeler Apartments,Apartment - Single,"7,871.00",semester,"Two-term Housing Commitment (Fall 2026, Spring 2027)",FALSE,"Leased Apartments, Apartment Style Housing","Forbes Avenue and Beeler Street, Pittsburgh, PA 15213","Student Name
+SMC (mailbox) #
+Carnegie Mellon University
+5032 Forbes Avenue
+Pittsburgh, PA 15289",Cohon University Center Postal Services (assigned SMC mailbox),Houses 266 upperclass students,4,Upperclass Students,Co-ed; upperclass apartments,"Forbes Beeler opened in Fall 2023 as a 113,000-square-foot, four-story upperclass apartment community housing 266 residents across 37 units of four to eight occupants. Built to LEED Gold standards, it has the highest ratio of single bedrooms in university housing (56% of beds) and central in-unit air conditioning. Amenities include Scotty's Market, a game room, a digital gaming room, study spaces, and an outdoor patio.","Extra-long twin bed
+Desk and chair
+Dresser
+Closet
+Window covering
+Central air conditioning","Scotty's Market (Building)
+Common lounge space on each floor (On-floor)
+Four study spaces per floor (On-floor)
+Game room with pool and ping pong (Building)
+Digital gaming room (Building)
+Rejuvenation room (Building)
+Outdoor patio with WiFi (Building)
+Laundry facilities (Building)",TRUE,TRUE,TRUE,TRUE,,,40.443921,-79.938786,https://www.cmu.edu/housing/images/hero-images/fb900x600.png,https://www.cmu.edu/housing/our-communities/residences/floor-plans/forbes-beeler/forbes-beeler-floor-1.pdf,,,,,,,,https://www.cmu.edu/housing/our-communities/residences/forbes-beeler.html,Rates/room-types/beds: CMU official 2026-2027 Housing Rates PDF. Building details/amenities/floors/images/community: CMU official residence detail pages (fetched 2026-07-10). Some qualitative color cross-checked against student CMU dorms guide (unofficial).,move-in logistics; House Fellow name
+cmu,Neville Apartments,Apartment - Double,"7,469.00",semester,"Two-term Housing Commitment (Fall 2026, Spring 2027)",FALSE,"Leased Apartments, Apartment Style Housing","617 Neville Street, Pittsburgh, PA 15213","Student Name
+SMC (mailbox) #
+Carnegie Mellon University
+5032 Forbes Avenue
+Pittsburgh, PA 15289",Cohon University Center Postal Services (assigned SMC mailbox),Houses 24 upperclass students,2,Upperclass Students,Co-ed apartments,"Neville Apartments is a two-story upperclass co-ed community in Oakland with eight three-occupant apartments, each pairing a single and a double bedroom, for 24 residents total. Bedrooms have window-unit air conditioning, and the community shares laundry facilities and is staffed by one resident assistant.","Extra-long twin bed
+Desk and chair
+Dresser
+Closet
+Window covering
+Air conditioning (window unit)",Laundry facilities (Building),TRUE,TRUE,TRUE,TRUE,,,40.447482,-79.947182,https://www.cmu.edu/housing/our-communities/housing-images-tours/Neville/single-bedroom-min.jpg,https://www.cmu.edu/housing/our-communities/residences/floor-plans/neville-apartments/neville-apts-1-4.pdf,,,,,,,,https://www.cmu.edu/housing/our-communities/residences/neville.html,Rates/room-types/beds: CMU official 2026-2027 Housing Rates PDF. Building details/amenities/floors/images/community: CMU official residence detail pages (fetched 2026-07-10). Some qualitative color cross-checked against student CMU dorms guide (unofficial).,move-in logistics; House Fellow name
+cmu,Neville Apartments,Apartment - Single,"7,871.00",semester,"Two-term Housing Commitment (Fall 2026, Spring 2027)",FALSE,"Leased Apartments, Apartment Style Housing","617 Neville Street, Pittsburgh, PA 15213","Student Name
+SMC (mailbox) #
+Carnegie Mellon University
+5032 Forbes Avenue
+Pittsburgh, PA 15289",Cohon University Center Postal Services (assigned SMC mailbox),Houses 24 upperclass students,2,Upperclass Students,Co-ed apartments,"Neville Apartments is a two-story upperclass co-ed community in Oakland with eight three-occupant apartments, each pairing a single and a double bedroom, for 24 residents total. Bedrooms have window-unit air conditioning, and the community shares laundry facilities and is staffed by one resident assistant.","Extra-long twin bed
+Desk and chair
+Dresser
+Closet
+Window covering
+Air conditioning (window unit)",Laundry facilities (Building),TRUE,TRUE,TRUE,TRUE,,,40.447482,-79.947182,https://www.cmu.edu/housing/our-communities/housing-images-tours/Neville/single-bedroom-min.jpg,https://www.cmu.edu/housing/our-communities/residences/floor-plans/neville-apartments/neville-apts-1-4.pdf,,,,,,,,https://www.cmu.edu/housing/our-communities/residences/neville.html,Rates/room-types/beds: CMU official 2026-2027 Housing Rates PDF. Building details/amenities/floors/images/community: CMU official residence detail pages (fetched 2026-07-10). Some qualitative color cross-checked against student CMU dorms guide (unofficial).,move-in logistics; House Fellow name
+cmu,The Highlands,Apartment - Double,"7,469.00",semester,"Two-term Housing Commitment (Fall 2026, Spring 2027)",FALSE,"Leased Apartments, Apartment Style Housing","618 Clyde Street, Pittsburgh, PA 15213","Student Name
+SMC (mailbox) #
+Carnegie Mellon University
+5032 Forbes Avenue
+Pittsburgh, PA 15289",Cohon University Center Postal Services (assigned SMC mailbox),Houses 34 upperclass students,3,Upperclass Students,Co-ed apartments,"The Highlands is an upperclass apartment community in Oakland, next door to Clyde House, with 32 single rooms and one double for 34 residents. Every apartment has a kitchen, and the building offers a study/community lounge, bike storage, and laundry. Air conditioning is provided by window units in bedrooms.","Extra-long twin bed
+Desk and chair
+Dresser
+Closet
+Kitchen
+Window covering
+Air conditioning (window unit)","Study/community lounge (Building)
+Bike storage (Building)
+Laundry facilities (Building)",TRUE,TRUE,TRUE,TRUE,,,40.44833,-79.94634,https://www.cmu.edu/housing/our-communities/housing-images-tours/Highlands/Highlands%20single%20bedroom-min.jpg,https://www.cmu.edu/housing/our-communities/residences/floor-plans/highlands-apartments/highlands-first-floor.pdf,,,,,,,,https://www.cmu.edu/housing/our-communities/residences/highlands.html,Rates/room-types/beds: CMU official 2026-2027 Housing Rates PDF. Building details/amenities/floors/images/community: CMU official residence detail pages (fetched 2026-07-10). Some qualitative color cross-checked against student CMU dorms guide (unofficial).,move-in logistics; House Fellow name
+cmu,The Highlands,Apartment - Single,"7,871.00",semester,"Two-term Housing Commitment (Fall 2026, Spring 2027)",FALSE,"Leased Apartments, Apartment Style Housing","618 Clyde Street, Pittsburgh, PA 15213","Student Name
+SMC (mailbox) #
+Carnegie Mellon University
+5032 Forbes Avenue
+Pittsburgh, PA 15289",Cohon University Center Postal Services (assigned SMC mailbox),Houses 34 upperclass students,3,Upperclass Students,Co-ed apartments,"The Highlands is an upperclass apartment community in Oakland, next door to Clyde House, with 32 single rooms and one double for 34 residents. Every apartment has a kitchen, and the building offers a study/community lounge, bike storage, and laundry. Air conditioning is provided by window units in bedrooms.","Extra-long twin bed
+Desk and chair
+Dresser
+Closet
+Kitchen
+Window covering
+Air conditioning (window unit)","Study/community lounge (Building)
+Bike storage (Building)
+Laundry facilities (Building)",TRUE,TRUE,TRUE,TRUE,,,40.44833,-79.94634,https://www.cmu.edu/housing/our-communities/housing-images-tours/Highlands/Highlands%20single%20bedroom-min.jpg,https://www.cmu.edu/housing/our-communities/residences/floor-plans/highlands-apartments/highlands-first-floor.pdf,,,,,,,,https://www.cmu.edu/housing/our-communities/residences/highlands.html,Rates/room-types/beds: CMU official 2026-2027 Housing Rates PDF. Building details/amenities/floors/images/community: CMU official residence detail pages (fetched 2026-07-10). Some qualitative color cross-checked against student CMU dorms guide (unofficial).,move-in logistics; House Fellow name
+cmu,Roselawn Houses,Apartment - Double,"7,469.00",semester,"Two-term Housing Commitment (Fall 2026, Spring 2027)",FALSE,"Leased Apartments, Apartment Style Housing","15 Roselawn Terrace, Pittsburgh, PA 15213","Student Name
+SMC (mailbox) #
+Carnegie Mellon University
+5032 Forbes Avenue
+Pittsburgh, PA 15289",Cohon University Center Postal Services (assigned SMC mailbox),Houses 60 upperclass students,2,Upperclass Students,"Co-ed; house-style, five students per house","The 12 Roselawn Houses sit on a private street on The Hill in the Intersection area, giving a suburban, neighborhood feel. Each house has three bedrooms, a private bathroom, a kitchen, a large living room, and a dining room, accommodating five students for 60 residents total. Units feature central air conditioning.","Extra-long twin bed
+Desk and chair
+Dresser
+Closet
+Window covering
+Central air conditioning","Per-house kitchen, living room, and dining room (Building)
+Fitness room (Building)
+Common-area lounge (Building)
+Laundry facilities (Building)",TRUE,TRUE,TRUE,TRUE,,,40.442212,-79.938333,https://www.cmu.edu/housing/our-communities/housing-images-tours/Roselawn/Roselawn double-min.JPG,https://www.cmu.edu/housing/our-communities/residences/floor-plans/roselawn-houses/roselawn_five-occupant-house_single-bedroom_floor-plan.pdf,,,,,,,,https://www.cmu.edu/housing/our-communities/residences/roselawn.html,Rates/room-types/beds: CMU official 2026-2027 Housing Rates PDF. Building details/amenities/floors/images/community: CMU official residence detail pages (fetched 2026-07-10). Some qualitative color cross-checked against student CMU dorms guide (unofficial).,move-in logistics; House Fellow name
+cmu,Roselawn Houses,Apartment - Single,"7,871.00",semester,"Two-term Housing Commitment (Fall 2026, Spring 2027)",FALSE,"Leased Apartments, Apartment Style Housing","15 Roselawn Terrace, Pittsburgh, PA 15213","Student Name
+SMC (mailbox) #
+Carnegie Mellon University
+5032 Forbes Avenue
+Pittsburgh, PA 15289",Cohon University Center Postal Services (assigned SMC mailbox),Houses 60 upperclass students,2,Upperclass Students,"Co-ed; house-style, five students per house","The 12 Roselawn Houses sit on a private street on The Hill in the Intersection area, giving a suburban, neighborhood feel. Each house has three bedrooms, a private bathroom, a kitchen, a large living room, and a dining room, accommodating five students for 60 residents total. Units feature central air conditioning.","Extra-long twin bed
+Desk and chair
+Dresser
+Closet
+Window covering
+Central air conditioning","Per-house kitchen, living room, and dining room (Building)
+Fitness room (Building)
+Common-area lounge (Building)
+Laundry facilities (Building)",TRUE,TRUE,TRUE,TRUE,,,40.442212,-79.938333,https://www.cmu.edu/housing/our-communities/housing-images-tours/Roselawn/Roselawn double-min.JPG,https://www.cmu.edu/housing/our-communities/residences/floor-plans/roselawn-houses/roselawn_five-occupant-house_single-bedroom_floor-plan.pdf,,,,,,,,https://www.cmu.edu/housing/our-communities/residences/roselawn.html,Rates/room-types/beds: CMU official 2026-2027 Housing Rates PDF. Building details/amenities/floors/images/community: CMU official residence detail pages (fetched 2026-07-10). Some qualitative color cross-checked against student CMU dorms guide (unofficial).,move-in logistics; House Fellow name
+cmu,Woodlawn Apartments,Apartment - Double,"7,469.00",semester,"Two-term Housing Commitment (Fall 2026, Spring 2027)",FALSE,"Leased Apartments, Apartment Style Housing","5176 Margaret Morrison St, Pittsburgh, PA 15213","Student Name
+SMC (mailbox) #
+Carnegie Mellon University
+5032 Forbes Avenue
+Pittsburgh, PA 15289",Cohon University Center Postal Services (assigned SMC mailbox),Houses 28 upperclass students,4,Upperclass Students,Co-ed apartments,"Woodlawn is an upperclass apartment community in the Intersection area, housing 28 residents across apartment doubles and singles. Its first floor holds The Frame, a student-run art gallery, and the building offers family rooms and laundry facilities. Air conditioning is provided by window units in bedrooms.","Extra-long twin bed
+Desk and chair
+Dresser
+Closet
+Window covering
+Air conditioning (window unit)","The Frame student-run art gallery (Building)
+Family rooms (Building)
+Laundry facilities (Building)",TRUE,TRUE,TRUE,TRUE,,,40.442435,-79.93772,https://www.cmu.edu/housing/our-communities/housing-images-tours/Woodlawn/Single-min.JPG,https://www.cmu.edu/housing/our-communities/residences/floor-plans/woodlawn-apartments/woodlawn-floor-1.pdf,The Frame (student-run art gallery),,,,,,,https://www.cmu.edu/housing/our-communities/residences/woodlawn.html,Rates/room-types/beds: CMU official 2026-2027 Housing Rates PDF. Building details/amenities/floors/images/community: CMU official residence detail pages (fetched 2026-07-10). Some qualitative color cross-checked against student CMU dorms guide (unofficial).,move-in logistics; House Fellow name
+cmu,Woodlawn Apartments,Apartment - Single,"7,871.00",semester,"Two-term Housing Commitment (Fall 2026, Spring 2027)",FALSE,"Leased Apartments, Apartment Style Housing","5176 Margaret Morrison St, Pittsburgh, PA 15213","Student Name
+SMC (mailbox) #
+Carnegie Mellon University
+5032 Forbes Avenue
+Pittsburgh, PA 15289",Cohon University Center Postal Services (assigned SMC mailbox),Houses 28 upperclass students,4,Upperclass Students,Co-ed apartments,"Woodlawn is an upperclass apartment community in the Intersection area, housing 28 residents across apartment doubles and singles. Its first floor holds The Frame, a student-run art gallery, and the building offers family rooms and laundry facilities. Air conditioning is provided by window units in bedrooms.","Extra-long twin bed
+Desk and chair
+Dresser
+Closet
+Window covering
+Air conditioning (window unit)","The Frame student-run art gallery (Building)
+Family rooms (Building)
+Laundry facilities (Building)",TRUE,TRUE,TRUE,TRUE,,,40.442435,-79.93772,https://www.cmu.edu/housing/our-communities/housing-images-tours/Woodlawn/Single-min.JPG,https://www.cmu.edu/housing/our-communities/residences/floor-plans/woodlawn-apartments/woodlawn-floor-1.pdf,The Frame (student-run art gallery),,,,,,,https://www.cmu.edu/housing/our-communities/residences/woodlawn.html,Rates/room-types/beds: CMU official 2026-2027 Housing Rates PDF. Building details/amenities/floors/images/community: CMU official residence detail pages (fetched 2026-07-10). Some qualitative color cross-checked against student CMU dorms guide (unofficial).,move-in logistics; House Fellow name
+cmu,Greek Quad,Greek - Double,"5,850.00",semester,"Two-term Housing Commitment (Fall 2026, Spring 2027)",TRUE,On-Campus Housing,"1055 Morewood Ave, Pittsburgh, PA 15213","Student Name
+SMC (mailbox) #
+Carnegie Mellon University
+5032 Forbes Avenue
+Pittsburgh, PA 15289",Cohon University Center Postal Services (assigned SMC mailbox),Houses 261 students in fraternity and sorority chapter housing,,Upperclass Students,Chapter housing (single-gender by chapter),"The Greek Quad provides fraternity and sorority chapter housing for upperclass members, in single and double rooms plus larger chapter-room options. Included here for completeness of CMU's housing inventory; confirm whether DormCheck should list Greek chapter housing before activation.","Extra-long twin bed
+Desk and chair
+Dresser
+Closet
+Window covering","Chapter house common spaces (Building)
+Laundry facilities (Building)",TRUE,TRUE,TRUE,TRUE,,,40.44585,-79.94195,,,Fraternity and sorority chapter housing,,,,,,,,Rates/room-types/beds: CMU official 2026-2027 Housing Rates PDF. Building details/amenities/floors/images/community: CMU official residence detail pages (fetched 2026-07-10). Some qualitative color cross-checked against student CMU dorms guide (unofficial).,move-in logistics; House Fellow name
+cmu,Greek Quad,Greek - Single,"6,834.00",semester,"Two-term Housing Commitment (Fall 2026, Spring 2027)",TRUE,On-Campus Housing,"1055 Morewood Ave, Pittsburgh, PA 15213","Student Name
+SMC (mailbox) #
+Carnegie Mellon University
+5032 Forbes Avenue
+Pittsburgh, PA 15289",Cohon University Center Postal Services (assigned SMC mailbox),Houses 261 students in fraternity and sorority chapter housing,,Upperclass Students,Chapter housing (single-gender by chapter),"The Greek Quad provides fraternity and sorority chapter housing for upperclass members, in single and double rooms plus larger chapter-room options. Included here for completeness of CMU's housing inventory; confirm whether DormCheck should list Greek chapter housing before activation.","Extra-long twin bed
+Desk and chair
+Dresser
+Closet
+Window covering","Chapter house common spaces (Building)
+Laundry facilities (Building)",TRUE,TRUE,TRUE,TRUE,,,40.44585,-79.94195,,,Fraternity and sorority chapter housing,,,,,,,,Rates/room-types/beds: CMU official 2026-2027 Housing Rates PDF. Building details/amenities/floors/images/community: CMU official residence detail pages (fetched 2026-07-10). Some qualitative color cross-checked against student CMU dorms guide (unofficial).,move-in logistics; House Fellow name
+cmu,Greek Quad,Greek - Large Double,"6,207.00",semester,"Two-term Housing Commitment (Fall 2026, Spring 2027)",TRUE,On-Campus Housing,"1055 Morewood Ave, Pittsburgh, PA 15213","Student Name
+SMC (mailbox) #
+Carnegie Mellon University
+5032 Forbes Avenue
+Pittsburgh, PA 15289",Cohon University Center Postal Services (assigned SMC mailbox),Houses 261 students in fraternity and sorority chapter housing,,Upperclass Students,Chapter housing (single-gender by chapter),"The Greek Quad provides fraternity and sorority chapter housing for upperclass members, in single and double rooms plus larger chapter-room options. Included here for completeness of CMU's housing inventory; confirm whether DormCheck should list Greek chapter housing before activation.","Extra-long twin bed
+Desk and chair
+Dresser
+Closet
+Window covering","Chapter house common spaces (Building)
+Laundry facilities (Building)",TRUE,TRUE,TRUE,TRUE,,,40.44585,-79.94195,,,Fraternity and sorority chapter housing,,,,,,,,Rates/room-types/beds: CMU official 2026-2027 Housing Rates PDF. Building details/amenities/floors/images/community: CMU official residence detail pages (fetched 2026-07-10). Some qualitative color cross-checked against student CMU dorms guide (unofficial).,move-in logistics; House Fellow name
+cmu,Greek Quad,Greek - Large Single,"7,138.00",semester,"Two-term Housing Commitment (Fall 2026, Spring 2027)",TRUE,On-Campus Housing,"1055 Morewood Ave, Pittsburgh, PA 15213","Student Name
+SMC (mailbox) #
+Carnegie Mellon University
+5032 Forbes Avenue
+Pittsburgh, PA 15289",Cohon University Center Postal Services (assigned SMC mailbox),Houses 261 students in fraternity and sorority chapter housing,,Upperclass Students,Chapter housing (single-gender by chapter),"The Greek Quad provides fraternity and sorority chapter housing for upperclass members, in single and double rooms plus larger chapter-room options. Included here for completeness of CMU's housing inventory; confirm whether DormCheck should list Greek chapter housing before activation.","Extra-long twin bed
+Desk and chair
+Dresser
+Closet
+Window covering","Chapter house common spaces (Building)
+Laundry facilities (Building)",TRUE,TRUE,TRUE,TRUE,,,40.44585,-79.94195,,,Fraternity and sorority chapter housing,,,,,,,,Rates/room-types/beds: CMU official 2026-2027 Housing Rates PDF. Building details/amenities/floors/images/community: CMU official residence detail pages (fetched 2026-07-10). Some qualitative color cross-checked against student CMU dorms guide (unofficial).,move-in logistics; House Fellow name

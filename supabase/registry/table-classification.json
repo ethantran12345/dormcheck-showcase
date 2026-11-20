@@ -1,0 +1,376 @@
+{
+  "$comment": "Tenant-classification registry \u2014 machine-readable form of docs/multi-university.md \u00a73. Every BASE TABLE in schema `public` MUST have an entry; supabase/tests/tenant_registry.test.sql fails the build otherwise. Classes: A = university-scoped root (has university_id + RESTRICTIVE tenant_isolation policy on current_university_id()); B = child scoped via parent FK (RESTRICTIVE tenant_isolation EXISTS(<parent>) policy; declare `parent`); C = user-owned (policy quals reference auth.uid(); tenant scope = owner's profile); D = social graph (mechanism `confined` = RESTRICTIVE tenant_confined INSERT policy, `membership` = reads gated by participant/membership of a confined parent \u2014 declare `reason`); E/F = exempt (city-infra / platform-global; declare `reason`). Adding a table? Pick a class per docs/multi-university.md and add the entry in the same PR as the migration.",
+  "version": 1,
+  "updated": "2026-08-27",
+  "tables": {
+    "academic_terms": {
+      "class": "A"
+    },
+    "ad_campaigns": {
+      "class": "F",
+      "reason": "advertiser B2B surface; owner/superadmin policies, university_id is the ad target dimension not a student-tenant boundary"
+    },
+    "ad_creatives": {
+      "class": "F",
+      "reason": "advertiser B2B surface; scoped through ad_campaigns ownership"
+    },
+    "ad_impressions": {
+      "class": "F",
+      "reason": "ad event log; RLS default-deny (service-role only) is intentional"
+    },
+    "admin_audit_log": {
+      "class": "F",
+      "reason": "platform admin audit trail; superadmin/service surface, default-deny to app roles"
+    },
+    "admin_email_log": {
+      "class": "F",
+      "reason": "cron dedup log for admin digest/nudge emails; RLS default-deny (service-role only) is intentional"
+    },
+    "admin_invitations": {
+      "class": "F",
+      "reason": "platform admin RBAC invitations; not campus content"
+    },
+    "advertiser_invitations": {
+      "class": "F",
+      "reason": "superadmin-issued B2B invitations; the signup-gate exception reads it via SECURITY DEFINER"
+    },
+    "advertisers": {
+      "class": "F",
+      "reason": "B2B accounts outside the student tenant model; owner + superadmin policies"
+    },
+    "amazon_product_variations": {
+      "class": "F",
+      "reason": "variant rows (color/size/count) of the platform-global amazon_products catalog; public read, admin-only writes, no university_id \u2014 same platform-global scope as its parent"
+    },
+    "amazon_products": {
+      "class": "F",
+      "reason": "platform-global affiliate catalog"
+    },
+    "analytics_events": {
+      "class": "F",
+      "reason": "platform-global analytics; university_id may later become a dashboard dimension, not a boundary"
+    },
+    "api_rate_limits": {
+      "class": "F",
+      "reason": "platform infra; RLS default-deny (no policies) is intentional"
+    },
+    "blocked_users": {
+      "class": "D",
+      "mechanism": "membership",
+      "reason": "user-pair rows readable only by the involved users (auth.uid() quals); no cross-tenant pairs can form under the confined social graph"
+    },
+    "broadcast_templates": {
+      "class": "F",
+      "reason": "superadmin announcement templates; RLS default-deny (service-role only), CRUD via api/admin/broadcast-templates.ts"
+    },
+    "building_chat_link_reports": {
+      "class": "B",
+      "parent": "building_chat_links"
+    },
+    "building_chat_links": {
+      "class": "A"
+    },
+    "buildings": {
+      "class": "A"
+    },
+    "bus_stops": {
+      "class": "E",
+      "reason": "Pittsburgh city infrastructure, not university data; needs city/campus notion only when a non-Pittsburgh tenant lands"
+    },
+    "business_listings": {
+      "class": "A"
+    },
+    "campus_academic_events": {
+      "class": "A"
+    },
+    "campus_course_catalog": {
+      "class": "A"
+    },
+    "campus_data_sources": {
+      "class": "A"
+    },
+    "campus_dining_hours": {
+      "class": "A"
+    },
+    "campus_dining_locations": {
+      "class": "A"
+    },
+    "campus_dining_menus": {
+      "class": "A",
+      "reason": "Class A for the same reason as campus_laundry_machines \u2014 own university_id, direct isolation; the location FK is cascade only."
+    },
+    "campus_ingest_cursor": {
+      "class": "A"
+    },
+    "campus_ingest_runs": {
+      "class": "A",
+      "reason": "Class A. Operational heartbeat for the campus_* ingest, readable by authenticated users so the UI can show data age instead of implying freshness it cannot verify."
+    },
+    "campus_laundry_machines": {
+      "class": "A",
+      "reason": "Class A rather than B: carries its own university_id so the RESTRICTIVE tenant_isolation policy applies directly, matching every other table in migration 20261004000000. The FK to campus_laundry_rooms is for cascade delete, not for tenant scope."
+    },
+    "campus_laundry_rooms": {
+      "class": "A"
+    },
+    "checklist_item_claims": {
+      "class": "C"
+    },
+    "checklist_items": {
+      "class": "C"
+    },
+    "checklist_payment_acks": {
+      "class": "C"
+    },
+    "checklist_payments": {
+      "class": "C"
+    },
+    "checklist_share_links": {
+      "class": "B",
+      "parent": "ranking_collaborations"
+    },
+    "community_room_optouts": {
+      "class": "C"
+    },
+    "content_reports": {
+      "class": "F",
+      "mechanism": "superadmin",
+      "reason": "platform moderation surface; superadmin-only (SELECT/UPDATE/DELETE gate on is_superadmin) \u2014 university_admins read via the tenant-clamped get_content_reports RPC, never the base table"
+    },
+    "conversations": {
+      "class": "D",
+      "mechanism": "confined",
+      "reason": "tenant_confined INSERT still requires both participants in one university, OR both in universities sharing a marketplace_group (20260918000000). Consent is unchanged and is NOT carried by this policy: conversations.status + initiated_by and rls_conversations_insert_privacy_gate still make every DM a request the recipient accepts. Without this a shared listing is visible but its seller is uncontactable."
+    },
+    "course_sections": {
+      "class": "A"
+    },
+    "deleted_accounts": {
+      "class": "F",
+      "reason": "platform account-lifecycle log; RLS default-deny is intentional"
+    },
+    "device_tokens": {
+      "class": "C"
+    },
+    "dm_poll_votes": {
+      "class": "D",
+      "mechanism": "membership",
+      "reason": "reads and writes are gated by the parent message conversation participants; vote writes also bind user_id to auth.uid() and option_index to the message's poll metadata"
+    },
+    "dorm_answers": {
+      "class": "B",
+      "parent": "dorm_questions"
+    },
+    "dorm_edits": {
+      "class": "B",
+      "parent": "master_housing"
+    },
+    "dorm_future_residents": {
+      "class": "B",
+      "parent": "master_housing"
+    },
+    "dorm_question_upvotes": {
+      "class": "B",
+      "parent": "dorm_questions"
+    },
+    "dorm_questions": {
+      "class": "A"
+    },
+    "email_suppressions": {
+      "class": "F",
+      "reason": "Resend bounce/complaint suppression list for broadcast mail; RLS default-deny (service-role only) is intentional"
+    },
+    "explore_picks": {
+      "class": "A"
+    },
+    "favorite_roommates": {
+      "class": "C"
+    },
+    "group_conversations": {
+      "class": "D",
+      "mechanism": "membership",
+      "reason": "reads gated by group_members, whose INSERT is tenant_confined"
+    },
+    "group_dorm_rankings": {
+      "class": "B",
+      "parent": "ranking_collaborations"
+    },
+    "group_members": {
+      "class": "D",
+      "mechanism": "confined"
+    },
+    "group_message_reactions": {
+      "class": "D",
+      "mechanism": "membership",
+      "reason": "reads gated by is_chat_group_member of the parent group_message (same predicate as group_messages); INSERT/DELETE require user_id = auth.uid()"
+    },
+    "group_messages": {
+      "class": "D",
+      "mechanism": "membership",
+      "reason": "reads gated by group_members, whose INSERT is tenant_confined"
+    },
+    "listing_verifications": {
+      "class": "B",
+      "parent": "marketplace_listings"
+    },
+    "marketplace_alerts": {
+      "class": "C",
+      "reason": "university_id column is a dimension (server-derived match scope), not a tenant boundary \u2014 rows are owner-scoped (user_id = auth.uid())."
+    },
+    "marketplace_listing_items": {
+      "class": "B",
+      "parent": "marketplace_listings"
+    },
+    "marketplace_listings": {
+      "class": "A",
+      "reason": "Class A with an ASYMMETRIC policy since 20260918000000: USING widens to universities.shares_marketplace() (co-located schools in the same marketplace_group \u2014 Pitt/CMU/Carlow), while WITH CHECK stays pinned to current_university_id(). Read across the group, write only into your own school. The qual still names current_university_id() so the class-A audit keeps covering it. Children marketplace_listing_items and listing_verifications are class B via EXISTS on this table and follow automatically."
+    },
+    "master_housing": {
+      "class": "A"
+    },
+    "message_reactions": {
+      "class": "D",
+      "mechanism": "membership",
+      "reason": "reads gated by the parent message's conversation participants (same predicate as messages); INSERT/DELETE require user_id = auth.uid()"
+    },
+    "messages": {
+      "class": "D",
+      "mechanism": "membership",
+      "reason": "reads gated by conversation participants; conversations INSERT is tenant_confined"
+    },
+    "mfa_backup_codes": {
+      "class": "C"
+    },
+    "moderation_actions": {
+      "class": "F",
+      "mechanism": "superadmin",
+      "reason": "platform moderation surface; superadmin-only (INSERT/SELECT gate on is_superadmin)"
+    },
+    "movein_push_log": {
+      "class": "F",
+      "reason": "cron idempotency log for move-in countdown pushes; RLS default-deny (service-role only) is intentional"
+    },
+    "notifications": {
+      "class": "C",
+      "reason": "university_id column is a dimension, not a tenant boundary \u2014 rows are recipient-scoped (user_id = auth.uid()). Do not add a tenant policy."
+    },
+    "payment_history": {
+      "class": "F",
+      "reason": "platform payment log"
+    },
+    "pogoh_station": {
+      "class": "E",
+      "reason": "Pittsburgh city infrastructure, not university data; needs city/campus notion only when a non-Pittsburgh tenant lands"
+    },
+    "profiles": {
+      "class": "C"
+    },
+    "profiles_public": {
+      "class": "C",
+      "reason": "Read-only projection of profiles (identity: name/avatar), written only by the definer sync trigger. SELECT policy is own-row OR tenant-scoped via current_university_id() (IS DISTINCT FROM semantics) OR superadmin \u2014 deliberately no is_public opt-out: identity must resolve for DM senders. Since 20260918000000 it also resolves for shares_marketplace(university_id): without that, every cross-school listing in the shared marketplace renders from a faceless seller, which is worse for safety than showing who you are dealing with."
+    },
+    "profiles_roommate": {
+      "class": "C",
+      "reason": "Read-only projection of profiles (roommate discovery columns), written only by the definer sync trigger. SELECT policy mirrors the historical roommate_profiles view WHERE exactly: (is_public OR own row) AND (own row OR tenant match, NULLs matching)."
+    },
+    "push_broadcasts": {
+      "class": "F",
+      "reason": "platform admin broadcast audit trail; superadmin read, service-role writes"
+    },
+    "ranking_collaborations": {
+      "class": "A"
+    },
+    "ranking_group_members": {
+      "class": "D",
+      "mechanism": "confined"
+    },
+    "roommate_search_interests": {
+      "class": "B",
+      "parent": "roommate_search_posts"
+    },
+    "roommate_search_posts": {
+      "class": "A"
+    },
+    "saved_businesses": {
+      "class": "C"
+    },
+    "saved_dorms": {
+      "class": "C"
+    },
+    "saved_items": {
+      "class": "C"
+    },
+    "saved_subleases": {
+      "class": "C"
+    },
+    "school_directory": {
+      "class": "F",
+      "reason": "pre-tenant reference data; RLS default-deny (service-role read) is intentional"
+    },
+    "school_domains": {
+      "class": "F",
+      "reason": "email domains per directory school; platform-global reference, read only via resolve_school_by_domain(); never authorizes sign-in"
+    },
+    "schools": {
+      "class": "F",
+      "reason": "US institution reference directory (IPEDS spine) powering waitlist school naming; platform-global, never authorizes sign-in"
+    },
+    "seller_ratings": {
+      "class": "B",
+      "parent": "profiles",
+      "parent_helper": "profile_university",
+      "reason": "Tenant is the SELLER's university. Resolved via the SECURITY DEFINER helper profile_university(seller_id), not an inline EXISTS over profiles: an inline EXISTS runs as the invoker and inherits profiles' own-row-only RLS, so it is false for every seller except yourself (2026-08-02)."
+    },
+    "setup_comment_likes": {
+      "class": "B",
+      "parent": "setup_comments"
+    },
+    "setup_comments": {
+      "class": "B",
+      "parent": "student_setups"
+    },
+    "setup_likes": {
+      "class": "B",
+      "parent": "student_setups"
+    },
+    "setup_photos": {
+      "class": "B",
+      "parent": "student_setups"
+    },
+    "setup_products": {
+      "class": "B",
+      "parent": "student_setups"
+    },
+    "student_reviews": {
+      "class": "B",
+      "parent": "master_housing"
+    },
+    "student_setups": {
+      "class": "A"
+    },
+    "universities": {
+      "class": "F",
+      "reason": "the tenant registry itself; writes are service-role only"
+    },
+    "university_admin_leads": {
+      "class": "F",
+      "reason": "B2B lead capture, exists ahead of a tenant"
+    },
+    "university_waitlist": {
+      "class": "F",
+      "reason": "public demand capture ahead of a tenant existing; INSERT-only for app roles"
+    },
+    "user_classes": {
+      "class": "C"
+    },
+    "user_dorm_rankings": {
+      "class": "C"
+    },
+    "user_home_location": {
+      "class": "C"
+    },
+    "user_logistics_progress": {
+      "class": "C"
+    }
+  }
+}

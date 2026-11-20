@@ -1,0 +1,421 @@
+name: Claude Code
+
+on:
+  issue_comment:
+    types: [created]
+  pull_request_review_comment:
+    types: [created]
+  issues:
+    types: [opened, assigned, labeled]
+  pull_request_review:
+    types: [submitted]
+
+jobs:
+  claude:
+    # The actor gate is the FIRST condition and applies to every trigger: this job
+    # has `contents: write` and pushes to dev, so an @claude mention must come from
+    # someone who already has write access. The repo is private today, which makes
+    # that true incidentally; this makes it true by rule, so making the repo public
+    # or adding an outside collaborator cannot silently hand a stranger a commit.
+    # OWNER/MEMBER/COLLABORATOR are the write-bearing associations; CONTRIBUTOR and
+    # NONE are not.
+    # The association is checked PER EVENT, against the actor who actually wrote
+    # the text that triggers this job. A single shared OR-block would be a bypass:
+    # on `issue_comment`, `github.event.issue.author_association` is the ISSUE
+    # OPENER, not the commenter, so a stranger commenting "@claude" on a member's
+    # issue would satisfy it. Each branch below reads the association off the same
+    # object it reads the body from.
+    if: |
+      (github.event_name == 'issue_comment' &&
+        contains(github.event.comment.body, '@claude') &&
+        contains(fromJSON('["OWNER","MEMBER","COLLABORATOR"]'), github.event.comment.author_association)) ||
+      (github.event_name == 'pull_request_review_comment' &&
+        contains(github.event.comment.body, '@claude') &&
+        contains(fromJSON('["OWNER","MEMBER","COLLABORATOR"]'), github.event.comment.author_association)) ||
+      (github.event_name == 'pull_request_review' &&
+        contains(github.event.review.body, '@claude') &&
+        contains(fromJSON('["OWNER","MEMBER","COLLABORATOR"]'), github.event.review.author_association)) ||
+      (github.event_name == 'issues' && github.event.action != 'labeled' &&
+        (contains(github.event.issue.body, '@claude') || contains(github.event.issue.title, '@claude')) &&
+        contains(fromJSON('["OWNER","MEMBER","COLLABORATOR"]'), github.event.issue.author_association))
+    # SERIALIZED REPO-WIDE, deliberately not per-issue. This job has `contents:
+    # write` and commits to `dev`, so two concurrent runs are two agents pushing to
+    # the same branch from two checkouts of the same base -- the loser force-races
+    # or fails on a non-fast-forward, and with migration-writing advisor fixes that
+    # can mean two migrations claiming adjacent version stamps. Batch approval
+    # (the advisor-batch-approve.yml helper, removed 2026-10-29) made that the NORMAL case rather
+    # than a rare one, so the queue is a precondition for it. cancel-in-progress is false: an
+    # approval must never be dropped, only made to wait.
+    concurrency:
+      group: claude-approve-to-fix
+      cancel-in-progress: false
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write   # approve-to-fix: an @claude comment can commit the fix to `dev`
+      pull-requests: read
+      issues: write      # so an alert-issue fix can be labeled/closed when done
+      id-token: write
+      actions: read # Required for Claude to read CI results on PRs
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v5
+        with:
+          fetch-depth: 1
+
+      # Match CI's Node so an in-action gate (typecheck/test/build) mirrors ci-dev-push.
+      - name: Set up Node
+        uses: actions/setup-node@v5
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Run Claude Code
+        id: claude
+        uses: anthropics/claude-code-action@v1
+        with:
+          claude_code_oauth_token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
+
+          # This is an optional setting that allows Claude to read CI results on PRs
+          additional_permissions: |
+            actions: read
+
+          # No static `prompt:` on purpose — that would replace the comment-driven
+          # behavior for PR-review/@claude triggers. Instead we ONLY append operating
+          # rules so the approve-to-fix path (a fix requested from an alert/status
+          # issue) commits to `dev`, self-gates before pushing, and never touches main.
+          #
+          # CRITICAL: a GITHUB_TOKEN push does NOT trigger workflow runs, so a fix
+          # pushed to dev will NOT auto-run ci-dev-push.yml. The gate therefore has to
+          # run IN this action before pushing (that's why setup-node is above).
+          claude_args: >-
+            --append-system-prompt
+            "APPROVE-TO-FIX (self-healing loop): when a comment or issue asks you to fix an
+            alerting/status issue (labels prod-down, signup-canary, migration-safety,
+            security-audit, build-break, audit-stale, security/secrets, automation-status,
+            or advisor-review),
+            land the fix as a COMMIT ON dev ONLY. Steps: (1) git fetch origin dev && git checkout
+            dev. (2) Make the fix. (3) GATE LOCALLY BEFORE PUSHING - run npm ci, then npm run
+            typecheck, npm run test, npm run build (add npm run lint if UI changed); if ANY fail,
+            do NOT push - comment on the issue explaining what failed and stop. A GITHUB_TOKEN
+            push does not trigger CI, so this local gate is the gate. (4) Append one dated line to
+            docs/CHANGELOG.md describing the fix and follow-up. (5) git commit and git push origin
+            HEAD:dev. (6) Comment a summary on the issue, close it, and if an awaiting-approval
+            label is present swap it to approved. NEVER push to main and NEVER open a PR to main -
+            production is Ethan's manual gate from main. For ordinary PR-review or @claude code
+            requests that are NOT alert-issue fixes, ignore these rules and follow the request.
+            ADVISOR-REVIEW ISSUES (Tier 2): the fix is a NEW migration file in
+            supabase/migrations/ committed to dev - never apply anything to the prod database;
+            prod apply stays manual at release. Act only on an explicit fix-request comment. If a
+            finding turns out to be accepted-by-design, instead add its key to
+            docs/security/advisor-baseline.json with a reason and close the issue.
+            (Tier-1 advisor-autofix issues are handled autonomously by the separate advisor-autofix
+            job in this workflow, not here.)"
+            --allowed-tools
+            "Bash,Read,Grep,Glob,Edit,Write"
+
+  # ─────────────────────────────────────────────────────────────────────────────
+  # TIER-A AUTONOMOUS AUTO-FIX (Autonomous Auto-Fix PRD — narrow slice).
+  # Fires on ANY issue `labeled` event, then a deterministic allowlist gate (a repo
+  # FILE, .github/autofix-allowlist.json — never hardcoded here) decides whether that
+  # specific label auto-fixes. Three mechanical, semantics-preserving classes are on the
+  # list: `advisor-autofix` (unindexed FKs), `advisor-autofix-rlsinit` (auth_rls_initplan),
+  # `advisor-autofix-searchpath` (function_search_path_mutable). SECURITY DEFINER /
+  # data-exposure findings are deliberately NOT auto-fixable — the gate cannot prove
+  # read-authorization intent. Every other label is a no-op and stays on the @claude gate.
+  # The guardrails (allowlist, attempt cap, scope check, gate-before-commit, revert) are
+  # WORKFLOW STEPS, not agent instructions — the agent only writes the migration file.
+  # NOTE: a GITHUB_TOKEN push does NOT trigger ci-dev-push.yml, so the gate runs IN this
+  # job (supabase db reset + test:db + build) BEFORE commit. A red gate means nothing
+  # lands on dev and the issue is relabeled autofix-failed — same guarantee as the PRD's
+  # "auto-revert on red CI", minus ever putting a known-bad commit on the trunk.
+  # ─────────────────────────────────────────────────────────────────────────────
+  advisor-autofix:
+    if: github.event_name == 'issues' && github.event.action == 'labeled'
+    runs-on: ubuntu-latest
+    concurrency:
+      group: advisor-autofix-${{ github.event.issue.number }}
+      cancel-in-progress: false
+    permissions:
+      contents: write
+      issues: write
+      id-token: write
+    env:
+      GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      ISSUE: ${{ github.event.issue.number }}
+      LABEL: ${{ github.event.label.name }}
+    steps:
+      - name: Checkout dev
+        uses: actions/checkout@v5
+        with:
+          ref: dev
+          fetch-depth: 0
+
+      # 1) ALLOWLIST GATE — read the label allowlist from ONE file, never this YAML.
+      - name: Allowlist gate
+        id: gate
+        run: |
+          set -euo pipefail
+          if [ "$(jq -r --arg l "$LABEL" '.labels | index($l) != null' .github/autofix-allowlist.json)" != "true" ]; then
+            echo "Label '$LABEL' is not on the auto-fix allowlist — no-op (human gate intact)."
+            echo "proceed=false" >> "$GITHUB_OUTPUT"; exit 0
+          fi
+          echo "maxAttempts=$(jq -r '.maxAttempts' .github/autofix-allowlist.json)" >> "$GITHUB_OUTPUT"
+          echo "maxFiles=$(jq -r '.maxFiles' .github/autofix-allowlist.json)" >> "$GITHUB_OUTPUT"
+          echo "proceed=true" >> "$GITHUB_OUTPUT"
+
+      # 2) ATTEMPT CAP — count autofix-attempt-* labels; the (maxAttempts+1)-th trip is human-only.
+      - name: Attempt cap
+        id: cap
+        if: steps.gate.outputs.proceed == 'true'
+        run: |
+          set -euo pipefail
+          ATTEMPTS=$(gh issue view "$ISSUE" --json labels --jq '[.labels[].name | select(startswith("autofix-attempt-"))] | length')
+          MAX=${{ steps.gate.outputs.maxAttempts }}
+          if [ "$ATTEMPTS" -ge "$MAX" ]; then
+            gh label create autofix-exhausted --color B60205 --description "Auto-fix hit the attempt cap; human only" --force >/dev/null 2>&1 || true
+            gh issue edit "$ISSUE" --add-label autofix-exhausted
+            gh issue comment "$ISSUE" --body "🛑 Autonomous auto-fix attempt cap reached ($ATTEMPTS/$MAX). Labeled \`autofix-exhausted\` — human only from here."
+            echo "proceed=false" >> "$GITHUB_OUTPUT"; exit 0
+          fi
+          NEXT=$((ATTEMPTS + 1))
+          gh label create "autofix-attempt-$NEXT" --color FBCA04 --description "Autonomous auto-fix attempt $NEXT" --force >/dev/null 2>&1 || true
+          gh issue edit "$ISSUE" --add-label "autofix-attempt-$NEXT"
+          echo "attempt=$NEXT" >> "$GITHUB_OUTPUT"
+          echo "proceed=true" >> "$GITHUB_OUTPUT"
+
+      - name: Set up Node
+        if: steps.cap.outputs.proceed == 'true'
+        uses: actions/setup-node@v5
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install deps
+        if: steps.cap.outputs.proceed == 'true'
+        run: npm ci
+
+      - name: Set up Supabase CLI
+        if: steps.cap.outputs.proceed == 'true'
+        uses: supabase/setup-cli@v2
+        with:
+          version: latest
+
+      - name: Record base SHA
+        id: base
+        if: steps.cap.outputs.proceed == 'true'
+        run: echo "sha=$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"
+
+      # 2b) LABEL → AGENT-BRANCH MAP. The ONE place the mapping is written down, and a
+      #     hard failure for an allowlisted label with no branch. This invariant exists
+      #     because f6269c8e found `function_search_path_mutable` being labeled
+      #     `advisor-autofix` and handed to the prompt hardcoded for FK indexes — the
+      #     label and the work that ran had drifted apart with nothing checking. Adding a
+      #     label to .github/autofix-allowlist.json without adding its agent step below
+      #     now fails loudly here instead of silently producing an empty diff.
+      - name: Assert label maps to an agent branch
+        id: route
+        if: steps.cap.outputs.proceed == 'true'
+        run: |
+          set -euo pipefail
+          case "$LABEL" in
+            advisor-autofix)            BRANCH=fk;         EXPECT=autofix_index_ ;;
+            advisor-autofix-rlsinit)    BRANCH=rlsinit;    EXPECT=autofix_rlsinit_ ;;
+            advisor-autofix-searchpath) BRANCH=searchpath; EXPECT=autofix_searchpath_ ;;
+            *)
+              echo "::error::Label '$LABEL' passed the allowlist gate but maps to no agent branch in claude.yml. Add its agent step (and its migration-name token) before allowlisting it."
+              exit 1 ;;
+          esac
+          echo "branch=$BRANCH"  >> "$GITHUB_OUTPUT"
+          echo "expect=$EXPECT" >> "$GITHUB_OUTPUT"
+          echo "Label '$LABEL' -> agent branch '$BRANCH' (migration must be named *_${EXPECT}*)."
+
+      # 3) AGENT — one mutually exclusive step per auto-fixable lint class. Each writes
+      #    ONLY a NEW migration file (+ a CHANGELOG line). No commit/push/close, ever.
+      #    Shared hard limits are repeated per branch on purpose: the prompt is the only
+      #    thing the agent reads, and the scope check (step 4) enforces them regardless.
+      - name: Write index migration (unindexed_foreign_keys)
+        if: steps.cap.outputs.proceed == 'true' && steps.route.outputs.branch == 'fk'
+        uses: anthropics/claude-code-action@v1
+        with:
+          claude_code_oauth_token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
+          claude_args: >-
+            --append-system-prompt
+            "TIER-A AUTO-FIX (advisor-autofix, unindexed foreign keys ONLY). GitHub issue #${{ env.ISSUE }}.
+            Run 'gh issue view ${{ env.ISSUE }} --json title,body' to read the finding: a Supabase
+            unindexed_foreign_keys advisor result naming a table (entity 'public.<table>') and one or more
+            foreign-key COLUMNS (in the detail/remediation, often as '<table>_<column>_fkey' or a column
+            list). YOUR ONLY JOB: create ONE new file under supabase/migrations/ named
+            <TIMESTAMP>_autofix_index_<table>.sql where TIMESTAMP is 14 digits (YYYYMMDDHHMMSS) STRICTLY
+            GREATER than the largest existing migration filename (Glob supabase/migrations/ to find it).
+            Body: for EACH unindexed FK column, one idempotent statement
+            'create index if not exists idx_<table>_<column> on public.<table> (<column>);', preceded by a
+            short comment citing 'advisor-autofix #${{ env.ISSUE }}'. Then append ONE dated line to
+            docs/CHANGELOG.md in the existing format (what + why + the follow-up that prod apply is manual).
+            HARD LIMITS: modify ONLY the new migration file and docs/CHANGELOG.md — never an existing
+            migration, never RLS/auth/grants/functions/policies, never any other file, never the database
+            itself, never run git or supabase, never close or comment on the issue. If you cannot
+            CONFIDENTLY determine the table AND its column(s), make NO changes (the workflow catches the
+            empty diff and flags it for a human)."
+            --allowed-tools
+            "Bash(gh issue view:*),Read,Grep,Glob,Edit,Write"
+
+      - name: Write RLS initplan migration (auth_rls_initplan)
+        if: steps.cap.outputs.proceed == 'true' && steps.route.outputs.branch == 'rlsinit'
+        uses: anthropics/claude-code-action@v1
+        with:
+          claude_code_oauth_token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
+          claude_args: >-
+            --append-system-prompt
+            "TIER-A AUTO-FIX (advisor-autofix-rlsinit, auth_rls_initplan ONLY). GitHub issue
+            #${{ env.ISSUE }}. Run 'gh issue view ${{ env.ISSUE }} --json title,body' to read the
+            finding: a Supabase auth_rls_initplan advisor result naming a TABLE (entity
+            'public.<table>') and, in the title parenthesis and the Detail line, the exact NAME of
+            ONE row-level-security POLICY on that table that re-evaluates auth.<function>() per row.
+            THE FIX IS PURELY MECHANICAL AND MUST BE SEMANTICS-PRESERVING: every bare auth.uid(),
+            auth.jwt(), auth.role() and current_setting(...) call inside USING and WITH CHECK becomes
+            (select auth.uid()), (select auth.jwt()), (select auth.role()), (select current_setting(...)).
+            NOTHING ELSE CHANGES.
+            STEP 1 - FIND THE AUTHORITATIVE CURRENT DEFINITION. Grep supabase/migrations/ for the
+            policy name. A policy may have been dropped and re-created several times; the
+            authoritative definition is the one in the migration with the LARGEST timestamp filename
+            that creates it and is not later dropped. Read it in full.
+            STEP 2 - IF YOU CANNOT FIND THAT DEFINITION, OR the policy name in the issue does not
+            appear verbatim in supabase/migrations/, OR you are in any way unsure which definition is
+            current: MAKE NO CHANGES AT ALL and stop. An empty diff is the correct, safe outcome -
+            the workflow catches it and flags a human. Never reconstruct a policy from the table
+            schema, from another policy, or from what the predicate 'should' be.
+            STEP 3 - Create ONE new file under supabase/migrations/ named
+            <TIMESTAMP>_autofix_rlsinit_<table>.sql where TIMESTAMP is 14 digits (YYYYMMDDHHMMSS)
+            STRICTLY GREATER than the largest existing migration filename (Glob supabase/migrations/
+            to find it). Body: a short comment citing 'advisor-autofix #${{ env.ISSUE }}', then for
+            EACH affected policy 'drop policy if exists \"<name>\" on public.<table>;' followed by a
+            'create policy \"<name>\" on public.<table> ...' that reproduces the definition from STEP 1
+            EXACTLY - same name, same FOR action, same TO roles, same USING and WITH CHECK expressions
+            character for character - with ONLY the auth.<function>()/current_setting() calls wrapped
+            in (select ...).
+            ABSOLUTELY FORBIDDEN: widening, narrowing, simplifying, reordering or re-indenting a
+            predicate; changing AND/OR structure; adding or removing a clause, a role, or an action;
+            touching ANY policy other than the one(s) named in the issue; touching any table other
+            than the entity; adding, dropping or altering anything that is not one of those policies.
+            If the correct output is not a byte-for-byte re-creation modulo the (select ...) wrapping,
+            make NO changes.
+            STEP 4 - Append ONE dated line to docs/CHANGELOG.md in the existing format (what + why +
+            the follow-up that prod apply is manual).
+            HARD LIMITS: modify ONLY the new migration file and docs/CHANGELOG.md - never an existing
+            migration, never any other file, never the database itself, never run git or supabase,
+            never close or comment on the issue."
+            --allowed-tools
+            "Bash(gh issue view:*),Read,Grep,Glob,Edit,Write"
+
+      - name: Write search_path migration (function_search_path_mutable)
+        if: steps.cap.outputs.proceed == 'true' && steps.route.outputs.branch == 'searchpath'
+        uses: anthropics/claude-code-action@v1
+        with:
+          claude_code_oauth_token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
+          claude_args: >-
+            --append-system-prompt
+            "TIER-A AUTO-FIX (advisor-autofix-searchpath, function_search_path_mutable ONLY). GitHub
+            issue #${{ env.ISSUE }}. Run 'gh issue view ${{ env.ISSUE }} --json title,body' to read the
+            finding: a Supabase function_search_path_mutable advisor result naming ONE function
+            (entity 'public.<fn>') whose search_path is role-mutable.
+            STEP 1 - RESOLVE THE EXACT ARGUMENT SIGNATURE. Grep supabase/migrations/ for
+            'function public.<fn>' and read the create-or-replace with the LARGEST timestamp filename.
+            You need the argument TYPE list exactly as Postgres would render it (e.g. '(uuid, text)',
+            or '()' for no arguments); ignore parameter names and DEFAULT clauses.
+            STEP 2 - IF the function is OVERLOADED (more than one distinct signature in the
+            migrations) and the issue does not identify which, OR you cannot find its definition at
+            all, OR the signature is in any way ambiguous: MAKE NO CHANGES AT ALL and stop. An empty
+            diff is the correct, safe outcome - the workflow catches it and flags a human.
+            STEP 3 - Create ONE new file under supabase/migrations/ named
+            <TIMESTAMP>_autofix_searchpath_<fn>.sql where TIMESTAMP is 14 digits (YYYYMMDDHHMMSS)
+            STRICTLY GREATER than the largest existing migration filename (Glob supabase/migrations/
+            to find it). Body: a short comment citing 'advisor-autofix #${{ env.ISSUE }}', then
+            exactly one statement: alter function public.<fn>(<arg types>) set search_path = '';
+            Do NOT re-create, re-define, or otherwise alter the function body, its volatility, its
+            SECURITY DEFINER/INVOKER setting, its owner, or its grants. Do NOT touch any other
+            function.
+            STEP 4 - Append ONE dated line to docs/CHANGELOG.md in the existing format (what + why +
+            the follow-up that prod apply is manual).
+            HARD LIMITS: modify ONLY the new migration file and docs/CHANGELOG.md - never an existing
+            migration, never any other file, never the database itself, never run git or supabase,
+            never close or comment on the issue."
+            --allowed-tools
+            "Bash(gh issue view:*),Read,Grep,Glob,Edit,Write"
+
+      # 4) SCOPE CHECK — only a new migration + the CHANGELOG may have changed; nothing else.
+      - name: Scope check
+        if: steps.cap.outputs.proceed == 'true'
+        run: |
+          set -euo pipefail
+          CHANGED=$(git status --porcelain | awk '{print $2}')
+          echo "Changed files:"; printf '%s\n' "$CHANGED"
+          [ -n "$CHANGED" ] || { echo "::error::auto-fix produced no changes (could not derive table/column)"; exit 1; }
+          COUNT=$(printf '%s\n' "$CHANGED" | grep -c .)
+          [ "$COUNT" -le "${{ steps.gate.outputs.maxFiles }}" ] || { echo "::error::too many files changed ($COUNT)"; exit 1; }
+          BAD=$(printf '%s\n' "$CHANGED" | grep -vE '^(supabase/migrations/[0-9]+_.*\.sql|docs/CHANGELOG\.md)$' || true)
+          [ -z "$BAD" ] || { echo "::error::out-of-scope changes: $BAD"; exit 1; }
+
+          # LABEL ↔ WORK correspondence. Each agent branch names its migration with a
+          # distinct token, so the file the agent actually wrote proves which prompt ran.
+          # This is the second half of the invariant added with the `route` step: `route`
+          # proves the label maps to a branch, this proves the branch that ran is the one
+          # the label asked for. Without it, a mislabeled finding can be silently "fixed"
+          # by the wrong prompt — exactly the drift f6269c8e uncovered.
+          MIGR=$(printf '%s\n' "$CHANGED" | grep '^supabase/migrations/' | head -1)
+          EXPECT='${{ steps.route.outputs.expect }}'
+          case "$(basename "$MIGR")" in
+            *"$EXPECT"*) echo "✓ label '$LABEL' → branch '${{ steps.route.outputs.branch }}' → $MIGR" ;;
+            *) echo "::error::label/branch mismatch: '$LABEL' routed to branch '${{ steps.route.outputs.branch }}' and requires a migration named *${EXPECT}*, but the agent wrote '$MIGR'. The wrong agent branch ran, or the prompt ignored its naming rule. Nothing is committed."
+               exit 1 ;;
+          esac
+
+      # 5) GATE — the real check: reset a fresh stack with the new migration, run the DB
+      #    security probes + a build. (typecheck is intentionally excluded — the repo carries
+      #    a ~112-error tsc baseline, and a SQL-only migration cannot affect TS.)
+      #    LOAD-BEARING for advisor-autofix-rlsinit: test:db carries NEGATIVE RLS assertions
+      #    (cross-tenant reads return 0 rows, outsiders denied, anon denied) — that is what
+      #    proves a re-created policy still denies what it denied before. Never weaken it.
+      - name: Gate — supabase db reset + test:db + build
+        if: steps.cap.outputs.proceed == 'true'
+        run: |
+          set -euo pipefail
+          supabase start
+          supabase db reset
+          npm run test:db
+          npm run build
+
+      - name: Stop Supabase
+        if: always() && steps.cap.outputs.proceed == 'true'
+        run: supabase stop || true
+
+      # 6) COMMIT — deterministic, explicit paths (never git add -A), autofix: prefix. Do NOT close.
+      - name: Commit, push, comment SHA
+        id: commit
+        if: steps.cap.outputs.proceed == 'true'
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          MIGR=$(git status --porcelain | awk '{print $2}' | grep '^supabase/migrations/' | head -1)
+          case "$LABEL" in
+            advisor-autofix-rlsinit)     WHAT="wrap auth.<fn>() in (select ...) for the named policy" ;;
+            advisor-autofix-searchpath)  WHAT="pin function search_path" ;;
+            *)                           WHAT="index unindexed FK" ;;
+          esac
+          git add "$MIGR" docs/CHANGELOG.md
+          git commit -m "autofix(db): $(basename "$MIGR") — $WHAT (advisor #$ISSUE)" \
+            -m "Autonomous Tier-A auto-fix (advisor-autofix). Gated in-job: supabase db reset + test:db + build. Rides the next release; prod apply stays manual. Do not close #$ISSUE until it ships to prod and the advisor re-checks."
+          git push origin HEAD:dev
+          SHA=$(git rev-parse HEAD)
+          echo "sha=$SHA" >> "$GITHUB_OUTPUT"
+          gh issue comment "$ISSUE" --body "✅ Autonomous Tier-A auto-fix committed to \`dev\` as \`$SHA\` (attempt ${{ steps.cap.outputs.attempt }}). Gate passed: supabase db reset + test:db + build. NOT closing — this closes when it ships to prod and the advisor re-checks (prod ships by hand)."
+
+      # 7) FAILURE — scope/gate red: discard everything, relabel autofix-failed, flag a human.
+      - name: On failure — discard + relabel autofix-failed
+        if: failure() && steps.cap.outputs.proceed == 'true'
+        run: |
+          git reset --hard "${{ steps.base.outputs.sha }}" 2>/dev/null || true
+          gh label create autofix-failed --color B60205 --description "Autonomous auto-fix failed its gate/scope check" --force >/dev/null 2>&1 || true
+          gh issue edit "$ISSUE" --add-label autofix-failed
+          gh issue comment "$ISSUE" --body "❌ Autonomous auto-fix failed (scope check or gate: db reset + test:db + build) on attempt ${{ steps.cap.outputs.attempt }}. Nothing was committed to \`dev\`. Labeled \`autofix-failed\` — needs a human."
+

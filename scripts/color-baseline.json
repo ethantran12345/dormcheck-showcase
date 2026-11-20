@@ -1,0 +1,208 @@
+{
+  "src/components/ChatWidget.tsx": [
+    "#f0fdf8"
+  ],
+  "src/components/DormCard.tsx": [
+    "#ff6b6b"
+  ],
+  "src/components/DormDetail.tsx": [
+    "#ff6b6b"
+  ],
+  "src/components/DormMiniMap.tsx": [
+    "#03c03c"
+  ],
+  "src/components/DormSearch.tsx": [
+    "#f0fdf8"
+  ],
+  "src/components/ErrorBoundary.tsx": [
+    "#f0fdf8"
+  ],
+  "src/components/ExploreHousingFilterBar.tsx": [
+    "#f0fdf8"
+  ],
+  "src/components/ExploreHousingRankingsOverlay.tsx": [
+    "#ff6b6b"
+  ],
+  "src/components/MapMiniFilterBar.tsx": [
+    "#f0fdf8"
+  ],
+  "src/components/MapView.tsx": [
+    "#1d4ed8",
+    "#1e3a5f",
+    "#f0fdf8",
+    "#ffffff"
+  ],
+  "src/components/NavSavedHeart.tsx": [
+    "#ff6b6b"
+  ],
+  "src/components/admin/MapPicker.tsx": [
+    "#03c03c"
+  ],
+  "src/components/app/PageToolbar.tsx": [
+    "#f0fdf8"
+  ],
+  "src/components/checklist/ChecklistExploreTab.tsx": [
+    "#f0fdf8"
+  ],
+  "src/components/checklist/ChecklistGroupBoard.tsx": [
+    "#f0fdf8"
+  ],
+  "src/components/checklist/ChecklistItemRowParts.tsx": [
+    "#f0fdf8",
+    "#ff9900"
+  ],
+  "src/components/checklist/ChecklistReadinessSummary.tsx": [
+    "#03c03c",
+    "#d97706"
+  ],
+  "src/components/checklist/ChecklistReadinessView.tsx": [
+    "#f0fdf8"
+  ],
+  "src/components/checklist/ChecklistSummaryZone.tsx": [
+    "#03c03c",
+    "#0b702b"
+  ],
+  "src/components/checklist/ChecklistTopBar.tsx": [
+    "#f0fdf8"
+  ],
+  "src/components/checklist/ExploreProductDetailModal.tsx": [
+    "#ff9900"
+  ],
+  "src/components/checklist/LogisticsPanel.tsx": [
+    "#f0fdf8"
+  ],
+  "src/components/checklist/checklistPdf.ts": [
+    "#03c03c"
+  ],
+  "src/components/dorm-portal/ListingDetailModal.tsx": [
+    "#ff6b6b"
+  ],
+  "src/components/dorm-portal/MarketplaceTab.tsx": [
+    "#f0fdf8",
+    "#ff6b6b"
+  ],
+  "src/components/dorm-portal/OverviewTab.tsx": [
+    "#0b702b"
+  ],
+  "src/components/dorm-portal/SetupDetailModal.tsx": [
+    "#ff6b6b"
+  ],
+  "src/components/explore/ExploreHousingAdvancedFiltersDrawer.tsx": [
+    "#f0fdf8"
+  ],
+  "src/components/explore/MapLegend.tsx": [
+    "#1d4ed8"
+  ],
+  "src/components/explore/MapTransitPreviewCard.tsx": [
+    "#1e3a5f"
+  ],
+  "src/components/marketplace/BusinessDetailModal.tsx": [
+    "#03c03c"
+  ],
+  "src/components/marketplace/BusinessListingCard.tsx": [
+    "#03c03c"
+  ],
+  "src/components/marketplace/BusinessListingForm.tsx": [
+    "#03c03c",
+    "#6366f1",
+    "#64748b",
+    "#8b5cf6",
+    "#f43f5e",
+    "#f59e0b"
+  ],
+  "src/components/marketplace/StudentBusinessesSection.tsx": [
+    "#f0fdf8"
+  ],
+  "src/components/my-home/ChecklistHeroTile.tsx": [
+    "#34a853",
+    "#a7f3d0",
+    "#ffffff"
+  ],
+  "src/components/my-home/JourneyStrip.tsx": [
+    "#ff7a59"
+  ],
+  "src/components/my-home/SavedHomeBand.tsx": [
+    "#ff6b6b"
+  ],
+  "src/components/my-home/YourRoommatePostWidget.tsx": [
+    "#f0fdf8"
+  ],
+  "src/components/resources/YourHallSection.tsx": [
+    "#03c03c"
+  ],
+  "src/components/roommate/RoommateCard.tsx": [
+    "#ff6b6b"
+  ],
+  "src/components/roommate/RoommateDetailModal.tsx": [
+    "#fffc00"
+  ],
+  "src/components/roommates/RoommateComposerDialog.tsx": [
+    "#ccfbf1",
+    "#f0fdf8"
+  ],
+  "src/components/roommates/RoommatePostCard.tsx": [
+    "#f0fdf8",
+    "#ff6b6b"
+  ],
+  "src/components/roommates/RoommatePostDetail.tsx": [
+    "#f0fdf8",
+    "#ff6b6b"
+  ],
+  "src/components/schedule/ClassDetailSheet.tsx": [
+    "#03c03c",
+    "#068f30",
+    "#0b5c26"
+  ],
+  "src/components/schedule/ScheduleMapView.tsx": [
+    "#068f30"
+  ],
+  "src/components/tour/FeatureTour.tsx": [
+    "#34a853"
+  ],
+  "src/index.css": [
+    "#03c03c",
+    "#ff6b6b",
+    "#ffffff"
+  ],
+  "src/lib/celebrate.ts": [
+    "#03c03c",
+    "#0ae24d",
+    "#7c5cff",
+    "#ff7a59",
+    "#ffce7a",
+    "#ffffff"
+  ],
+  "src/lib/dormUtils.ts": [
+    "#7c3aed"
+  ],
+  "src/pages/admin/ResourcesAdminPage.tsx": [
+    "#03c03c"
+  ],
+  "src/pages/app/ChecklistPage.tsx": [
+    "#e68a00",
+    "#f0fdf8",
+    "#ff9900"
+  ],
+  "src/pages/app/ResourcesPage.tsx": [
+    "#03c03c"
+  ],
+  "src/pages/app/RoomGalleryPage.tsx": [
+    "#f0fdf8"
+  ],
+  "src/pages/app/RoommatePage.tsx": [
+    "#f0fdf8"
+  ],
+  "src/pages/auth/Auth.tsx": [
+    "#05a6f0",
+    "#34a853",
+    "#4285f4",
+    "#81bc06",
+    "#ea4335",
+    "#f35325",
+    "#fbbc05",
+    "#ffba08"
+  ],
+  "src/pages/auth/SelectSchool.tsx": [
+    "#03c03c"
+  ]
+}

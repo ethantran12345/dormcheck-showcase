@@ -1,0 +1,132 @@
+name: Edge Functions (driven)
+
+# The Edge Functions were the only layer of the marketplace with NO automated
+# coverage, and that is where the one release-blocking defect of 2026-08-06 was
+# hiding: moderate-listing wrote status='available' on every approval, which
+# violates marketplace_listings_status_by_post_type_check on a service post, so
+# every approved request_help / offer_help 500'd and stranded in 'pending_review'
+# — invisible to the feed AND to its own author. Fixed in 6548db1a.
+#
+# None of the 32 pgTAP probes could have caught it, and none of them can now:
+# they all talk to Postgres directly, and this defect was the FUNCTION's choice of
+# status. The constraint was right; the caller was wrong. Only something that
+# drives the function over HTTP tells those apart. Hence a separate job that
+# stands up the stack, serves the functions, and calls them.
+#
+# WHY ITS OWN WORKFLOW, not a step in ci-dev-push.yml: that file is under a
+# mechanical gate-parity check (scripts/check-gate-parity.mjs) — every blocking
+# `npm run` step in it must also run in `lane:ship`. Putting this there would make
+# every lane ship boot Docker + the full Supabase stack + a container pull, on
+# every lane regardless of what it touched. Paths-filtered here instead, so it
+# runs when a function or the probe changes and stays out of the way otherwise.
+#
+# Subleases and both service types are now ON, so this path carries real student
+# traffic; the weekly run (called from weekly-sweep.yml) exists so the gate cannot rot
+# silently between changes.
+#
+# SECOND GATE, same job: send-push (scripts/test-edge-push.sh). It reuses the stack
+# this job already started, so the marginal cost is a stub container and two serves.
+# Its bug class is the mirror image of moderate-listing's — not "what did the
+# function write" but "whose phone did it reach". send-push fans out to every row in
+# device_tokens, so one dropped `.eq("user_id", …)` puts one student's notification
+# on another student's lock screen: unrecallable, live on iOS and Android, and
+# invisible to every screen in the app (the function reports counts and redacted
+# token prefixes, so a leak and a success are the same log line). The two runners
+# are separate because they need incompatible edge runtimes — moderate-listing is
+# served with JWT verification ON, send-push is deployed verify_jwt:false and must
+# be served --no-verify-jwt to mean what it means in prod. They share the stack
+# sequentially, never at the same time.
+
+on:
+  push:
+    branches: [dev]
+    paths:
+      - 'supabase/functions/**'
+      - 'scripts/test-edge-push.sh'
+      - 'scripts/edge-probe/**'
+      - '.github/workflows/edge-functions.yml'
+  # The WEEKLY run is driven from weekly-sweep.yml (its `edge-functions` job calls this
+  # file), so the gate keeps one copy. It used to be a cron here; moved 2026-10-29.
+  workflow_call: {}
+  workflow_dispatch: {}
+
+permissions:
+  contents: read
+  issues: write
+
+# Both probes drive the functions as they exist at the tip commit, so a superseded
+# run is fully covered by the run that superseded it — and this is the most
+# expensive workflow in the repo to leave running (Docker + full stack + two
+# serves). (Deliberately NOT applied to secrets-scan.yml, which is range-scoped —
+# see the note there.)
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  drive:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 22
+          cache: npm
+
+      - run: npm ci
+
+      - uses: supabase/setup-cli@v2
+        with:
+          version: latest
+
+      # `db reset` and not a bare start: the probe asserts a post_type-aware CHECK
+      # from 20260910000000, and test-edge.sh refuses to run without it rather than
+      # going green against a schema that does not have it.
+      - name: Start stack and apply migrations
+        run: |
+          set -euo pipefail
+          supabase start -x studio
+          supabase db reset
+
+      # Same discipline for send-push, mutation first. The mutation drops the
+      # user_id filter from its device_tokens query — one line, no type error, no
+      # failing request — and this step FAILS unless the probe goes red on the
+      # cross-user, cross-tenant and blocked-recipient verdicts specifically while
+      # the bearer-gate verdicts stay green. A red for any other reason (stack down,
+      # fixture drift) is rejected as "not a mutation test".
+      - name: Mutation check — the probe must catch an unscoped push fan-out
+        run: bash scripts/test-edge-push.sh --mutate
+
+      - name: Drive send-push against the current code
+        run: bash scripts/test-edge-push.sh
+
+      # The six functions no other runner drove (BA-09, backend audit 2026-09-06):
+      # admin-metrics, delete-user-account, export-user-data, fetch-link-preview,
+      # send-auth-email, moderate-image. Two serves — gateway verification ON for the
+      # two gateway-gated functions, --no-verify-jwt for the four that verify in-code —
+      # with OpenAI and Resend stubbed. Covers the SSRF guard, the quarantine move and
+      # its one-year clock, the account deletion through a SET NULL edge, and the signed
+      # auth-email hook end to end.
+      - name: Drive the six remaining functions against the current code
+        run: bash scripts/test-edge-functions.sh
+
+      - name: Stop Supabase
+        if: always()
+        run: supabase stop || true
+
+      - name: Report a break into the shared build-break issue
+        if: failure() && github.event_name != 'pull_request'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+        run: |
+          set -euo pipefail
+          BODY="The driven Edge Function gate failed. Either \`moderate-listing\` no longer writes a legal status for every post_type, or \`send-push\` no longer delivers strictly to the addressed student's own devices, or one of the two mutation checks stopped catching the defect it guards. A red on the send-push half is a POSSIBLE CROSS-USER NOTIFICATION LEAK — treat it as release-blocking. Logs: $RUN_URL"
+          EXISTING="$(gh issue list --label build-break --state open --limit 1 --json number --jq '.[0].number' || true)"
+          if [ -n "$EXISTING" ]; then
+            gh issue comment "$EXISTING" --body "$BODY"
+          else
+            gh issue create --title "Edge Function gate broken ($(date -u +%Y-%m-%d))" --label build-break --body "$BODY"
+          fi

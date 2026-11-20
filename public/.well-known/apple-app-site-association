@@ -1,0 +1,16 @@
+{
+  "applinks": {
+    "apps": [],
+    "details": [
+      {
+        "appID": "TEAMID.com.dormcheck.ios",
+        "paths": [
+          "/rankings/invite/*",
+          "/roommates/invite/*",
+          "/messages*",
+          "/marketplace*"
+        ]
+      }
+    ]
+  }
+}

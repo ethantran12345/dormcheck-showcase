@@ -1,0 +1,5 @@
+# This function performs outbound fetches of user-supplied URLs and does NOT
+# authenticate in-function. Pin the gateway JWT requirement in source so the
+# only access control can't silently regress to unauthenticated (which would
+# turn it into an open SSRF proxy). See SEC-4 in AUDIT_REPORT.md.
+verify_jwt = true

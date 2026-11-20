@@ -1,0 +1,117 @@
+name: Automation Status
+
+# Always-on health board for every DormCheck automation. Runs daily (and on demand
+# via workflow_dispatch) and upserts ONE pinned issue "🔎 Automation Status
+# (auto-updated)" (deduped by label `automation-status`) showing ✅/❌/💤 for every
+# GitHub workflow plus the Cowork/Mac routines GitHub can't introspect (read from
+# .github/automation-inventory.json), with a "Needs attention" list linking each open
+# alert to its issue and the approve-to-fix instruction. Also writes
+# docs/automation-status.json (committed to dev) so off-GitHub mirrors can read state
+# off disk. Part of the self-healing loop: a detector (canary/audit) opens an issue ->
+# this surfaces it -> Ethan comments "@claude fix this" -> claude.yml commits the fix on
+# dev, CI-gated (prod still ships from main by hand).
+#
+# MUST live on `main` (the default branch) to fire: GitHub runs schedule/workflow_run/
+# workflow_dispatch only from the default branch. See docs/CHANGELOG.md 2026-07-15.
+# It operates on `dev` (checks out dev, reads the inventory there, commits the JSON
+# snapshot there) so the snapshot lands on the trunk, never on main.
+
+on:
+  schedule:
+    - cron: '0 12 * * *'   # 08:00 ET daily. GitHub cron is UTC and may be delayed a few min.
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+  issues: write
+  actions: read
+
+concurrency:
+  group: automation-status
+  cancel-in-progress: false
+
+jobs:
+  status:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout dev
+        uses: actions/checkout@v5
+        with:
+          ref: dev
+          fetch-depth: 1
+
+      - name: Gather workflow + alert state
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/as
+
+          # Every workflow known to Actions (incl. disabled), with its state.
+          gh workflow list --all --json name,path,state,id > /tmp/as/workflows.json
+
+          # Latest run per workflow -> [{id, run|null}]
+          for id in $(jq -r '.[].id' /tmp/as/workflows.json); do
+            gh run list --workflow "$id" -L 1 \
+              --json databaseId,conclusion,status,createdAt,url,event \
+              --jq "{id: ${id}, run: (.[0] // null)}"
+          done | jq -s '.' > /tmp/as/runs.json
+
+          # Open alert issues (any of the detector labels).
+          gh issue list --state open --limit 100 \
+            --json number,title,labels,url,updatedAt > /tmp/as/issues.json
+
+      - name: Render board + snapshot
+        env:
+          REPO: ${{ github.repository }}
+        run: |
+          set -euo pipefail
+          node .github/scripts/render-automation-status.mjs
+          echo "--- docs/automation-status.json ---"
+          cat docs/automation-status.json
+
+      - name: Upsert the pinned status issue
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -euo pipefail
+          gh label create automation-status --color 0E8A16 --force >/dev/null 2>&1 || true
+          TITLE="🔎 Automation Status (auto-updated)"
+          NUM=$(gh issue list --state open --label automation-status --json number --jq '.[0].number' 2>/dev/null || echo "")
+          if [ -n "$NUM" ]; then
+            gh issue edit "$NUM" --title "$TITLE" --body-file /tmp/as/body.md
+          else
+            NUM=$(gh issue create --title "$TITLE" --label automation-status --body-file /tmp/as/body.md \
+              | grep -oE '[0-9]+$' | tail -1)
+          fi
+          echo "Status issue: #$NUM"
+
+          # Best-effort pin so it stays at the top of the issues list (max 3 pinned).
+          NODE_ID=$(gh issue view "$NUM" --json id --jq '.id' 2>/dev/null || echo "")
+          if [ -n "$NODE_ID" ]; then
+            gh api graphql -f query='mutation($id:ID!){pinIssue(input:{issueId:$id}){issue{number}}}' \
+              -f id="$NODE_ID" >/dev/null 2>&1 || true
+          fi
+
+      - name: Commit snapshot to dev (only if changed)
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -euo pipefail
+          git add docs/automation-status.json
+          # --cached so a first-run untracked file is detected too (plain `git diff`
+          # ignores untracked files and would wrongly report "unchanged").
+          if git diff --cached --quiet -- docs/automation-status.json; then
+            echo "Snapshot unchanged - nothing to commit."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          # [skip ci] is belt-and-suspenders: a GITHUB_TOKEN push already does not
+          # re-trigger workflows, so this docs-only commit never spins CI.
+          git commit -m "chore(automation): refresh automation-status snapshot [skip ci]"
+          for i in 1 2 3; do
+            git pull --rebase origin dev && git push origin HEAD:dev && break
+            echo "push attempt $i failed, retrying..."; sleep 3
+          done

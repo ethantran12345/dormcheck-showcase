@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- FOUC guard (mirrors resolveEffectiveTheme in src/lib/theme.ts). External
+         blocking script (not inline) so the enforcing CSP keeps script-src 'self'
+         without 'unsafe-inline'. Must stay first in <head>, before paint. -->
+    <script src="/theme-init.js"></script>
+    <meta charset="UTF-8" />
+    <!-- No maximum-scale: WKWebView enforces it (unlike Safari), which blocks pinch zoom - WCAG 1.4.4. -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="theme-color" content="#ffffff" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="icon" href="/favicon.ico" />
+    <title>DormCheck | The verified student hub for move-in</title>
+    <meta name="description" content="Your dorm, figured out. Real photos, real roommates, real answers, all in one place, for verified students. Live at the University of Pittsburgh, expanding campus by campus." />
+    <meta name="author" content="DormCheck" />
+
+    <!-- og:title MUST match the <title> above. These are the static defaults and,
+         because this is a client-rendered SPA with no prerender, they are the ONLY
+         metadata social scrapers (Slack, iMessage, Facebook, LinkedIn) ever see —
+         they do not execute JS. Per-route <title>/canonical are rendered by
+         `RouteMeta` for crawlers that do render (see src/lib/seo.ts). -->
+    <meta property="og:title" content="DormCheck | The verified student hub for move-in" />
+    <meta property="og:description" content="Real photos, real roommates, real answers, all in one place, for verified students. Live at the University of Pittsburgh, expanding campus by campus." />
+    <meta property="og:site_name" content="DormCheck" />
+    <meta property="og:url" content="https://dormcheck.com" />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="https://dormcheck.com/dormcheck-logo-new.png" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@Dormcheck" />
+    <meta name="twitter:image" content="https://dormcheck.com/dormcheck-logo-new.png" />
+  </head>
+
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

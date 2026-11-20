@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>aps-environment</key>
+	<string>production</string>
+	<!-- Universal Links: tapped https://dormcheck.com/… invite/conversation
+	     links open the app (see public/.well-known/apple-app-site-association +
+	     DeepLinkGate in src/App.tsx). Must match App.entitlements. -->
+	<key>com.apple.developer.associated-domains</key>
+	<array>
+		<string>applinks:dormcheck.com</string>
+		<string>applinks:www.dormcheck.com</string>
+	</array>
+	<!-- Keychain Sharing (see App.entitlements for the full rationale). The
+	     shared group MUST stay identical across App / AppRelease /
+	     MessagesExtension entitlements. -->
+	<key>keychain-access-groups</key>
+	<array>
+		<string>$(AppIdentifierPrefix)com.dormcheck.ios</string>
+	</array>
+</dict>
+</plist>

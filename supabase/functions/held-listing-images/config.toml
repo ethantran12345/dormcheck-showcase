@@ -1,0 +1,5 @@
+# Gateway JWT enforcement is PINNED ON (the SEC-4 precedent). This function signs
+# and moves objects in a service-role-only bucket on an admin's behalf; it must
+# never be reachable without a session. The in-function jose/JWKS check and the
+# profiles.role gate stay as well.
+verify_jwt = true

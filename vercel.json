@@ -1,0 +1,35 @@
+{
+  "crons": [
+    {"path": "/api/cron/movein-countdown", "schedule": "0 15 * * *"},
+    {"path": "/api/cron/weekly-digest", "schedule": "0 12 * * 1"},
+    {"path": "/api/cron/report-nudge", "schedule": "0 13 * * *"},
+    {"path": "/api/cron/listing-freshness", "schedule": "0 14 * * *"},
+    {"path": "/api/cron/storage-sweep", "schedule": "0 9 * * *"},
+    {"path": "/api/cron/dispatch-broadcasts", "schedule": "*/5 * * * *"},
+    {"path": "/api/cron/campus-laundry", "schedule": "*/15 * * * *"},
+    {"path": "/api/cron/campus-dining", "schedule": "0 * * * *"},
+    {"path": "/api/cron/campus-catalog", "schedule": "30 * * * *"},
+    {"path": "/api/cron/campus-calendar", "schedule": "0 11 * * 1"}
+  ],
+  "redirects": [
+    {"source": "/dorms", "destination": "/campus", "permanent": true}
+  ],
+  "rewrites": [
+    {"source": "/api/:path*", "destination": "/api/:path*"},
+    {"source": "/roommates/invite/:code", "destination": "/api/og-invite?kind=roommate&code=:code"},
+    {"source": "/rankings/invite/:code", "destination": "/api/og-invite?kind=ranking&code=:code"},
+    {"source": "/(.*)", "destination": "/index.html"}
+  ],
+  "headers": [
+    {"source": "/assets/(.*)", "headers": [{"key": "Cache-Control", "value": "public, max-age=31536000, immutable"}]},
+    {"source": "/.well-known/apple-app-site-association", "headers": [{"key": "Content-Type", "value": "application/json"}]},
+    {"source": "/(.*)", "headers": [
+      {"key": "X-Frame-Options", "value": "DENY"},
+      {"key": "X-Content-Type-Options", "value": "nosniff"},
+      {"key": "Referrer-Policy", "value": "strict-origin-when-cross-origin"},
+      {"key": "Permissions-Policy", "value": "camera=(self), geolocation=(self), microphone=(), payment=(), usb=()"},
+      {"key": "Strict-Transport-Security", "value": "max-age=63072000; includeSubDomains; preload"},
+      {"key": "Content-Security-Policy", "value": "default-src 'self'; script-src 'self' https://va.vercel-scripts.com https://challenges.cloudflare.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob: https:; font-src 'self' data:; connect-src 'self' https://*.supabase.co wss://*.supabase.co https://api.mapbox.com https://events.mapbox.com https://*.tiles.mapbox.com https://va.vercel-scripts.com https://vitals.vercel-insights.com https://challenges.cloudflare.com; worker-src 'self' blob:; frame-src 'self' https://www.tiktok.com https://*.tiktok.com https://challenges.cloudflare.com; object-src 'none'; base-uri 'self'; frame-ancestors 'none'; form-action 'self'; upgrade-insecure-requests"}
+    ]}
+  ]
+}

@@ -1,0 +1,86 @@
+#!/usr/bin/env bash
+# pre-commit - runs on `git commit` (via core.hooksPath=.githooks).
+#
+# Blocks committing a dev live-reload URL in the iOS/Android capacitor.config.json.
+# A live session (npm run ios:live[:local] / android:live[:local]) injects a
+# `server.url` pointing at the Vite dev server; production config has no server
+# block, so it must never enter a commit. Run `npm run ios:reset` /
+# `npm run android:reset` to strip it.
+#
+# Bypass a single commit with SKIP_LIVE_RELOAD_CHECK=1.
+# Install: npm run hooks:install (also runs on npm install via prepare).
+
+
+# ---- secret scan + mass-deletion guard -------------------------------------
+# Added 2026-08-03. This repo holds the Supabase wiring and takes the most agent traffic, and it
+# had NO secret gate on pre-commit or pre-push - only the capacitor live-reload check above.
+# .env is gitignored, which covers the disciplined path and nothing else; the realistic failure is
+# a key pasted into a tracked config or left in a debug line, and .gitignore is blind to that.
+# Regex kept byte-identical to the vault and command-center hooks: one definition, three repos.
+SECRETS='(sk-[A-Za-z0-9]{32}|ghp_[A-Za-z0-9]{36}|github_pat_[A-Za-z0-9_]{40}|eyJhbGciOi[A-Za-z0-9_-]{40,}|AKIA[0-9A-Z]{16}|xox[baprs]-[A-Za-z0-9-]{20,}|AIza[0-9A-Za-z_-]{35}|-----BEGIN [A-Z ]*PRIVATE KEY-----)'
+if git diff --cached --diff-filter=ACM | grep -nE "$SECRETS" >/tmp/dc-secret-hits 2>/dev/null; then
+  echo ""
+  echo "COMMIT BLOCKED - something key-shaped is in the staged diff:"
+  head -5 /tmp/dc-secret-hits | sed 's/^/     /'
+  echo ""
+  echo "   Git history is permanent. Deleting the file later does NOT remove it."
+  echo "   Unstage it and move the value to .env or a local secrets store."
+  rm -f /tmp/dc-secret-hits
+  exit 1
+fi
+rm -f /tmp/dc-secret-hits
+
+# A commit removing an unusual number of files is the signature of a runaway agent sweep.
+DELETED=$(git diff --cached --name-only --diff-filter=D | wc -l | tr -d ' ')
+if [ "$DELETED" -gt 25 ]; then
+  echo ""
+  echo "COMMIT BLOCKED - this commit deletes $DELETED files."
+  echo "   That is the shape of a runaway sweep, not a normal edit."
+  git diff --cached --name-only --diff-filter=D | head -8 | sed 's/^/     - /'
+  echo ""
+  echo "   If it is genuinely intended:  git commit --no-verify"
+  exit 1
+fi
+
+set -uo pipefail
+
+ROOT="$(git rev-parse --show-toplevel)"
+cd "$ROOT"
+
+if ! node scripts/check-ios-live-reload.mjs --staged; then
+  echo "Commit blocked: strip the iOS dev live-reload URL before committing." >&2
+  exit 1
+fi
+
+if ! node scripts/check-android-live-reload.mjs --staged; then
+  echo "Commit blocked: strip the Android dev live-reload URL before committing." >&2
+  exit 1
+fi
+
+# BLOCKING (lane ownership): if a staged file is owned by ANOTHER live lane, refuse
+# the commit and name the owner. Blocking is safe here — the fix is unstaging one
+# file, not abandoning work. Files owned by no lane only warn. See scripts/lane.mjs.
+# The check fails OPEN (a can't-run error never blocks); only a real cross-lane
+# violation exits non-zero.
+# check-staged now enforces TWO index rules — cross-lane ownership, and (2026-08-16)
+# an index holding files staged before this session began. Naming only the first made
+# the wrapper line contradict the detailed block printed above it, so it names neither
+# and defers to that output, which is always specific about which rule fired.
+if ! node scripts/lane.mjs check-staged; then
+  echo "Commit blocked by the staged-file guard (see the block above for which rule and how to clear it)." >&2
+  exit 1
+fi
+
+# WARN-ONLY: surface a live sibling agent session holding the repo lock, so this
+# commit uses EXPLICIT paths instead of a blanket `git add -A` (the 2026-07-20
+# clobber, where one agent's sweep staged another's files). Never blocks — blocking
+# a commit is how work ends up uncommitted, the disease this system cures.
+lock_status="$(node scripts/agent-lock.mjs status 2>/dev/null || true)"
+if printf '%s' "$lock_status" | grep -q 'held by'; then
+  echo "" >&2
+  echo "⚠️  AGENT LOCK ${lock_status#· }" >&2
+  echo "   Another session may be live — commit with explicit paths (git add <path> ...), not git add -A." >&2
+  echo "   (warn-only; your commit is NOT blocked. Release yours with: npm run agent:release)" >&2
+fi
+
+exit 0

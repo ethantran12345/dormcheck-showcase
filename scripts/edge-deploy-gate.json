@@ -1,0 +1,8 @@
+{
+  "_comment": "Operator-maintained facts scripts/edge-deploy-gate.mjs cannot read from the Management API. carveOutSinceVersion = the deployed VERSION of delete-user-account (as shown by `supabase functions list`) at which its purge list started coming from _shared/storageBuckets.ts, i.e. the first deploy that skips the images-quarantine bucket. null = that deploy has not happened; moderate-image stays undeployable until it has.",
+  "delete-user-account": {
+    "carveOutSinceVersion": 24,
+    "recordedBy": "Claude Code with Ethan Tran (prod apply 2026-09-07, docs/audits/prod-apply-2026-09-07.md)",
+    "recordedOn": "2026-09-07"
+  }
+}

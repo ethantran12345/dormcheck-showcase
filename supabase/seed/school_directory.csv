@@ -1,0 +1,1582 @@
+email_domain,university_name,tld,is_edu,name_variants
+aamu.edu,Alabama Agricultural and Mechanical University,edu,True,1
+ab.edu,Alderson Broaddus University,edu,True,1
+abc.edu,Appalachian Bible College,edu,True,1
+abcnash.edu,American Baptist College,edu,True,1
+abdn.ac.uk,University of Aberdeen,uk,False,1
+academyart.edu,Academy of Art University,edu,True,1
+acadiau.ca,Acadia University,ca,False,1
+acg.edu,The American College of Greece,edu,True,1
+acphs.edu,Albany College Pharmacy and Health Sciences,edu,True,1
+acu.edu,Abilene Christian University,edu,True,1
+adams.edu,Adams State University,edu,True,1
+adelphi.edu,Adelphi University,edu,True,1
+adrian.edu,Adrian College,edu,True,1
+agnesscott.edu,Agnes Scott College,edu,True,1
+aic.edu,American International College,edu,True,1
+aju.edu,American Jewish University,edu,True,1
+akbible.edu,Alaska Bible College,edu,True,1
+alaska.edu,University of Alaska Anchorage,edu,True,2
+alaskapacific.edu,Alaska Pacific University,edu,True,1
+alasu.edu,Alabama State University,edu,True,1
+alb.edu,Albright College,edu,True,1
+albany.edu,Suny University Albany,edu,True,1
+albertus.edu,Albertus Magnus College,edu,True,1
+albion.edu,Albion College,edu,True,1
+alc.edu,Alice Lloyd College,edu,True,1
+alcorn.edu,Alcorn State University,edu,True,1
+alfred.edu,Alfred University,edu,True,1
+alfredstate.edu,Suny Alfred State College,edu,True,1
+allegheny.edu,Allegheny College,edu,True,1
+allencollege.edu,Allen College,edu,True,1
+allenuniversity.edu,Allen University,edu,True,1
+alma.edu,Alma College,edu,True,1
+alvernia.edu,Alvernia University,edu,True,1
+alverno.edu,Alverno College,edu,True,1
+american.edu,American University,edu,True,1
+amherst.edu,Amherst College,edu,True,1
+anderson.edu,Anderson University,edu,True,1
+andrews.edu,Andrews University,edu,True,1
+angelo.edu,Angelo State University,edu,True,1
+annamaria.edu,Anna Maria College,edu,True,1
+anselm.edu,Saint Anselm College,edu,True,1
+antiochcollege.edu,Antioch College,edu,True,1
+appstate.edu,Appalachian State University,edu,True,1
+apsu.edu,Austin Peay State University,edu,True,1
+apu.ac.jp,Ritsumeikan Asia Pacific University,jp,False,1
+apu.edu,Azusa Pacific University,edu,True,1
+aquinas.edu,Aquinas College,edu,True,1
+aquinascollege.edu,Aquinas College,edu,True,1
+arbor.edu,Spring Arbor University,edu,True,1
+arcadia.edu,Arcadia University,edu,True,1
+arizona.edu,University of Arizona,edu,True,1
+arizonachristian.edu,Arizona Christian University,edu,True,1
+arkansasbaptist.edu,Arkansas Baptist College,edu,True,1
+arlingtonbaptistcollege.edu,Arlington Baptist University,edu,True,1
+artacademy.edu,Art Academy Cincinnati,edu,True,1
+artcenter.edu,Art Center College of Design,edu,True,1
+asbury.edu,Asbury University,edu,True,1
+ashland.edu,Ashland University,edu,True,1
+assumption.edu,Assumption College,edu,True,1
+astate.edu,Arkansas State University,edu,True,1
+asu.edu,Arizona State University,edu,True,1
+asurams.edu,Albany State University,edu,True,1
+athens.edu,Athens State University,edu,True,1
+atu.edu,Arkansas Tech University,edu,True,1
+aub.ac.uk,Arts University Bournemouth Uk,uk,False,1
+aub.edu.lb,American University Beirut Aub,lb,False,1
+aubg.edu,American University Bulgaria,edu,True,1
+auburn.edu,Auburn University,edu,True,1
+aucegypt.edu,The American University in Cairo,edu,True,1
+augie.edu,Augustana University South Dakota,edu,True,1
+augsburg.edu,Augsburg University,edu,True,1
+augusta.edu,Augusta University,edu,True,1
+augustana.edu,Augustana College Illinois,edu,True,1
+aum.edu,Auburn University at Montgomery,edu,True,1
+aup.edu,American University Paris,edu,True,1
+aur.edu,American University Rome,edu,True,1
+aurora.edu,Aurora University,edu,True,1
+austincollege.edu,Austin College,edu,True,1
+austingrad.edu,Austin Graduate School of Theology,edu,True,1
+avemaria.edu,Ave Maria University,edu,True,1
+averett.edu,Averett University,edu,True,1
+avila.edu,Avila University,edu,True,1
+babson.edu,Babson College,edu,True,1
+bac.edu,Belmont Abbey College,edu,True,1
+bakeru.edu,Baker University,edu,True,1
+baptistcollege.edu,Baptist College of Florida,edu,True,1
+barclaycollege.edu,Barclay College,edu,True,1
+bard.edu,Bard College,edu,True,2
+barnard.edu,Barnard College,edu,True,1
+barry.edu,Barry University,edu,True,1
+barton.edu,Barton College,edu,True,1
+bastyr.edu,Bastyr University,edu,True,1
+bates.edu,Bates College,edu,True,1
+bathspa.ac.uk,Bath Spa University,uk,False,1
+baylor.edu,Baylor University,edu,True,1
+baypath.edu,Bay Path University,edu,True,1
+bc.edu,Boston College,edu,True,1
+bchs.edu,Baptist College of Health Sciences,edu,True,1
+beaconcollege.edu,Beacon College,edu,True,1
+becker.edu,Becker College,edu,True,1
+belhaven.edu,Belhaven University,edu,True,1
+bellarmine.edu,Bellarmine University,edu,True,1
+belmont.edu,Belmont University,edu,True,1
+beloit.edu,Beloit College,edu,True,1
+bemidjistate.edu,Bemidji State University,edu,True,1
+ben.edu,Benedictine University Az,edu,True,2
+benedict.edu,Benedict College,edu,True,1
+benedictine.edu,Benedictine College,edu,True,1
+bennett.edu,Bennett College,edu,True,1
+bennington.edu,Bennington College,edu,True,1
+bentley.edu,Bentley University,edu,True,1
+berea.edu,Berea College,edu,True,1
+berklee.edu,The Boston Conservatory,edu,True,2
+berry.edu,Berry College,edu,True,1
+bethanylb.edu,Bethany College,edu,True,1
+bethanywv.edu,Bethany College,edu,True,1
+bethel.edu,Bethel University,edu,True,1
+bethelcollege.edu,Bethel College,edu,True,1
+bethelks.edu,Bethel College,edu,True,1
+bethelu.edu,Bethel University,edu,True,1
+beulah.edu,Beulah Heights University,edu,True,1
+bgsu.edu,Bowling Green State University,edu,True,1
+bhsu.edu,Black Hills State University,edu,True,1
+binghamton.edu,Suny Binghamton University,edu,True,1
+biola.edu,Biola University,edu,True,1
+bjc.org,Goldfarb School of Nursing at Barnes Jewish College,org,False,1
+bju.edu,Bob Jones University,edu,True,1
+blackburn.edu,Blackburn College,edu,True,1
+blc.edu,Bethany Lutheran College,edu,True,1
+bloomfield.edu,Bloomfield College,edu,True,1
+bloomu.edu,Bloomsburg University of Pennsylvania,edu,True,1
+bluefield.edu,Bluefield College,edu,True,1
+bluefieldstate.edu,Bluefield State College,edu,True,1
+bluffton.edu,Bluffton University,edu,True,1
+bmc.edu,Blue Mountain College,edu,True,1
+boisestate.edu,Boise State University,edu,True,1
+bournemouth.ac.uk,Bournemouth University Uk,uk,False,1
+bowdoin.edu,Bowdoin College,edu,True,1
+bowiestate.edu,Bowie State University,edu,True,1
+bpc.edu,Brewton Parker College,edu,True,1
+bradley.edu,Bradley University,edu,True,1
+brandeis.edu,Brandeis University,edu,True,1
+brcn.edu,Blessing Rieman College of Nursing,edu,True,1
+brenau.edu,Brenau University,edu,True,1
+brescia.edu,Brescia University,edu,True,1
+brevard.edu,Brevard College,edu,True,1
+briarcliff.edu,Briar Cliff University,edu,True,1
+bridgeport.edu,University of Bridgeport,edu,True,1
+bridgew.edu,Bridgewater State University,edu,True,1
+bridgewater.edu,Bridgewater College,edu,True,1
+bristol.ac.uk,University of Bristol,uk,False,1
+brockport.edu,Suny College Brockport,edu,True,1
+brown.edu,Brown University,edu,True,1
+brunel.ac.uk,Brunel University London,uk,False,1
+bryan.edu,Bryan College,edu,True,1
+bryant.edu,Bryant University,edu,True,1
+brynathyn.edu,Bryn Athyn College,edu,True,1
+brynmawr.edu,Bryn Mawr College,edu,True,1
+bsc.edu,Birmingham Southern College,edu,True,1
+bsu.edu,Ball State University,edu,True,1
+bu.edu,Boston University,edu,True,1
+bucknell.edu,Bucknell University,edu,True,1
+buffalo.edu,Suny University Buffalo,edu,True,1
+buffalostate.edu,Suny Buffalo State College,edu,True,1
+butler.edu,Butler University,edu,True,1
+bvu.edu,Buena Vista University,edu,True,1
+bw.edu,Baldwin Wallace University,edu,True,1
+byu.edu,Brigham Young University Provo,edu,True,1
+byuh.edu,Brigham Young University Hawaii,edu,True,1
+byui.edu,Brigham Young University Idaho,edu,True,1
+cabarruscollege.edu,Cabarrus College of Health Sciences,edu,True,1
+cabrini.edu,Cabrini University,edu,True,1
+cairn.edu,Cairn University,edu,True,1
+calarts.edu,California Institute of the Arts,edu,True,1
+calbaptist.edu,California Baptist University,edu,True,1
+caldwell.edu,Caldwell University,edu,True,1
+callutheran.edu,California Lutheran University,edu,True,1
+calstatela.edu,California State University Los Angeles,edu,True,1
+caltech.edu,California Institute Technology Caltech,edu,True,1
+calu.edu,California University Pennsylvania,edu,True,2
+calvary.edu,Calvary University,edu,True,1
+calvin.edu,Calvin College,edu,True,1
+cambridgecollege.edu,Cambridge College,edu,True,1
+cameron.edu,Cameron University,edu,True,1
+campbellsville.edu,Campbellsville University,edu,True,1
+canisius.edu,Canisius College,edu,True,1
+canton.edu,Suny College Technology Canton,edu,True,1
+capital.edu,Capital University,edu,True,1
+captechu.edu,Capitol Technology University,edu,True,1
+caribbean.edu,Caribbean University,edu,True,1
+carleton.edu,Carleton College,edu,True,1
+carlow.edu,Carlow University,edu,True,1
+carroll.edu,Carroll College,edu,True,2
+carrollu.edu,Carroll University,edu,True,1
+carthage.edu,Carthage College,edu,True,1
+case.edu,Case Western Reserve University,edu,True,1
+castleton.edu,Castleton University,edu,True,1
+catawba.edu,Catawba College,edu,True,1
+cau.edu,Clark Atlanta University,edu,True,1
+cazenovia.edu,Cazenovia College,edu,True,1
+cbu.edu,Christian Brothers University,edu,True,1
+cca.edu,California College Arts,edu,True,2
+ccad.edu,Columbus College of Art and Design,edu,True,1
+ccbbc.edu,Clear Creek Baptist Bible College,edu,True,1
+ccis.edu,Columbia College,edu,True,1
+ccsj.edu,Calumet College of St Joseph,edu,True,1
+ccsu.edu,Central Connecticut State University,edu,True,1
+ccu.edu,Colorado Christian University,edu,True,1
+ccuniversity.edu,Cincinnati Christian University,edu,True,1
+cdrewu.edu,Charles R Drew University Medicine and Science,edu,True,1
+cedarcrest.edu,Cedar Crest College,edu,True,1
+cedarville.edu,Cedarville University,edu,True,1
+centenary.edu,Centenary College Louisiana,edu,True,1
+centenaryuniversity.edu,Centenary University,edu,True,1
+central.edu,Central College,edu,True,1
+centralchristian.edu,Central Christian College of Kansas,edu,True,1
+centralmethodist.edu,Central Methodist University,edu,True,1
+centralpenn.edu,Central Penn College,edu,True,1
+centralstate.edu,Central State University,edu,True,1
+centre.edu,Centre College,edu,True,1
+chaminade.edu,Chaminade University Honolulu,edu,True,1
+champlain.edu,Champlain College,edu,True,1
+chapman.edu,Chapman University,edu,True,1
+charteroak.edu,Charter Oak State College,edu,True,1
+chatham.edu,Chatham University,edu,True,1
+chc.edu,Chestnut Hill College,edu,True,1
+cheyney.edu,Cheyney University of Pennsylvania,edu,True,1
+chipola.edu,Chipola College,edu,True,1
+chowan.edu,Chowan University,edu,True,1
+christendom.edu,Christendom College,edu,True,1
+cim.edu,Cleveland Institute of Music,edu,True,1
+citadel.edu,The Citadel,edu,True,1
+ciu.edu,Columbia International University,edu,True,1
+claflin.edu,Claflin University,edu,True,1
+clarion.edu,Clarion University of Pennsylvania,edu,True,1
+clarke.edu,Clarke University,edu,True,1
+clarkson.edu,Clarkson University,edu,True,1
+clarksoncollege.edu,Clarkson College,edu,True,1
+clarkssummitu.edu,Clarks Summit University,edu,True,1
+clarku.edu,Clark University,edu,True,1
+clayton.edu,Clayton State University,edu,True,1
+cleary.edu,Cleary University,edu,True,1
+clemson.edu,Clemson University,edu,True,1
+cmc.edu,Claremont Mckenna College,edu,True,1
+cmich.edu,Central Michigan University,edu,True,1
+cmpr.edu,Conservatory of Music of Puerto Rico,edu,True,1
+cmu.edu,Carnegie Mellon University,edu,True,1
+cn.edu,Carson Newman University,edu,True,1
+cnr.edu,College of New Rochelle,edu,True,1
+cnu.edu,Christopher Newport University,edu,True,1
+coa.edu,College of the Atlantic Atlantic,edu,True,1
+coastal.edu,Coastal Carolina University,edu,True,1
+cobleskill.edu,Suny Cobleskill,edu,True,1
+coe.edu,Coe College,edu,True,1
+cofc.edu,College of Charleston,edu,True,1
+cofo.edu,College of the Ozarks,edu,True,1
+cogswell.edu,Cogswell Polytechnical College,edu,True,1
+coker.edu,Coker College,edu,True,1
+colby-sawyer.edu,Colby Sawyer College,edu,True,1
+colby.edu,Colby College,edu,True,1
+colgate.edu,Colgate University,edu,True,1
+collegeofidaho.edu,College of Idaho,edu,True,2
+colorado.edu,University of Colorado Boulder,edu,True,1
+coloradocollege.edu,Colorado College,edu,True,1
+coloradomesa.edu,Colorado Mesa University,edu,True,1
+colostate.edu,Colorado State University,edu,True,1
+colum.edu,Columbia College Chicago,edu,True,1
+columbiacollege.edu,Columbia College Hollywood,edu,True,2
+columbiasc.edu,Columbia College,edu,True,1
+columbusstate.edu,Columbus State University,edu,True,1
+concord.edu,Concord University,edu,True,1
+concordia-ny.edu,Concordia College,edu,True,1
+concordia.edu,Concordia University Texas,edu,True,1
+conncoll.edu,Connecticut College,edu,True,1
+converse.edu,Converse College,edu,True,1
+cookman.edu,Bethune Cookman University,edu,True,1
+cooper.edu,Cooper Union Advancement Science and Art,edu,True,1
+coppin.edu,Coppin State University,edu,True,1
+corban.edu,Corban University,edu,True,1
+cord.edu,Concordia College Moorhead,edu,True,1
+cornellcollege.edu,Cornell College,edu,True,1
+cornerstone.edu,Cornerstone University,edu,True,1
+cornish.edu,Cornish College of the Arts,edu,True,1
+cortland.edu,Suny Cortland,edu,True,1
+covenant.edu,Covenant College,edu,True,1
+cpp.edu,California State Polytechnic University Pomona,edu,True,1
+creighton.edu,Creighton University,edu,True,1
+criswell.edu,Criswell College,edu,True,1
+crown.edu,Crown College,edu,True,1
+csbsju.edu,College of Saint Benedict,edu,True,1
+csc.edu,Chadron State College,edu,True,1
+cse.edu,College of Saint Elizabeth,edu,True,1
+csj.edu,College St Joseph,edu,True,1
+csm.edu,College of St Mary,edu,True,1
+csp.edu,Concordia University St Paul,edu,True,1
+css.edu,College St Scholastica,edu,True,1
+csu.edu,Chicago State University,edu,True,1
+csub.edu,California State University Bakersfield,edu,True,1
+csuchico.edu,California State University Chico,edu,True,1
+csudh.edu,California State University Dominguez Hills,edu,True,1
+csueastbay.edu,California State University East Bay,edu,True,1
+csufresno.edu,California State University Fresno,edu,True,1
+csulb.edu,California State University Long Beach,edu,True,1
+csum.edu,California Maritime Academy,edu,True,1
+csumb.edu,California State University Monterey Bay,edu,True,1
+csun.edu,California State University Northridge,edu,True,1
+csuniv.edu,Charleston Southern University,edu,True,1
+csuohio.edu,Cleveland State University,edu,True,1
+csupueblo.edu,Colorado State University Pueblo,edu,True,1
+csus.edu,California State University Sacramento,edu,True,1
+csusb.edu,California State University San Bernardino,edu,True,1
+csusm.edu,California State University San Marcos,edu,True,1
+csustan.edu,California State University Stanislaus,edu,True,1
+cu-portland.edu,Concordia University Portland Or,edu,True,1
+cua.edu,Catholic University America,edu,True,1
+cuchicago.edu,Concordia University Chicago,edu,True,1
+cui.edu,Concordia University Irvine,edu,True,1
+culinary.edu,Culinary Institute America Ny,edu,True,1
+culver.edu,Culver Stockton College,edu,True,1
+cumberland.edu,Cumberland University,edu,True,1
+cune.edu,Concordia University Nebraska,edu,True,1
+cuny.edu,Cuny City College,edu,True,10
+curry.edu,Curry College,edu,True,1
+cuw.edu,Concordia University Wisconsin,edu,True,1
+cwu.edu,Central Washington University,edu,True,1
+daemen.edu,Daemen College,edu,True,1
+dallas.edu,Dallas Christian College,edu,True,1
+daltonstate.edu,Dalton State College,edu,True,1
+dartmouth.edu,Dartmouth College,edu,True,1
+davenport.edu,Davenport University,edu,True,1
+davidson.edu,Davidson College,edu,True,1
+dbq.edu,University of Dubuque,edu,True,1
+dbu.edu,Dallas Baptist University,edu,True,1
+dc.edu,Dominican College,edu,True,1
+dean.edu,Dean College,edu,True,1
+defiance.edu,Defiance College,edu,True,1
+delhi.edu,Suny Delhi,edu,True,1
+deltastate.edu,Delta State University,edu,True,1
+delval.edu,Delaware Valley University,edu,True,1
+denison.edu,Denison University,edu,True,1
+depaul.edu,Depaul University,edu,True,1
+depauw.edu,Depauw University,edu,True,1
+desales.edu,Desales University,edu,True,1
+desu.edu,Delaware State University,edu,True,1
+dewv.edu,Davis Elkins College,edu,True,1
+dickinson.edu,Dickinson College,edu,True,1
+dickinsonstate.edu,Dickinson State University,edu,True,1
+digipen.edu,Digipen Institute of Technology,edu,True,1
+dillard.edu,Dillard University,edu,True,1
+dixie.edu,Dixie State University,edu,True,1
+doane.edu,Doane University,edu,True,1
+dom.edu,Dominican University,edu,True,1
+dominican.edu,Dominican University California,edu,True,1
+dordt.edu,Dordt College,edu,True,1
+doshisha.ac.jp,Doshisha University Institute Liberal Arts,jp,False,1
+drake.edu,Drake University,edu,True,1
+drew.edu,Drew University,edu,True,1
+drexel.edu,Drexel University,edu,True,1
+drury.edu,Drury University,edu,True,1
+dsu.edu,Dakota State University,edu,True,1
+du.edu,University of Denver,edu,True,1
+duke.edu,Duke University,edu,True,1
+dukekunshan.edu.cn,Duke Kunshan University,cn,False,1
+duq.edu,Duquesne University,edu,True,1
+durham.ac.uk,Durham University,uk,False,1
+dwu.edu,Dakota Wesleyan University,edu,True,1
+dyc.edu,Dyouville College,edu,True,1
+earlham.edu,Earlham College,edu,True,1
+eastern.edu,Eastern University,edu,True,1
+easternct.edu,Eastern Connecticut State University,edu,True,1
+eastwest.edu,East West University,edu,True,1
+ec.edu,Emmanuel College Ga,edu,True,1
+eckerd.edu,Eckerd College,edu,True,1
+ecok.edu,East Central University,edu,True,1
+ecsu.edu,Elizabeth City State University,edu,True,1
+ecu.edu,East Carolina University,edu,True,1
+ecuad.ca,Emily Carr University of Art Design,ca,False,1
+edgewood.edu,Edgewood College,edu,True,1
+edinboro.edu,Edinboro University Pennsylvania,edu,True,1
+ehc.edu,Emory Henry College,edu,True,1
+eiu.edu,Eastern Illinois University,edu,True,1
+eku.edu,Eastern Kentucky University,edu,True,1
+elmhurst.edu,Elmhurst College,edu,True,1
+elmira.edu,Elmira College,edu,True,1
+elms.edu,Elms College,edu,True,1
+elon.edu,Elon University,edu,True,1
+emerson.edu,Emerson College,edu,True,1
+emich.edu,Eastern Michigan University,edu,True,1
+emmanuel.edu,Emmanuel College,edu,True,2
+emmaus.edu,Emmaus Bible College,edu,True,1
+emory.edu,Emory University,edu,True,1
+emporia.edu,Emporia State University,edu,True,1
+emu.edu,Eastern Mennonite University,edu,True,1
+enc.edu,Eastern Nazarene College,edu,True,1
+endicott.edu,Endicott College,edu,True,1
+enmu.edu,Eastern New Mexico University,edu,True,1
+eou.edu,Eastern Oregon University,edu,True,1
+erau.edu,Embry Riddle Aeronautical University Prescott,edu,True,3
+erskine.edu,Erskine College,edu,True,1
+esc.edu,Suny Empire State College,edu,True,1
+escpeurope.eu,Escp Europe Business School,eu,False,1
+esf.edu,Suny College Environmental Science Forestry,edu,True,1
+esu.edu,East Stroudsburg University of Pennsylvania,edu,True,1
+etbu.edu,East Texas Baptist University,edu,True,1
+etown.edu,Elizabethtown College,edu,True,1
+etsu.edu,East Tennessee State University,edu,True,1
+eureka.edu,Eureka College,edu,True,1
+evangel.edu,Evangel University,edu,True,1
+evansville.edu,University of Evansville,edu,True,1
+evergreen.edu,Evergreen State College,edu,True,1
+ewc.edu,Edward Waters College,edu,True,1
+ewu.edu,Eastern Washington University,edu,True,1
+fairfield.edu,Fairfield University,edu,True,1
+fairmontstate.edu,Fairmont State University,edu,True,1
+faith.edu,Faith Baptist Bible College and Theological Seminary,edu,True,1
+famu.edu,Florida Agricultural Mechanical University,edu,True,1
+fandm.edu,Franklin Marshall College,edu,True,1
+farmingdale.edu,Suny Farmingdale State College,edu,True,1
+fau.edu,Wilkes Honors College,edu,True,2
+faulkner.edu,Faulkner University,edu,True,1
+fdu.edu,Fairleigh Dickinson University,edu,True,1
+felician.edu,Felician University,edu,True,1
+ferris.edu,Ferris State University,edu,True,1
+ferrum.edu,Ferrum College,edu,True,1
+fgcu.edu,Florida Gulf Coast University,edu,True,1
+fhsu.edu,Fort Hays State University,edu,True,1
+fhu.edu,Freed Hardeman University,edu,True,1
+findlay.edu,University of Findlay,edu,True,1
+fisher.edu,Fisher College,edu,True,1
+fisk.edu,Fisk University,edu,True,1
+fit.edu,Florida Institute Technology,edu,True,1
+fitchburgstate.edu,Fitchburg State University,edu,True,1
+fitnyc.edu,Fashion Institute of Technology,edu,True,1
+fiu.edu,Florida International University,edu,True,1
+flagler.edu,Flagler College,edu,True,1
+floridacollege.edu,Florida College,edu,True,1
+flpoly.org,Florida Polytechnic University,org,False,1
+flsouthern.edu,Florida Southern College,edu,True,1
+fmarion.edu,Francis Marion University,edu,True,1
+fmuniv.edu,Florida Memorial University,edu,True,1
+fnu.edu,Florida National University,edu,True,1
+fontbonne.edu,Fontbonne University,edu,True,1
+fordham.edu,Fordham University,edu,True,1
+fortlewis.edu,Fort Lewis College,edu,True,1
+framingham.edu,Framingham State University,edu,True,1
+francis.edu,Saint Francis University,edu,True,1
+franciscan.edu,Franciscan University of Steubenville,edu,True,1
+franklincollege.edu,Franklin College,edu,True,1
+franklinpierce.edu,Franklin Pierce University,edu,True,1
+fredonia.edu,Suny Fredonia,edu,True,1
+fresno.edu,Fresno Pacific University,edu,True,1
+friends.edu,Friends University,edu,True,1
+frostburg.edu,Frostburg State University,edu,True,1
+fsu.edu,Florida State University,edu,True,1
+ftc.edu,Five Towns College,edu,True,1
+fullerton.edu,California State University Fullerton,edu,True,1
+furman.edu,Furman University,edu,True,1
+fus.edu,Franklin University Switzerland,edu,True,1
+fvsu.edu,Fort Valley State University,edu,True,1
+gallaudet.edu,Gallaudet University,edu,True,1
+gannon.edu,Gannon University,edu,True,1
+gardner-webb.edu,Gardner Webb University,edu,True,1
+gbc.edu,Goldey Beacom College,edu,True,1
+gbcnv.edu,Great Basin College,edu,True,1
+gbcol.edu,Grace Bible College,edu,True,1
+gcc.edu,Grove City College,edu,True,1
+gcsu.edu,Georgia College,edu,True,1
+gcu.edu,Grand Canyon University,edu,True,1
+geneseo.edu,Suny College Geneseo,edu,True,1
+georgefox.edu,George Fox University,edu,True,1
+georgetown.edu,Georgetown University,edu,True,1
+georgetowncollege.edu,Georgetown College,edu,True,1
+georgian.edu,Georgian Court University,edu,True,1
+georgiasouthern.edu,Georgia Southern University Armstrong and Liberty Campuses,edu,True,1
+gettysburg.edu,Gettysburg College,edu,True,1
+ggc.edu,Georgia Gwinnett College,edu,True,1
+glasgow.ac.uk,University of Glasgow,uk,False,1
+glenville.edu,Glenville State College,edu,True,1
+gmercyu.edu,Gwynedd Mercy University,edu,True,1
+gmu.edu,George Mason University,edu,True,1
+goddard.edu,Goddard College,edu,True,1
+gonzaga.edu,Gonzaga University,edu,True,1
+gordon.edu,Gordon College,edu,True,1
+gordonstate.edu,Gordon State College,edu,True,1
+goshen.edu,Goshen College,edu,True,1
+goucher.edu,Goucher College,edu,True,1
+govst.edu,Governors State University,edu,True,1
+grace.edu,Grace College Seminary,edu,True,1
+graceland.edu,Graceland University,edu,True,1
+gram.edu,Grambling State University,edu,True,1
+grandview.edu,Grand View University,edu,True,1
+granite.edu,Granite State College,edu,True,1
+greenmtn.edu,Green Mountain College,edu,True,1
+greensboro.edu,Greensboro College,edu,True,1
+greenville.edu,Greenville University,edu,True,1
+grinnell.edu,Grinnell College,edu,True,1
+gsu.edu,Georgia State University,edu,True,1
+gsw.edu,Georgia Southwestern State University,edu,True,1
+guilford.edu,Guilford College,edu,True,1
+gustavus.edu,Gustavus Adolphus College,edu,True,1
+gvsu.edu,Grand Valley State University,edu,True,1
+gwu.edu,George Washington University,edu,True,1
+hamilton.edu,Hamilton College,edu,True,1
+hamline.edu,Hamline University Mn,edu,True,1
+hampshire.edu,Hampshire College,edu,True,1
+hamptonu.edu,Hampton University,edu,True,1
+hanover.edu,Hanover College,edu,True,1
+harding.edu,Harding University,edu,True,1
+harrisburgu.edu,Harrisburg University Science and Technology,edu,True,1
+hartford.edu,University of Hartford,edu,True,1
+hartwick.edu,Hartwick College,edu,True,1
+harvard.edu,Harvard College,edu,True,1
+hastings.edu,Hastings College,edu,True,1
+haverford.edu,Haverford College,edu,True,1
+hawaii.edu,University of Hawaii at Hilo,edu,True,3
+hbu.edu,Houston Baptist University,edu,True,1
+hcc-nd.edu,Holy Cross College,edu,True,1
+hchc.edu,Hellenic College,edu,True,1
+hchs.edu,Huntingdon College of Health Sciences,edu,True,1
+heidelberg.edu,Heidelberg University,edu,True,1
+hendrix.edu,Hendrix College,edu,True,1
+highpoint.edu,High Point University,edu,True,1
+hilbert.edu,Hilbert College,edu,True,1
+hillsdale.edu,Hillsdale College,edu,True,1
+hiram.edu,Hiram College,edu,True,1
+hku.hk,University of Hong Kong,hk,False,1
+hlg.edu,Hannibal Lagrange University,edu,True,1
+hmc.edu,Harvey Mudd College,edu,True,1
+hnu.edu,Holy Names University,edu,True,1
+hodges.edu,Hodges University,edu,True,1
+hofstra.edu,Hofstra University,edu,True,1
+hollins.edu,Hollins University,edu,True,1
+holycross.edu,College of the Holy Cross,edu,True,1
+holyfamily.edu,Holy Family University,edu,True,1
+hood.edu,Hood College,edu,True,1
+hope.edu,Hope College,edu,True,1
+houghton.edu,Houghton College,edu,True,1
+howard.edu,Howard University,edu,True,1
+hpu.edu,Hawaii Pacific University,edu,True,1
+hputx.edu,Howard Payne University,edu,True,1
+hsc.edu,Hampden Sydney College,edu,True,1
+hssu.edu,Harris Stowe State University,edu,True,1
+hsu.edu,Henderson State University,edu,True,1
+hsutx.edu,Hardin Simmons University,edu,True,1
+htu.edu,Huston Tillotson University,edu,True,1
+hud.ac.uk,University of Huddersfield,uk,False,1
+hult.edu,Hult International Business School,edu,True,1
+humboldt.edu,Humboldt State University,edu,True,1
+huntingdon.edu,Huntingdon College,edu,True,1
+huntington.edu,Huntington University,edu,True,1
+husson.edu,Husson University,edu,True,1
+hws.edu,Hobart and William Smith Colleges,edu,True,1
+iaia.edu,Institute of American Indian Arts,edu,True,1
+iastate.edu,Iowa State University,edu,True,1
+ic.edu,Illinois College,edu,True,1
+ie.edu,Ie University,edu,True,1
+iit.edu,Illinois Institute Technology,edu,True,1
+illinoisstate.edu,Illinois State University,edu,True,1
+immaculata.edu,Immaculata University,edu,True,1
+indiana.edu,Indiana University Bloomington,edu,True,1
+indianatech.edu,Indiana Institute of Technology,edu,True,1
+indstate.edu,Indiana State University,edu,True,1
+indwes.edu,Indiana Wesleyan University,edu,True,1
+inter.edu,Inter American University of Puerto Rico Ponce,edu,True,4
+intersg.edu,Inter American University of Puerto Rico San German,edu,True,1
+iona.edu,Iona College,edu,True,1
+ipfw.edu,IPFW,edu,True,1
+isu.edu,Idaho State University,edu,True,1
+ithaca.edu,Ithaca College,edu,True,1
+iue.edu,Indiana University East,edu,True,1
+iuk.edu,Indiana University Kokomo,edu,True,1
+iun.edu,Indiana University Northwest,edu,True,1
+iup.edu,Indiana University of Pennsylvania,edu,True,1
+iupui.edu,IUPUI,edu,True,1
+ius.edu,Indiana University Southeast,edu,True,1
+iusb.edu,Indiana University South Bend,edu,True,1
+iw.edu,Iowa Wesleyan University,edu,True,1
+iwu.edu,Illinois Wesleyan University,edu,True,1
+jacobs-university.de,Jacobs University Bremen,de,False,1
+jarvis.edu,Jarvis Christian College,edu,True,1
+jbu.edu,John Brown University,edu,True,1
+jchs.edu,Jefferson College Health Sciences,edu,True,1
+jcsu.edu,Johnson C Smith University,edu,True,1
+jcu.edu,John Carroll University,edu,True,1
+jessup.edu,William Jessup University,edu,True,1
+jewell.edu,William Jewell College,edu,True,1
+jhu.edu,Johns Hopkins University,edu,True,1
+jmu.edu,James Madison University,edu,True,1
+johncabot.edu,John Cabot University Rome,edu,True,1
+johnsonu.edu,Johnson University,edu,True,2
+johnwesley.edu,John Wesley University,edu,True,1
+jpcatholic.com,John Paul the Great Catholic University,com,False,1
+jsc.edu,Northern Vermont University Johnson Campus,edu,True,1
+jsu.edu,Jacksonville State University,edu,True,1
+jsums.edu,Jackson State University,edu,True,1
+jtsa.edu,List College Jewish Theological Seminary,edu,True,1
+ju.edu,Jacksonville University,edu,True,1
+judson.edu,Judson College,edu,True,1
+judsonu.edu,Judson University,edu,True,1
+juilliard.edu,Juilliard School,edu,True,1
+juniata.edu,Juniata College,edu,True,1
+jwu.edu,Johnson Wales University,edu,True,1
+k-state.edu,Kansas State University,edu,True,1
+kcai.edu,Kansas City Art Institute,edu,True,1
+kcu.edu,Kentucky Christian University,edu,True,1
+kean.edu,Kean University,edu,True,1
+keele.ac.uk,Keele University,uk,False,1
+keene.edu,Keene State College,edu,True,1
+kendall.edu,Kendall College,edu,True,1
+kennesaw.edu,Kennesaw State University,edu,True,1
+kent.edu,Kent State University,edu,True,1
+kenyon.edu,Kenyon College,edu,True,1
+kettering.edu,Kettering University,edu,True,1
+keuka.edu,Keuka College,edu,True,1
+keystone.edu,Keystone College,edu,True,1
+kgi.edu,Minerva Schools Kgi,edu,True,1
+king.edu,King University,edu,True,1
+kings.edu,Kings College,edu,True,1
+kmbc.edu,Kentucky Mountain Bible College,edu,True,1
+knox.edu,Knox College,edu,True,1
+ku.edu,University of Kansas,edu,True,1
+kutztown.edu,Kutztown University of Pennsylvania,edu,True,1
+kuyper.edu,Kuyper College,edu,True,1
+kwc.edu,Kentucky Wesleyan College,edu,True,1
+kysu.edu,Kentucky State University,edu,True,1
+kzoo.edu,Kalamazoo College,edu,True,1
+lacollege.edu,Louisiana College,edu,True,1
+lafayette.edu,Lafayette College,edu,True,1
+lagrange.edu,Lagrange College,edu,True,1
+lakeforest.edu,Lake Forest College,edu,True,1
+lakeland.edu,Lakeland University,edu,True,1
+lamar.edu,Lamar University,edu,True,1
+lander.edu,Lander University,edu,True,1
+lanecollege.edu,Lane College,edu,True,1
+langston.edu,Langston University,edu,True,1
+laroche.edu,La Roche College,edu,True,1
+lasalle.edu,La Salle University,edu,True,1
+lasell.edu,Lasell College,edu,True,1
+lasierra.edu,La Sierra University,edu,True,1
+latech.edu,Louisiana Tech University,edu,True,1
+laverne.edu,University of la Verne,edu,True,1
+lawrence.edu,Lawrence University,edu,True,1
+lcad.edu,Laguna College of Art and Design,edu,True,1
+lclark.edu,Lewis Clark College,edu,True,1
+lcsc.edu,Lewis Clark State College,edu,True,1
+lcu.edu,Lubbock Christian University,edu,True,1
+lec.edu,Lake Erie College,edu,True,1
+leeuniversity.edu,Lee University,edu,True,1
+lehigh.edu,Lehigh University,edu,True,1
+lemoyne.edu,Le Moyne College,edu,True,1
+lesley.edu,Lesley University,edu,True,1
+letu.edu,Letourneau University,edu,True,1
+lewisu.edu,Lewis University,edu,True,1
+liberty.edu,Liberty University,edu,True,1
+life.edu,Life University,edu,True,1
+lifepacific.edu,Life Pacific College,edu,True,1
+limcollege.edu,Lim College,edu,True,1
+limestone.edu,Limestone College,edu,True,1
+lincoln.ac.uk,University of Lincoln,uk,False,1
+lincoln.edu,Lincoln University,edu,True,1
+lincolnchristian.edu,Lincoln Christian University,edu,True,1
+lincolnu.edu,Lincoln University,edu,True,1
+lincolnuca.edu,Lincoln University,edu,True,1
+lindenwood.edu,Lindenwood University,edu,True,1
+lindsey.edu,Lindsey Wilson College,edu,True,1
+linfield.edu,Linfield College,edu,True,1
+lipscomb.edu,Lipscomb University,edu,True,1
+liu.edu,Long Island University Post Campus,edu,True,2
+livingstone.edu,Livingstone College,edu,True,1
+lmc.edu,Lees Mcrae College,edu,True,1
+lmu.edu,Loyola Marymount University,edu,True,1
+lmunet.edu,Lincoln Memorial University,edu,True,1
+loc.edu,Lemoyne Owen College,edu,True,1
+lockhaven.edu,Lock Haven University of Pennsylvania,edu,True,1
+longwood.edu,Longwood University,edu,True,1
+loras.edu,Loras College,edu,True,1
+louisiana.edu,University of Louisiana at Lafayette,edu,True,1
+louisville.edu,University of Louisville,edu,True,1
+lourdes.edu,Lourdes University,edu,True,1
+loyno.edu,Loyola University New Orleans,edu,True,1
+loyola.edu,Loyola University Maryland,edu,True,1
+lr.edu,Lenoir Rhyne University,edu,True,1
+lssu.edu,Lake Superior State University,edu,True,1
+lsu.edu,Louisiana State University Am Baton Rouge,edu,True,1
+lsus.edu,Louisiana State University Shreveport,edu,True,1
+ltu.edu,Lawrence Technological University,edu,True,1
+luc.edu,Loyola University Chicago,edu,True,1
+luther.edu,Luther College,edu,True,1
+lutherrice.edu,Luther Rice College Seminary,edu,True,1
+lvc.edu,Lebanon Valley College,edu,True,1
+lycoming.edu,Lycoming College,edu,True,1
+lynchburg.edu,University of Lynchburg,edu,True,1
+lynn.edu,Lynn University,edu,True,1
+lyon.edu,Lyon College,edu,True,1
+ma.edu,Westfield State University,edu,True,1
+mac.edu,Macmurray College,edu,True,1
+macalester.edu,Macalester College,edu,True,1
+macu.edu,Mid America Christian University,edu,True,1
+macuniversity.edu,Mid Atlantic Christian University,edu,True,1
+madonna.edu,Madonna University,edu,True,1
+maine.edu,University of Maine,edu,True,8
+malone.edu,Malone University,edu,True,1
+manchester.edu,Manchester University,edu,True,1
+manhattan.edu,Manhattan College,edu,True,1
+mansfield.edu,Mansfield University of Pennsylvania,edu,True,1
+marian.edu,Marian University Indiana,edu,True,1
+marianuniversity.edu,Marian University Wisconsin,edu,True,1
+marietta.edu,Marietta College,edu,True,1
+marist.edu,Marist College,edu,True,1
+maritime.edu,Massachusetts Maritime Academy,edu,True,1
+marlboro.edu,Marlboro College,edu,True,1
+marquette.edu,Marquette University,edu,True,1
+marshall.edu,Marshall University,edu,True,1
+martin.edu,Martin University,edu,True,1
+martinmethodist.edu,Martin Methodist College,edu,True,1
+marybaldwin.edu,Mary Baldwin University,edu,True,1
+marygrove.edu,Marygrove College,edu,True,1
+marylhurst.edu,Marylhurst University,edu,True,1
+marymount.edu,Marymount University,edu,True,1
+marymountcalifornia.edu,Marymount California University,edu,True,1
+maryville.edu,Maryville University St Louis,edu,True,1
+maryvillecollege.edu,Maryville College,edu,True,1
+marywood.edu,Marywood University,edu,True,1
+massart.edu,Massachusetts College Art and Design,edu,True,1
+masters.edu,The Masters University and Seminary,edu,True,1
+mayvillestate.edu,Mayville State University,edu,True,1
+mbu.edu,Maranatha Baptist University,edu,True,1
+mc.edu,Mississippi College,edu,True,1
+mca.edu,Memphis College of Art,edu,True,1
+mcad.edu,Minneapolis College of Art and Design,edu,True,1
+mccks.edu,Manhattan Christian College,edu,True,1
+mccn.edu,Mount Carmel College of Nursing,edu,True,1
+mcdaniel.edu,Mcdaniel College,edu,True,1
+mchs.edu,Mercy College of Health Sciences,edu,True,1
+mckendree.edu,Mckendree University,edu,True,1
+mcla.edu,Massachusetts College Liberal Arts,edu,True,1
+mcm.edu,Mcmurry University,edu,True,1
+mcneese.edu,Mcneese State University,edu,True,1
+mcny.edu,Metropolitan College of New York,edu,True,1
+mcpherson.edu,Mcpherson College,edu,True,1
+mcphs.edu,Massachusetts College Pharmacy and Health Sciences Mcphs University,edu,True,1
+meca.edu,Maine College Art,edu,True,1
+medaille.edu,Medaille College,edu,True,1
+memphis.edu,University of Memphis,edu,True,1
+menlo.edu,Menlo College,edu,True,1
+mercer.edu,Mercer University,edu,True,1
+mercy.edu,Mercy College,edu,True,1
+mercyhurst.edu,Mercyhurst University,edu,True,1
+meredith.edu,Meredith College,edu,True,1
+merrimack.edu,Merrimack College,edu,True,1
+messiah.edu,Messiah College,edu,True,1
+methodist.edu,Methodist University,edu,True,1
+methodistcollege.edu,Nebraska Methodist College,edu,True,1
+metrostate.edu,Metropolitan State University,edu,True,1
+mga.edu,Middle Georgia State University,edu,True,1
+mhu.edu,Mars Hill University,edu,True,1
+miad.edu,Milwaukee Institute of Art and Design,edu,True,1
+miami.edu,University of Miami,edu,True,1
+miamioh.edu,Miami University Ohio,edu,True,1
+mica.edu,Maryland Institute College Art,edu,True,1
+middlebury.edu,Middlebury College,edu,True,1
+midlandu.edu,Midland University,edu,True,1
+midway.edu,Midway University,edu,True,1
+miles.edu,Miles College,edu,True,1
+millersville.edu,Millersville University,edu,True,1
+milligan.edu,Milligan College,edu,True,1
+millikin.edu,Millikin University,edu,True,1
+mills.edu,Mills College,edu,True,1
+millsaps.edu,Millsaps College,edu,True,1
+mines.edu,Colorado School of Mines,edu,True,1
+minotstateu.edu,Minot State University,edu,True,1
+misericordia.edu,Misericordia University,edu,True,1
+missouri.edu,University of Missouri,edu,True,2
+missouristate.edu,Missouri State University,edu,True,1
+missouriwestern.edu,Missouri Western State University,edu,True,1
+mit.edu,Massachusetts Institute of Technology,edu,True,1
+mitchell.edu,Mitchell College,edu,True,1
+mlc-wels.edu,Martin Luther College,edu,True,1
+mma.edu,Maine Maritime Academy,edu,True,1
+mmm.edu,Marymount Manhattan College,edu,True,1
+mnstate.edu,Minnesota State University Moorhead,edu,True,1
+mnsu.edu,Minnesota State University Mankato,edu,True,1
+mnu.edu,Midamerica Nazarene University,edu,True,1
+mobap.edu,Missouri Baptist University,edu,True,1
+molloy.edu,Molloy College,edu,True,1
+monash.edu,Monash University,edu,True,1
+monmouth.edu,Monmouth University,edu,True,1
+monmouthcollege.edu,Monmouth College Il,edu,True,1
+montana.edu,Montana State University Bozeman,edu,True,1
+montclair.edu,Montclair State University,edu,True,1
+montevallo.edu,University of Montevallo,edu,True,1
+montreat.edu,Montreat College,edu,True,1
+montserrat.edu,Montserrat College Art,edu,True,1
+moravian.edu,Moravian College,edu,True,1
+moreheadstate.edu,Morehead State University,edu,True,1
+morehouse.edu,Morehouse College,edu,True,1
+morgan.edu,Morgan State University,edu,True,1
+morningside.edu,Morningside College,edu,True,1
+morris.edu,Morris College,edu,True,1
+morrisville.edu,Suny Morrisville State College,edu,True,1
+mountsaintvincent.edu,College of Mount St Vincent,edu,True,2
+mountunion.edu,University of Mount Union,edu,True,1
+moval.edu,Missouri Valley College,edu,True,1
+msj.edu,Mount St Joseph University,edu,True,1
+msmary.edu,Mount St Marys University,edu,True,1
+msmc.edu,Mount Saint Mary College,edu,True,1
+msmnyc.edu,Manhattan School of Music,edu,True,1
+msmu.edu,Mount Saint Marys University,edu,True,1
+msoe.edu,Milwaukee School Engineering,edu,True,1
+msstate.edu,Mississippi State University,edu,True,1
+mssu.edu,Missouri Southern State University,edu,True,1
+mst.edu,Missouri University Science and Technology,edu,True,1
+msu.edu,Michigan State University,edu,True,1
+msubillings.edu,Montana State University Billings,edu,True,1
+msudenver.edu,Metropolitan State University of Denver,edu,True,1
+msun.edu,Montana State University Northern,edu,True,1
+mtaloy.edu,Mount Aloysius College,edu,True,1
+mtech.edu,Montana Tech,edu,True,1
+mtholyoke.edu,Mount Holyoke College,edu,True,1
+mtmary.edu,Mount Mary University,edu,True,1
+mtmc.edu,Mount Marty College,edu,True,1
+mtmercy.edu,Mount Mercy University,edu,True,1
+mtsu.edu,Middle Tennessee State University,edu,True,1
+mtu.edu,Michigan Technological University,edu,True,1
+mu.edu,Marquette University,edu,True,1
+mu.ie,Maynooth University Ireland,ie,False,1
+muhlenberg.edu,Muhlenberg College,edu,True,1
+multnomah.edu,Multnomah University,edu,True,1
+mum.edu,Maharishi University of Management,edu,True,1
+murraystate.edu,Murray State University,edu,True,1
+musc.edu,Medical University of South Carolina,edu,True,1
+muskingum.edu,Muskingum University,edu,True,1
+muw.edu,Mississippi University for Women,edu,True,1
+mville.edu,Manhattanville College,edu,True,1
+mvnu.edu,Mount Vernon Nazarene University,edu,True,1
+mvsu.edu,Mississippi Valley State University,edu,True,1
+mwsu.edu,Midwestern State University,edu,True,1
+myunion.edu,Union Institute University,edu,True,1
+naropa.edu,Naropa University,edu,True,1
+nau.edu,Northern Arizona University,edu,True,1
+naz.edu,Nazareth College,edu,True,1
+nbc.edu,Nazarene Bible College,edu,True,1
+ncat.edu,North Carolina State University,edu,True,1
+nccu.edu,North Carolina Central University,edu,True,1
+ncf.edu,New College Florida,edu,True,1
+ncl.ac.uk,Newcastle University,uk,False,1
+ncsu.edu,North Carolina State University,edu,True,1
+ncwc.edu,North Carolina Wesleyan College,edu,True,1
+nd.edu,University of Notre Dame,edu,True,1
+ndm.edu,Notre Dame of Maryland University,edu,True,1
+ndnu.edu,Notre Dame de Namur University,edu,True,1
+ndsu.edu,North Dakota State University,edu,True,1
+nebrwesleyan.edu,Nebraska Wesleyan University,edu,True,1
+nec.edu,New England College,edu,True,1
+nechristian.edu,Nebraska Christian College,edu,True,1
+necmusic.edu,New England Conservatory of Music,edu,True,1
+neit.edu,New England Institute Technology,edu,True,1
+neiu.edu,Northeastern Illinois University,edu,True,1
+neumann.edu,Neumann University,edu,True,1
+neumont.edu,Neumont College of Computer Science,edu,True,1
+newberry.edu,Newberry College,edu,True,1
+newbury.edu,Newbury College,edu,True,1
+newhaven.edu,University of New Haven,edu,True,2
+newhope.edu,New Hope Christian College,edu,True,1
+newmanu.edu,Newman University,edu,True,1
+newpaltz.edu,Suny New Paltz,edu,True,1
+newschool.edu,New School,edu,True,4
+newschoolarch.edu,New School of Architecture and Design,edu,True,1
+ngu.edu,North Greenville University,edu,True,1
+nhia.edu,New Hampshire Institute Art,edu,True,1
+niagara.edu,Niagara University,edu,True,1
+nicholls.edu,Nicholls State University,edu,True,1
+nichols.edu,Nichols College,edu,True,1
+niu.edu,Northern Illinois University,edu,True,1
+njcu.edu,New Jersey City University,edu,True,1
+njit.edu,New Jersey Institute Technology,edu,True,1
+nku.edu,Northern Kentucky University,edu,True,1
+nl.edu,National Louis University,edu,True,1
+nmhu.edu,New Mexico Highlands University,edu,True,1
+nmsu.edu,New Mexico State University,edu,True,1
+nmt.edu,New Mexico Institute of Mining and Technology,edu,True,1
+nmu.edu,Northern Michigan University,edu,True,1
+nnu.edu,Northwest Nazarene University,edu,True,1
+nobts.edu,Leavell College of New Orleans Baptist Theological Seminary,edu,True,1
+noctrl.edu,North Central College,edu,True,1
+northcentral.edu,North Central University,edu,True,1
+northern.edu,Northern State University,edu,True,1
+northernvermont.edu,Northern Vermont University,edu,True,1
+northland.edu,Northland College,edu,True,1
+northpark.edu,North Park University,edu,True,1
+northwestern.edu,Northwestern University,edu,True,2
+northwestu.edu,Northwest University,edu,True,1
+northwood.edu,Northwood University,edu,True,2
+norwich.edu,Norwich University,edu,True,1
+nova.edu,Nova Southeastern University,edu,True,1
+nsc.edu,Nevada State College,edu,True,1
+nscad.ca,Nova Scotia College of Art and Design,ca,False,1
+nsu.edu,Norfolk State University,edu,True,1
+nsula.edu,Northwestern State University of Louisiana,edu,True,1
+nsuok.edu,Northeastern State University,edu,True,1
+nwciowa.edu,Northwestern College,edu,True,1
+nwcu.edu,Northwest Christian University,edu,True,1
+nwmissouri.edu,Northwest Missouri State University,edu,True,1
+nwosu.edu,Northwestern Oklahoma State University,edu,True,1
+nyack.edu,Nyack College,edu,True,1
+nyit.edu,New York Institute Technology Nyit,edu,True,1
+nysid.edu,New York School of Interior Design,edu,True,1
+nyu.edu,New York University,edu,True,1
+oak.edu,Oakland City University,edu,True,1
+oakhills.edu,Oak Hills Christian College,edu,True,1
+oakland.edu,Oakland University,edu,True,1
+oakwood.edu,Oakwood University,edu,True,1
+oberlin.edu,Oberlin Conservatory Music,edu,True,2
+obu.edu,Ouachita Baptist University,edu,True,1
+oc.edu,Oklahoma Christian University,edu,True,1
+ocac.edu,Oregon College of Art and Craft,edu,True,1
+odu.edu,Old Dominion University,edu,True,1
+oglethorpe.edu,Oglethorpe University,edu,True,1
+ohio.edu,Ohio University,edu,True,1
+ohiodominican.edu,Ohio Dominican University,edu,True,1
+oit.edu,Oregon Institute of Technology,edu,True,1
+okbu.edu,Oklahoma Baptist University,edu,True,1
+okcu.edu,Oklahoma City University,edu,True,1
+okstate.edu,Oklahoma State University,edu,True,1
+okwu.edu,Oklahoma Wesleyan University,edu,True,1
+oldwestbury.edu,Suny College Old Westbury,edu,True,1
+olemiss.edu,Ole Miss University Mississippi,edu,True,1
+olin.edu,Franklin W Olin College Engineering,edu,True,1
+olivet.edu,Olivet Nazarene University,edu,True,1
+olivetcollege.edu,Olivet College,edu,True,1
+ollusa.edu,Our Lady of the Lake University,edu,True,1
+ololcollege.edu,Franciscan Missionaries of Our Lady University,edu,True,1
+oneonta.edu,Suny College Oneonta,edu,True,1
+onu.edu,Ohio Northern University,edu,True,1
+opsu.edu,Oklahoma Panhandle State University,edu,True,1
+oregonstate.edu,Oregon State University,edu,True,1
+oru.edu,Oral Roberts University,edu,True,1
+osfhealthcare.org,St Francis Medical Center College of Nursing,org,False,1
+oswego.edu,Suny Oswego,edu,True,1
+otis.edu,Otis College Art and Design,edu,True,1
+ottawa.edu,Ottawa University,edu,True,1
+otterbein.edu,Otterbein University,edu,True,1
+ou.edu,University of Oklahoma,edu,True,1
+ovu.edu,Ohio Valley University,edu,True,1
+owu.edu,Ohio Wesleyan University,edu,True,1
+oxy.edu,Occidental College,edu,True,1
+ozarks.edu,University of the Ozarks,edu,True,1
+pace.edu,Pace University,edu,True,1
+pacific.edu,University of Pacific,edu,True,2
+pacificoaks.edu,Pacific Oaks College,edu,True,1
+pacificu.edu,Pacific University Oregon,edu,True,1
+pafa.edu,Pennsylvania Academy Fine Arts,edu,True,1
+paine.edu,Paine College,edu,True,1
+park.edu,Park University,edu,True,1
+paulsmiths.edu,Paul Smiths College,edu,True,1
+pba.edu,Palm Beach Atlantic University,edu,True,1
+pcj.edu,Pontifical College Josephinum,edu,True,1
+pct.edu,Pennsylvania College of Technology,edu,True,1
+pdx.edu,Portland State University,edu,True,1
+peace.edu,William Peace University,edu,True,1
+peirce.edu,Peirce College,edu,True,1
+pepperdine.edu,Pepperdine University,edu,True,1
+peru.edu,Peru State College,edu,True,1
+pfeiffer.edu,Pfeiffer University,edu,True,1
+pfw.edu,Purdue University Fort Wayne,edu,True,1
+phc.edu,Patrick Henry College,edu,True,1
+philander.edu,Philander Smith College,edu,True,1
+philau.edu,Jefferson Philadelphia University Thomas Jefferson University,edu,True,1
+piedmont.edu,Piedmont College,edu,True,1
+piedmontu.edu,Piedmont International University,edu,True,1
+pitt.edu,University of Pittsburgh,edu,True,4
+pittstate.edu,Pittsburg State University,edu,True,1
+pitzer.edu,Pitzer College,edu,True,1
+plattsburgh.edu,Suny Plattsburgh,edu,True,1
+plu.edu,Pacific Lutheran University,edu,True,1
+plymouth.ac.uk,University of Plymouth,uk,False,1
+plymouth.edu,Plymouth State University,edu,True,1
+pmc.edu,Pine Manor College,edu,True,1
+pnca.edu,Pacific Northwest College of Art,edu,True,1
+pnw.edu,Purdue University Northwest,edu,True,1
+point.edu,Point University,edu,True,1
+pointloma.edu,Point Loma Nazarene University,edu,True,1
+pointpark.edu,Point Park University,edu,True,1
+polk.edu,Polk State College,edu,True,1
+pomona.edu,Pomona College,edu,True,1
+potomac.edu,Potomac University of The,edu,True,1
+potsdam.edu,Suny Potsdam,edu,True,1
+pqc.edu,Paul Quinn College,edu,True,1
+pratt.edu,Pratt Institute,edu,True,1
+presby.edu,Presbyterian College,edu,True,1
+prescott.edu,Prescott College,edu,True,1
+presentation.edu,Presentation College,edu,True,1
+princeton.edu,Princeton University,edu,True,1
+principia.edu,Principia College,edu,True,1
+providence.edu,Providence College,edu,True,1
+psu.edu,Penn State,edu,True,20
+puc.edu,Pacific Union College,edu,True,1
+pucpr.edu,Pontifical Catholic University of Puerto Rico Ponce,edu,True,1
+pugetsound.edu,University of Puget Sound,edu,True,1
+pupr.edu,Polytechnic University of Puerto Rico,edu,True,1
+purchase.edu,Suny Purchase College,edu,True,1
+pvamu.edu,Prairie View Am University,edu,True,1
+qu.edu,Quinnipiac University,edu,True,1
+queens.edu,Queens University Charlotte,edu,True,1
+queensu.ca,Queens University Canada,ca,False,1
+questu.ca,Quest University Canada,ca,False,1
+quincy.edu,Quincy University,edu,True,1
+radford.edu,Radford University,edu,True,1
+ramapo.edu,Ramapo College New Jersey,edu,True,1
+randolphcollege.edu,Randolph College,edu,True,1
+rbs.lv,Riga Business School,lv,False,1
+rc.edu,Rochester College,edu,True,1
+redlands.edu,University of Redlands,edu,True,1
+reed.edu,Reed College,edu,True,1
+regent.edu,Regent University,edu,True,1
+regents.ac.uk,Regents University London,uk,False,1
+regis.edu,Regis University,edu,True,1
+regiscollege.edu,Regis College,edu,True,1
+reinhardt.edu,Reinhardt University,edu,True,1
+researchcollege.edu,Research College of Nursing,edu,True,1
+resu.edu,Resurrection University,edu,True,1
+rgu.ac.uk,Robert Gordon University,uk,False,1
+rhodes.edu,Rhodes College,edu,True,1
+ric.edu,Rhode Island College,edu,True,1
+rice.edu,Rice University,edu,True,1
+richmond.ac.uk,Richmond American International University London,uk,False,1
+richmond.edu,University of Richmond,edu,True,1
+rider.edu,Rider University,edu,True,1
+ringling.edu,Ringling College Art and Design,edu,True,1
+rio.edu,University of Rio Grande,edu,True,1
+ripon.edu,Ripon College,edu,True,1
+risd.edu,Rhode Island School Design,edu,True,1
+rit.edu,Rochester Institute Technology,edu,True,1
+rivier.edu,Rivier University,edu,True,1
+rmc.edu,Randolph Macon College,edu,True,1
+rmcad.edu,Rocky Mountain College of Art and Design,edu,True,1
+rmu.edu,Robert Morris University Pa,edu,True,1
+roanoke.edu,Roanoke College,edu,True,1
+robertmorris.edu,Robert Morris University,edu,True,1
+roberts.edu,Roberts Wesleyan College,edu,True,1
+rochester.edu,University of Rochester,edu,True,1
+rockford.edu,Rockford University,edu,True,1
+rockhurst.edu,Rockhurst University,edu,True,1
+rocky.edu,Rocky Mountain College,edu,True,1
+rollins.edu,Rollins College,edu,True,1
+roosevelt.edu,Roosevelt University,edu,True,1
+rose-hulman.edu,Rose Hulman Institute Technology,edu,True,1
+rosemont.edu,Rosemont College,edu,True,1
+rowan.edu,Rowan University,edu,True,1
+rpi.edu,Rensselaer Polytechnic Institute,edu,True,1
+rsu.edu,Rogers State University,edu,True,1
+rush.edu,Rush University,edu,True,1
+rustcollege.edu,Rust College,edu,True,1
+rutgers.edu,Rutgers the State University of New Jersey Camden,edu,True,3
+rwu.edu,Roger Williams University,edu,True,1
+ryerson.ca,Ryerson University,ca,False,1
+sa.edu,St Andrews University,edu,True,1
+sacn.edu,St Anthony College of Nursing,edu,True,1
+sacredheart.edu,Sacred Heart University,edu,True,1
+sage.edu,Sage Colleges,edu,True,2
+sagrado.edu,Universidad Del Sagrado Corazon,edu,True,1
+sagu.edu,Sagu American Indian College,edu,True,2
+saic.edu,School Art Institute Chicago,edu,True,1
+saintleo.edu,Saint Leo University,edu,True,1
+saintmarys.edu,Saint Marys College,edu,True,1
+saintpeters.edu,Saint Peters University,edu,True,1
+salem.edu,Salem College,edu,True,1
+salemstate.edu,Salem State University,edu,True,1
+salisbury.edu,Salisbury University,edu,True,1
+salve.edu,Salve Regina University,edu,True,1
+samford.edu,Samford University,edu,True,1
+sandiego.edu,University of San Diego,edu,True,1
+sarahlawrence.edu,Sarah Lawrence College,edu,True,1
+sau.edu,St Ambrose University,edu,True,1
+saumag.edu,Southern Arkansas University,edu,True,1
+savannahstate.edu,Savannah State University,edu,True,1
+sbc.edu,Sweet Briar College,edu,True,1
+sbu.edu,St Bonaventure University,edu,True,1
+sbuniv.edu,Southwest Baptist University,edu,True,1
+sc.edu,University of South Carolina Columbia,edu,True,1
+scad.edu,Savannah College Art and Design,edu,True,1
+schreiner.edu,Schreiner University,edu,True,1
+sciarc.edu,Southern California Institute of Architecture,edu,True,1
+sckans.edu,Southwestern College,edu,True,1
+scranton.edu,University of Scranton,edu,True,1
+scrippscollege.edu,Scripps College,edu,True,1
+scsu.edu,South Carolina State University,edu,True,1
+scu.edu,Santa Clara University,edu,True,1
+sdcc.edu,San Diego Christian College,edu,True,1
+sdsmt.edu,South Dakota School of Mines and Technology,edu,True,1
+sdstate.edu,South Dakota State University,edu,True,1
+sdsu.edu,San Diego State University,edu,True,1
+se.edu,Southeastern Oklahoma State University,edu,True,1
+seattleu.edu,Seattle University,edu,True,1
+sebts.edu,Southeastern Baptist Theological Seminary,edu,True,1
+semo.edu,Southeast Missouri State University,edu,True,1
+setonhill.edu,Seton Hill University,edu,True,1
+seu.edu,Southeastern University,edu,True,1
+sewanee.edu,Sewanee,edu,True,1
+sf.edu,University of Saint Francis Fort Wayne Indiana,edu,True,1
+sfai.edu,San Francisco Art Institute,edu,True,1
+sfasu.edu,Stephen F Austin State University,edu,True,1
+sfc.edu,St Francis College,edu,True,1
+sfcm.edu,San Francisco Conservatory of Music,edu,True,1
+sfsu.edu,San Francisco State University,edu,True,1
+sfu.ca,Simon Fraser University,ca,False,1
+shasta.edu,Shasta Bible College and Graduate School,edu,True,1
+shawnee.edu,Shawnee State University,edu,True,1
+shawu.edu,Shaw University,edu,True,1
+shc.edu,Spring Hill College,edu,True,1
+sheffield.ac.uk,University of Sheffield,uk,False,1
+shepherd.edu,Shepherd University,edu,True,1
+ship.edu,Shippensburg University of Pennsylvania,edu,True,1
+shms.edu,Sacred Heart Major Seminary,edu,True,1
+shorter.edu,Shorter University,edu,True,1
+shsu.edu,Sam Houston State University,edu,True,1
+shu.edu,Seton Hall University,edu,True,1
+siena.edu,Siena College,edu,True,1
+sienaheights.edu,Siena Heights University,edu,True,1
+sierranevada.edu,Sierra Nevada College,edu,True,1
+simmons.edu,Simmons University,edu,True,1
+simons-rock.edu,Bard College Simons Rock Early College,edu,True,1
+simpson.edu,Simpson College,edu,True,1
+simpsonu.edu,Simpson University,edu,True,1
+siu.edu,Southern Illinois University Carbondale,edu,True,1
+siue.edu,Southern Illinois University Edwardsville,edu,True,1
+sjc.edu,St Johns College,edu,True,2
+sjcme.edu,Saint Josephs College Maine,edu,True,1
+sjcny.edu,St Josephs College Brooklyn,edu,True,4
+sjfc.edu,St John Fisher College,edu,True,1
+sjsu.edu,San Jose State University,edu,True,1
+sjtu.edu.cn,University of Michigan Shanghai Jiao Tong University of Joint Institute,cn,False,1
+sju.edu,Saint Josephs University,edu,True,1
+skidmore.edu,Skidmore College,edu,True,1
+skku.edu,Sungkyunkwan University,edu,True,1
+sl.edu,Silver Lake College,edu,True,1
+slu.edu,Saint Louis University,edu,True,2
+smcm.edu,St Marys College,edu,True,1
+smcvt.edu,Saint Michaels College,edu,True,1
+smith.edu,Smith College,edu,True,1
+smsu.edu,Southwest Minnesota State University,edu,True,1
+smu.edu,Southern Methodist University,edu,True,1
+smumn.edu,Saint Marys University Minnesota,edu,True,1
+smwc.edu,Saint Mary Woods College,edu,True,1
+snc.edu,St Norbert College,edu,True,1
+snet.net,Paier College of Art,net,False,1
+snhu.edu,Southern New Hampshire University,edu,True,1
+snu.edu,Southern Nazarene University,edu,True,1
+soka.edu,Soka University of America,edu,True,1
+sonoma.edu,Sonoma State University,edu,True,1
+sou.edu,Southern Oregon University,edu,True,1
+southalabama.edu,University of South Alabama,edu,True,1
+southeastern.edu,Southeastern Louisiana University,edu,True,1
+southern.edu,Southern Adventist University,edu,True,1
+southernct.edu,Southern Connecticut State University,edu,True,1
+southwestern.edu,Southwestern University,edu,True,1
+spalding.edu,Spalding University,edu,True,1
+spcollege.edu,St Petersburg College,edu,True,1
+spelman.edu,Spelman College,edu,True,1
+springfieldcollege.edu,Springfield College,edu,True,1
+spu.edu,Seattle Pacific University,edu,True,1
+sru.edu,Slippery Rock University of Pennsylvania,edu,True,1
+st-andrews.ac.uk,University of St Andrews,uk,False,1
+st-aug.edu,Saint Augustines University,edu,True,1
+stac.edu,St Thomas Aquinas College,edu,True,1
+stanford.edu,Stanford University,edu,True,1
+stcloudstate.edu,St Cloud State University,edu,True,1
+stedwards.edu,St Edwards University,edu,True,1
+stephens.edu,Stephens College,edu,True,1
+sterling.edu,Sterling College,edu,True,1
+sterlingcollege.edu,Sterling College,edu,True,1
+stetson.edu,Stetson University,edu,True,1
+stevens.edu,Stevens Institute Technology,edu,True,1
+stevenson.edu,Stevenson University,edu,True,1
+stfrancis.edu,University of St Francis Il,edu,True,1
+stillman.edu,Stillman College,edu,True,1
+stir.ac.uk,University of Stirling,uk,False,1
+stjohns.edu,St Johns University,edu,True,1
+stkate.edu,St Catherine University,edu,True,1
+stlawu.edu,St Lawrence University,edu,True,1
+stlchristian.edu,St Louis Christian College,edu,True,1
+stlcop.edu,St Louis College Pharmacy,edu,True,1
+stmartin.edu,Saint Martins University,edu,True,1
+stmary.edu,University of St Mary,edu,True,1
+stmarys-ca.edu,Saint Marys College California,edu,True,1
+stmarys.ac.uk,St Mary University Twickenham London,uk,False,1
+stmarytx.edu,St Marys University of San Antonio,edu,True,1
+stockton.edu,Stockton University,edu,True,1
+stolaf.edu,St Olaf College,edu,True,1
+stonehill.edu,Stonehill College,edu,True,1
+stonybrook.edu,Suny Stony Brook University,edu,True,1
+stritch.edu,Cardinal Stritch University,edu,True,1
+strose.edu,College of Saint Rose,edu,True,2
+stthom.edu,University of St Thomas,edu,True,1
+stthomas.edu,University of St Thomas Mn,edu,True,1
+stu.ca,St Thomas University,ca,False,1
+stu.edu,St Thomas University,edu,True,1
+stvincent.edu,Saint Vincent College,edu,True,1
+su.edu,Shenandoah University,edu,True,1
+suagm.edu,Universidad Del Turabo,edu,True,2
+subr.edu,Southern University and Am College,edu,True,1
+suffolk.edu,Suffolk University,edu,True,1
+sulross.edu,Sul Ross State University,edu,True,1
+suno.edu,Southern University at New Orleans,edu,True,1
+sunyit.edu,Suny Polytechnic Institute,edu,True,1
+sunykorea.ac.kr,Suny Korea,kr,False,1
+sunymaritime.edu,Suny Maritime College,edu,True,1
+susqu.edu,Susquehanna University,edu,True,1
+suu.edu,Southern Utah University,edu,True,1
+suva.edu,Southwest University of Visual Arts,edu,True,1
+sva.edu,School of Visual Arts,edu,True,1
+svc.edu,Southern Vermont College,edu,True,1
+svsu.edu,Saginaw Valley State University,edu,True,1
+svu.edu,Southern Virginia University,edu,True,1
+swarthmore.edu,Swarthmore College,edu,True,1
+swau.edu,Southwestern Adventist University,edu,True,1
+swcu.edu,Southwestern Christian University,edu,True,1
+swosu.edu,Southwestern Oklahoma State University,edu,True,1
+swu.edu,Southern Wesleyan University,edu,True,1
+sxu.edu,Saint Xavier University,edu,True,1
+syr.edu,Syracuse University,edu,True,1
+tabor.edu,Tabor College,edu,True,1
+talladega.edu,Talladega College,edu,True,1
+tamiu.edu,Texas Am International University,edu,True,1
+tamu.edu,Texas Am University College Station,edu,True,1
+tamuc.edu,Texas Am University Commerce,edu,True,1
+tamucc.edu,Texas Am University Corpus Christi,edu,True,1
+tamuk.edu,Texas Am University Kingsville,edu,True,1
+tamut.edu,Texas Am University Texarkana,edu,True,1
+tarleton.edu,Tarleton State University,edu,True,1
+taylor.edu,Taylor University,edu,True,1
+tbc.edu,Trinity Baptist College,edu,True,1
+tcnj.edu,College of New Jersey,edu,True,1
+tcu.edu,Texas Christian University,edu,True,1
+temple.edu,Temple University,edu,True,2
+tesu.edu,Thomas Edison State University,edu,True,1
+texascollege.edu,Texas College,edu,True,1
+tfc.edu,Toccoa Falls College,edu,True,1
+thiel.edu,Thiel College,edu,True,1
+thomas.edu,Thomas College,edu,True,1
+thomasaquinas.edu,Thomas Aquinas College,edu,True,1
+thomasmore.edu,Thomas More College,edu,True,1
+thomasu.edu,Thomas University,edu,True,1
+tiffin.edu,Tiffin University,edu,True,1
+tiu.edu,Trinity International University,edu,True,1
+tkc.edu,The Kings College,edu,True,1
+tlu.edu,Texas Lutheran University,edu,True,1
+tnstate.edu,Tennessee State University,edu,True,1
+tntech.edu,Tennessee Technological University,edu,True,1
+tnwesleyan.edu,Tennessee Wesleyan University,edu,True,1
+tougaloo.edu,Tougaloo College,edu,True,1
+touro.edu,Touro College,edu,True,1
+towson.edu,Towson University,edu,True,1
+transy.edu,Transylvania University,edu,True,1
+trevecca.edu,Trevecca Nazarene University,edu,True,1
+trincoll.edu,Trinity College,edu,True,1
+trine.edu,Trine University,edu,True,1
+trinity.edu,Trinity University,edu,True,1
+trinitycollege.edu,Trinity College of Florida,edu,True,1
+trinitycollegeqc.edu,Trinity College of Nursing Health Sciences,edu,True,1
+trinitydc.edu,Trinity Washington University,edu,True,1
+trnty.edu,Trinity Christian College,edu,True,1
+troy.edu,Troy University,edu,True,1
+truett.edu,Truett Mcconnell University,edu,True,1
+truman.edu,Truman State University,edu,True,1
+tsu.edu,Texas Southern University,edu,True,1
+ttu.edu,Texas Tech University,edu,True,1
+tufts.edu,Tufts University,edu,True,2
+tulane.edu,Tulane University,edu,True,1
+tusculum.edu,Tusculum College,edu,True,2
+tuskegee.edu,Tuskegee University,edu,True,1
+twu.edu,Texas Womans University,edu,True,1
+txstate.edu,Texas State University,edu,True,1
+txwes.edu,Texas Wesleyan University,edu,True,1
+ua.edu,The University of Alabama,edu,True,1
+uaa.edu,Universidad Adventista de Las Antillas,edu,True,1
+uab.edu,University of Alabama Birmingham Uab,edu,True,1
+uaf.edu,University of Alaska Fairbanks,edu,True,1
+uafs.edu,University of Arkansas at Fort Smith,edu,True,1
+uah.edu,The University of Alabama Huntsville,edu,True,1
+uakron.edu,University of Akron Main Campus,edu,True,1
+ualberta.ca,University of Alberta,ca,False,1
+ualr.edu,University of Arkansas at Little Rock,edu,True,1
+uamont.edu,University of Arkansas at Monticello,edu,True,1
+uapb.edu,University of Arkansas at Pine Bluff,edu,True,1
+uark.edu,University of Arkansas,edu,True,1
+uarts.edu,The University of the Arts,edu,True,1
+uat.edu,University of Advancing Technology,edu,True,1
+ubalt.edu,University of Baltimore,edu,True,1
+ubc.ca,The University of British Columbia,ca,False,1
+ubishops.ca,Bishops University,ca,False,1
+uc.edu,University of Cincinnati,edu,True,2
+uc3m.es,Universidad Carlos Iii de Madrid,es,False,1
+uca.edu,University of Central Arkansas,edu,True,1
+ucalgary.ca,University of Calgary,ca,False,1
+ucblueash.edu,University of Cincinnati Blue Ash College and Clermont College,edu,True,1
+uccs.edu,University of Colorado Colorado Springs,edu,True,1
+ucd.ie,University of College Dublin,ie,False,1
+ucdavis.edu,University of California Davis,edu,True,1
+ucdenver.edu,University of Colorado Denver,edu,True,1
+ucf.edu,University of Central Florida,edu,True,1
+uchicago.edu,University of Chicago,edu,True,1
+uci.edu,University of California Irvine,edu,True,1
+ucmerced.edu,University of California at Merced,edu,True,1
+ucmo.edu,University of Central Missouri,edu,True,1
+uco.edu,University of Central Oklahoma,edu,True,1
+ucollege.edu,Union College,edu,True,1
+uconn.edu,University of Connecticut,edu,True,1
+ucr.edu,University of California Riverside,edu,True,1
+ucsb.edu,University of California Santa Barbara,edu,True,1
+ucsc.edu,University of California Santa Cruz,edu,True,1
+ucumberlands.edu,University of the Cumberlands,edu,True,1
+ucwv.edu,University of Charleston,edu,True,1
+udallas.edu,University of Dallas,edu,True,1
+udayton.edu,University of Dayton,edu,True,1
+udc.edu,University of the District of Columbia,edu,True,1
+udel.edu,University of Delaware,edu,True,1
+udmercy.edu,University of Detroit Mercy,edu,True,1
+uea.ac.uk,University of East Anglia,uk,False,1
+uel.ac.uk,University of East London,uk,False,1
+ufl.edu,University of Florida,edu,True,1
+uga.edu,University of Georgia,edu,True,1
+uh.edu,University of Houston,edu,True,1
+uhcl.edu,University of Houston Clear Lake,edu,True,1
+uhcno.edu,University of Holy Cross,edu,True,1
+uhd.edu,University of Houston Downtown,edu,True,1
+uhv.edu,University of Houston Victoria,edu,True,1
+uic.edu,University of Illinois Chicago,edu,True,2
+uidaho.edu,University of Idaho,edu,True,1
+uindy.edu,University of Indianapolis,edu,True,1
+uiowa.edu,University of Iowa,edu,True,1
+uis.edu,University of Illinois Springfield,edu,True,1
+uiu.edu,Upper Iowa University,edu,True,1
+uiwtx.edu,University of the Incarnate Word,edu,True,1
+uj.edu,University of Jamestown,edu,True,1
+uky.edu,University of Kentucky,edu,True,1
+ul.ie,University of Limerick,ie,False,2
+uleth.ca,University of Lethbridge,ca,False,1
+ulm.edu,University of Louisiana at Monroe,edu,True,1
+umary.edu,University of Mary,edu,True,1
+umassd.edu,University of Massachusetts Dartmouth,edu,True,1
+umb.edu,University of Massachusetts Boston,edu,True,1
+umbc.edu,University of Maryland Baltimore County,edu,True,1
+umes.edu,University of Maryland Eastern Shore,edu,True,1
+umflint.edu,University of Michigan Flint,edu,True,1
+umhb.edu,University of Mary Hardin Baylor,edu,True,1
+umich.edu,University of Michigan Dearborn,edu,True,1
+umkc.edu,University of Missouri Kansas City,edu,True,1
+uml.edu,University of Massachusetts Lowell,edu,True,1
+umn.edu,University of Minnesota Duluth,edu,True,5
+umo.edu,The University of Mount Olive,edu,True,1
+umobile.edu,University of Mobile,edu,True,1
+umontana.edu,The University of Montana,edu,True,1
+umsl.edu,University of Missouri St Louis,edu,True,1
+umuc.edu,University of Maryland University College,edu,True,1
+umw.edu,University of Mary Washington,edu,True,1
+umwestern.edu,The University of Montana Western,edu,True,1
+una.edu,University of North Alabama,edu,True,1
+unav.es,Navarra University Of,es,False,1
+unc.edu,University of North Carolina Chapel Hill,edu,True,1
+unca.edu,University of North Carolina Asheville,edu,True,1
+uncc.edu,University of North Carolina Charlotte,edu,True,1
+uncfsu.edu,Fayetteville State University,edu,True,1
+uncg.edu,University of North Carolina Greensboro,edu,True,1
+unco.edu,University of Northern Colorado,edu,True,1
+uncp.edu,University of North Carolina at Pembroke,edu,True,1
+uncsa.edu,University of North Carolina School of the Arts,edu,True,1
+uncw.edu,University of North Carolina Wilmington,edu,True,1
+und.edu,University of North Dakota,edu,True,1
+une.edu,University of New England,edu,True,1
+unf.edu,University of North Florida,edu,True,1
+ung.edu,University of North Georgia,edu,True,1
+unh.edu,University of New Hampshire,edu,True,1
+uni.edu,University of Northern Iowa,edu,True,1
+union.edu,Union College,edu,True,1
+unionky.edu,Union College,edu,True,1
+unity.edu,Unity College,edu,True,1
+unk.edu,University of Nebraska Kearney,edu,True,1
+unl.edu,University of Nebraska Lincoln,edu,True,1
+unlv.edu,University of Nevada Las Vegas Unlv,edu,True,1
+unm.edu,The University of New Mexico,edu,True,1
+uno.edu,University of New Orleans,edu,True,1
+unomaha.edu,University of Nebraska Omaha,edu,True,1
+unr.edu,University of Nevada Reno,edu,True,1
+unt.edu,University of North Texas,edu,True,1
+unwsp.edu,University of Northwestern St Paul,edu,True,1
+uog.edu,University of Guam,edu,True,1
+uoguelph.ca,University of Guelph,ca,False,1
+uoregon.edu,University of Oregon,edu,True,1
+up.edu,University of Portland,edu,True,1
+upenn.edu,University of Pennsylvania,edu,True,1
+upike.edu,University of Pikeville,edu,True,1
+upr.edu,University of Puerto Rico Ponce,edu,True,3
+uprovidence.edu,University of Providence,edu,True,1
+urbana.edu,Urbana University,edu,True,1
+uri.edu,University of Rhode Island,edu,True,1
+ursinus.edu,Ursinus College,edu,True,1
+ursuline.edu,Ursuline College,edu,True,1
+usafa.edu,United States Air Force Academy,edu,True,1
+usao.edu,University of Science and Arts of Oklahoma,edu,True,1
+usask.ca,University of Saskatchewan,ca,False,1
+usca.edu,University of South Carolina Aiken,edu,True,1
+uscb.edu,University of South Carolina Beaufort,edu,True,1
+uscga.edu,United States Coast Guard Academy,edu,True,1
+usciences.edu,University of Sciences,edu,True,1
+uscupstate.edu,University of South Carolina Upstate,edu,True,1
+usd.edu,University of South Dakota,edu,True,1
+usf.edu,University of South Florida,edu,True,2
+usfca.edu,University of San Francisco,edu,True,1
+usi.edu,University of Southern Indiana,edu,True,1
+usiouxfalls.edu,University of Sioux Falls,edu,True,1
+usj.edu,University of Saint Joseph,edu,True,1
+usm.edu,University of Southern Mississippi,edu,True,1
+usma.edu,United States Military Academy,edu,True,1
+usmma.edu,United States Merchant Marine Academy,edu,True,1
+usna.edu,United States Naval Academy,edu,True,1
+usu.edu,Utah State University,edu,True,1
+usw.edu,University of the Southwest,edu,True,1
+ut.edu,University of Tampa,edu,True,1
+uta.edu,University of Texas at Arlington,edu,True,1
+utah.edu,The University of Utah,edu,True,1
+utc.edu,University of Tennessee at Chattanooga,edu,True,1
+utdallas.edu,University of Texas at Dallas,edu,True,1
+utep.edu,University of Texas at El Paso,edu,True,1
+utica.edu,Utica College,edu,True,1
+utk.edu,University of Tennessee Knoxville,edu,True,1
+utm.edu,University of Tennessee at Martin,edu,True,1
+utoledo.edu,University of Toledo,edu,True,1
+utoronto.ca,University of Toronto,ca,False,1
+utpb.edu,The University of Texas of the Permian Basin,edu,True,1
+utrgv.edu,Texas University of the Rio Grande Valley,edu,True,1
+utsa.edu,University of Texas at San Antonio,edu,True,1
+uttyler.edu,University of Texas at Tyler,edu,True,1
+utulsa.edu,University of Tulsa,edu,True,1
+uu.edu,Union University,edu,True,1
+uvawise.edu,University of Virginias College Wise,edu,True,1
+uvi.edu,University of the Virgin Islands,edu,True,1
+uvm.edu,University of Vermont,edu,True,1
+uvu.edu,Utah Valley University,edu,True,1
+uw.edu,University of Washington Tacoma,edu,True,2
+uwa.edu,University of West Alabama,edu,True,1
+uwec.edu,University of Wisconsin Eau Claire,edu,True,1
+uwest.edu,University of West,edu,True,1
+uwf.edu,University of West Florida,edu,True,1
+uwgb.edu,University of Wisconsin Green Bay,edu,True,1
+uwindsor.ca,University of Windsor,ca,False,1
+uwl.ac.uk,University of West London,uk,False,1
+uwlax.edu,University of Wisconsin la Crosse,edu,True,1
+uwm.edu,University of Wisconsin Milwaukee,edu,True,1
+uwo.ca,Western University,ca,False,1
+uwosh.edu,University of Wisconsin Oshkosh,edu,True,1
+uwp.edu,University of Wisconsin Parkside,edu,True,1
+uwplatt.edu,University of Wisconsin Platteville,edu,True,1
+uwrf.edu,University of Wisconsin River Falls,edu,True,1
+uwsp.edu,University of Wisconsin Stevens Point,edu,True,1
+uwstout.edu,University of Wisconsin Stout,edu,True,1
+uwsuper.edu,University of Wisconsin Superior,edu,True,1
+uww.edu,University of Wisconsin Whitewater,edu,True,1
+uwyo.edu,University of Wyoming,edu,True,1
+valdosta.edu,Valdosta State University,edu,True,1
+valpo.edu,Valparaiso University,edu,True,1
+vanderbilt.edu,Vanderbilt University,edu,True,1
+vandercook.edu,Vandercook College of Music,edu,True,1
+vanguard.edu,Vanguard University of Southern California,edu,True,1
+vassar.edu,Vassar College,edu,True,1
+vaughn.edu,Vaughn College of Aeronautics and Technology,edu,True,1
+vcsu.edu,Valley City State University,edu,True,1
+vcu.edu,Virginia Commonwealth University,edu,True,1
+villanova.edu,Villanova University,edu,True,1
+virginia.edu,University of Virginia,edu,True,1
+viterbo.edu,Viterbo University,edu,True,1
+vmi.edu,Virginia Military Institute,edu,True,1
+voorhees.edu,Voorhees College,edu,True,1
+vsu.edu,Virginia State University,edu,True,1
+vt.edu,Virginia Polytechnic Institute and State University,edu,True,1
+vtc.edu,Vermont Technical College,edu,True,1
+vul.edu,Virginia University of Lynchburg,edu,True,1
+vuu.edu,Virginia Union University,edu,True,1
+vwu.edu,Virginia Wesleyan University,edu,True,1
+wabash.edu,Wabash College,edu,True,1
+wagner.edu,Wagner College,edu,True,1
+waldorf.edu,Waldorf University,edu,True,1
+wallawalla.edu,Walla Walla University,edu,True,1
+walsh.edu,Walsh University,edu,True,1
+warner.edu,Warner University,edu,True,1
+warnerpacific.edu,Warner Pacific University,edu,True,1
+warren-wilson.edu,Warren Wilson College,edu,True,1
+wartburg.edu,Wartburg College,edu,True,1
+warwick.ac.uk,University of Warwick,uk,False,2
+washburn.edu,Washburn University,edu,True,1
+washcoll.edu,Washington College,edu,True,1
+washjeff.edu,Washington Jefferson College,edu,True,1
+watkins.edu,Watkins College Art Design Film,edu,True,1
+wau.edu,Washington Adventist University,edu,True,1
+wayne.edu,Wayne State University,edu,True,1
+waynesburg.edu,Waynesburg University,edu,True,1
+wbcoll.edu,Williams Baptist College,edu,True,1
+wbu.edu,Wayland Baptist University,edu,True,1
+wcsu.edu,Western Connecticut State University,edu,True,1
+wcu.edu,Western Carolina University,edu,True,1
+wcupa.edu,West Chester University,edu,True,1
+webb.edu,Webb Institute,edu,True,1
+webber.edu,Webber International University,edu,True,1
+weber.edu,Weber State University,edu,True,1
+webster.edu,Webster University,edu,True,1
+welch.edu,Welch College,edu,True,1
+wellesley.edu,Wellesley College,edu,True,1
+wells.edu,Wells College,edu,True,1
+wesley.edu,Wesley College,edu,True,1
+wesleyan.edu,Wesleyan University,edu,True,1
+wesleyancollege.edu,Wesleyan College,edu,True,1
+western.edu,Western State Colorado University,edu,True,1
+westga.edu,University of West Georgia,edu,True,1
+westliberty.edu,West Liberty University,edu,True,1
+westminster-mo.edu,Westminster College Missouri,edu,True,1
+westminster.edu,Westminster College,edu,True,1
+westminstercollege.edu,Westminster College Utah,edu,True,1
+westmont.edu,Westmont College,edu,True,1
+wfu.edu,Wake Forest University,edu,True,1
+wheaton.edu,Wheaton College Il,edu,True,1
+wheatoncollege.edu,Wheaton College Massachusetts,edu,True,1
+whitman.edu,Whitman College,edu,True,1
+whittier.edu,Whittier College,edu,True,1
+whitworth.edu,Whitworth University,edu,True,1
+wichita.edu,Wichita State University,edu,True,1
+widener.edu,Widener University,edu,True,1
+wilberforce.edu,Wilberforce University,edu,True,1
+wilkes.edu,Wilkes University,edu,True,1
+willamette.edu,Willamette University,edu,True,1
+williams.edu,Williams College,edu,True,1
+williamwoods.edu,William Woods University,edu,True,1
+wilmington.edu,Wilmington College,edu,True,1
+wilmu.edu,Wilmington University,edu,True,1
+wilson.edu,Wilson College,edu,True,1
+wingate.edu,Wingate University,edu,True,1
+winona.edu,Winona State University,edu,True,1
+winthrop.edu,Winthrop University,edu,True,1
+wit.edu,Wentworth Institute Technology,edu,True,1
+wittenberg.edu,Wittenberg University,edu,True,1
+wiu.edu,Western Illinois University,edu,True,1
+wju.edu,Wheeling Jesuit University,edu,True,1
+wku.edu,Western Kentucky University,edu,True,1
+wlc.edu,Wisconsin Lutheran College,edu,True,1
+wlu.edu,Washington and Lee University,edu,True,1
+wm.edu,College of William & Mary,edu,True,1
+wmcarey.edu,William Carey University,edu,True,1
+wmich.edu,Western Michigan University,edu,True,1
+wmpenn.edu,William Penn University,edu,True,1
+wne.edu,Western New England University,edu,True,1
+wnmu.edu,Western New Mexico University,edu,True,1
+wofford.edu,Wofford College,edu,True,1
+woodbury.edu,Woodbury University,edu,True,1
+wooster.edu,College Wooster,edu,True,1
+worc.ac.uk,University Worcester Uk,uk,False,1
+worcester.edu,Worcester State University,edu,True,1
+wou.edu,Western Oregon University,edu,True,1
+wpi.edu,Worcester Polytechnic Institute,edu,True,1
+wpunj.edu,William Paterson University Nj,edu,True,1
+wright.edu,Wright State University,edu,True,2
+wsc.edu,Wayne State College,edu,True,1
+wssu.edu,Winston Salem State University,edu,True,1
+wsu.edu,Washington State University,edu,True,1
+wtamu.edu,West Texas Am University,edu,True,1
+wustl.edu,Washington University of St Louis,edu,True,1
+wvstateu.edu,West Virginia State University,edu,True,1
+wvu.edu,West Virginia University,edu,True,2
+wvup.edu,West Virginia University Parkersburg,edu,True,1
+wvwc.edu,West Virginia Wesleyan College,edu,True,1
+wwu.edu,Western Washington University,edu,True,1
+wyomingcatholiccollege.com,Wyoming Catholic College,com,False,1
+xavier.edu,Xavier University,edu,True,1
+xula.edu,Xavier University,edu,True,2
+yale-nus.edu.sg,Yale Nus College,sg,False,1
+yale.edu,Yale University,edu,True,1
+ycp.edu,York College,edu,True,1
+yhc.edu,Young Harris College,edu,True,1
+yonsei.ac.kr,Underwood International College Yonsei University,kr,False,1
+york.edu,York College,edu,True,1
+yorku.ca,York University,ca,False,1
+ysu.edu,Youngstown State University,edu,True,1
+yu.edu,Yeshiva University,edu,True,1

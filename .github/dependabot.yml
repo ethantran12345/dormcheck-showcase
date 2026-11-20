@@ -1,0 +1,60 @@
+# Dependabot is the SINGLE owner of dependency PRs (decided 2026-07-26).
+#
+# History, so nobody re-derives a retired position:
+#   - `open-pull-requests-limit: 0` was DELIBERATE, not an oversight. It suppressed
+#     Dependabot version-update PRs so that `.github/workflows/deps-upgrade.yml`
+#     (weekly `npm update --save`, pushed straight to dev) was the one path.
+#   - 8e880614 raised it 0 -> 10. That REVERSED the single-owner design without
+#     removing the other owner, so for a window both could open dependency changes.
+#   - This file completes the reversal in the other direction: deps-upgrade.yml is
+#     DELETED and Dependabot survives as the only owner. 10 was arbitrary; 5 is the
+#     sane cap — enough that a backlog stays visible, few enough that triage remains
+#     a real activity rather than a wall of stale PRs.
+#
+# CORRECTION — the reason given for raising the limit was WRONG:
+#   8e880614 justified 0 -> 10 as "unblocking security-fix PRs". It does not do that.
+#   `open-pull-requests-limit` governs VERSION updates only. Dependabot SECURITY
+#   updates are a separate repo-side setting, were already enabled, and are NOT
+#   subject to this limit. Lowering this number therefore cannot slow a security fix.
+#   The limit change stands on its own merits (visible, CI-gated dependency PRs);
+#   the security-latency argument is void and must not be reused.
+#
+# Why Dependabot and not deps-upgrade.yml: the workflow ran `npm update --save` and
+# pushed DIRECTLY to the dev trunk with `lint` and `test` both `continue-on-error:
+# true` — so a bump that broke the build could land on trunk unreviewed. Dependabot
+# proposes PRs instead, which the full ci-dev-push gate gates before anything merges.
+#
+# ── 5 -> 0, 2026-08-16 (docs/DECISIONS.md). VERSION-UPDATE PRs ARE OFF. ───────────
+# The premise above ("the full ci-dev-push gate gates before anything merges") was
+# never true of these PRs and cannot be: Dependabot opens them against `main`, and
+# `main` is release-only — it takes merges from `dev` and nothing else. So every
+# version-update PR in this repo's history was closed unmerged, and the actual bumps
+# were applied by hand on `dev` in a dependency lane. That is a standing rule, recorded
+# in docs/DECISIONS.md on 2026-08-16 — not a backlog anyone intends to work through.
+#
+# They were not free. secrets-scan.yml runs on `pull_request`, so each PR — opened,
+# then closed unmerged — bought a full-history gitleaks run: ~22 min/month of CI plus
+# a triage queue that only ever resolved one way.
+#
+# WHAT THIS DOES NOT TOUCH, and this is the whole reason it is a limit of 0 rather
+# than a deleted file:
+#   - Dependabot ALERTS are a repo-settings feature. Unaffected. They remain the
+#     input to the dependabot-triage job of weekly-sweep.yml, which reads them straight from
+#     `gh api repos/{owner}/{repo}/dependabot/alerts` and has never needed a PR to
+#     exist — Tier 1 bumps the lockfile on `dev` itself, Tier 2 opens an issue.
+#     the security-audit job of weekly-sweep.yml reads the same API. Neither loses a thing here.
+#   - Dependabot SECURITY updates are a separate repo-side setting and are NOT
+#     subject to `open-pull-requests-limit` — that correction is recorded above and
+#     still stands. A security fix cannot be slowed by this number.
+# Only the weekly "here is a newer version" PR stream stops.
+#
+# 0 is also where this file started: the `updates:` block is kept rather than deleted
+# because `version: 2` requires it, and because the history above is the reason nobody
+# should raise this number again without reading it.
+version: 2
+updates:
+  - package-ecosystem: npm
+    directory: /
+    schedule:
+      interval: weekly
+    open-pull-requests-limit: 0

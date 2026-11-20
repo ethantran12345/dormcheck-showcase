@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+    <application
+        android:allowBackup="false"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity
+            android:configChanges="orientation|keyboardHidden|keyboard|screenSize|locale|smallestScreenSize|screenLayout|uiMode|navigation|density"
+            android:name=".MainActivity"
+            android:label="@string/title_activity_main"
+            android:theme="@style/AppTheme.NoActionBarLaunch"
+            android:launchMode="singleTask"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+
+            <!-- App Links: verified https://dormcheck.com links open the app
+                 directly (autoVerify checks /.well-known/assetlinks.json). Path
+                 allowlist mirrors the iOS AASA + DEEP_LINK_PATHS; the WebView +
+                 DeepLinkGate (src/App.tsx) resolve the actual route. Web stays
+                 the no-install fallback for unverified installs. -->
+            <intent-filter android:autoVerify="true">
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data android:scheme="https" android:host="dormcheck.com" />
+                <data android:scheme="https" android:host="www.dormcheck.com" />
+                <data android:pathPrefix="/rankings/invite/" />
+                <data android:pathPrefix="/roommates/invite/" />
+                <data android:pathPrefix="/messages" />
+            </intent-filter>
+        </activity>
+
+        <!-- Push (FCM): route notifications to the "default" channel created in
+             src/lib/pushNotifications.ts; without a channel Android 8+ drops
+             them silently. -->
+        <meta-data
+            android:name="com.google.firebase.messaging.default_notification_channel_id"
+            android:value="default" />
+        <!-- Small status-bar icon: white silhouette (ic_stat_dormcheck), tinted
+             brand green. Without these, Android shows a generic gray dot because
+             it masks the alpha of whatever icon it falls back to. -->
+        <meta-data
+            android:name="com.google.firebase.messaging.default_notification_icon"
+            android:resource="@drawable/ic_stat_dormcheck" />
+        <meta-data
+            android:name="com.google.firebase.messaging.default_notification_color"
+            android:resource="@color/dormcheck_notification" />
+
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="${applicationId}.fileprovider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data android:name="android.support.FILE_PROVIDER_PATHS" android:resource="@xml/file_paths" />
+        </provider>
+    </application>
+
+    <!-- Permissions -->
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <!-- Android 13+ runtime permission for showing notifications; requested via
+         PushNotifications.requestPermissions() in src/lib/pushNotifications.ts. -->
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+
+    <!-- Advertising-ID opt-out. We run no ads and share no ad identifiers. The
+         Gradle `exclude group: 'com.facebook.android'` (app/build.gradle) drops the
+         Facebook SDK that injected the ACCESS_ADSERVICES_* permissions, but
+         firebase-messaging (used for push) ALSO declares AD_ID — so we strip it
+         (and any residual adservices perms) from the merged manifest here. This
+         keeps Play's Advertising ID declaration a truthful "no". See
+         docs/DECISIONS.md 2026-07-22. -->
+    <uses-permission android:name="com.google.android.gms.permission.AD_ID" tools:node="remove" />
+    <uses-permission android:name="android.permission.ACCESS_ADSERVICES_AD_ID" tools:node="remove" />
+    <uses-permission android:name="android.permission.ACCESS_ADSERVICES_ATTRIBUTION" tools:node="remove" />
+    <uses-permission android:name="android.permission.ACCESS_ADSERVICES_CUSTOM_AUDIENCE" tools:node="remove" />
+    <uses-permission android:name="android.permission.ACCESS_ADSERVICES_TOPICS" tools:node="remove" />
+</manifest>

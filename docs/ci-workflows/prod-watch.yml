@@ -1,0 +1,486 @@
+name: Prod Watch (daily)
+
+# ONE daily job that runs every check that probes LIVE production, instead of six
+# workflows that each paid for their own checkout + Node + (for three of them)
+# `npm ci` + Chromium. Consolidated 2026-10-29 (docs/DECISIONS.md, which supersedes
+# the "no detector was deleted" sentence of the 2026-08-16 CI-cost entry). No outage
+# check was dropped; each is a step below with its own issue-upsert step and its
+# ORIGINAL issue label, because claude.yml and .github/scripts/render-automation-status.mjs
+# route on those labels:
+#
+#   check                      was                        issue label(s)
+#   advisor                    advisor-check.yml          advisor-autofix(-rlsinit|-searchpath) / advisor-review
+#   rls-coverage               rls-coverage.yml           security/rls-coverage
+#   auth-config-drift          auth-config-drift.yml      auth-config-drift
+#   auth-gating canary         auth-gating-canary.yml     auth-gating
+#   prod render smoke          prod-smoke.yml             prod-down
+#   stuck moderation           stuck-moderation-monitor   moderation-stall
+#
+# Cadence changes in the consolidation:
+#   - prod-smoke 12h -> daily. A blank #root is CAUSED BY A DEPLOY (a VITE_ env var
+#     missing/renamed on a Vercel build) and deploys are manual (main is release-only),
+#     and `npm run release` already smokes post-deploy. When shipping a release do not
+#     wait for the tick: `gh workflow run prod-watch.yml`.
+#   - auth-config-drift weekly -> daily. It is a read-only Management API call, so once
+#     it shares this job it costs nothing extra.
+#
+# ISOLATION. Every check is `continue-on-error` and keyed by step id, so one red check
+# never hides the next. Each issue step is gated on its own check's `outcome` (NOT on
+# `failure()`, which would fire for any earlier red step). The last step fails the job
+# if ANY step failed, so the run is red whenever a check or its issue step broke, and
+# the Automation Status board shows it. A stuck-moderation STALL (script exit 1) is a
+# finding, not a broken monitor: it opens its issue and the job stays green, exactly as
+# before; only "could not observe anything" (exit 2) fails the job.
+#
+# MUST live on `main` (default branch) for the schedule to fire; checks out `dev`
+# (scripts, baselines and Playwright configs live on the trunk), same pattern as the
+# advisor-check / rls-coverage / auth-config-drift workflows it replaces. Dispatch is
+# fine from any ref.
+#
+# Secrets required: SUPABASE_ACCESS_TOKEN (Supabase personal access token),
+# VITE_SUPABASE_URL + SUPABASE_SERVICE_ROLE_KEY (stuck-moderation only).
+
+on:
+  schedule:
+    - cron: '0 12 * * *'   # 08:00 ET daily (UTC cron; may be delayed a few min)
+  workflow_dispatch:
+    inputs:
+      report:
+        description: 'auth-config-drift report mode: print live config to the run log, do not diff or open issues (use to seed/verify the snapshot)'
+        type: boolean
+        default: false
+      hours:
+        description: 'stuck-moderation age threshold in hours (default 24).'
+        required: false
+        default: '24'
+        type: string
+
+# `contents: read` is NOT optional even though most steps only open issues. Declaring
+# ANY `permissions:` block resets every unlisted scope to `none`, so an `issues: write`
+# only block leaves `contents` at none and `actions/checkout` fails with `remote:
+# Repository not found` (a private repo is invisible without contents). That killed
+# every SCHEDULED stuck-moderation run from 2026-08-06 to 2026-08-16. Manual
+# `workflow_dispatch` runs are NOT a test of this: dispatch is granted contents:read
+# implicitly, so a green dispatch proves nothing about this block.
+permissions:
+  contents: read
+  issues: write
+
+concurrency:
+  group: prod-watch
+  cancel-in-progress: false
+
+jobs:
+  watch:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Checkout dev (scripts + baselines + Playwright configs live on the trunk)
+        uses: actions/checkout@v5
+        with:
+          ref: dev
+          fetch-depth: 1
+
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 22
+          cache: npm
+
+      - run: npm ci
+
+      - name: Install Chromium
+        run: npx playwright install --with-deps chromium
+
+      # ---------------------------------------------------------------- advisor
+      # Pulls Supabase security + performance advisors, diffs against
+      # docs/security/advisor-baseline.json, and routes anything NEW:
+      #   Tier 1 (auto)  -> `advisor-autofix*`; claude.yml commits the fix migration to
+      #                     dev with no approval comment, self-gated. Prod apply stays
+      #                     manual at release.
+      #   Tier 2 (gated) -> `advisor-review`; proceeds only on Ethan's "@claude fix this".
+      # Baselined findings never open issues; a clean run is silent.
+      - name: Advisor - fetch and diff against baseline
+        id: advisor
+        continue-on-error: true
+        env:
+          SUPABASE_ACCESS_TOKEN: ${{ secrets.SUPABASE_ACCESS_TOKEN }}
+          PROJECT_REF: abcdefghijklmnopqrst
+          OUT: /tmp/advisor-new.json
+        run: node .github/scripts/advisor-check.mjs
+
+      - name: Advisor - open issues for new findings (deduped by advisor key)
+        id: advisor_issues
+        if: steps.advisor.outcome == 'success'
+        continue-on-error: true
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -euo pipefail
+          COUNT=$(jq '(.tier1 | length) + (.tier2 | length)' /tmp/advisor-new.json)
+          if [ "$COUNT" -eq 0 ]; then
+            echo "No new advisor findings - silent run."
+            exit 0
+          fi
+
+          gh label create advisor-autofix --color 0E8A16 \
+            --description "New Supabase advisor finding, safe to auto-fix on dev" --force >/dev/null 2>&1 || true
+          gh label create advisor-autofix-rlsinit --color 0E8A16 \
+            --description "auth_rls_initplan - wrap auth.<fn>() in (select ...); auto-fixed on dev" --force >/dev/null 2>&1 || true
+          gh label create advisor-autofix-searchpath --color 0E8A16 \
+            --description "function_search_path_mutable - set search_path = ''; auto-fixed on dev" --force >/dev/null 2>&1 || true
+          gh label create advisor-review --color D93F0B \
+            --description "New Supabase advisor finding touching RLS/auth/exposure - needs Ethan's approval" --force >/dev/null 2>&1 || true
+
+          # Existing open advisor issues, for dedup by the <!-- advisor-key: ... --> marker.
+          : > /tmp/open-bodies.txt
+          for L in advisor-autofix advisor-autofix-rlsinit advisor-autofix-searchpath advisor-review; do
+            gh issue list --state open --limit 200 --label "$L" --json body --jq '.[].body' >> /tmp/open-bodies.txt || true
+          done
+
+          # Label routing is by LINT NAME first, tier default second. Two mechanical
+          # classes get their own autonomous fixer (see .github/autofix-allowlist.json);
+          # SECURITY DEFINER / exposure findings deliberately never land on an autofix
+          # label — they stay on the `@claude fix this` human gate.
+          route_label() {  # $1 lint name  $2 tier-default label
+            case "$1" in
+              auth_rls_initplan)            echo advisor-autofix-rlsinit ;;
+              function_search_path_mutable) echo advisor-autofix-searchpath ;;
+              *)                            echo "$2" ;;
+            esac
+          }
+
+          open_issue() {  # $1 tier-json-array-name  $2 tier-default label
+            # NOTE: fed by process substitution, NOT a pipe — a pipeline would run this
+            # loop in a subshell and the /tmp/open-bodies.txt appends below would be
+            # invisible to later iterations, re-filing a key repeated within one run.
+            while read -r f; do
+              KEY=$(echo "$f" | jq -r .key)
+              if grep -qF "advisor-key: $KEY" /tmp/open-bodies.txt; then
+                echo "Skip (already open): $KEY"; continue
+              fi
+              LABEL=$(route_label "$(echo "$f" | jq -r .name)" "$2")
+              # Titles collide when a lint fires per-policy / per-FK / per-index on ONE
+              # entity, so append the finding's discriminator when it has one. The
+              # <!-- advisor-key: --> marker below is UNCHANGED — dedupe never uses the title.
+              TITLE="[advisor] $(echo "$f" | jq -r '"\(.title): \(.entity // .name)" + (if (.discriminator // "") == "" then "" else " (\(.discriminator))" end)')"
+              {
+                echo "<!-- advisor-key: $KEY -->"
+                echo "New Supabase advisor finding (not in docs/security/advisor-baseline.json)."
+                echo
+                echo "- **Lint:** $(echo "$f" | jq -r .name) (level: $(echo "$f" | jq -r .level), $(echo "$f" | jq -r .type))"
+                echo "- **Entity:** $(echo "$f" | jq -r '.entity // "n/a"')"
+                echo "- **Detail:** $(echo "$f" | jq -r '.detail // "n/a"')"
+                echo "- **Remediation:** $(echo "$f" | jq -r '.remediation // "n/a"')"
+                echo
+                case "$LABEL" in
+                  advisor-autofix*)
+                    echo "**Tier 1 (auto):** mechanical fix - claude.yml will commit a migration to \`dev\`, self-gated. Prod apply stays manual at release."
+                    ;;
+                  *)
+                    echo "**Tier 2 (gated):** touches RLS / SECURITY DEFINER / auth / grants / data exposure."
+                    echo "Fix proceeds only on Ethan's \`@claude fix this\` comment. If accepted-by-design instead, add the key above to docs/security/advisor-baseline.json with a reason."
+                    ;;
+                esac
+              } > /tmp/issue-body.md
+              gh issue create --title "$TITLE" --label "$LABEL" --body-file /tmp/issue-body.md
+              # Same-run dedup: a key repeated later in this run must now be skipped.
+              echo "advisor-key: $KEY" >> /tmp/open-bodies.txt
+            done < <(jq -c ".$1[]" /tmp/advisor-new.json)
+          }
+          open_issue tier1 advisor-autofix
+          open_issue tier2 advisor-review
+
+      # ----------------------------------------------------------- rls-coverage
+      # Fails if any PostgREST-exposed public table has Row-Level Security DISABLED while
+      # carrying a grant to anon / authenticated / PUBLIC. Ratcheted against
+      # docs/security/rls-coverage-baseline.json (seeded EMPTY from live prod 2026-07-22).
+      # RLS coverage is a property of the DEPLOYED schema, so this hits prod via the
+      # Management API daily rather than the fast trunk push gate.
+      - name: RLS coverage - run ratchet
+        id: rls
+        continue-on-error: true
+        env:
+          SUPABASE_ACCESS_TOKEN: ${{ secrets.SUPABASE_ACCESS_TOKEN }}
+          PROJECT_REF: abcdefghijklmnopqrst
+        run: |
+          set -o pipefail
+          node scripts/rls-coverage-check.mjs 2>&1 | tee /tmp/rls-coverage.out
+
+      - name: RLS coverage - open / refresh issue on regression
+        id: rls_issue
+        if: steps.rls.outcome == 'failure'
+        continue-on-error: true
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh label create security/rls-coverage --color B60205 \
+            --description "An exposed table shipped with RLS disabled — fix or baseline" --force >/dev/null 2>&1 || true
+          RUN_URL="${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+          DETAIL="$(sed -n '1,40p' /tmp/rls-coverage.out 2>/dev/null || echo '(no output captured)')"
+          EXISTING=$(gh issue list --state open --label security/rls-coverage --json number --jq '.[0].number' 2>/dev/null || echo "")
+          BODY=$(printf '%s\n\n```\n%s\n```\n\nEnable RLS + policies on the flagged table, or add it to `docs/security/rls-coverage-baseline.json` with a reason if it is intentionally public. Run: %s' \
+            "RLS-coverage ratchet FAILED: an exposed public table has RLS off with an anon/authenticated/PUBLIC grant." "$DETAIL" "$RUN_URL")
+          if [ -n "$EXISTING" ]; then
+            gh issue comment "$EXISTING" --body "$BODY"
+          else
+            gh issue create --title "RLS coverage regression ($(date -u +%Y-%m-%d))" \
+              --label security/rls-coverage --body "$BODY"
+          fi
+
+      # ------------------------------------------------------- auth-config-drift
+      # READ-ONLY watchdog for the live hosted Supabase auth (login) settings. Diffs a
+      # login-critical subset of the Management API auth config against the committed
+      # snapshot docs/security/auth-config-expected.json and opens/refreshes ONE deduped
+      # `auth-config-drift` issue. NEVER writes config - hosted auth is set in the
+      # Supabase Dashboard only. Never run `supabase config push` to "fix" drift (that
+      # command was the 2026-07-17 incident this catches); correct it in the Dashboard,
+      # then update the snapshot to match.
+      - name: Auth config drift - fetch live config and diff against the snapshot
+        id: drift
+        continue-on-error: true
+        env:
+          SUPABASE_ACCESS_TOKEN: ${{ secrets.SUPABASE_ACCESS_TOKEN }}
+          PROJECT_REF: abcdefghijklmnopqrst
+          EXPECTED: docs/security/auth-config-expected.json
+          OUT: /tmp/auth-config-drift.json
+          REPORT: ${{ (github.event_name == 'workflow_dispatch' && inputs.report) && '1' || '' }}
+        run: node .github/scripts/auth-config-drift.mjs
+
+      - name: Auth config drift - open/refresh the drift issue (deduped, single issue)
+        id: drift_issue
+        if: steps.drift.outcome == 'success'
+        continue-on-error: true
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -euo pipefail
+          SEEDED=$(jq -r '.seeded' /tmp/auth-config-drift.json)
+          if [ "$SEEDED" != "true" ]; then
+            echo "Report/unseeded run - no diff performed, nothing to report."
+            exit 0
+          fi
+          COUNT=$(jq '.drift | length' /tmp/auth-config-drift.json)
+
+          gh label create auth-config-drift --color B60205 \
+            --description "Live login settings drifted from docs/security/auth-config-expected.json" \
+            --force >/dev/null 2>&1 || true
+
+          MARKER="<!-- auth-config-drift -->"
+          NUM=$(gh issue list --state open --label auth-config-drift --json number --jq '.[0].number' 2>/dev/null || echo "")
+
+          if [ "$COUNT" -eq 0 ]; then
+            echo "No drift - clean run."
+            if [ -n "$NUM" ]; then
+              gh issue comment "$NUM" --body "✅ Login settings match the expected snapshot again as of this run. Closing."
+              gh issue close "$NUM" --reason completed
+            fi
+            exit 0
+          fi
+
+          {
+            echo "$MARKER"
+            echo "The live Supabase **login settings** no longer match \`docs/security/auth-config-expected.json\`."
+            echo "This is the watchdog for the 2026-07-17 \`supabase config push\` incident that wiped prod auth."
+            echo
+            echo "| Setting | Expected | Actual (live) |"
+            echo "|---|---|---|"
+            jq -r '.drift[] | "| \(.label) | `\(.expected|tojson)` | `\(.actual|tojson)` |"' /tmp/auth-config-drift.json
+            echo
+            echo "**Fix in the Supabase Dashboard, never with \`supabase config push\`** (that command is the incident this catches)."
+            echo "- If the live value is WRONG: set it correctly in the Dashboard (Authentication settings). This issue clears on the next run."
+            echo "- If the live value is the new INTENDED value: update \`docs/security/auth-config-expected.json\` to match (and journal why)."
+          } > /tmp/drift-body.md
+
+          TITLE="[auth-config-drift] $COUNT login setting(s) drifted from expected"
+          if [ -n "$NUM" ]; then
+            gh issue edit "$NUM" --title "$TITLE" --body-file /tmp/drift-body.md
+            echo "Refreshed issue #$NUM"
+          else
+            gh issue create --title "$TITLE" --label auth-config-drift --body-file /tmp/drift-body.md
+          fi
+
+      # ----------------------------------------------------------- auth-gating
+      # Headless-browser canary against LIVE https://dormcheck.com. Guards the
+      # 2026-07-03 leak: /marketplace, /checklist, /profile must NOT be reachable
+      # logged-out (listings carry phone numbers + Instagram/Snapchat handles; profiles
+      # carry contact info). Asserts each route redirects to /auth AND renders no tel:
+      # links, no @-handle text, no listing/seller cards. Only executing the page catches
+      # this - the redirect is client-side (ProtectedRoute). Alert only.
+      - id: auth_gating_check
+        name: Auth gating - logged-out PII leak check
+        continue-on-error: true
+        run: npx playwright test --config playwright.auth-gating.config.ts
+
+      - name: Auth gating - close resolved incident
+        id: auth_gating_close
+        if: steps.auth_gating_check.outcome == 'success'
+        continue-on-error: true
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          EXISTING=$(gh issue list --state open --label auth-gating --json number --jq '.[0].number' 2>/dev/null || echo "")
+          if [ -n "$EXISTING" ]; then
+            gh issue comment "$EXISTING" --body "✅ The logged-out route assertions passed again on commit ${{ github.sha }}. Closing this incident. Run: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}" || echo "::warning::Could not annotate resolved auth-gating issue."
+            gh issue close "$EXISTING" --reason completed || echo "::warning::Could not close resolved auth-gating issue."
+          fi
+
+      - name: Auth gating - open / refresh issue on failure
+        id: auth_gating_issue
+        if: steps.auth_gating_check.outcome == 'failure'
+        continue-on-error: true
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh label create auth-gating --color B60205 --force >/dev/null 2>&1 || true
+          RUN_URL="${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+          EXISTING=$(gh issue list --state open --label auth-gating --json number --jq '.[0].number' 2>/dev/null || echo "")
+          if [ -n "$EXISTING" ]; then
+            gh issue comment "$EXISTING" --body "Auth-gating canary still failing as of $(date -u '+%Y-%m-%d %H:%M UTC'). A logged-out visitor can reach a student-data route on https://dormcheck.com - it did NOT redirect to /auth, or student PII (tel: links, Instagram/Snapchat handles, listing cards) rendered while signed out. This is a live PII leak. See which test failed for the exact route. Run: $RUN_URL"
+          else
+            gh issue create --title "Auth gating broken: student data reachable logged-out ($(date -u +%Y-%m-%d))" --label auth-gating \
+              --body "The auth-gating canary found a student-data route reachable WITHOUT sign-in on https://dormcheck.com: it did not redirect to /auth and/or rendered student PII (phone numbers, Instagram/Snapchat handles, listing cards) logged-out. This is a public-internet PII leak (the 2026-07-03 class). Check that /marketplace, /checklist, /profile and sub-routes are still wrapped in <ProtectedRoute> in src/routes/AppRoutes.tsx. The failing test names the exact route. Logs: $RUN_URL"
+          fi
+
+      # ------------------------------------------------------------- prod smoke
+      # Catches the "successful 200 but empty app" outage (a VITE_ env var missing or
+      # misnamed on Vercel builds green but ships a blank #root) by asserting the SPA
+      # actually hydrates. On failure opens/refreshes a single `prod-down` issue
+      # (distinct from `build-break`: a live outage reads differently from a dev CI
+      # break). Alert only - never redeploys or auto-fixes prod.
+      - id: prod_smoke_check
+        name: Prod smoke - render check
+        continue-on-error: true
+        run: npx playwright test --config playwright.prod.config.ts
+
+      - name: Prod smoke - close resolved incident
+        id: prod_smoke_close
+        if: steps.prod_smoke_check.outcome == 'success'
+        continue-on-error: true
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          EXISTING=$(gh issue list --state open --label prod-down --json number --jq '.[0].number' 2>/dev/null || echo "")
+          if [ -n "$EXISTING" ]; then
+            gh issue comment "$EXISTING" --body "✅ The production render assertion passed again on commit ${{ github.sha }}. Closing this incident. Run: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}" || echo "::warning::Could not annotate resolved production issue."
+            gh issue close "$EXISTING" --reason completed || echo "::warning::Could not close resolved production issue."
+          fi
+
+      - name: Prod smoke - open / refresh prod-down issue on failure
+        id: prod_smoke_issue
+        if: steps.prod_smoke_check.outcome == 'failure'
+        continue-on-error: true
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh label create prod-down --color B60205 --force >/dev/null 2>&1 || true
+          RUN_URL="${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+          EXISTING=$(gh issue list --state open --label prod-down --json number --jq '.[0].number' 2>/dev/null || echo "")
+          if [ -n "$EXISTING" ]; then
+            gh issue comment "$EXISTING" --body "Prod still failing the render canary as of $(date -u '+%Y-%m-%d %H:%M UTC'). https://dormcheck.com is serving a blank/broken app (200 with no hydrated content) or is unreachable. Run: $RUN_URL"
+          else
+            gh issue create --title "Prod down: dormcheck.com not rendering ($(date -u +%Y-%m-%d))" --label prod-down \
+              --body "The render canary could not confirm https://dormcheck.com hydrates - a successful HTTP response with an empty/broken app (classic missing-VITE_-env-on-Vercel outage) or an unreachable site. Check the Vercel deploy + env vars. Logs: $RUN_URL"
+          fi
+
+      # -------------------------------------------------------- stuck moderation
+      # Opens an issue when a marketplace listing has sat at status='pending_review'
+      # with moderation_decision IS NULL for more than 24h. A MONITOR, not a test:
+      # `marketplace_public` only shows approved listings, so a stalled moderator is
+      # permanent and silent (the seller sees their listing, guests never do). The 24h
+      # threshold and the deliberate fail-loud-on-no-credentials behaviour are in
+      # scripts/check-stuck-moderation.mjs.
+      - name: Stuck moderation - check for stalled listings
+        id: stuck
+        continue-on-error: true
+        env:
+          SUPABASE_URL: ${{ secrets.VITE_SUPABASE_URL }}
+          SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
+          STUCK_HOURS: ${{ inputs.hours || '24' }}
+        run: |
+          # NOT a bare invocation: the default shell is `bash -e`, so a non-zero
+          # exit (which is this script's NORMAL way of reporting a stall) would
+          # abort the step before `code` was ever written, and the next step would
+          # read an empty verdict as clean. Capture explicitly instead.
+          node scripts/check-stuck-moderation.mjs > /tmp/stuck.out 2>/tmp/stuck.err && CODE=0 || CODE=$?
+          tail -1 /tmp/stuck.out > /tmp/stuck.json || true
+          echo "code=$CODE" >> "$GITHUB_OUTPUT"
+          cat /tmp/stuck.err || true
+
+      - name: Stuck moderation - open or update the alert issue
+        id: stuck_issue
+        continue-on-error: true
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -euo pipefail
+          CODE="${{ steps.stuck.outputs.code }}"
+
+          # Exit 2 = the monitor could not observe anything (missing/!bad creds,
+          # query error). That is NOT clean, and it is reported as its own alert --
+          # a monitor that quietly does nothing is the failure it was built to
+          # prevent, one level up.
+          if [ "$CODE" = "2" ]; then
+            echo "::error::Stuck-moderation monitor could not run — see the step log. Not reporting clean."
+            gh issue list --state open --label moderation-stall --search "in:title Stuck-moderation monitor cannot run" --json number \
+              --jq '.[0].number' > /tmp/n || true
+            if [ ! -s /tmp/n ] || [ "$(cat /tmp/n)" = "null" ]; then
+              gh label create moderation-stall --color B60205 --description "A listing is stuck undecided and invisible to guests" --force >/dev/null 2>&1 || true
+              gh issue create --label moderation-stall \
+                --title "Stuck-moderation monitor cannot run" \
+                --body "\`scripts/check-stuck-moderation.mjs\` exited 2: it could not reach the database, so it has observed NOTHING — this is not a clean result. Check the \`VITE_SUPABASE_URL\` / \`SUPABASE_SERVICE_ROLE_KEY\` secrets and the run log: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+            fi
+            exit 1
+          fi
+
+          if [ "$CODE" = "0" ]; then
+            echo "Clean — no stalled listings. Closing any open stall issue."
+            for N in $(gh issue list --state open --label moderation-stall --json number --jq '.[].number'); do
+              gh issue comment "$N" --body "✅ No listing has been \`pending_review\` with a NULL \`moderation_decision\` past the threshold on the latest run. Closing." || true
+              gh issue close "$N" --reason completed || true
+            done
+            exit 0
+          fi
+
+          STUCK=$(jq -r '.stuck' /tmp/stuck.json)
+          OLDEST=$(jq -r '.oldest' /tmp/stuck.json)
+          HOURS=$(jq -r '.thresholdHours' /tmp/stuck.json)
+          gh label create moderation-stall --color B60205 --description "A listing is stuck undecided and invisible to guests" --force >/dev/null 2>&1 || true
+
+          {
+            echo "**$STUCK listing(s)** have been at \`status='pending_review'\` with \`moderation_decision IS NULL\` for more than ${HOURS}h."
+            echo
+            echo "Oldest: \`$OLDEST\`."
+            echo
+            echo "These listings are **invisible to logged-out visitors** (\`marketplace_public\` requires an approved decision) and will stay invisible until moderation completes. The seller sees them in their own account, so nobody reports this."
+            echo
+            echo "Check \`moderate-listing\` (edge function logs, quota, recent deploys) rather than the listings themselves — a stall here is nearly always the moderator not completing, not bad data."
+            echo
+            echo "IDs: \`$(jq -r '.ids | join(", ")' /tmp/stuck.json)\`"
+            echo
+            echo "Run: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+          } > /tmp/body.md
+
+          EXISTING=$(gh issue list --state open --label moderation-stall --json number,title \
+            --jq '[.[] | select(.title | startswith("Listings stuck in moderation"))][0].number')
+          if [ -n "$EXISTING" ] && [ "$EXISTING" != "null" ]; then
+            gh issue comment "$EXISTING" --body-file /tmp/body.md
+            echo "Updated existing stall issue #$EXISTING."
+          else
+            gh issue create --label moderation-stall \
+              --title "Listings stuck in moderation (invisible to guests)" --body-file /tmp/body.md
+          fi
+
+      # ------------------------------------------------------------- verdict
+      # Every step above is continue-on-error so one red check cannot hide the next.
+      # This is where the job goes red: any step (a check OR its issue step) that failed.
+      - name: Fail the job if any check failed
+        if: always()
+        env:
+          STEPS_JSON: ${{ toJSON(steps) }}
+        run: |
+          FAILED=$(printf '%s' "$STEPS_JSON" | jq -r 'to_entries[] | select(.value.outcome == "failure") | .key')
+          if [ -n "$FAILED" ]; then
+            echo "::error::Failed step id(s): $(echo "$FAILED" | tr '\n' ' ')"
+            exit 1
+          fi
+          echo "All prod-watch checks passed."

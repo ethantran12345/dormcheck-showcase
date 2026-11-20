@@ -1,0 +1,473 @@
+name: CI (dev push)
+
+# The trunk gate. dev is the trunk (trunk-based dev); this runs the hard checks on
+# every push to dev. If it goes red, fix or revert immediately - keep dev green.
+# On failure it real-time reports into the SHARED `build-break` issue (deduped by
+# label with weekly-sweep.yml's green-build job, so a mid-day break and the weekly run share one
+# issue instead of two). Lint is non-blocking: ~222 pre-existing eslint errors
+# (issue #9) would otherwise fail every push. jsx-a11y errors ARE gated so dev
+# stays a11y-clean on direct pushes (mirrors a11y-lint.yml).
+#
+# TWO COST CONTROLS, both added 2026-08-16 (see docs/DECISIONS.md):
+#   - `concurrency` below cancels a run the next push already superseded.
+#   - the "Scope this push" step downgrades a DOCS-ONLY push to docs:check +
+#     i18n:verify. Read that step's comment before touching any `if:` here.
+
+on:
+  push:
+    branches: [dev]
+  workflow_dispatch: {}
+
+permissions:
+  contents: read
+  issues: write
+  actions: read   # the scope step reads this workflow's own previous run conclusion
+
+# A push supersedes the one before it: every gate below is a WHOLE-TREE check
+# (tsc, test, build, the lint ratchets), so a run evaluating an older tip tells you
+# nothing the newer run will not tell you. Cancelling therefore loses no coverage,
+# and it stops a burst of trunk commits from stacking N full 4-5 min gates.
+#
+# NOT copied to secrets-scan.yml — see the comment there. That one scans the
+# before..after RANGE of each push, so a cancelled run leaves those commits
+# permanently unscanned; the next push's range starts after them.
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  ci:
+    runs-on: ubuntu-latest
+    # 30, raised from 20 on 2026-09-04. Not a papering-over: the individual steps that
+    # can hang are now bounded (the two npm audit steps), so this is the outer backstop
+    # rather than the thing deciding what gets to run. At 20, a degraded registry ate the
+    # budget in the audit steps and Test/Build/Lint were skipped while the run read
+    # "cancelled" — this leaves headroom so the gates run even on a slow day.
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 22
+          cache: npm
+
+      - run: npm ci
+
+      # ── Scope: is there anything in this push the code gates could possibly fail? ──
+      # 556 of 1,126 commits to dev in the 30 days to 2026-08-16 touched only docs/,
+      # *.md or *.json, and every one of those pushes still ran the full ~4.4 min gate.
+      # A docs-only push runs `docs:check` + `i18n:verify` and nothing else.
+      #
+      # WHY A STEP AND NOT A SECOND JOB with `needs:`/`if:`. GitHub bills each job
+      # rounded UP to the whole minute, and `paths`/`paths-ignore` only exist on the
+      # `on:` trigger, never per job — so a job-level split needs a classifier job,
+      # which costs a billed minute on EVERY push (~200/mo on this repo) to save
+      # minutes on a subset of them. One job, one classify step: a docs-only push
+      # still pays checkout + npm ci (both gates need node_modules) and skips the
+      # other ~15.
+      #
+      # Two guards keep this from opening a coverage hole:
+      #   1. It only skips when the PREVIOUS run on dev concluded success. Combined
+      #      with cancel-in-progress above, that is the case that matters: a code
+      #      push cancelled by a docs push mid-flight leaves its commits ungated,
+      #      and this forces the next run to be a full one.
+      #   2. Any file that is not docs/** or **.md — including .json, .github/** and
+      #      anything under supabase/ — makes it a code push. A MIXED push (the
+      #      common shape here, since a code change lands with its CHANGELOG line)
+      #      is a code push and runs everything.
+      # Anything it cannot determine (dispatch, force-push, API failure, a file list
+      # near the compare API's 300-file cap) falls through to the full gate.
+      #
+      # The guard expression `steps.scope.outputs.code == 'true'` is load-bearing:
+      # scripts/check-gate-parity.mjs knows that exact string, asserts this step
+      # still exists with `id: scope`, and asserts that the gates left UNGUARDED are
+      # exactly docs:check + i18n:verify. Do not reword it in one place only.
+      - name: Scope this push (docs-only vs code)
+        id: scope
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          BEFORE_SHA: ${{ github.event.before }}
+          AFTER_SHA: ${{ github.sha }}
+          RUN_ID: ${{ github.run_id }}
+        run: |
+          set -uo pipefail
+          full() {
+            echo "code=true" >> "$GITHUB_OUTPUT"
+            echo "::notice title=CI scope::Full gate - $1"
+            exit 0
+          }
+          [ "${{ github.event_name }}" = "push" ] || full "not a push event"
+          case "$BEFORE_SHA" in
+            ""|0000000000000000000000000000000000000000)
+              full "no usable before-SHA (first push or force-push)" ;;
+          esac
+
+          PREV=$(gh api \
+            "repos/${GITHUB_REPOSITORY}/actions/workflows/ci-dev-push.yml/runs?branch=dev&event=push&per_page=10" \
+            --jq "[.workflow_runs[] | select(.id != ${RUN_ID})][0].conclusion" 2>/dev/null || echo "")
+          if [ "$PREV" != "success" ]; then
+            full "previous dev run concluded '${PREV:-unknown}', so its commits are not yet gated"
+          fi
+
+          FILES=$(gh api "repos/${GITHUB_REPOSITORY}/compare/${BEFORE_SHA}...${AFTER_SHA}" \
+            --jq '.files[].filename' 2>/dev/null || echo "__unavailable__")
+          if [ "$FILES" = "__unavailable__" ] || [ -z "$FILES" ]; then
+            full "could not read the pushed file list"
+          fi
+          if [ "$(printf '%s\n' "$FILES" | wc -l)" -ge 300 ]; then
+            full "file list at the compare API's 300-file cap, so it may be truncated"
+          fi
+
+          NON_DOCS=$(printf '%s\n' "$FILES" | grep -Ev '^docs/|\.md$' || true)
+          if [ -n "$NON_DOCS" ]; then
+            full "$(printf '%s\n' "$NON_DOCS" | head -3 | tr '\n' ' ')"
+          fi
+
+          echo "code=false" >> "$GITHUB_OUTPUT"
+          echo "::notice title=CI scope::Docs-only push - running docs:check + i18n:verify only."
+
+      # `npm ci` above is the authoritative lockfile-integrity check. Do not
+      # re-resolve the lock here: npm 10 (Node 22 runner) and npm 11+ can make
+      # cosmetic metadata changes to the same valid lock. Instead reject the
+      # only range class that can later invalidate `npm ci` without a source
+      # change: open-ended override floors/comparator ranges.
+      - name: Package override policy (blocking)
+        if: steps.scope.outputs.code == 'true'
+        run: npm run check:package-overrides
+
+      - name: "Gate parity - lane:ship vs this workflow (blocking)"
+        if: steps.scope.outputs.code == 'true'
+        # Every blocking `npm run` step in THIS file must also be in GATES in
+        # scripts/lane.mjs, or be named in EXEMPT in scripts/check-gate-parity.mjs with
+        # a reason. A blocking step that lane:ship does not run is a gate a lane cannot
+        # fail, so it fails on dev AFTER the merge - exactly how TS2578 reached the
+        # trunk on 2026-08-02. The previous fix was a COMMENT above GATES asserting
+        # parity; it was false when written. This compares the two lists mechanically.
+        # Adding a blocking step below now REQUIRES a matching lane gate or an
+        # exemption - there is no undecided state. Self-test:
+        #   node scripts/check-gate-parity.mjs --self-test
+        run: npm run check:gate-parity
+
+      # Added 2026-08-16. This scan already ran in migration-guard.yml, and ONLY there —
+      # so it was a gate no lane could fail: 20260925000000 (an RLS policy on
+      # setup-photos) shipped with it red and the debt filed. Two holes closed by moving
+      # a copy here: lane:ship now runs it (check:gate-parity enforces that), and it now
+      # runs on pushes migration-guard.yml never sees — its `paths:` filter is
+      # supabase/{migrations,registry,tests}, so deleting a `probe` line from
+      # scripts/test-db.sh, which is how a probe gets UNWIRED, triggered nothing at all.
+      # It is a pure file scan (no stack, no network, milliseconds), so the duplication
+      # costs nothing; migration-guard.yml keeps its copy to fail fast before booting a
+      # Supabase stack.
+      - name: RLS migration test-coverage gate (blocking)
+        if: steps.scope.outputs.code == 'true'
+        run: node scripts/check-rls-test-coverage.mjs
+
+      # Added 2026-08-17. The LIVE version of this invariant is
+      # `npm run test:migration-replay`, which needs Docker plus a local Supabase
+      # stack and was wired into NO workflow. So when 20260825010000 (+'dm_message')
+      # and 20260906000000 (+'student_review') widened chk_content_type without
+      # updating the replay-safe list in 20260731040000 — which that file's own
+      # contract requires — the harness went red on a laptop and nothing on the
+      # trunk ever noticed. Three weeks red.
+      # This is the same drift checked statically: no DB, no Docker, milliseconds,
+      # so it can run on every push and fail on the commit that CAUSES it. It does
+      # not replace the replay harness (that one proves live constraint behaviour
+      # after an actual replay); it stops the harness being the only thing that knows.
+      - name: content_reports.chk_content_type replay-set drift (blocking)
+        if: steps.scope.outputs.code == 'true'
+        run: node scripts/check-content-type-replay-set.mjs
+
+      # ── Two-tier typecheck, DELIBERATELY split — do NOT merge back into one step ──
+      # The crash gate blocks the TS2304/TS2552 subset alone (a name that doesn't
+      # exist at runtime, e.g. the `cn is not defined` prod crash on 2026-07-20 —
+      # always a page white-screen). The ratchet below blocks the FULL `tsc -b`
+      # error COUNT against a baseline (scripts/typecheck-ratchet.sh) so the rest of
+      # the type-debt can only go down, never back up — it was driven ~112 -> 1 on
+      # 2026-07-21 (lane `typedebt`) but silently regressed to 10 on 2026-07-22 (a
+      # shadcn chat-component adoption) because this step used to be
+      # continue-on-error. BASELINE is now 0 (as of 6ff22e24, 2026-07-26): the one
+      # documented exception (DormCsvTools.tsx:123, an id-minting product decision)
+      # was resolved, so there is NO grandfathered error left and any new one reds
+      # the trunk. Verified 2026-07-26 that the failure path actually fires — a
+      # single injected TS2322 made `npm run typecheck:ratchet` exit 1. Never raise
+      # BASELINE to paper over a regression. The crash gate also runs on push to
+      # main via crash-gate.yml.
+      - name: Crash-class typecheck gate (blocking)
+        if: steps.scope.outputs.code == 'true'
+        run: npm run typecheck:crash
+
+      - name: Type check ratchet (blocking)
+        if: steps.scope.outputs.code == 'true'
+        run: npm run typecheck:ratchet
+
+      - name: Dependency-vuln ratchet (blocking, production deps only)
+        if: steps.scope.outputs.code == 'true'
+        # Fails the trunk only on a NEW high/critical `npm audit` advisory in the
+        # SHIPPED tree (`--omit=dev`), ratcheted against a baseline
+        # (scripts/npm-audit-ratchet.sh, BASELINE=0 as of 2026-07-26 — a TRUE zero
+        # floor with nothing grandfathered, so ANY new production high/critical reds
+        # the trunk. The old BASELINE=2 covered the sharp/libvips CVEs reachable only
+        # via @vercel/og; 8e880614 pinned sharp ^0.35.3 via npm overrides and closed
+        # them, making the 2 pure slack). This is the per-push dependency gate CodeQL
+        # (source, not the npm tree) doesn't provide; Dependabot proposes PRs but never
+        # gates. Failure path proven at BASELINE=0 — never raise it to hide a regression.
+        #
+        # Scoped to production 2026-07-26 (docs/DECISIONS.md): a build-time-only
+        # advisory can't reach a user, and a gate that reds the trunk over one trains
+        # everyone to ignore red. Dev-tree risk stays visible via the report step below.
+        #
+        # Bounded: the script self-limits the registry call (AUDIT_TIMEOUT_S, default
+        # 300s) and fails closed if it is exceeded. This step timeout is the backstop
+        # for the whole script, so a hang can cost minutes, not the job.
+        timeout-minutes: 7
+        run: npm run audit:deps
+
+      # NOTE: the non-blocking full-tree dependency REPORT used to sit here, directly
+      # after the blocking ratchet. It now runs at the very END of this job, after every
+      # blocking gate. See the comment on that step for why the position is load-bearing.
+
+      # ── The two gates that run on EVERY push, docs-only included ──────────────
+      # Deliberately NOT guarded by steps.scope. `docs:check` is the only thing
+      # watching the architecture-doc stamps and the repo-path references inside
+      # docs/, so a docs-only push is exactly when it matters most; `i18n:verify`
+      # is seconds and guards the shared-locale hazard. scripts/check-gate-parity.mjs
+      # asserts that this unguarded set is exactly these two — adding a third, or
+      # guarding one of these, fails the parity check rather than passing silently.
+      - name: Docs drift guard (blocking)
+        # docs/ once went 1,253 commits stale and ended up asserting things that
+        # were FALSE, not merely missing (Pitt-only, iOS-only, binary is_admin,
+        # no moderation, four already-deleted files). An inverted doc is worse
+        # than no doc: an agent acts on it confidently. Manual upkeep already
+        # failed, so this gates the two mechanical checks —
+        #   1. every repo path and backticked SQL identifier in docs/*.md still
+        #      exists (CHANGELOG/DECISIONS/AUDIT_REPORT excluded: they are
+        #      append-only history and SHOULD name deleted things);
+        #   2. every <!-- GENERATED:... --> block matches its oracle, same
+        #      ratchet semantics as the *-baseline.json gates above.
+        # Fix a real break in the doc; fix a generated block with
+        # `npm run docs:check -- --fix`. The freshness stamp (check 3) prints
+        # here but never fails (the weekly docs-freshness.yml nudge was removed 2026-10-29),
+        # because a pure age check is noise and noise trains people to ignore
+        # the gate. Failure path proven 2026-07-27 (see the commit message):
+        # a reference to a deleted file and a wrong route each exit 1.
+        run: npm run docs:check
+
+      - name: i18n key resolution (blocking)
+        # Every t()/Trans key referenced in src/ must resolve to non-empty
+        # English copy. Catches the parallel-session hazard where code lands
+        # referencing a key whose shared locale JSON never got committed.
+        run: npm run i18n:verify
+
+      - name: Test (blocking)
+        if: steps.scope.outputs.code == 'true'
+        run: npm run test
+
+      - name: Build (blocking)
+        if: steps.scope.outputs.code == 'true'
+        run: npm run build
+        env:
+          VITE_SUPABASE_URL: ${{ secrets.VITE_SUPABASE_URL }}
+          VITE_SUPABASE_ANON_KEY: ${{ secrets.VITE_SUPABASE_ANON_KEY }}
+
+      - name: CSP external-resource guard (blocking)
+        if: steps.scope.outputs.code == 'true'
+        # Cements the 2026-07-22 self-hosted-fonts fix: a re-introduced external
+        # @import/CDN <script>/<link>/font url()/hardcoded fetch that vercel.json's
+        # CSP would silently BLOCK at runtime fails the build instead of shipping
+        # broken. Parses the live CSP and matches each built-output + source reference
+        # against the exact directive that governs it (scheme-sources + host wildcards
+        # honored). Runs AFTER Build — it scans dist/. scripts/csp-external-guard.mjs.
+        run: npm run guard:csp
+
+      - name: Dev-only code excluded from the bundle (blocking)
+        if: steps.scope.outputs.code == 'true'
+        # src/App.tsx keeps /__variants (the landing decision board + its 16
+        # compositions) and the design TweaksPanel out of production with an
+        # `import.meta.env.DEV ? lazy(...) : null` dead branch. That gate is real but
+        # INVISIBLE: refactor it to a plain top-level lazy() and everything still
+        # compiles, tests and deploys — the only symptom is students reaching a dev
+        # tool. Runs AFTER Build; scans dist/ for the route literal, the panel name,
+        # the registry's own copy, and per-variant chunk filenames.
+        # scripts/check-dev-only-excluded.mjs (reuses the Build step's dist/).
+        run: npm run guard:dev-only
+
+      - name: Accessibility + unused-code (jsx-a11y and unused-imports errors, blocking)
+        if: steps.scope.outputs.code == 'true'
+        # unused-imports/* mirrors CodeQL js/unused-local-variable on the GitHub
+        # "Security and quality" board - gated here so new findings fail CI instead
+        # of accumulating. Full lint stays blocking separately below.
+        #
+        # The eslint run + rule filter used to be inline here, which is why lane:ship
+        # could not run this gate without duplicating it. It now lives in
+        # scripts/lint-a11y-unused.mjs and BOTH callers invoke that one script - do not
+        # re-inline it, and do not copy the rule list into scripts/lane.mjs.
+        run: npm run lint:a11y
+
+      - name: Color hygiene gate (blocking)
+        if: steps.scope.outputs.code == 'true'
+        # Warm Neutral Redesign 2026-07-20. Bans cool-neutral Tailwind classes
+        # (slate-|zinc-|gray-|neutral-<shade> -> use the warm stone-* scale) and NEW
+        # raw hex colors in src/. Blocking so the ~460-site warm-neutral migration
+        # can't silently regress (full lint below is non-blocking, so this can't live
+        # there). Pre-existing hex is grandfathered in scripts/color-baseline.json.
+        run: npm run lint:colors
+
+      - name: Component-primitive guardrail (blocking)
+        if: steps.scope.outputs.code == 'true'
+        # Component Primitive Adoption ADR 2026-07-22. Ratchets the three reinvention
+        # patterns (raw <button>, hand-rolled fixed-inset-0/role=dialog overlays, raw
+        # <table>) against scripts/primitive-baseline.json — feature code only,
+        # src/components/ui/ + the ALLOWLIST (bespoke surfaces / mini-kits) skipped.
+        # BLOCKING since Tranche 3 landed (2026-07-22): GROWTH over baseline fails CI.
+        # A migration only lowers counts, so it never trips on a legit tranche.
+        # Guide: docs/audits/component-primitive-adoption.md.
+        run: npm run lint:primitives
+
+      - name: Glyph-cascade guardrail (blocking)
+        if: steps.scope.outputs.code == 'true'
+        # The [&_svg] trap — Component Primitive Adoption ADR, amended 2026-07-27.
+        # Button's cva base styles its glyphs through DESCENDANT rules
+        # ([&_svg]:size-4 / [&_svg]:text-current), which outrank a size/colour
+        # utility written on the svg itself. This bit twice in workstream A and
+        # NOTHING caught it: typecheck, eslint, 593 tests, build, lint:colors and
+        # lint:primitives were all green across both broken states, because the
+        # failure only exists once real Tailwind CSS is applied (jsdom does not
+        # compute cascaded CSS, so a vitest render structurally cannot see it).
+        # Ratchets against scripts/glyph-baseline.json — feature code only,
+        # src/components/ui/ skipped; `!`-marked classes are the sanctioned
+        # escape hatch for a button holding glyphs at two sizes/tints.
+        run: npm run lint:glyphs
+
+      - name: Content-width guardrail (blocking)
+        if: steps.scope.outputs.code == 'true'
+        # Identity P2 (Renewal Build Queue item 12). A page's body width is a
+        # ROLE (narrow / content / prose / wide), not a number: the four values
+        # live in src/components/ui/page-container.tsx and call sites INHERIT
+        # them. Before that, 290 max-w-* utilities in 16+ values were spread
+        # across src/, 107 of them on an mx-auto page container, so the app's
+        # reading width visibly jumped between routes. Nothing caught it —
+        # it is not a type error, not a lint error, not a test failure, it is a
+        # design outcome — which is why it needs a counter that cannot grow.
+        # Ratchets against scripts/page-width-baseline.json; feature code only,
+        # src/components/ui/ skipped. W1 = a hand-rolled page container
+        # (mx-auto + bare max-w-* on a layout element); W2 = an unexplained
+        # responsive width override on a PageContainer. Component intrinsic
+        # sizing (a Dialog's max-w-md, a chat bubble's max-w-[85%], an image's
+        # max-w-full, a <p> text measure) is a different thing and is NOT
+        # flagged. The grandfathered set is the marketing landing system (its
+        # own WRAP convention), the global chrome rails, and the checklist's
+        # responsive two-column shells. Prove it still bites:
+        #   node scripts/check-page-width.mjs --self-test
+        run: npm run lint:widths
+
+      # Blocking as of 2026-07-26: the 11 standing errors were cleared (rules-of-hooks,
+      # no-explicit-any, no-require-imports, no-empty-object-type, no-control-regex) so
+      # `npm run lint` exits 0 at baseline. It used to be continue-on-error, which let
+      # new errors land unnoticed — same failure mode as the typecheck ratchet above.
+      # Warnings (~122, mostly react-hooks/exhaustive-deps + react-refresh) are NOT
+      # blocking; --max-warnings is deliberately unset so remediation stays incremental.
+      # Failure path verified 2026-07-26: an injected `no-explicit-any` made the step exit 1.
+      - name: Lint
+        if: steps.scope.outputs.code == 'true'
+        run: npm run lint
+
+      # Visibility, not a gate: prints the FULL-tree (dev + prod) high/critical count
+      # so dev-chain supply-chain risk can't drift out of sight now that the blocking
+      # ratchet is production-scoped. This step must never fail the trunk. If a dev
+      # advisory here ever becomes runtime-reachable, or shows evidence of active
+      # exploitation in build tooling, re-triage it into the blocking gate (see
+      # docs/audits/security-posture.md §12b).
+      #
+      # ITS POSITION IS LOAD-BEARING — do not move it back above the gates. Until
+      # 2026-09-04 it ran directly after the blocking ratchet. On that day a degraded
+      # npm registry made it take 14+ minutes; together with the ratchet's own ~7 it
+      # consumed the entire 20-minute job budget, so Test, Build, Lint and every design
+      # gate were SKIPPED and the run reported "cancelled" rather than "failure". A push
+      # landed on dev having run no test gate at all, and the run did not look red.
+      # A step that cannot fail the build must also not be able to starve the steps that
+      # can, so it runs last, is bounded twice (step timeout + `timeout` per call), and
+      # makes two registry calls instead of three — the advisory listing is now derived
+      # from JSON already fetched rather than costing a third.
+      #
+      # `always()` still means "even if a gate above failed" — it is scoped off only
+      # on a docs-only push, where the npm tree cannot have changed.
+      - name: Dependency-vuln report (full tree, non-blocking)
+        if: always() && steps.scope.outputs.code == 'true'
+        # Both are required for "non-blocking" to actually hold. `timeout-minutes` is a
+        # step-level kill, and a killed step FAILS the job on its own — which would turn
+        # this reporter into exactly the trunk-reddening gate its name says it is not,
+        # and would trip the build-break issue steps below. continue-on-error is what
+        # makes that impossible.
+        timeout-minutes: 6
+        continue-on-error: true
+        run: |
+          set -uo pipefail
+          # Report-only, so every call is `|| true`-guarded: a slow or unreachable
+          # registry prints "?" here, it never reds the trunk and never hangs the job.
+          audit_json() {
+            timeout 150 npm audit --json \
+              --fetch-timeout=60000 --fetch-retries=2 --fetch-retry-maxtimeout=15000 \
+              "$@" 2>/dev/null || true
+          }
+          summarise() {
+            node -e '
+              let s = "";
+              process.stdin.on("data", (d) => (s += d)).on("end", () => {
+                try {
+                  const j = JSON.parse(s);
+                  const v = (j.metadata || {}).vulnerabilities || {};
+                  const n = (v.high || 0) + (v.critical || 0);
+                  const names = Object.values(j.vulnerabilities || {})
+                    .filter((a) => a.severity === "high" || a.severity === "critical")
+                    .map((a) => `${a.name} (${a.severity})`);
+                  process.stdout.write(String(n) + "\t" + names.join(", "));
+                } catch { process.stdout.write("?\t"); }
+              });
+            '
+          }
+          FULL_RAW="$(audit_json | summarise)"
+          PROD_RAW="$(audit_json --omit=dev | summarise)"
+          FULL="${FULL_RAW%%$'\t'*}"; FULL_NAMES="${FULL_RAW#*$'\t'}"
+          PROD="${PROD_RAW%%$'\t'*}"
+          echo "Full-tree (dev + prod) high/critical advisories — REPORT ONLY, does not gate:"
+          echo "  ${FULL_NAMES:-none}"
+          echo ""
+          echo "high+critical: full tree = ${FULL:-?}, production (gated) = ${PROD:-?}"
+          # Read the baseline from the ratchet script — NEVER hardcode it here. This
+          # line said "baseline 2" for a full day after the ratchet moved to 0, i.e.
+          # the annotation reporting on the gate was misreporting the gate.
+          RATCHET_BASELINE="$(sed -n 's/^BASELINE=\([0-9][0-9]*\).*/\1/p' scripts/npm-audit-ratchet.sh | head -1)"
+          echo "::notice title=Dependency advisories::full tree ${FULL:-?} high/critical, production ${PROD:-?} (gated, baseline ${RATCHET_BASELINE:-unknown})"
+
+      # Only a FULL run may close a build-break incident. A docs-only push proves
+      # docs:check and i18n:verify pass; it proves nothing about the code that broke
+      # the trunk, so closing on it would declare an outage over without testing it.
+      - name: Close resolved build-break issue
+        if: success() && steps.scope.outputs.code == 'true'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          EXISTING=$(gh issue list --state open --label build-break --json number --jq '.[0].number' 2>/dev/null || echo "")
+          if [ -n "$EXISTING" ]; then
+            gh issue comment "$EXISTING" --body "✅ dev CI passed again on commit ${{ github.sha }}. Closing this incident. Run: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}" || echo "::warning::Could not annotate resolved build-break issue."
+            gh issue close "$EXISTING" --reason completed || echo "::warning::Could not close resolved build-break issue."
+          fi
+
+      # Real-time red-CI alert. On any blocking-step failure, open/refresh the SHARED
+      # build-break issue (same label nightly uses -> deduped, never a competing issue).
+      # Notification only: NO auto-commit / auto-push / auto-fix to the trunk.
+      - name: Open / refresh build-break issue on failure
+        if: failure()
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh label create build-break --color B60205 --force >/dev/null 2>&1 || true
+          RUN_URL="${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+          EXISTING=$(gh issue list --state open --label build-break --json number --jq '.[0].number' 2>/dev/null || echo "")
+          if [ -n "$EXISTING" ]; then
+            gh issue comment "$EXISTING" --body "dev CI red on push \`${{ github.sha }}\` by \`${{ github.actor }}\` at $(date -u '+%Y-%m-%d %H:%M UTC'). Run: $RUN_URL"
+          else
+            gh issue create --title "dev CI red on push ($(date -u +%Y-%m-%d))" --label build-break \
+              --body "Push \`${{ github.sha }}\` by \`${{ github.actor }}\` turned dev CI red (\`tsc\` / \`test\` / \`build\` / jsx-a11y). Fix or revert to keep the trunk green. Logs: $RUN_URL"
+          fi

@@ -1,0 +1,532 @@
+{
+  "blocked": {
+    "payment": "Pick at least one way to get paid.",
+    "photo": "Add at least one photo.",
+    "price": "Set a price. Enter 0 for free.",
+    "title": "Give your item a title.",
+    "verifiedLister": "Only verified listers can post a sublease — confirm your school email and add your building in Settings.",
+    "subleaseBuilding": "Add the address you are subletting.",
+    "subleaseAddressUnresolved": "We couldn't find that address near campus. Check the street and number, then try again.",
+    "subleaseDates": "Add a start and end date.",
+    "subleaseRange": "The end date has to come after the start date.",
+    "subleaseOneActive": "You already have an active sublease. Take it down before posting another.",
+    "serviceCategory": "Pick what kind of help this is.",
+    "servicePastDate": "Pick a date that has not passed.",
+    "serviceNotes": "Shorten the note a little.",
+    "titleRequestHelp": "Say what you need help with.",
+    "titleOfferHelp": "Say what help you are offering."
+  },
+  "status": {
+    "active": "Active",
+    "sold": "Sold",
+    "expired": "Expired",
+    "pending": "Pending",
+    "inReview": "In review"
+  },
+  "rating": {
+    "aria": "Rated {{value}} out of 5 stars",
+    "ariaWithCount_one": "Rated {{value}} out of 5 stars from {{count}} rating",
+    "ariaWithCount_other": "Rated {{value}} out of 5 stars from {{count}} ratings",
+    "inputLabel": "Star rating",
+    "starsCount_one": "{{count}} star",
+    "starsCount_other": "{{count}} stars"
+  },
+  "badge": {
+    "verifiedListing": "Verified listing",
+    "verifiedStudent": "Verified {{school}} Student",
+    "verifiedStudentGeneric": "Verified Student"
+  },
+  "meetup": {
+    "crossSchool": {
+      "title": "This seller is at {{school}}",
+      "body": "Pick somewhere public you can both get to."
+    },
+    "neutral": {
+      "openAria": "Open {{place}} in Google Maps",
+      "schenley-plaza": "Schenley Plaza",
+      "carnegie-oakland": "Carnegie Library (Oakland)",
+      "phipps": "Phipps Conservatory"
+    }
+  },
+  "scope": {
+    "filterLabel": "Which schools to show",
+    "group": "All Pittsburgh",
+    "cardChip": "{{school}}",
+    "cardChipAria": "Listed at {{school}}"
+  },
+  "seller": {
+    "ratingsChipAria_one": "See seller ratings, rated {{value}} out of 5 stars from {{count}} rating",
+    "ratingsChipAria_other": "See seller ratings, rated {{value}} out of 5 stars from {{count}} ratings",
+    "noRatingsYet": "No ratings yet",
+    "completedJobs_one": "{{count}} job completed",
+    "completedJobs_other": "{{count}} jobs completed"
+  },
+  "ratings": {
+    "toast": {
+      "pickStars": "Pick a star rating first",
+      "updated": "Rating updated",
+      "submitted": "Rating submitted",
+      "mustMessage": "You can only rate sellers you have messaged",
+      "removed": "Rating removed",
+      "removeError": "Could not remove your rating. Try again."
+    },
+    "title": "Seller ratings",
+    "editButton": "Edit your rating",
+    "rateButton": "Rate this seller",
+    "emptyWithName": "No ratings yet. Ratings come from students who messaged {{name}} on Dormcheck.",
+    "experiencePrompt": "How was your experience with {{name}}?",
+    "commentPlaceholder": "Share a few words about the sale (optional)",
+    "commentAria": "Written review",
+    "submitButton": "Submit rating",
+    "removeButton": "Remove rating",
+    "loading": "Loading ratings",
+    "you": "(you)",
+    "reportAria": "Report rating by {{name}}",
+    "reportLabel": "this rating"
+  },
+  "safetyBanner": {
+    "text": "Meeting up to trade? A few quick tips to stay safe.",
+    "tipsLink": "Safety tips",
+    "dismiss": "Dismiss safety notice"
+  },
+  "edit": {
+    "toast": {
+      "profileLoadError": "Could not load your profile",
+      "notFound": "Listing not found"
+    },
+    "titleLabel": "Title",
+    "titlePlaceholder": "e.g., Mini Fridge",
+    "descriptionLabel": "Description (optional)",
+    "descriptionPlaceholder": "Condition, details...",
+    "priceLabel": "Price ($)",
+    "fromPriceHint": "Shown as \"From ${{price}}\" based on your tagged items.",
+    "priceTip": "Tip: most dorm items sell between $5 and $50 - price to sell, not to hold.",
+    "tinyPriceWarning": "Under $5? Consider giving it away or bundling it with another item - tiny listings get skipped.",
+    "categoryLabel": "Category",
+    "priceNegotiableLabel": "Price negotiable",
+    "conditionLabel": "Condition",
+    "meetupLabel": "Meetup location",
+    "meetupPlaceholder": "e.g., Cathy fountain",
+    "photoRequiredHint": "At least one photo is required - listings with photos are the ones buyers actually open.",
+    "multiItemLabel": "Selling multiple items in this photo? (optional)",
+    "updating": "Updating..."
+  },
+  "showOnListing": {
+    "title": "Show on listing",
+    "phoneLabel": "Phone Number",
+    "togglePhoneAria": "Show phone number on listing",
+    "toggleInstagramAria": "Show Instagram on listing",
+    "toggleSnapchatAria": "Show Snapchat on listing",
+    "snapchatPlaceholder": "username"
+  },
+  "paymentMethods": {
+    "label": "Payment methods accepted",
+    "selectAll": "Select all that apply."
+  },
+  "preview": {
+    "label": "Preview",
+    "itemAlt": "Item preview",
+    "itemTitleFallback": "Item title",
+    "conditionLabel": "Condition: {{value}}",
+    "meetupLabel": "Meetup: {{value}}",
+    "roommateNameFallback": "Your name",
+    "emptyTitle": "Your listing preview",
+    "emptyBody": "As you fill out the form, you'll see exactly how your listing appears to buyers.",
+    "pricePlaceholder": "Price",
+    "free": "Free",
+    "listedJustNow": "Listed just now",
+    "detailsLabel": "Details",
+    "categoryLabel": "Category: {{value}}",
+    "negotiableLabel": "Price negotiable",
+    "paymentLabel": "Payment: {{value}}",
+    "descriptionFallback": "Your description will appear here.",
+    "sellerLabel": "Seller",
+    "sellerFallback": "You",
+    "sellerInfo": "Seller information",
+    "messageButton": "Message",
+    "subleaseTitleFallback": "Building",
+    "serviceTitleFallback": "What this post is about",
+    "subleaseAlt": "Room preview",
+    "posterInfo": "Who is posting"
+  },
+  "create": {
+    "eyebrow": "Marketplace",
+    "saveDraft": "Save draft",
+    "draftSaved": "Draft saved",
+    "draftRestored": "Draft restored - photos need to be re-added",
+    "discardDraft": "Discard draft"
+  },
+  "tagger": {
+    "toast": {
+      "maxItems": "You can tag up to {{max}} items per listing.",
+      "nameRequired": "Enter an item name",
+      "priceInvalid": "Enter a valid item price",
+      "prohibited": "This item can't be listed. It looks like it involves {{category}}. Prohibited items aren't allowed on DormCheck."
+    },
+    "intro": "Tap the photo where an item is to tag it, then give it a name and price. Buyers see every item with its own price, and you can mark items sold one at a time.",
+    "tagImageAria": "Tag an item on listing image {{number}}",
+    "editItemAria": "Edit item {{name}}",
+    "tagPhotoAria": "Tag items on photo {{number}}",
+    "noPhotos": "Add photos above first, then tag the items in them.",
+    "form": {
+      "editTitle": "Edit item",
+      "newTaggedTitle": "New tagged item",
+      "newUntaggedTitle": "New item (no tag)",
+      "placeTagTip": "Tip: tap the photo to place a tag for this item.",
+      "nameLabel": "Item name",
+      "namePlaceholder": "e.g., Desk lamp",
+      "saveItem": "Save item",
+      "addItem": "Add item"
+    },
+    "editAria": "Edit {{name}}",
+    "removeAria": "Remove {{name}}",
+    "addWithoutTag": "Add item without tag",
+    "itemCounter": "{{n}}/{{max}} items"
+  },
+  "photos": {
+    "label": "Photos",
+    "coverAlt": "Cover photo",
+    "photoAlt": "Photo {{number}}",
+    "coverBadge": "Cover",
+    "dragReorder": "Drag to reorder",
+    "editPhoto": "Edit photo",
+    "removePhoto": "Remove photo",
+    "addAria": "Add listing photos",
+    "addPhotos": "Add photos",
+    "dragDrop": "or drag and drop",
+    "takePhoto": "Take a photo",
+    "helpText": "Up to {{max}} photos. Drag to reorder; first is cover.",
+    "toast": {
+      "maxPhotos": "Maximum {{max}} photos allowed",
+      "chooseError": "Unable to choose photos",
+      "takeError": "Unable to take photo",
+      "cameraUnavailable": "No camera available on this device",
+      "permissionDenied": "Photo access is off. Turn it on in Settings to add photos."
+    }
+  },
+  "myItems": {
+    "toast": {
+      "saveBusinessError": "Could not update saved businesses",
+      "listingDeleted": "Listing deleted",
+      "deleteError": "Could not delete listing"
+    },
+    "title": "My Marketplace",
+    "tabs": {
+      "items": "My Items",
+      "businesses": "My Businesses",
+      "businessesShort": "Businesses"
+    },
+    "empty": {
+      "title": "No listings yet",
+      "subtitle": "Post an item to sell to other students.",
+      "addListing": "Add Listing"
+    },
+    "editListingAria": "Edit listing",
+    "deleteListingAria": "Delete listing",
+    "fromPrice": "From {{price}}",
+    "itemsSoldCount": "{{sold}} of {{total}} sold",
+    "inReviewHint": "We're reviewing this listing. It'll go live once it clears.",
+    "actions": {
+      "markPending": "Mark Pending",
+      "markSold": "Mark as Sold",
+      "backToAvailable": "Back to Available",
+      "relist": "Relist"
+    },
+    "loadingBusinesses": "Loading your businesses...",
+    "businessEmpty": {
+      "title": "No businesses yet",
+      "subtitle": "List your student business to reach {{school}} students.",
+      "listButton": "List Your Business"
+    },
+    "savedBusinesses": {
+      "title": "Saved Businesses",
+      "loading": "Loading saved businesses...",
+      "empty": "No saved businesses yet. Heart a business on the marketplace to save it here."
+    },
+    "deleteDialog": {
+      "title": "Delete listing?",
+      "description": "This will remove “{{title}}” from the marketplace. This cannot be undone."
+    }
+  },
+  "verify": {
+    "toast": {
+      "submittedTitle": "Verification submitted",
+      "submittedDesc": "We'll review it shortly. The badge appears once it's approved.",
+      "errorTitle": "Could not submit verification"
+    },
+    "title": "Verify {{title}}",
+    "description": "Verified listings show a badge buyers can trust. Share one piece of proof and an admin will review it. Documents are private and only visible to the review team.",
+    "checkingStatus": "Checking status...",
+    "underReview": "Your verification is <b>under review</b>. We'll add the badge once it's approved.",
+    "approved": "This listing is verified.",
+    "rejectedWithNote": "Your last request wasn't approved: {{note}} You can submit new proof below.",
+    "rejectedNoNote": "Your last request wasn't approved. You can submit new proof below.",
+    "methodGroupAria": "Verification method",
+    "method": {
+      "document": "Upload a document",
+      "address": "Confirm the address"
+    },
+    "docLabel": "Lease, sublease agreement, or utility bill",
+    "docHint": "Feel free to black out rent amounts or other private details.",
+    "addressLabel": "Listing address",
+    "addressPlaceholder": "123 Atwood St, Pittsburgh, PA",
+    "attestLabel": "I confirm this is the real address of the place in this listing and that I have the right to offer it.",
+    "submitButton": "Submit for review"
+  },
+  "business": {
+    "card": {
+      "saveAria": "Save",
+      "unsaveAria": "Unsave",
+      "pendingReview": "Pending Review",
+      "live": "Live",
+      "messageAria": "Message",
+      "instagramAria": "Instagram @{{handle}}"
+    },
+    "detail": {
+      "bannerAlt": "{{name}} banner",
+      "packagesTitle": "Services & Packages",
+      "messageButton": "Message",
+      "deleteTitle": "Delete this listing?",
+      "deleteDescription": "This cannot be undone."
+    },
+    "form": {
+      "toast": {
+        "bannerUploadError": "Failed to upload banner image",
+        "logoUploadError": "Failed to upload logo",
+        "bannerChooseError": "Failed to choose banner image",
+        "logoChooseError": "Failed to choose logo image",
+        "nameRequired": "Business name is required",
+        "categoryRequired": "Category is required",
+        "descriptionRequired": "Description is required",
+        "updated": "Listing updated"
+      },
+      "editTitle": "Edit Business Listing",
+      "createTitle": "List Your Business",
+      "editDescription": "Update your business details.",
+      "createDescription": "Share your student business with your campus community.",
+      "success": {
+        "title": "Your listing is under review",
+        "subtitle": "We'll have it live within 24 hours."
+      },
+      "fields": {
+        "name": "Business Name",
+        "namePlaceholder": "e.g., Maya's Braids",
+        "category": "Category",
+        "categoryPlaceholder": "Select a category",
+        "customCategoryPlaceholder": "Enter your category",
+        "description": "Description",
+        "descriptionPlaceholder": "Tell students what you offer...",
+        "priceRange": "Price Range",
+        "priceRangePlaceholder": "e.g., $20 - $50",
+        "instagram": "Instagram Handle",
+        "instagramPlaceholder": "@yourbusiness",
+        "website": "Website URL",
+        "websitePlaceholder": "yoursite.com or linktree",
+        "bannerColor": "Banner Color",
+        "bannerImage": "Banner Image (optional, replaces color)",
+        "logo": "Logo (optional)"
+      },
+      "selectColorAria": "Select {{color}}",
+      "change": "Change",
+      "upload": "Upload",
+      "removePackageAria": "Remove package",
+      "packageNamePlaceholder": "Package name",
+      "packageDescPlaceholder": "What's included",
+      "packagePricePlaceholder": "Price",
+      "addPackage": "Add a package",
+      "submitReview": "Submit for Review"
+    },
+    "section": {
+      "toast": {
+        "approved": "Listing approved",
+        "approveError": "Could not approve listing",
+        "rejected": "Listing rejected",
+        "rejectError": "Could not reject listing",
+        "signInSave": "Please sign in to save",
+        "signInMessage": "Please sign in to message",
+        "messageSelf": "You can't message yourself",
+        "conversationError": "Could not start conversation",
+        "signInList": "Please sign in to list a business",
+        "signInSaved": "Please sign in to view saved businesses"
+      },
+      "title": "Student Businesses",
+      "subtitle": "Support student-run businesses on your campus",
+      "savedAria": "Saved businesses",
+      "searchPlaceholder": "Search...",
+      "filters": "Filters",
+      "clearAll": "Clear all",
+      "sortBy": "Sort By",
+      "sortNewest": "Newest",
+      "sortAz": "A-Z",
+      "categoryAll": "All",
+      "pendingReviewCount": "Pending Review ({{n}})",
+      "approve": "Approve",
+      "reject": "Reject",
+      "loading": "Loading businesses...",
+      "emptyTitle": "No student businesses yet",
+      "emptySubtitle": "Be the first to list yours.",
+      "noMatchTitle": "No businesses match your search",
+      "noMatchSubtitle": "Try a different keyword or category."
+    }
+  },
+  "homeBand": {
+    "emptyTitle": "Nothing listed at {{school}} yet",
+    "emptyBody": "Most listings show up around move-out. If you have something you won’t pack, list it first.",
+    "postListing": "Post a listing"
+  },
+  "postType": {
+    "pickerLabel": "What are you posting?",
+    "filterLabel": "Post type",
+    "soon": "Soon",
+    "soonHint": "Not available on your campus yet.",
+    "item": {
+      "label": "Sell Something",
+      "hint": "List an item other students can buy."
+    },
+    "sublease": {
+      "label": "Sublease",
+      "hint": "Pass on your room or apartment for part of a lease.",
+      "heading": "Post a Sublease"
+    },
+    "request_help": {
+      "label": "Request Help",
+      "hint": "Ask another student for a hand with a task.",
+      "heading": "Request Help"
+    },
+    "offer_help": {
+      "label": "Offer Help",
+      "hint": "Offer a few hours of help to other students.",
+      "heading": "Offer Help"
+    }
+  },
+  "service": {
+    "category": "What kind of help?",
+    "categoryPlaceholder": "Pick a task type",
+    "filterLabel": "Filter by task type",
+    "allCategories": "All",
+    "categories": {
+      "move_help": "Move-in help",
+      "rides": "Rides",
+      "tech_repair": "Tech repair",
+      "printing": "Printing",
+      "photography": "Photography",
+      "tutoring": "Tutoring",
+      "resume_review": "Resume review",
+      "design": "Design",
+      "editing": "Editing"
+    },
+    "scope": {
+      "local": "Nearby",
+      "remote": "Online",
+      "localHint": "Students close enough to meet you can see this.",
+      "remoteHint": "Done over a link, so distance does not matter."
+    },
+    "integrity": {
+      "heading": "Tutoring on DormCheck",
+      "body": "Tutoring here means helping someone understand their own work. Doing the work for them is not allowed: no writing or rewriting an assignment that will be turned in as theirs, no sitting an exam, quiz or proctored assessment for anyone, and no selling completed coursework. Posts that offer any of that are removed and the account is reported to the university.",
+      "ack": "I understand tutoring means helping someone learn, not doing graded work for them.",
+      "ackRequired": "Confirm you understand the tutoring rules."
+    },
+    "date": "When",
+    "duration": "About how long",
+    "durationPlaceholder": "Pick a rough length",
+    "durations": {
+      "30": "About 30 minutes",
+      "60": "About an hour",
+      "120": "About 2 hours",
+      "180": "About 3 hours",
+      "240": "About 4 hours",
+      "480": "Most of a day"
+    },
+    "location": "Where",
+    "locationPlaceholder": "Towers lobby, Oakland, campus shuttle stop",
+    "notes": "Anything else worth knowing",
+    "notesPlaceholder": "Two suitcases and a mini fridge, third floor, no elevator.",
+    "notesHint": "{{remaining}} characters left",
+    "notesLabel": "Notes",
+    "status": {
+      "open": "Open",
+      "claimed": "Taken",
+      "completed": "Done"
+    },
+    "claim": "I can help",
+    "claimAria": "Offer to help with this post",
+    "claimed": "You are helping with this",
+    "claimedByOther": "Someone is already helping",
+    "complete": "Mark as done",
+    "completeAria": "Mark this post as done",
+    "completedToast": "Marked as done. You can now rate each other.",
+    "claimedToast": "You claimed this. Message them to sort out the details.",
+    "noMoney": "DormCheck does not handle money. Anything you agree on is between the two of you.",
+    "titlePlaceholderRequest": "e.g. Help moving a mini fridge",
+    "titlePlaceholderOffer": "e.g. Rides to the airport",
+    "messagePoster": "Message them"
+  },
+  "trust": {
+    "report": "Report",
+    "reportAria": "Report this post"
+  },
+  "sublease": {
+    "rent": "Monthly rent",
+    "address": "Address",
+    "addressPlaceholder": "e.g. 3400 Forbes Ave or Skyvue Apartments",
+    "addressSuggestions": "Building suggestions",
+    "addressNote": "This address is what places your listing on the sublease map, so students nearby can find it. Start typing and we will suggest buildings we already know.",
+    "start": "Start date",
+    "end": "End date",
+    "datesShort": "Dates",
+    "utilities": "Utilities included",
+    "utilitiesShort": "Utilities",
+    "furnished": "Furnished",
+    "parking": "Parking",
+    "genderPreference": "Roommate preference",
+    "houseRules": "House rules",
+    "houseRulesPlaceholder": "Quiet hours, guests, pets...",
+    "additionalRules": "Anything else",
+    "additionalRulesPlaceholder": "Anything a subletter should know before reaching out.",
+    "utility": {
+      "electricity": "Electricity",
+      "water": "Water",
+      "gas": "Gas",
+      "internet": "Internet",
+      "trash": "Trash"
+    },
+    "gender": {
+      "any": "No preference",
+      "female": "Female",
+      "male": "Male"
+    }
+  },
+  "subleaseMap": {
+    "loading": "Loading subleases…",
+    "sheetTitle_one": "1 sublease",
+    "sheetTitle_other": "{{count}} subleases",
+    "perMonth": "per month",
+    "fromRent": "from {{rent}}",
+    "countFromRent_one": "1 listing · from {{rent}}",
+    "countFromRent_other": "{{count}} listings · from {{rent}}",
+    "backToAll": "All subleases",
+    "loadError": {
+      "title": "Couldn't load subleases",
+      "body": "Something went wrong loading {{school}} subleases. Check your connection and try again."
+    },
+    "empty": {
+      "title": "No subleases at {{school}} yet",
+      "body": "A sublease is a student handing off their lease: a room for a summer, a semester, or the rest of the year. When a {{school}} student posts one, it shows up here on the map.",
+      "cta": "Post a sublease"
+    },
+    "noneInView": {
+      "title": "No subleases in view",
+      "body_one": "There is 1 sublease at {{school}}, just not in this part of the map.",
+      "body_other": "There are {{count}} subleases at {{school}}, just not in this part of the map.",
+      "cta": "Show all"
+    },
+    "unmapped": {
+      "title": "Not on the map",
+      "meta_one": "1 listing",
+      "meta_other": "{{count}} listings",
+      "body_one": "This sublease has no map location: it was posted before an address was geocoded at submit. It is listed here rather than hidden.",
+      "body_other": "These subleases have no map location: they were posted before an address was geocoded at submit. They are listed here rather than hidden."
+    }
+  }
+}

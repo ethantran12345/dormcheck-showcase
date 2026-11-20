@@ -1,0 +1,25 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "dormcheck-dev",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": ["run", "dev"],
+      "port": 8080
+    },
+    {
+      "name": "dormcheck-worktree-e2e",
+      "runtimeExecutable": "npx",
+      "runtimeArgs": ["vite", "--mode", "e2e", "--port", "8091", "--strictPort"],
+      "port": 8091,
+      "autoPort": false
+    },
+    {
+      "name": "dormcheck-e2e-8093",
+      "runtimeExecutable": "npx",
+      "runtimeArgs": ["vite", "--mode", "e2e", "--port", "8093", "--strictPort"],
+      "port": 8093,
+      "autoPort": false
+    }
+  ]
+}

@@ -1,0 +1,35 @@
+{
+  "$notes": {
+    "$comment": "Not read by the gate. `--write-baseline` regenerates counts and will DROP this block, so restore it if you regenerate.",
+    "src/pages/marketing/ForUniversities.tsx": "Raised 1 -> 2 on 2026-08-02 for the grid added in c742c08f. Both hits (`mx-auto grid max-w-[820px]`, `mx-auto grid max-w-[720px]`) are INNER CONTENT GRIDS inside an already-constrained section, not page-level containers. PageContainer is the wrong tool for them: it sets the page body width, which these are not choosing. This is accepted as-is, not as debt to pay down by conversion.",
+    "$gate-over-match": "W1 appears to over-match. It counts any element pairing `mx-auto` with `max-w-*`, which cannot distinguish a page container from a grid or card track that happens to be centred and bounded. The gate should key on page-level position (a section/page body wrapper) rather than the class pair alone. Not fixed on 2026-08-02 — recorded so the next person to touch check-page-width.mjs knows the baseline entry above is a symptom, not debt."
+  },
+  "w1": {
+    "src/components/BottomNav.tsx": 1,
+    "src/components/DormDetail.tsx": 3,
+    "src/components/DormSearch.tsx": 1,
+    "src/components/Footer.tsx": 2,
+    "src/components/TopNav.tsx": 1,
+    "src/components/admin/AutoHeldListingsPanel.tsx": 1,
+    "src/components/checklist/ChecklistExploreTab.tsx": 1,
+    "src/components/checklist/ChecklistGroupBoard.tsx": 1,
+    "src/components/checklist/ChecklistLanding.tsx": 1,
+    "src/components/checklist/ChecklistReadinessView.tsx": 1,
+    "src/components/marketing/MarketingFooter.tsx": 2,
+    "src/components/marketing/MarketingTopNav.tsx": 2,
+    "src/components/marketing/landing/VerifiedFlow.tsx": 1,
+    "src/components/marketing/landing/ui.tsx": 2,
+    "src/components/messages/PaymentSafetyNotice.tsx": 1,
+    "src/pages/advertiser/AdvertiserPortalPage.tsx": 1,
+    "src/pages/app/MyHomePage.tsx": 1,
+    "src/pages/app/RoomGalleryPage.tsx": 1,
+    "src/pages/marketing/About.tsx": 1,
+    "src/pages/marketing/Contact.tsx": 1,
+    "src/pages/marketing/Feedback.tsx": 1,
+    "src/pages/marketing/ForStudents.tsx": 1,
+    "src/pages/marketing/ForUniversities.tsx": 2,
+    "src/pages/marketing/Partners.tsx": 2,
+    "src/pages/marketing/WaitlistPage.tsx": 6
+  },
+  "w2": {}
+}
