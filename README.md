@@ -23,8 +23,10 @@ From the campus home screen to buying dorm essentials and planning move-in. Clic
 
 | Campus home | Student marketplace | Move-in checklist |
 | :---: | :---: | :---: |
-| <a href="docs/screenshots/home.png"><img src="docs/screenshots/home.png" width="245" alt="DormCheck campus home with shortcuts to housing, shopping, and move-in planning"></a> | <a href="docs/screenshots/marketplace.png"><img src="docs/screenshots/marketplace.png" width="245" alt="DormCheck marketplace showing a grid of sample student listings"></a> | <a href="docs/screenshots/checklist.png"><img src="docs/screenshots/checklist.png" width="245" alt="DormCheck move-in checklist showing tasks and readiness progress"></a> |
+| <a href="docs/screenshots/home.png"><img src="docs/screenshots/home.png" width="245" alt="DormCheck campus home with shortcuts to housing, shopping, and move-in planning"></a> | <a href="docs/screenshots/marketplace-demo.jpg"><img src="docs/screenshots/marketplace-demo.jpg" width="245" alt="DormCheck marketplace demo showing a microwave, textbook, desk lamp, and mini fridge"></a> | <a href="docs/screenshots/checklist.png"><img src="docs/screenshots/checklist.png" width="245" alt="DormCheck move-in checklist showing tasks and readiness progress"></a> |
 | Find housing, listings, and move-in tools. | Browse items from other students. | Organize tasks before move-in. |
+
+The marketplace image is a demo mockup with fictional listings. The [original marketplace screenshot](docs/screenshots/marketplace.png) is also available. Microwave photo by [Jstapko](https://commons.wikimedia.org/wiki/File:Microwave_oven,_front.JPG), [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/). The photo is resized in the card. The marketplace demo image is shared under CC BY-SA 3.0.
 
 ## What Ethan built
 
